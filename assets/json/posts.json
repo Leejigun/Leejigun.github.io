@@ -1,6 +1,14 @@
 [
 
 {
+"title"    : "fastlane - release, testflight",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/fastlane_release_testflight",
+"date"     : "2020-02-20 00:00:01 +0000"
+} ,
+
+{
 "title"    : "iOS fastlane - Fabric, Firebase",
 "category" : "",
 "tags"     : "ios tip",

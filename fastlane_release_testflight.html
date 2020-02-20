@@ -15,7 +15,7 @@
 
 
 
-    <title>Linear Regression</title>
+    <title>fastlane - release, testflight</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -27,32 +27,32 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <meta name="description" content="머신러닝의 Linear Regression" />
+    <meta name="description" content="fastlane - release, testflight" />
     <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io//Linear_Regression" />
+    <link rel="canonical" href="https://leejigun.github.io//fastlane_release_testflight" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="iOS 삽질 블로그" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Linear Regression" />
-    <meta property="og:description" content="Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의" />
-    <meta property="og:url" content="https://leejigun.github.io//Linear_Regression" />
-    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png" />
+    <meta property="og:title" content="fastlane - release, testflight" />
+    <meta property="og:description" content="fastlane_release_testflight 이전 포스트에서 실무에서 사용하고 있는 fastlane 베타 배포에 관해서 설명했다. 일반적인 단일 앱에 대한 베타 배포는 튜토리얼을 따라가도 충분하지만 지금 프로젝트는 두 개의 익스텐션을 포함하고 있기 때문에 어려움이 있었다. 각각의 타깃에 맞게 인증서를 다운받아 설치해주고 빌드 세팅을 커스텀 하는 과정에서 꽤 많은 시간을 들였다. 이번 포스트에서는 fastlane을 통한 release" />
+    <meta property="og:url" content="https://leejigun.github.io//fastlane_release_testflight" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ios_tips/fastlane_background.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2019-11-26T09:00:01+09:00" />
-    <meta property="article:modified_time" content="2019-11-26T09:00:01+09:00" />
-    <meta property="article:tag" content="Ml" />
+    <meta property="article:published_time" content="2020-02-20T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2020-02-20T09:00:01+09:00" />
+    <meta property="article:tag" content="Ios Tip" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Linear Regression" />
-    <meta name="twitter:description" content="Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의" />
+    <meta name="twitter:title" content="fastlane - release, testflight" />
+    <meta name="twitter:description" content="fastlane_release_testflight 이전 포스트에서 실무에서 사용하고 있는 fastlane 베타 배포에 관해서 설명했다. 일반적인 단일 앱에 대한 베타 배포는 튜토리얼을 따라가도 충분하지만 지금 프로젝트는 두 개의 익스텐션을 포함하고 있기 때문에 어려움이 있었다. 각각의 타깃에 맞게 인증서를 다운받아 설치해주고 빌드 세팅을 커스텀 하는 과정에서 꽤 많은 시간을 들였다. 이번 포스트에서는 fastlane을 통한 release" />
     <meta name="twitter:url" content="https://leejigun.github.io//" />
-    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ios_tips/fastlane_background.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="iOS 삽질 블로그" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:data2" content="Ios Tip" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -67,18 +67,18 @@
         "name": "iOS 삽질 블로그",
         "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io//Linear_Regression",
+    "url": "https://leejigun.github.io//fastlane_release_testflight",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png",
+        "url": "https://leejigun.github.io//assets/images/ios_tips/fastlane_background.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io//Linear_Regression"
+        "@id": "https://leejigun.github.io//fastlane_release_testflight"
     },
-    "description": "Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의"
+    "description": "fastlane_release_testflight 이전 포스트에서 실무에서 사용하고 있는 fastlane 베타 배포에 관해서 설명했다. 일반적인 단일 앱에 대한 베타 배포는 튜토리얼을 따라가도 충분하지만 지금 프로젝트는 두 개의 익스텐션을 포함하고 있기 때문에 어려움이 있었다. 각각의 타깃에 맞게 인증서를 다운받아 설치해주고 빌드 세팅을 커스텀 하는 과정에서 꽤 많은 시간을 들였다. 이번 포스트에서는 fastlane을 통한 release"
 }
     </script>
 
@@ -91,7 +91,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Linear Regression" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="fastlane - release, testflight" href="/feed.xml" />
 
 
 </head>
@@ -156,313 +156,104 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="26 November 2019">26 November 2019</time>
+                    <time class="post-full-meta-date" datetime="20 February 2020">20 February 2020</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/ml/'>ML</a>
+                               <a href='/tag/ios-tip/'>IOS TIP</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Linear Regression</h1>
+                <h1 class="post-full-title">fastlane - release, testflight</h1>
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/ml/Linear_Regression/background.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/ios_tips/fastlane_background.png)">
             </figure>
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h1 id="linear-regression">Linear Regression</h1>
+                    <h1 id="fastlane_release_testflight">fastlane_release_testflight</h1>
 
-<ul>
-  <li><a href="https://www.inflearn.com/course/%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%94%A5%EB%9F%AC%EB%8B%9D-%EA%B0%95%EC%A2%8C/lecture/3377">강좌</a></li>
-</ul>
+<p>이전 포스트에서 실무에서 사용하고 있는 fastlane 베타 배포에 관해서 설명했다. 일반적인 단일 앱에 대한 베타 배포는 튜토리얼을 따라가도 충분하지만 지금 프로젝트는 두 개의 익스텐션을 포함하고 있기 때문에 어려움이 있었다. 각각의 타깃에 맞게 인증서를 다운받아 설치해주고 빌드 세팅을 커스텀 하는 과정에서 꽤 많은 시간을 들였다.</p>
 
-<h2 id="선형-회귀">선형 회귀</h2>
+<p>이번 포스트에서는 fastlane을 통한 release 배포 방법을 알아보려 한다. 사실 beta를 구축할 때 이미 release 버전에 대한 스크립트도 같이 작성을 완료했다. 실제로 사용하면서 여러 가지 불편한 부분을 수정해 문제가 없어 포스트로 공개하려고 한다.</p>
 
-<p>우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자.</p>
+<p>기본적인 부분은 앞선 beta 배포의 스크립트와 크게 다르지 않지만, 인증서를 관리하는 부분에서 조금 차이가 있다. 기존의 Debug config에 맞춰 dev 인증서를 사용했지만 이제 테스트 플라이트에 올리고 테스트 후 스토어에 등록해야 하기 때문에 release config에 app store 인증서를 사용해야 한다.</p>
 
-<p>0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다.</p>
+<h2 id="cert-파일">Cert 파일</h2>
 
-<p><img src="assets/images/ml/Linear_Regression/Untitled.png" alt="Linear%20Regression/Untitled.png" /></p>
-
-<p>위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다.</p>
-
-<p>세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의 모습을 취하고 있다.  가장 적절한 선을 찾아 나가는 과정이 Linear Regression 학습 방법 입니다.</p>
-
-<p><img src="assets/images/ml/pandas/Untitled 1.png" alt="assets/images/ml/pandas/Untitled 1.png" /></p>
-
-<p>그럼 가장 적절한 선은 어떻게 찾아야할까?</p>
-
-<p>선과 실제 데이터의 차이를 손실이라 하는데 이 손실을 찾는 방법을 Cost function이라한다.</p>
-
-<p>실제 데이터와 예측값 사이의 차이를 제곱한다. 제곱을 함으로써 음수값도 양수 값으로 만들 수 있다. if문으로 음수일 때 -1을 곱하는 방식을 취하지 않는 이유는 모든 값에 if문을 돌리면 엄청나게 리소스가 낭비된다.</p>
-
-<p><img src="assets/images/ml/pandas/Untitled 2.png" alt="assets/images/ml/pandas/Untitled 2.png" /></p>
-
-<p>모든 손실값의 제곱 데이터를 합치고 갯수로 나눠서 손실의 평균을 낸다.</p>
-
-<h2 id="실습">실습</h2>
-
-<p>주어진 x 값에 대한 예측</p>
-
-<p>예측 값과 실제 값 사이의 차</p>
-
-<p>학습을 한다는 것은 이 실손을 최소화 하는 과정</p>
-
-<p><img src="assets/images/ml/pandas/Untitled 3.png" alt="assets/images/ml/pandas/Untitled 3.png" /></p>
-
-<p>3가지 단계로 진행할 것</p>
-
-<ol>
-  <li>그래프를 만들고</li>
-  <li>그래프를 실행시키고</li>
-  <li>그 래프에 값을 업데이트한다.</li>
-</ol>
-
-<p><img src="assets/images/ml/pandas/Untitled 4.png" alt="assets/images/ml/pandas/Untitled 4.png" /></p>
-
-<h3 id="1-tf를-사용해-그래프-그리기">1. TF를 사용해 그래프 그리기</h3>
-
-<p>H(x) = Wx + b 라는 공식을 구현하기 위해서 텐서 플로우에서는 Vriable을 정의한다.</p>
-
-<h3 id="tfvariable">tf.Variable</h3>
-
-<p>프로그램에 의해 변화하는 공유된 지속 상태를 표현하는 방법입니다.</p>
-
-<p>하나의 Variable은 하나의 텐서를 표현하는데, 텐서값은 텐서의 연산을 수행아여 변경시킬 수 있습니다. 특정한 연산은 (학습) 이 텐서값을 읽고 수정합니다.</p>
-
-<p>tf.Keras 같은 고수준의 라이브러리는 모델 파라미터를 저장하는데 Variable을 사용합니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
-y_train = [1,2,3]
-
-w = tf.Variable(tf.random.normal([1]),name = 'weight')
-b = tf.Variable(tf.random.normal([1]), name = 'bias')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get_certificates(
+  development: false,
+  output_path: "./fastlane/certificate/"
+)
 </code></pre></div></div>
 
-<p>변수를 만드는데 첫번째 인자로 tf.random.normal([1])를 사용했습니다. 이것의 의미는 이 변수의 Shape 를 표시하는 부분으로 랜덤한 타입의 1차원 변수가 들어간다는 의미입니다.</p>
+<h2 id="provisioning-profile">Provisioning Profile</h2>
 
-<p>가정 공식(hypothesis)는 다음과 같습니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hypothesis = x_train * w + b
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get_provisioning_profile(
+  development: false,
+  app_identifier: "kr.co.juvis.dietapp",
+  filename: "dietapp_store.mobileprovision",
+  output_path: "./fastlane/profiles/"
+)
+# noti service profile
+get_provisioning_profile(
+  development: false,
+  app_identifier: "kr.co.juvis.dietapp.notificationServiceExt",
+  filename: "notificationServiceExt_storev.mobileprovision",
+  output_path: "./fastlane/profiles/"
+)
+# widget profile
+get_provisioning_profile(
+  development: false,
+  app_identifier: "kr.co.juvis.dietapp.JuvisWidget",
+  filename: "JuvisWidget_store.mobileprovision",
+  output_path: "./fastlane/profiles/"
+)
 </code></pre></div></div>
 
-<p>그리고 손실 함수는 다음과 같습니다.</p>
+<p>여기까지는 그저 development 옵션을 false로 설정해 app store 인증서를 사용하는 과정이었다. build number를 올리는 부분을 새롭게 추가했다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const = tf.reduce_mean(tf.square(hypothesis - y_train))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 빌드번호 + 1
+increment_build_number(
+  build_number: latest_testflight_build_number + 1,
+  xcodeproj: "JuvisApp.xcodeproj"
+)
 </code></pre></div></div>
 
-<p>여기서 reduce_mean은 평균을 내주는 함수입니다.</p>
+<p>튜토리얼의 샘플에서는 앱 스토어에 올라가 있는 상용 버전에 +1 하는 예시가 나와 있다. 하지만 나는 테스트 플라이트를 통한 테스트를 빈번하게 하고 마지막 버전으로 스토어에 등록하기 때문에 테스트 플라이트의 마지막 build number에 + 1을 하도록 하고 있다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t = [1,2,3,4]
-tf.reduce_mean(t) =&gt; 2.5
+<p>빌드를 진행하는 부분은 앞선 부분과 다를 게 없고 마지막에 beta가 아닌 테스트 플라이트에 올리는 명령어가 추가된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upload_to_testflight(
+  ipa: "fastlane/ipa/JuvisAppRelease.ipa",
+  skip_waiting_for_build_processing: true
+)
 </code></pre></div></div>
 
-<p>텐서플로우에는 이런 cost를 minimize - 최소화 해주는 방법으로 GradientDescentOptimizer를 사용해서 손실을 최소화하도록 변수를 수정하게 됩니다.</p>
+<p>테스트 플라이트에 올리기 위해서는 Appfile에 아이튠즈 커넥트 정보를 입력해야 한다.</p>
 
-<p><img src="assets/images/ml/pandas/Untitled 5.png" alt="assets/images/ml/pandas/Untitled 5.png" /></p>
-
-<p>tensorflow 에서 보면 train은 cost가 필요하고 cost는 hypothesis가 필요하고 hypothesis는 w와 b 가 필요합니다. 이렇게 tensor로 연결되어 train만 실행하면 점점 w와 b가 수렴해 나갑니다.</p>
-
-<h2 id="tensorflow-20-에서-gradient-descent">Tensorflow 2.0 에서 Gradient Descent</h2>
-
-<p>경사 하강법</p>
-
-<p><a href="https://medium.com/analytics-vidhya/3-different-ways-to-perform-gradient-descent-in-tensorflow-2-0-and-ms-excel-ffc3791a160a">https://medium.com/analytics-vidhya/3-different-ways-to-perform-gradient-descent-in-tensorflow-2-0-and-ms-excel-ffc3791a160a</a></p>
-
-<p>위 포스트에는 경사하강법을 구현하는 3가지 방법이 나와있고 그 중 첫번째 방법이 강의에서 보여준 minimizer 방법이기 때문에 이 방법으로 구현한 코드를 설명합니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
-y_train = [1,2,3]
-
-def hypothesis(w,b):
-    # 가설
-    return x_train * w + b
-
-def cost(w,b):
-    # 손실
-    return tf.reduce_mean(tf.square(hypothesis(w,b)) - y_train)
-
-def reset():
-    # 초기화
-    w = tf.Variable(tf.random.normal([1]), name = 'Weight')
-    b = tf.Variable(tf.random.normal([1]), name = 'Bias')
-    return w, b
-
-def minimize():
-    return x_train * w + b
-
-w, b = reset()
-opt = tf.keras.optimizers.SGD(learning_rate=0.01)
-
-for i in range(50): # steps
-	print (f'{cost(w,b)}, {w.numpy()}, {b.numpy()}')
-	opt.minimize(minimize, var_list=[w,b])
-
-3.5544426441192627, [0.47147375], [1.382187]
-2.8440845012664795, [0.41147375], [1.352187]
-2.183525800704956, [0.35147375], [1.3221871]
-1.5727676153182983, [0.29147375], [1.2921871]
-1.0118094682693481, [0.23147374], [1.2621871]
-0.5006512999534607, [0.17147374], [1.2321872]
-0.03929305076599121, [0.11147374], [1.2021872]
-...
-25.631608963012695, [-2.408525], [-0.05781218]
-27.3116455078125, [-2.468525], [-0.08781218]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>itunes_connect_id 'jglee@openit.co.kr'
+itc_team_name "JUVIS co., Ltd."
 </code></pre></div></div>
 
-<h2 id="placeholder">Placeholder</h2>
+<p>이 정보를 기반으로 로그인을 수행하고 테스트 플라이트에 올리게 된다. skip_waiting_for_build_processing 명령어가 없으면 빌드를 업로드 후 처리 중인 상태를 계속 기다리게 된다. 처리가 완료되면 자동으로 테스트가 시작되도록 설정해 둬서 기다릴 필요가 없기 때문에 skip_waiting_for_build_processing를 true로 줬다.</p>
 
-<p>기존에 tensorflow에서 사용하던 placeholer가 없어졌다. 이제는 그냥 tf.funcion 함수에 변수로 사용한다.</p>
+<p>근데 이대로 진행하면 수출 규정 관련 문서가 누락됨 메세지와 함께 테스트 배포까지는 진행되지 않는다.</p>
 
-<p>tensoflow 1.x</p>
+<p><a href="https://zetal.tistory.com/entry/수출-규정-관련-문서가-누락됨-경고-메세지-대처법">수출 규정 관련 문서가 누락됨 경고 메세지 대처법</a></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.placeholder(tf.float32)
-b = tf.placeholder(tf.float32)
+<p>상단 링크에 들어가면 자세한 내용이 나와 있는데, info.plist 파일에 설정을 추가하면 된다.</p>
 
-adder_node = a + b
-
-print(sess.run(adder_node, feed_dict = (a = 3, b = 4.5)))
-print(sess.run(adder_node, feed_dict = (a = [1, 3], b = [2, 4])))
-=&gt; 7.5
-=&gt; [3, 7]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;key&gt;ITSAppUsesNonExemptEncryption&lt;/key&gt;
+&lt;false/&gt;
 </code></pre></div></div>
 
-<p>tensorflow 2</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tf.function
-def add_node(a,b):
-    return a + b
-
-tf.print(add_node(3,4.5))
-==&gt; 7.5
-tf.print(add_node(a = [1, 3], b = [2, 4]))
-=&gt; [1, 3, 2, 4]
-</code></pre></div></div>
-
-<h3 id="이슈">이슈</h3>
-
-<p>3 + 4.5 는 정상적으로 7.5가 출력되는데, [1, 3] +  [2, 4]는 [3, 7 ]이 아니라 배열 두개를 합친 [1, 3, 2, 4]이 출력되었다.</p>
-
-<p>우리가 의도한 내용은 아닌데 어떻게 처리해야 할까?</p>
-
-<p>tensor를 만들어서 념겨 줘야 했다.</p>
-
-<p>다른 방법이 있는지는 모르겠다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.constant([1,3])
-b = tf.constant([2,4])
-
-tf.print(add_node(a,b))
-
-===&gt; [3 7]
-</code></pre></div></div>
-
-<h2 id="linear-regression-1">Linear Regression</h2>
-
-<p>텐서 플로우 2.0은 그냥 파이썬 문법과 비슷한 점이 많다. 이번에는 흔히 쓰는 Linear Regression을 Tensorflow 2.0으로 구현하는 예제 코드를 뜯어본다.</p>
-
-<p>먼저, 데이터 형태는 다음과 같다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = [1, 2, 3, 4, 5]
-y = [2.1 ,3.1 ,4.1, 5.1, 6.1]
-plt.scatter(x,y,label = 'input data set')
-</code></pre></div></div>
-
-<p><img src="assets/images/ml/pandas/Untitled 6.png" alt="assets/images/ml/pandas/Untitled 6.png" /></p>
-
-<p>일단 기존에 코딩하던 방식과 다르게 Lieanr 학습 모델을 만든다.</p>
-
-<p>우리가 원하는 공식은 y = xw + b 라는 일차 방정식의 w,b를 찾도록 하려 한다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Linear Model
-class LinearModel:
-    def __call__(self, x):
-        return self.Weight * x + self.Bias
-
-    def __init__(self):
-        self.Weight = tf.Variable(tf.random.normal([1]), name = 'Weight')
-        self.Bias = tf.Variable(tf.random.normal([1]), name = 'Bias')
-</code></pre></div></div>
-
-<p>그리고 우리가 만든 모델을 평가할 수 있는 손실 함수를 만들어야 한다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># loss function
-def loss(y, pred):
-    return tf.reduce_mean(tf.square(y - pred))
-</code></pre></div></div>
-
-<p>손실 함수는 우리가 일반적으로 사용하던 차이에 제곱을 하고 평균을 내는 방식을 사용한다.</p>
-
-<p>이제 학습 함수를 만든다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def train(linear_model, x, y, lr = 0.01):
-    with tf.GradientTape() as tape:
-        current_loss = loss(y, linear_model(x))
-
-    lr_weight, lr_bias = tape.gradient(current_loss, [linear_model.Weight, linear_model.Bias])
-    linear_model.Weight.assign_sub(lr * lr_weight)
-    linear_model.Bias.assign_sub(lr * lr_bias)
-</code></pre></div></div>
-
-<p>GradientTape를 사용해서 지금 손실을 계산한다.</p>
-
-<p>그 손실과 지금 w, b 값을 가지고 경사 하강법의 가중치를 계산해 모델을 학습률과 가중치를 곱해 개선해 나간다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linear_model = LinearModel()
-epochs = 1000
-
-epochs_list, losses = [], []
-
-for epoch_count in range(epochs):
-    real_loss = loss(y, linear_model(x))
-    train(linear_model, x, y, lr=0.0005)
-    epochs_list.append(epoch_count)
-    losses.append(real_loss.numpy())
-    if epoch_count % 100 == 0:
-        print(f"Epoch count {epoch_count}: Loss value: {real_loss.numpy()}")
-
-plt.scatter(epochs_list, losses)
-plt.show()
-</code></pre></div></div>
-
-<p><img src="assets/images/ml/pandas/Untitled 7.png" alt="assets/images/ml/pandas/Untitled 7.png" /></p>
-
-<p>결과를 보면</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch count 0: Loss value: 46.01390838623047
-Epoch count 100: Loss value: 4.259484767913818
-Epoch count 200: Loss value: 0.3961729109287262
-Epoch count 300: Loss value: 0.03865921497344971
-Epoch count 400: Loss value: 0.005514294840395451
-Epoch count 500: Loss value: 0.00238317484036088
-Epoch count 600: Loss value: 0.00203123246319592
-Epoch count 700: Loss value: 0.0019384626066312194
-Epoch count 800: Loss value: 0.0018716678023338318
-Epoch count 900: Loss value: 0.0018093619728460908
-</code></pre></div></div>
-
-<p>학습 시킨 모델의 RMSE(평균 제곱근 오차) 를 찍어보면</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RMSE = loss(y, linear_model(x))
-RMSE.numpy()
-==&gt;0.001749184
-</code></pre></div></div>
-
-<p>이제 학습 시킨 모델에 예상 값을 적용해 예측해보자</p>
-
-<p>6을 넣으면 7.1 나와야 한다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>value = linear_model(6)
-value.numpy()
-
-===&gt; array([7.035034], dtype=float32)
-</code></pre></div></div>
+<p>여기까지 진행했으면 fastlane release 명령어를 터미널에 입력하면 한 번에 테스트 플라이트 배포까지 진행된다. 지금 프로젝트에서는 build config를 통해서 앱의 api base url 같은 설정 부분을 관리하고 있다. 간단하게 인증서와 앱 설정을 변경할 수 있다는 점에서 시간을 절약할 수 있다. 특히 빌드 번호를 올리는 부분은 예전에는 만약 테스트 플라이트에 동일한 빌드 번호가 올라가 있다면 다시 아카이빙해야 하는 치명적인 문제가 발생하기 때문에 항상 테스트 플라이트에 들어가서 확인해 주고 있었다. fastlane을 사용하면 페이지에 들어가서 일일이 확인해야 하는 시간 낭비를 해결할 수 있다.</p>
 
                 </div>
             </section>
@@ -534,7 +325,7 @@ value.numpy()
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/ml/">Ml</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios-tip/">Ios tip</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -544,6 +335,17 @@ value.numpy()
                                 
                                 
                                   
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastlaneFirebase">iOS fastlane - Fabric, Firebase</a></li>
+                                        
+                                    
+                                  
                                 
                                   
                                 
@@ -556,143 +358,10 @@ value.numpy()
                                   
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
                                     
                                         
                                         
-                                            <li><a href="/titanic_3">[Kaggle] titanic 모델, 예측, 해결</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/titanic_2">[Kaggle] titanic 데이터 가공</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/titanic_1">[Kaggle] titanic 데이터 분석</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/SwiftUI_Paths_Shapes">SwiftUI - Paths와 Shapes</a></li>
                                         
                                     
                                   
@@ -742,15 +411,122 @@ value.numpy()
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/Swift_Moya_Provider_custom">Swift Moya Provider 커스텀</a></li>
+                                        
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/ml/">
+                            <a href="/tag/ios-tip/">
                                 
-                                    See all 18 posts  →
+                                    See all 15 posts  →
                                 
                             </a>
                         </footer>
@@ -760,76 +536,31 @@ value.numpy()
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/Linear_Regression_cost">
-                <div class="post-card-image" style="background-image: url(/assets/images/ml/Linear_Regression_cost/cost_background.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/Linear_Regression_cost">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Ml</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Linear Regression cost 함수 최소화</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    <p># Linear Regression cost 함수 최소화 머신러닝의 Linear Regression cost를 줄이는 방법 * [강좌](https://www.inflearn.com/course/%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%94%A5%EB%9F%AC%EB%8B%9D-%EA%B0%95%EC%A2%8C/lecture/3380) ## Hypothesis 와 Cost H(x) = w * x + b 이게 우리가 앞서 했던 가설이었다. 그리고 Cost를 구해</p>
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/ML00">
-                <div class="post-card-image" style="background-image: url(/assets/images/ml/ML00/ml_theory_background.jpg)"></div>
+            <a class="post-card-image-link" href="/fastlaneFirebase">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios_tips/2020-02-03-iOS_fastlane_Fabric_Firebase/fastlane_background.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/ML00">
+            <a class="post-card-content-link" href="/fastlaneFirebase">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Ml</span>
+                                <span class="post-card-tags">Ios tip</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">머신러닝의 개념과 용어</h2>
+                    <h2 class="post-card-title">iOS fastlane - Fabric, Firebase</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>머신러닝의 개념과 용어 파이썬 머신러닝 강좌 첫번째 머신러닝 강좌 What is ML? 전통적인 프로그래밍은 explicit programming(명시적 프로그래밍)으로 목표를 달성하기 위한 룰을 코딩해서 프로그래밍한다. 머신러닝에서는 데이터를 보고 프로그램 자체가 학습해서 목표를 달성하는 프로그램이다. 학습</p>
+                    <p>iOS fastlane - Fabric, Firebase 이번 프로젝트에서 CI/CD 툴로 fastlane을 적용하려 한다. 이미 상용에 출시된 지 오랜 시간이 지났고 몸집이 점점 커져 today extension (widget) 도 추가되고 리소스도 많아져 아카이빙에 오랜 시간이 걸리고</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -869,18 +600,18 @@ value.numpy()
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Linear Regression</div>
+    <div class="floating-header-title">fastlane - release, testflight</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Linear+Regression&amp;url=https://leejigun.github.io/Linear_Regression"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=fastlane+-+release%2C+testflight&amp;url=https://leejigun.github.io/fastlane_release_testflight"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Linear_Regression"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/fastlane_release_testflight"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

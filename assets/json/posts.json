@@ -1,0 +1,411 @@
+[
+
+{
+"title"    : "iOS fastlane - Fabric, Firebase",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/fastlaneFirebase",
+"date"     : "2020-01-23 00:00:01 +0000"
+} ,
+
+{
+"title"    : "SwiftUI에서 page based navigation 사용하기",
+"category" : "",
+"tags"     : "watchos, swiftui, project",
+"url"      : "/SwiftUI_page_based_navigation",
+"date"     : "2019-12-25 15:17:00 +0000"
+} ,
+
+{
+"title"    : "Circle Timer 만들기_4_MVVM_Combine",
+"category" : "",
+"tags"     : "watchos, swiftui, project",
+"url"      : "/Circle_Timer_4_MVVM_Combine",
+"date"     : "2019-12-23 15:17:00 +0000"
+} ,
+
+{
+"title"    : "Circle Timer 만들기_3_User_Interation(SwiftUI, gesture, DragGesture)",
+"category" : "",
+"tags"     : "watchos, swiftui, project",
+"url"      : "/Circle_Timer_3_User_Interation",
+"date"     : "2019-12-19 17:17:00 +0000"
+} ,
+
+{
+"title"    : "Circle Timer 만들기_2(SwiftUI, CoreGraphics, Shape)",
+"category" : "",
+"tags"     : "watchos, swiftui, project",
+"url"      : "/Circle_Timer_2_SwiftUI_CoreGraphics_Shape",
+"date"     : "2019-12-19 12:17:00 +0000"
+} ,
+
+{
+"title"    : "Circle Timer 만들기(SwiftUI, CoreGraphics, Paths)",
+"category" : "",
+"tags"     : "watchos, swiftui, project",
+"url"      : "/Circle_Timer_SwiftUI_CoreGraphics_Paths",
+"date"     : "2019-12-18 23:05:00 +0000"
+} ,
+
+{
+"title"    : "SwiftUI - Paths와 Shapes",
+"category" : "",
+"tags"     : "swiftui, ios tip",
+"url"      : "/SwiftUI_Paths_Shapes",
+"date"     : "2019-12-18 17:58:00 +0000"
+} ,
+
+{
+"title"    : "apple watch 프로젝트",
+"category" : "",
+"tags"     : "watchos",
+"url"      : "/apple_watch_project",
+"date"     : "2019-12-17 22:05:00 +0000"
+} ,
+
+{
+"title"    : "[Kaggle] titanic 모델, 예측, 해결",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/titanic_3",
+"date"     : "2019-12-08 00:00:04 +0000"
+} ,
+
+{
+"title"    : "[Kaggle] titanic 데이터 가공",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/titanic_2",
+"date"     : "2019-12-08 00:00:03 +0000"
+} ,
+
+{
+"title"    : "[Kaggle] titanic 데이터 분석",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/titanic_1",
+"date"     : "2019-12-08 00:00:02 +0000"
+} ,
+
+{
+"title"    : "[Kaggle] titanic intro",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/titanic_0",
+"date"     : "2019-12-08 00:00:01 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 5. 머신러닝 최적화",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_5",
+"date"     : "2019-12-07 00:00:01 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 4. 분류(Classification) 프로젝트",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_4",
+"date"     : "2019-12-06 00:00:03 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 3. 회귀 프로젝트",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_3",
+"date"     : "2019-12-06 00:00:02 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 2. 텐서플로 사용하기",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_2",
+"date"     : "2019-12-06 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Pandas 이론 강좌",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/pandas",
+"date"     : "2019-12-05 00:00:01 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 1. 머신러닝 문제해결",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_1",
+"date"     : "2019-12-04 00:00:01 +0000"
+} ,
+
+{
+"title"    : "[tensoflow 2.0] 0.머신러닝 이해하기",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/tensorflow2_0",
+"date"     : "2019-11-28 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Logistic Regression Classification",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Logistic_Regression_Classification",
+"date"     : "2019-11-27 00:00:03 +0000"
+} ,
+
+{
+"title"    : "여러개의 Feature를 가진 Linear Regression",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Feature_Linear_Regression",
+"date"     : "2019-11-27 00:00:02 +0000"
+} ,
+
+{
+"title"    : "Linear Regression cost 함수 최소화",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Linear_Regression_cost",
+"date"     : "2019-11-27 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Linear Regression",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Linear_Regression",
+"date"     : "2019-11-26 00:00:01 +0000"
+} ,
+
+{
+"title"    : "머신러닝의 개념과 용어",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/ML00",
+"date"     : "2019-11-25 00:00:01 +0000"
+} ,
+
+{
+"title"    : "노마드 파이썬 이론",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Python_theory_01",
+"date"     : "2019-11-06 00:00:03 +0000"
+} ,
+
+{
+"title"    : "Building a Job Scrapper",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Building_a_Job_Scrapper",
+"date"     : "2019-11-06 00:00:02 +0000"
+} ,
+
+{
+"title"    : "노마드 파이썬 강의 - 00",
+"category" : "",
+"tags"     : "ml",
+"url"      : "/Python_00",
+"date"     : "2019-11-06 00:00:01 +0000"
+} ,
+
+{
+"title"    : "SwiftUI, Combine, MVVM 2) - Financing UI",
+"category" : "",
+"tags"     : "swiftui",
+"url"      : "/SwftUI,Combine,MVVM_2)-Financing",
+"date"     : "2019-09-09 00:00:01 +0000"
+} ,
+
+{
+"title"    : "SwiftUI, Combine, MVVM 1) - Financing UI",
+"category" : "",
+"tags"     : "swiftui",
+"url"      : "/SwftUI,Combine,MVVM_1)-Financing",
+"date"     : "2019-09-09 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Swift Moya Provider 커스텀",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/Swift_Moya_Provider_custom",
+"date"     : "2019-09-05 00:00:01 +0000"
+} ,
+
+{
+"title"    : "HealthKit - Steps Counter",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/HealthKit_-_Steps_Counter",
+"date"     : "2019-09-04 00:00:01 +0000"
+} ,
+
+{
+"title"    : "SwiftUI 화면 만들기 - Old Age Home App",
+"category" : "",
+"tags"     : "swiftui",
+"url"      : "/SwiftUI_Dribbble_OldAgeHomeApp",
+"date"     : "2019-09-02 00:00:01 +0000"
+} ,
+
+{
+"title"    : "RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리",
+"category" : "",
+"tags"     : "RxSwift",
+"url"      : "/RxSwift+Moya+MVVM_1)",
+"date"     : "2019-08-29 00:00:01 +0000"
+} ,
+
+{
+"title"    : "IGListkit + Texture 적용",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/IGListkit+Texture",
+"date"     : "2019-08-29 00:00:01 +0000"
+} ,
+
+{
+"title"    : "SwiftUI 화면 만들기 - Challenges App",
+"category" : "",
+"tags"     : "swiftui",
+"url"      : "/SwiftUI_Dribbble_challengesApp",
+"date"     : "2019-08-28 00:00:01 +0000"
+} ,
+
+{
+"title"    : "RxSwift MVVM 실무 적용",
+"category" : "",
+"tags"     : "RxSwift",
+"url"      : "/RxSwift_MVVM",
+"date"     : "2019-08-27 00:00:01 +0000"
+} ,
+
+{
+"title"    : "RxSwift: Deep Cuts (번역)",
+"category" : "",
+"tags"     : "RxSwift",
+"url"      : "/RxSwift_Deep_Cuts",
+"date"     : "2018-07-04 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Everyday Reactive (번역)",
+"category" : "",
+"tags"     : "RxSwift",
+"url"      : "/Everyday_Reactive",
+"date"     : "2018-07-04 00:00:00 +0000"
+} ,
+
+{
+"title"    : "Edit Breakpoints in Xcode (번역)",
+"category" : "",
+"tags"     : "TDD, ios tip",
+"url"      : "/breakPointGuide",
+"date"     : "2018-07-02 00:00:02 +0000"
+} ,
+
+{
+"title"    : "The iOS Testing Manifesto (번역)",
+"category" : "",
+"tags"     : "TDD, ios tip",
+"url"      : "/UnitTest_Manifest",
+"date"     : "2018-07-02 00:00:01 +0000"
+} ,
+
+{
+"title"    : "Top 5 스위프트 디자인 패턴 (번역)",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/Top_5_Design_Patterns",
+"date"     : "2018-07-02 00:00:00 +0000"
+} ,
+
+{
+"title"    : "Xib로 UIViewController 만지기",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/xib-UIViewController",
+"date"     : "2018-06-20 00:00:00 +0000"
+} ,
+
+{
+"title"    : "[Programmatically Views](2) - 코드를 이용한 뷰 만들기 활용",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/DynamicView2",
+"date"     : "2018-06-14 00:00:00 +0000"
+} ,
+
+{
+"title"    : "[Programmatically Views](1) - 코드를 통한 기초적인 다이나믹 뷰 디자인",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/DynamicView1",
+"date"     : "2018-06-14 00:00:00 +0000"
+} ,
+
+{
+"title"    : "Codable을 사용한 JSON 데이터 파싱",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/JSON_parsing_using_Codable",
+"date"     : "2018-06-11 00:00:00 +0000"
+} ,
+
+{
+"title"    : "[Tayga 개발기] (3) - RxSwift를 통한 Moya 비동기 처리",
+"category" : "",
+"tags"     : "project",
+"url"      : "/Tayga-Moya,RxSwift",
+"date"     : "2018-06-07 00:00:00 +0000"
+} ,
+
+{
+"title"    : "[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.",
+"category" : "",
+"tags"     : "project",
+"url"      : "/Tayga-TwitchAPI-Moya",
+"date"     : "2018-06-05 00:00:00 +0000"
+} ,
+
+{
+"title"    : "[Tayga 개발기] (1) - Login, Version check",
+"category" : "",
+"tags"     : "project",
+"url"      : "/Tayga-Login,Version",
+"date"     : "2018-06-04 00:00:00 +0000"
+} ,
+
+{
+"title"    : "IGListKit 가이드(2)- Action&amp;relaodData",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/IGListKit2",
+"date"     : "2018-04-06 00:00:00 +0000"
+} ,
+
+{
+"title"    : "IGListKit 가이드(1)- 모델 바인딩",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/IGListKit",
+"date"     : "2018-04-05 00:00:00 +0000"
+} ,
+
+{
+"title"    : "CoreBluetooth 가이드",
+"category" : "",
+"tags"     : "ios tip",
+"url"      : "/CoreBlutooth",
+"date"     : "2018-03-29 00:00:00 +0000"
+} 
+
+]

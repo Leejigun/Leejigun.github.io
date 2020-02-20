@@ -1,0 +1,1480 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Top 5 스위프트 디자인 패턴 (번역)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="스위프트에서 가장 많이 사용하는 5가지 디자인 패턴." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Top_5_Design_Patterns" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Top 5 스위프트 디자인 패턴 (번역)" />
+    <meta property="og:description" content="Top 5 Design Patterns in Swift for iOS App Development (번역) Top 5 Design Patterns in Swift for iOS App Development 2014년에 공개된 애플의 프로그래밍 언어인 스위프트는 점점 더 인기를 끌고 있다. Swift는 개발자들이 여러 운영 체제에 적용 가능한 다목적 응용 프로그램을 만들 수 있게 해 주는 강력한 도구입니다. 스위프트는" />
+    <meta property="og:url" content="https://leejigun.github.io//Top_5_Design_Patterns" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/top_5_design_patterns.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-07-02T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-07-02T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios Tip" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Top 5 스위프트 디자인 패턴 (번역)" />
+    <meta name="twitter:description" content="Top 5 Design Patterns in Swift for iOS App Development (번역) Top 5 Design Patterns in Swift for iOS App Development 2014년에 공개된 애플의 프로그래밍 언어인 스위프트는 점점 더 인기를 끌고 있다. Swift는 개발자들이 여러 운영 체제에 적용 가능한 다목적 응용 프로그램을 만들 수 있게 해 주는 강력한 도구입니다. 스위프트는" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/top_5_design_patterns.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios Tip" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Top_5_Design_Patterns",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/top_5_design_patterns.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Top_5_Design_Patterns"
+    },
+    "description": "Top 5 Design Patterns in Swift for iOS App Development (번역) Top 5 Design Patterns in Swift for iOS App Development 2014년에 공개된 애플의 프로그래밍 언어인 스위프트는 점점 더 인기를 끌고 있다. Swift는 개발자들이 여러 운영 체제에 적용 가능한 다목적 응용 프로그램을 만들 수 있게 해 주는 강력한 도구입니다. 스위프트는"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Top 5 스위프트 디자인 패턴 (번역)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 2 July 2018"> 2 July 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ios-tip/'>IOS TIP</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Top 5 스위프트 디자인 패턴 (번역)</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/top_5_design_patterns.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="top-5-design-patterns-in-swift-for-ios-app-development-번역">Top 5 Design Patterns in Swift for iOS App Development (번역)</h1>
+
+<ul>
+  <li><a href="https://rubygarage.org/blog/swift-design-patterns?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Top 5 Design Patterns in Swift for iOS App Development</a></li>
+</ul>
+
+<p>2014년에 공개된 애플의 프로그래밍 언어인 스위프트는 점점 더 인기를 끌고 있다. Swift는 개발자들이 여러 운영 체제에 적용 가능한 다목적 응용 프로그램을 만들 수 있게 해 주는 강력한 도구입니다.</p>
+
+<p>스위프트는 상당히 새로운 프로그래밍 언어이며, 많은 개발자들은 스위프트와 어떤 디자인 패턴을 사용하고 개발해야 하는지 모른다. 스위프트와 관련된 설계 패턴을 사용할 수 있어야 기능성, 고품질 및 보안이 뛰어난 엡을 만들 수 있습니다.</p>
+
+<p>이 포스트에서는 스위프트에서 가장 널리 사용되는 디자인 패턴을 자세히 살펴보고 모바일 개발의 일반적인 문제를 해결하기 위한 다양한 접근법을 보여 줌으로써 도움을 주기로 결정했습니다.</p>
+
+<h2 id="디자인-패턴패턴이-무엇이고-왜-알아야-하는지">디자인 패턴:패턴이 무엇이고 왜 알아야 하는지</h2>
+
+<p>소프트웨어 설계 패턴은 애플리케이션의 구조를 설계할 때 직면할 수 있는 특정 문제에 대한 해결책을 제공합니다. 그러나 기본으로 제공하는 서비스나 오픈 소스 라이브러리와 달리 설계 패턴은 코드가 아니기 때문에 응용 프로그램에 붙여 넣기만 할 수는 없습니다. 오히려, 그것은 문제를 해결하는 방법에 대한 일반적인 개념입니다. 디자인 패턴은 코드를 작성하는 방법을 알려 주는 템플릿이지만 이 템플릿에 코드를 맞추는 것은 사용자에게 달려 있습니다.</p>
+
+<p>디자인 패턴은 다음과 같은 몇가지 이점을 제공합니다.</p>
+
+<ul>
+  <li><strong>테스트된 솔루션:</strong> 디자인 패턴은 이미 최고의 솔루션을 제공하고 구현 방법을 알려 주므로 특정 소프트웨어 개발 문제를 해결하기 위해 시간을 낭비하고 노력할 필요가 없습니다.</li>
+  <li><strong>코드 통일:</strong> 디자인 패턴은 애플리케이션 아키텍처를 설계할 때 실수를 덜 하도록 결점과 버그에 대한 테스트를 거친 일반적인 솔루션을 제공합니다.</li>
+  <li><strong>공통 어휘:</strong> 소프트웨어 개발 문제를 해결하는 방법에 대한 자세한 설명을 제공하는 대신, 사용한 디자인 패턴을 다른 개발자가 즉시 이해할 수 있도록 간단하게 말할 수 있습니다.</li>
+</ul>
+
+<h2 id="소프트웨어-설계-유형">소프트웨어 설계 유형</h2>
+
+<p>Swift에서 가장 일반적인 아키텍처 패턴을 설명하기 전에 먼저 세가지 유형의 소프트웨어 설계 패턴과 그 차이를 알아보아야 합니다.</p>
+
+<h3 id="1-creational">#1 Creational</h3>
+
+<p><strong>Creational</strong>(창조적인) 소프트웨어 설계 패턴은 객체 생성과 관련된 메커니즘을 다룹니다. 그들은 특정 상황에 적합한 방식으로 객체를 인스턴스화하려고 합니다. 다음은 객체 생성과 관련된 설계 패턴입니다.</p>
+
+<ul>
+  <li>Factory Method (팩토리)</li>
+  <li>Abstract Factory (추상 팩토리)</li>
+  <li>Builder (빌더)</li>
+  <li>Singleton (싱글톤)</li>
+  <li>Prototype (프로토타입)</li>
+</ul>
+
+<h3 id="2-structural">#2 Structural</h3>
+
+<p><strong>Structural</strong>(구조) 설계 패턴은 클래스와 객체 간의 관계를 쉽게 실현할 수 있는 방법을 찾아 설계를 단순화하는 것을 목표로 합니다. 다음은 구조적 아키텍처 패턴입니다.</p>
+
+<ul>
+  <li>Adapter</li>
+  <li>Bridge</li>
+  <li>Facade</li>
+  <li>Decorator</li>
+  <li>Composite</li>
+  <li>Flyweight</li>
+  <li>Proxy</li>
+</ul>
+
+<h3 id="3-behavioral">#3 Behavioral</h3>
+
+<p>행동 설계 패턴은 개체 간의 일반적인 통신 패턴을 분석하여 구현합니다. 행동 설계 패턴에는 다음이 포함됩니다.</p>
+
+<ul>
+  <li>Chain of Responsibility</li>
+  <li>Template Method</li>
+  <li>Command</li>
+  <li>Iterator</li>
+  <li>Mediator</li>
+  <li>Memento</li>
+  <li>Observer</li>
+  <li>Strategy</li>
+  <li>State</li>
+  <li>Visitor</li>
+</ul>
+
+<p>그러나 이러한 설계 패턴의 대부분은 거의 사용되지 않으며 쓰기도 전에 작동 방식을 잊어 버릴 수 있습니다. 그래서 우리는 iOS와 다른 운영 체제를 위한 애플리케이션을 개발하기 위해 스위프트에서 <strong>가장 자주 사용되는 다섯가지 디자인 패턴</strong>을 만들었습니다.</p>
+
+<h2 id="swift에서-가장-자주-사용되는-디자인-패턴">Swift에서 가장 자주 사용되는 디자인 패턴</h2>
+
+<h4 id="1-builder">#1 Builder</h4>
+
+<p>Builder패턴은 단순한 객체에서 복합한 객체를 단계적으로 생성할 수 있는 생성 설계 패턴입니다. 이 설계 패턴을 사용하면 다른 객체 뷰를 작성할 때 동일한 코드를 사용할 수 있습니다.</p>
+
+<p>여러 필드 및 중첩된 프로퍼티의 초기화가 필요한 복잡한 객체를 상상해 보십시오. 일반적으로 매개 변수가 수십개인 대규모 생성자 내에 이러한 프로퍼티의 초기화 코드가 숨겨져 있습니다. 더 나쁠 경우, 그것이 클라이언트 코드에 흩어져 있을 수 있다는 것 입니다.</p>
+
+<p>빌더 설계 패턴에서는 객체의 구조를 자체 클래스에서 분리해야 합니다. 대신에 이 물체의 구조는 빌더라고 불리는 특수한 물체에 할당되고 여러 단계로 나뉩니다. 객체를 작성하려면 빌더 방법을 연속적으로 호출합니다. 특정 구성을 사용하여 개체를 생성하는 데 필요한 단계만 거치면 됩니다.</p>
+
+<h5 id="아래의-경우에-해당한다면-반드시-builder설계-패턴을-적용해야-합니다">아래의 경우에 해당한다면 반드시 Builder설계 패턴을 적용해야 합니다.</h5>
+
+<ul>
+  <li>
+    <p>만약, <strong>점층적 생성자(<em>telescopic</em> constructor)</strong> 패턴을 피하고 싶을 경우</p>
+
+    <p>(<strong><em>telescopic</em> constructor:</strong> 다수의 생성자를 만들어 분기하는 패턴, 이 경우 생성자가 너무 많은 파라미터를 가지게 되고 이것들을 관리하기 힘들다.)</p>
+  </li>
+  <li>
+    <p>만약에 코드가 특정 다른 뷰를 생성해야 하는 경우</p>
+  </li>
+  <li>
+    <p>복잡한 객체를 다뤄야 하는 경우</p>
+  </li>
+</ul>
+
+<h4 id="예제">예제</h4>
+
+<p>레스토랑의 iOS응용 프로그램을 개발하고 있으며 주문 기능을 구현해야 한다고 가정합니다. 여러분은 디쉬와 오더라는 두개의 구조물을 소개할 수 있고, 주문/구매자의 도움으로 다른 요리 세트로 주문을 작성할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Design Patterns: Builder</span>
+<span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="c1">// Models</span>
+<span class="kd">enum</span> <span class="kt">DishCategory</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">firstCourses</span><span class="p">,</span> <span class="n">mainCourses</span><span class="p">,</span> <span class="n">garnishes</span><span class="p">,</span> <span class="n">drinks</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Dish</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Float</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">OrderItem</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span>
+    <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Order</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">firstCourses</span><span class="p">:</span> <span class="p">[</span><span class="kt">OrderItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">var</span> <span class="nv">mainCourses</span><span class="p">:</span> <span class="p">[</span><span class="kt">OrderItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">var</span> <span class="nv">garnishes</span><span class="p">:</span> <span class="p">[</span><span class="kt">OrderItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">var</span> <span class="nv">drinks</span><span class="p">:</span> <span class="p">[</span><span class="kt">OrderItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">var</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">items</span> <span class="o">=</span> <span class="n">firstCourses</span> <span class="o">+</span> <span class="n">mainCourses</span> <span class="o">+</span> <span class="n">garnishes</span> <span class="o">+</span> <span class="n">drinks</span>
+        <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="kt">Float</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">+</span> <span class="nv">$1</span><span class="o">.</span><span class="n">dish</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="kt">Float</span><span class="p">(</span><span class="nv">$1</span><span class="o">.</span><span class="n">count</span><span class="p">)</span> <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Builder</span>
+<span class="kd">class</span> <span class="kt">OrderBuilder</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">order</span><span class="p">:</span> <span class="kt">Order</span><span class="p">?</span>
+
+    <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="kt">Order</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setFirstCourse</span><span class="p">(</span><span class="n">_</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">set</span><span class="p">(</span><span class="n">dish</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">firstCourses</span><span class="p">,</span> <span class="nv">withCategory</span><span class="p">:</span> <span class="o">.</span><span class="n">firstCourses</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setMainCourse</span><span class="p">(</span><span class="n">_</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">set</span><span class="p">(</span><span class="n">dish</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">mainCourses</span><span class="p">,</span> <span class="nv">withCategory</span><span class="p">:</span> <span class="o">.</span><span class="n">mainCourses</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setGarnish</span><span class="p">(</span><span class="n">_</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">set</span><span class="p">(</span><span class="n">dish</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">garnishes</span><span class="p">,</span> <span class="nv">withCategory</span><span class="p">:</span> <span class="o">.</span><span class="n">garnishes</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setDrink</span><span class="p">(</span><span class="n">_</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">set</span><span class="p">(</span><span class="n">dish</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">drinks</span><span class="p">,</span> <span class="nv">withCategory</span><span class="p">:</span> <span class="o">.</span><span class="n">drinks</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">getResult</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Order</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">order</span> <span class="p">??</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n">_</span> <span class="nv">dish</span><span class="p">:</span> <span class="kt">Dish</span><span class="p">,</span> <span class="n">at</span> <span class="nv">orderCategory</span><span class="p">:</span> <span class="p">[</span><span class="kt">OrderItem</span><span class="p">]?,</span> <span class="n">withCategory</span> <span class="nv">dishCategory</span><span class="p">:</span> <span class="kt">DishCategory</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">orderCategory</span> <span class="o">=</span> <span class="n">orderCategory</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="k">var</span> <span class="nv">item</span><span class="p">:</span> <span class="kt">OrderItem</span><span class="o">!</span> <span class="o">=</span> <span class="n">orderCategory</span><span class="o">.</span><span class="nf">filter</span><span class="p">(</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">dish</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">dish</span><span class="o">.</span><span class="n">name</span> <span class="p">}</span> <span class="p">)</span><span class="o">.</span><span class="n">first</span>
+
+        <span class="k">guard</span> <span class="n">item</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="n">item</span> <span class="o">=</span> <span class="kt">OrderItem</span><span class="p">(</span><span class="nv">dish</span><span class="p">:</span> <span class="n">dish</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">switch</span> <span class="n">dishCategory</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">firstCourses</span><span class="p">:</span>
+            <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">firstCourses</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">mainCourses</span><span class="p">:</span>
+            <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">mainCourses</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">garnishes</span><span class="p">:</span>
+            <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">garnishes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">drinks</span><span class="p">:</span>
+            <span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">drinks</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="nv">steak</span> <span class="o">=</span> <span class="kt">Dish</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Steak"</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="mf">2.30</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">chips</span> <span class="o">=</span> <span class="kt">Dish</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Chips"</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">coffee</span> <span class="o">=</span> <span class="kt">Dish</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Coffee"</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="mf">0.80</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">builder</span> <span class="o">=</span> <span class="kt">OrderBuilder</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="nf">reset</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="nf">setMainCourse</span><span class="p">(</span><span class="n">steak</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="nf">setGarnish</span><span class="p">(</span><span class="n">chips</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="nf">setDrink</span><span class="p">(</span><span class="n">coffee</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">order</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="nf">getResult</span><span class="p">()</span>
+<span class="n">order</span><span class="p">?</span><span class="o">.</span><span class="n">price</span>
+
+<span class="c1">// Result:</span>
+<span class="c1">// 4.30</span>
+</code></pre></div></div>
+
+<h4 id="2-adapter">#2 Adapter</h4>
+
+<p>어댑터는 호환되지 않는 인터페이스를 가진 두개의 개체가 함께 작동할 수 있도록 해 주는 구조 설계 패턴입니다. 즉, 개체의 인터페이스를 변환하여 다른 개체에 적응시킵니다.</p>
+
+<p>어댑터는 개체를 감싸므로 다른 개체로부터 완전히 숨깁니다. 예를 들어 값을 미터에서 피트로 변환하는 어댑터로 미터를 처리하는 개체를 쌀 수 있습니다.</p>
+
+<p><strong>다음과 같은 경우 어댑터 패턴을 사용해야 합니다.</strong></p>
+
+<ul>
+  <li>만약, 외부 라이브러리 같은 서드 파티 클래스를 사용하고 싶은데, 인터페이스가 매치가 안 될 경우</li>
+  <li>여러 서브 클래스를 사용해야 하지만, 그것들이 특정 기능이 없고 확장이 불가능할 경우</li>
+</ul>
+
+<h5 id="예제-1">예제</h5>
+
+<p>iOS응용 프로그램에서 일정 관리 및 이벤트 관리 기능을 구현하려고 합니다. 이를 위해서는 Even.it 프레임워크를 통합하고 이벤트 모델을 프레임워크에서 애플리케이션의 모델로 조정해야 합니다. 어댑터는 프레임워크의 모델을 포장하여 애플리케이션의 모델과 호환되도록 할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Design Patterns: Adapter</span>
+<span class="kd">import</span> <span class="kt">EventKit</span>
+
+<span class="c1">// Models</span>
+<span class="kd">protocol</span> <span class="kt">Event</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">Event</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Name: </span><span class="se">\(</span><span class="n">title</span><span class="se">)\n</span><span class="s">Event start: </span><span class="se">\(</span><span class="n">startDate</span><span class="se">)\n</span><span class="s">Event end: </span><span class="se">\(</span><span class="n">endDate</span><span class="se">)</span><span class="s">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">LocalEvent</span><span class="p">:</span> <span class="kt">Event</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">startDate</span> <span class="o">=</span> <span class="n">startDate</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">endDate</span> <span class="o">=</span> <span class="n">endDate</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Adapter</span>
+<span class="kd">class</span> <span class="kt">EKEventAdapter</span><span class="p">:</span> <span class="kt">Event</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">EKEvent</span>
+
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">dateFormatter</span><span class="p">:</span> <span class="kt">DateFormatter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">dateFormatter</span> <span class="o">=</span> <span class="kt">DateFormatter</span><span class="p">()</span>
+        <span class="n">dateFormatter</span><span class="o">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">"MM-dd-yyyy HH:mm"</span>
+        <span class="k">return</span> <span class="n">dateFormatter</span>
+    <span class="p">}()</span>
+
+    <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">title</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">startDate</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">startDate</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">endDate</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt">EKEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="nv">dateFormatter</span> <span class="o">=</span> <span class="kt">DateFormatter</span><span class="p">()</span>
+<span class="n">dateFormatter</span><span class="o">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">"MM/dd/yyyy HH:mm"</span>
+
+<span class="k">let</span> <span class="nv">eventStore</span> <span class="o">=</span> <span class="kt">EKEventStore</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">event</span> <span class="o">=</span> <span class="kt">EKEvent</span><span class="p">(</span><span class="nv">eventStore</span><span class="p">:</span> <span class="n">eventStore</span><span class="p">)</span>
+<span class="n">event</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Design Pattern Meetup"</span>
+<span class="n">event</span><span class="o">.</span><span class="n">startDate</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">date</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"06/29/2018 18:00"</span><span class="p">)</span>
+<span class="n">event</span><span class="o">.</span><span class="n">endDate</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">date</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"06/29/2018 19:30"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">adapter</span> <span class="o">=</span> <span class="kt">EKEventAdapter</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="n">event</span><span class="p">)</span>
+<span class="n">adapter</span><span class="o">.</span><span class="n">description</span>
+
+<span class="c1">// Result:</span>
+<span class="c1">// Name: Design Pattern Meetup</span>
+<span class="c1">// Event start: 06-29-2018 18:00</span>
+<span class="c1">// Event end: 06-29-2018 19:30</span>
+</code></pre></div></div>
+
+<p>event의 description을 호출했을 경우의 형태를 내가 원하는데로 커스텀하고 있습니다. <strong>EKEventStore</strong> 클래스를 건들지 않고 어탭터로 감싸 description을 호출했을 경우 출력을 컨트롤 하고 있습니다.</p>
+
+<h4 id="3-decorator">#3 Decorator</h4>
+
+<p>Decorator패턴은 객체를 포장지에 포장하여 새로운 기능을 동적으로 부착할 수 있는 구조 설계 패턴입니다.</p>
+
+<p>이러한 디자인 패턴이 래퍼 디자인 패턴이라고도 부르는게 더 당연하게 보일 수 있습니다. 하지만, 데코데이터라는 이름은 이 패턴 뒤에 있는 핵심 아이디어를 보다 정확하게 설명 할 수 있습니다. 기본 동작을 하는 래퍼 객체 안에 타겟 객체를 넣고 이것이 가지는 기능을 추가합니다.</p>
+
+<p>두 개체는 동일한 인터페이스를 공유하므로 사용자가 래핑된 객체든 깨끗한 오리지널 객체든 어떤 개체와 상호 작용하든 상관 없습니다. 여러개의 포장지를 동시에 사용하여 모든 포장지의 결합된 동작을 확인할 수 있습니다.</p>
+
+<p><strong>다음과 같은 경우 데코레이터 패턴을 사용해야 합니다.</strong></p>
+
+<ul>
+  <li>객체에 동적으로 기능을 추가하고 이런 코드의 추가를 숨기고 싶은 경우</li>
+  <li>상속을 통해서 객체를 확장할 수 없는 경우</li>
+</ul>
+
+<h5 id="예제-2">예제</h5>
+
+<p>iOS애플리케이션에서 데이터 관리를 구현해야 한다고 가정해 보십시오. 데이터 암호화 및 암호 해독을 위한 암호 해독기와 인코딩 및 디코딩을 위한 암호 해독기를 만들 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Design Patterns: Decorator</span>
+<span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="c1">// Helpers (may be not include in blog post)</span>
+<span class="kd">func</span> <span class="nf">encryptString</span><span class="p">(</span><span class="n">_</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">with</span> <span class="nv">encryptionKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">stringBytes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">](</span><span class="n">string</span><span class="o">.</span><span class="n">utf8</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">keyBytes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">](</span><span class="n">encryptionKey</span><span class="o">.</span><span class="n">utf8</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">encryptedBytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">stringByte</span> <span class="k">in</span> <span class="n">stringBytes</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">encryptedBytes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">stringByte</span><span class="o">.</span><span class="n">element</span> <span class="o">^</span> <span class="n">keyBytes</span><span class="p">[</span><span class="n">stringByte</span><span class="o">.</span><span class="n">offset</span> <span class="o">%</span> <span class="n">encryptionKey</span><span class="o">.</span><span class="n">count</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kt">String</span><span class="p">(</span><span class="nv">bytes</span><span class="p">:</span> <span class="n">encryptedBytes</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span><span class="o">!</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">decryptString</span><span class="p">(</span><span class="n">_</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">with</span> <span class="nv">encryptionKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">stringBytes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">](</span><span class="n">string</span><span class="o">.</span><span class="n">utf8</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">keyBytes</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">](</span><span class="n">encryptionKey</span><span class="o">.</span><span class="n">utf8</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">decryptedBytes</span><span class="p">:</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">stringByte</span> <span class="k">in</span> <span class="n">stringBytes</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">decryptedBytes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">stringByte</span><span class="o">.</span><span class="n">element</span> <span class="o">^</span> <span class="n">keyBytes</span><span class="p">[</span><span class="n">stringByte</span><span class="o">.</span><span class="n">offset</span> <span class="o">%</span> <span class="n">encryptionKey</span><span class="o">.</span><span class="n">count</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kt">String</span><span class="p">(</span><span class="nv">bytes</span><span class="p">:</span> <span class="n">decryptedBytes</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span><span class="o">!</span>
+<span class="p">}</span>
+
+<span class="c1">// Services</span>
+<span class="kd">protocol</span> <span class="kt">DataSource</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">writeData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span>
+    <span class="kd">func</span> <span class="nf">readData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">UserDefaultsDataSource</span><span class="p">:</span> <span class="kt">DataSource</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">userDefaultsKey</span><span class="p">:</span> <span class="kt">String</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">userDefaultsKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">userDefaultsKey</span> <span class="o">=</span> <span class="n">userDefaultsKey</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">writeData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">UserDefaults</span><span class="o">.</span><span class="n">standard</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="n">userDefaultsKey</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">readData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">UserDefaults</span><span class="o">.</span><span class="n">standard</span><span class="o">.</span><span class="nf">value</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="n">userDefaultsKey</span><span class="p">)</span><span class="o">!</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Decorators</span>
+<span class="kd">class</span> <span class="kt">DataSourceDecorator</span><span class="p">:</span> <span class="kt">DataSource</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">wrappee</span><span class="p">:</span> <span class="kt">DataSource</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="kt">DataSource</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">wrappee</span> <span class="o">=</span> <span class="n">wrappee</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">writeData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">wrappee</span><span class="o">.</span><span class="nf">writeData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">readData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">wrappee</span><span class="o">.</span><span class="nf">readData</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">EncodingDecorator</span><span class="p">:</span> <span class="kt">DataSourceDecorator</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="kt">DataSource</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="n">wrappee</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">writeData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">stringData</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="k">as!</span> <span class="kt">String</span><span class="p">)</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">using</span><span class="p">:</span> <span class="n">encoding</span><span class="p">)</span><span class="o">!</span>
+        <span class="n">wrappee</span><span class="o">.</span><span class="nf">writeData</span><span class="p">(</span><span class="n">stringData</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">readData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">wrappee</span><span class="o">.</span><span class="nf">readData</span><span class="p">()</span> <span class="k">as!</span> <span class="kt">Data</span>
+        <span class="k">return</span> <span class="kt">String</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="n">encoding</span><span class="p">)</span><span class="o">!</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">EncryptionDecorator</span><span class="p">:</span> <span class="kt">DataSourceDecorator</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">encryptionKey</span><span class="p">:</span> <span class="kt">String</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="kt">DataSource</span><span class="p">,</span> <span class="nv">encryptionKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">encryptionKey</span> <span class="o">=</span> <span class="n">encryptionKey</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="n">wrappee</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">writeData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">encryptedString</span> <span class="o">=</span> <span class="nf">encryptString</span><span class="p">(</span><span class="n">data</span> <span class="k">as!</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="n">encryptionKey</span><span class="p">)</span>
+        <span class="n">wrappee</span><span class="o">.</span><span class="nf">writeData</span><span class="p">(</span><span class="n">encryptedString</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">readData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Any</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">encryptedString</span> <span class="o">=</span> <span class="n">wrappee</span><span class="o">.</span><span class="nf">readData</span><span class="p">()</span> <span class="k">as!</span> <span class="kt">String</span>
+        <span class="k">return</span> <span class="nf">decryptString</span><span class="p">(</span><span class="n">encryptedString</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="n">encryptionKey</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">var</span> <span class="nv">source</span><span class="p">:</span> <span class="kt">DataSource</span> <span class="o">=</span> <span class="kt">UserDefaultsDataSource</span><span class="p">(</span><span class="nv">userDefaultsKey</span><span class="p">:</span> <span class="s">"decorator"</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="kt">EncodingDecorator</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="kt">EncryptionDecorator</span><span class="p">(</span><span class="nv">wrappee</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="nv">encryptionKey</span><span class="p">:</span> <span class="s">"secret"</span><span class="p">)</span>
+<span class="n">source</span><span class="o">.</span><span class="nf">writeData</span><span class="p">(</span><span class="s">"Design Patterns"</span><span class="p">)</span>
+<span class="n">source</span><span class="o">.</span><span class="nf">readData</span><span class="p">()</span> <span class="k">as!</span> <span class="kt">String</span>
+
+<span class="c1">// Result:</span>
+<span class="c1">// Design Patterns</span>
+</code></pre></div></div>
+
+<p>데이터 소스 기본형에 읽고 쓰기가 있는 가운데, 인코딩 데코레이터를 이용해 인코딩 기능을 추가하고, 엔크립션 데코레이터를 통해 암호화 기능을 추가할 수 있게 되었다.</p>
+
+<h4 id="4-facade">#4 Facade</h4>
+
+<p>Facade패턴은 라이브러리, 프레임워크 또는 복잡한 클래스 시스템에 대한 간단한 인터페이스를 제공하는 구조 설계 패턴입니다.</p>
+
+<p>코드가 복잡한 라이브러리나 프레임워크의 여러 객체를 처리해야 한다고 상상해 보십시오. 이러한 개체를 모두 초기화하고 올바른 종속성 순서를 따라서 사용해야 합니다. 그 결과, 클래스의 비즈니스 로직이 다른 클래스의 구현 세부 사항과 복잡하게 얽혀 있습니다. 그러한 코드는 읽고 유지하기 어렵습니다.</p>
+
+<p>Facade패턴은 많은 클래스를 포함하는 복잡한 서브 시스템을 사용하기 위한 간단한 인터페이스를 제공합니다. Facade패턴은 복잡한 하위 시스템을 직접 사용하여 확장할 수 있는 기능이 제한된 단순화된 인터페이스를 제공합니다. 이 단순화된 인터페이스는 클라이언트가 필요로 하는 기능만 제공하면서 다른 모든 기능은 숨깁니다.</p>
+
+<p><strong>다음과 같은 경우 데코레이터 패턴을 사용해야 합니다.</strong></p>
+
+<ul>
+  <li>복잡한 시스템에 간단한 인터페이스를 제공하고 싶을 경우</li>
+  <li>하위의 시스템을 별도의 계층으로 분리해야 하는 경우</li>
+</ul>
+
+<h5 id="예제-3">예제</h5>
+
+<p>많은 최신 모바일 응용 프로그램이 오디오 녹음 및 재생을 지원하므로 이 기능을 구현해야 한다고 가정해 보겠습니다. Facade패턴을 사용하여 파일 시스템(FileService), 오디오 세션(AudioSessionService), 오디오 녹음(RecordServe), 재생(재생/서비스)의 서비스 구현을 숨길 수 있습니다. Facade는 다소 복잡한 클래스 시스템을 위한 단순한 인터페이스를 제공합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Design Patterns: Facade</span>
+<span class="kd">import</span> <span class="kt">AVFoundation</span>
+
+<span class="c1">// Services (may be not include in blog post)</span>
+<span class="kd">struct</span> <span class="kt">FileService</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">documentDirectory</span><span class="p">:</span> <span class="kt">URL</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">FileManager</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">urls</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">documentDirectory</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="o">.</span><span class="n">userDomainMask</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">!</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">contentsOfDocumentDirectory</span><span class="p">:</span> <span class="p">[</span><span class="kt">URL</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">try!</span> <span class="kt">FileManager</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">contentsOfDirectory</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">documentDirectory</span><span class="p">,</span> <span class="nv">includingPropertiesForKeys</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">path</span><span class="p">(</span><span class="n">withPathComponent</span> <span class="nv">component</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URL</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">documentDirectory</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">removeItem</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">contentsOfDocumentDirectory</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">try!</span> <span class="kt">FileManager</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">AudioSessionServiceDelegate</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">audioSessionService</span><span class="p">(</span><span class="n">_</span> <span class="nv">audioSessionService</span><span class="p">:</span> <span class="kt">AudioSessionService</span><span class="p">,</span> <span class="n">recordPermissionDidAllow</span> <span class="nv">allowed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">AudioSessionService</span> <span class="p">{</span>
+    <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">AudioSessionServiceDelegate</span><span class="p">?</span>
+
+    <span class="kd">func</span> <span class="nf">setupSession</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">try!</span> <span class="kt">AVAudioSession</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">setCategory</span><span class="p">(</span><span class="kt">AVAudioSessionCategoryPlayAndRecord</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">defaultToSpeaker</span><span class="p">])</span>
+        <span class="k">try!</span> <span class="kt">AVAudioSession</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">setActive</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+
+        <span class="kt">AVAudioSession</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="n">requestRecordPermission</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">allowed</span> <span class="k">in</span>
+            <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">strongSelf</span> <span class="o">=</span> <span class="k">self</span><span class="p">,</span> <span class="k">let</span> <span class="nv">delegate</span> <span class="o">=</span> <span class="n">strongSelf</span><span class="o">.</span><span class="n">delegate</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">return</span>
+                <span class="p">}</span>
+
+                <span class="n">delegate</span><span class="o">.</span><span class="nf">audioSessionService</span><span class="p">(</span><span class="n">strongSelf</span><span class="p">,</span> <span class="nv">recordPermissionDidAllow</span><span class="p">:</span> <span class="n">allowed</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">deactivateSession</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">try!</span> <span class="kt">AVAudioSession</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">setActive</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">RecorderService</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">isRecording</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">recorder</span><span class="p">:</span> <span class="kt">AVAudioRecorder</span><span class="o">!</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="p">}</span>
+
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">startRecord</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="o">!</span><span class="n">isRecording</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="n">isRecording</span> <span class="o">=</span> <span class="o">!</span><span class="n">isRecording</span>
+        <span class="n">recorder</span> <span class="o">=</span> <span class="k">try!</span> <span class="kt">AVAudioRecorder</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="p">[</span><span class="kt">AVFormatIDKey</span><span class="p">:</span> <span class="n">kAudioFormatMPEG4AAC</span><span class="p">])</span>
+        <span class="n">recorder</span><span class="o">.</span><span class="nf">record</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">stopRecord</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="n">isRecording</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="n">isRecording</span> <span class="o">=</span> <span class="o">!</span><span class="n">isRecording</span>
+        <span class="n">recorder</span><span class="o">.</span><span class="nf">stop</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">PlayerServiceDelegate</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">playerService</span><span class="p">(</span><span class="n">_</span> <span class="nv">playerService</span><span class="p">:</span> <span class="kt">PlayerService</span><span class="p">,</span> <span class="n">playingDidFinish</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">PlayerService</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">AVAudioPlayerDelegate</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">AVAudioPlayer</span><span class="o">!</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
+    <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">PlayerServiceDelegate</span><span class="p">?</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">startPlay</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">player</span> <span class="o">=</span> <span class="k">try!</span> <span class="kt">AVAudioPlayer</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">player</span><span class="o">.</span><span class="nf">play</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">stopPlay</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">player</span><span class="o">.</span><span class="nf">stop</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">audioPlayerDidFinishPlaying</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">AVAudioPlayer</span><span class="p">,</span> <span class="n">successfully</span> <span class="nv">flag</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">delegate</span><span class="p">?</span><span class="o">.</span><span class="nf">playerService</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">playingDidFinish</span><span class="p">:</span> <span class="n">flag</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Facade</span>
+<span class="kd">protocol</span> <span class="kt">AudioFacadeDelegate</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">audioFacadePlayingDidFinish</span><span class="p">(</span><span class="n">_</span> <span class="nv">audioFacade</span><span class="p">:</span> <span class="kt">AudioFacade</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">AudioFacade</span><span class="p">:</span> <span class="kt">PlayerServiceDelegate</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">audioSessionService</span> <span class="o">=</span> <span class="kt">AudioSessionService</span><span class="p">()</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">fileService</span> <span class="o">=</span> <span class="kt">FileService</span><span class="p">()</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">fileFormat</span> <span class="o">=</span> <span class="s">".m4a"</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">playerService</span><span class="p">:</span> <span class="kt">PlayerService</span><span class="o">!</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">recorderService</span><span class="p">:</span> <span class="kt">RecorderService</span><span class="o">!</span>
+    <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">AudioFacadeDelegate</span><span class="p">?</span>
+
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">dateFormatter</span><span class="p">:</span> <span class="kt">DateFormatter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">dateFormatter</span> <span class="o">=</span> <span class="kt">DateFormatter</span><span class="p">()</span>
+        <span class="n">dateFormatter</span><span class="o">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">"yyyy-MM-dd_HH:mm:ss"</span>
+        <span class="k">return</span> <span class="n">dateFormatter</span>
+    <span class="p">}()</span>
+
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">audioSessionService</span><span class="o">.</span><span class="nf">setupSession</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">deinit</span> <span class="p">{</span>
+        <span class="n">audioSessionService</span><span class="o">.</span><span class="nf">deactivateSession</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">startRecord</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">fileName</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="kt">Date</span><span class="p">())</span><span class="o">.</span><span class="nf">appending</span><span class="p">(</span><span class="n">fileFormat</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">fileService</span><span class="o">.</span><span class="nf">path</span><span class="p">(</span><span class="nv">withPathComponent</span><span class="p">:</span> <span class="n">fileName</span><span class="p">)</span>
+        <span class="n">recorderService</span> <span class="o">=</span> <span class="kt">RecorderService</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">recorderService</span><span class="o">.</span><span class="nf">startRecord</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">stopRecord</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">recorderService</span><span class="o">.</span><span class="nf">stopRecord</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">numberOfRecords</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">fileService</span><span class="o">.</span><span class="n">contentsOfDocumentDirectory</span><span class="o">.</span><span class="n">count</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">nameOfRecord</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">fileService</span><span class="o">.</span><span class="n">contentsOfDocumentDirectory</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">url</span><span class="o">.</span><span class="n">lastPathComponent</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">removeRecord</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fileService</span><span class="o">.</span><span class="nf">removeItem</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">playRecord</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="n">fileService</span><span class="o">.</span><span class="n">contentsOfDocumentDirectory</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">playerService</span> <span class="o">=</span> <span class="kt">PlayerService</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">playerService</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">playerService</span><span class="o">.</span><span class="nf">startPlay</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">stopPlayRecord</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">playerService</span><span class="o">.</span><span class="nf">stopPlay</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">playerService</span><span class="p">(</span><span class="n">_</span> <span class="nv">playerService</span><span class="p">:</span> <span class="kt">PlayerService</span><span class="p">,</span> <span class="n">playingDidFinish</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">success</span> <span class="p">{</span>
+            <span class="n">delegate</span><span class="p">?</span><span class="o">.</span><span class="nf">audioFacadePlayingDidFinish</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="nv">audioFacade</span> <span class="o">=</span> <span class="kt">AudioFacade</span><span class="p">()</span>
+<span class="n">audioFacade</span><span class="o">.</span><span class="nf">numberOfRecords</span><span class="p">()</span>
+
+<span class="c1">// Result:</span>
+<span class="c1">// 0</span>
+</code></pre></div></div>
+
+<p>불러오기, 재생 녹음등 모든 편의 기능을 묶어서 하나의 클래스로 만들어 제공하고 있습니다.</p>
+
+<h4 id="5-template-method">#5 Template Method</h4>
+
+<p><strong>TemplateMethod(템플릿 방법)</strong>패턴은 알고리즘의 골격을 정의하고 일부 단계에 대한 책임을 하위 분류에 위임하는 행동 설계 패턴입니다. 이 패턴을 통해 하위 클래스는 전체 구조를 변경하지 않고 알고리즘의 특정 단계를 재정의할 수 있습니다.</p>
+
+<p>이 설계 패턴은 알고리즘을 일련의 단계로 분할하고, 별도의 방법으로 이러한 단계를 설명하며, 단일 템플릿 방법을 사용하여 연속적으로 호출합니다.</p>
+
+<p><strong>다음과 같은 경우 템플릿 메소드 패턴을 사용해야 합니다.</strong></p>
+
+<ul>
+  <li>서브클래스가 구조를 수정하지 않으면서 기존의 알고리즘을 확장해야 하는 경우</li>
+  <li>비슷한 동작을 취하는 여러 클래스를 가지고 있는 경우 (이 경우 하나의 클래스만 수정해도 다른 모든 클래스를 수정해야 합니다.)</li>
+</ul>
+
+<h5 id="예제-4">예제</h5>
+
+<p>iOS앱에서 사진을 찍고 저장할 수 있어야 한다고 가정합니다. 따라서 응용 프로그램에서 iPhone(또는 iPad)카메라와 이미지 갤러리를 사용할 수 있는 권한을 얻어야 합니다. 이렇게 하려면 특정 알고리즘이 있는 PermissionService기본 클래스를 사용하면 됩니다. 카메라와 갤러리를 사용할 권한을 얻으려면 특정 단계를 공유하는 CameraPermissionService및 PhotoPermissionService라는 두개의 하위 클래스를 만듭니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Design Patterns: Template Method</span>
+<span class="kd">import</span> <span class="kt">AVFoundation</span>
+<span class="kd">import</span> <span class="kt">Photos</span>
+
+<span class="c1">// Services</span>
+<span class="kd">typealias</span> <span class="kt">AuthorizationCompletion</span> <span class="o">=</span> <span class="p">(</span><span class="nv">status</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="kt">PermissionService</span><span class="p">:</span> <span class="kt">NSObject</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span>
+
+    <span class="kd">func</span> <span class="nf">authorize</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">AuthorizationCompletion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">status</span> <span class="o">=</span> <span class="nf">checkStatus</span><span class="p">()</span>
+
+        <span class="k">guard</span> <span class="o">!</span><span class="n">status</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">complete</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span> <span class="n">completion</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="n">requestAuthorization</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">status</span> <span class="k">in</span>
+            <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="nf">complete</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span> <span class="n">completion</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">checkStatus</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">requestAuthorization</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">completion</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">formMessage</span><span class="p">(</span><span class="n">with</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">messagePrefix</span> <span class="o">=</span> <span class="n">status</span> <span class="p">?</span> <span class="s">"You have access to "</span> <span class="p">:</span> <span class="s">"You haven't access to "</span>
+        <span class="k">let</span> <span class="nv">nameOfCurrentPermissionService</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="k">self</span><span class="p">))</span>
+        <span class="k">let</span> <span class="nv">nameOfBasePermissionService</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="kt">PermissionService</span><span class="o">.</span><span class="k">self</span><span class="p">))</span>
+        <span class="k">let</span> <span class="nv">messageSuffix</span> <span class="o">=</span> <span class="n">nameOfCurrentPermissionService</span><span class="o">.</span><span class="nf">components</span><span class="p">(</span><span class="nv">separatedBy</span><span class="p">:</span> <span class="n">nameOfBasePermissionService</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">!</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">messagePrefix</span> <span class="o">+</span> <span class="n">messageSuffix</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">complete</span><span class="p">(</span><span class="n">with</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">AuthorizationCompletion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">formMessage</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">status</span><span class="p">)</span>
+
+        <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="p">(</span><span class="nv">status</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="n">message</span><span class="p">)</span>
+        <span class="nf">completion</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">CameraPermissionService</span><span class="p">:</span> <span class="kt">PermissionService</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">checkStatus</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">status</span> <span class="o">=</span> <span class="kt">AVCaptureDevice</span><span class="o">.</span><span class="nf">authorizationStatus</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">video</span><span class="p">)</span><span class="o">.</span><span class="n">rawValue</span>
+        <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="kt">AVAuthorizationStatus</span><span class="o">.</span><span class="n">authorized</span><span class="o">.</span><span class="n">rawValue</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">requestAuthorization</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">AVCaptureDevice</span><span class="o">.</span><span class="nf">requestAccess</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">video</span><span class="p">)</span> <span class="p">{</span> <span class="n">status</span> <span class="k">in</span>
+            <span class="nf">completion</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">PhotoPermissionService</span><span class="p">:</span> <span class="kt">PermissionService</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">checkStatus</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">status</span> <span class="o">=</span> <span class="kt">PHPhotoLibrary</span><span class="o">.</span><span class="nf">authorizationStatus</span><span class="p">()</span><span class="o">.</span><span class="n">rawValue</span>
+        <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="kt">PHAuthorizationStatus</span><span class="o">.</span><span class="n">authorized</span><span class="o">.</span><span class="n">rawValue</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">requestAuthorization</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">PHPhotoLibrary</span><span class="o">.</span><span class="n">requestAuthorization</span> <span class="p">{</span> <span class="n">status</span> <span class="k">in</span>
+            <span class="nf">completion</span><span class="p">(</span><span class="n">status</span><span class="o">.</span><span class="n">rawValue</span> <span class="o">==</span> <span class="kt">PHAuthorizationStatus</span><span class="o">.</span><span class="n">authorized</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="nv">permissionServices</span> <span class="o">=</span> <span class="p">[</span><span class="kt">CameraPermissionService</span><span class="p">(),</span> <span class="kt">PhotoPermissionService</span><span class="p">()]</span>
+
+<span class="k">for</span> <span class="n">permissionService</span> <span class="k">in</span> <span class="n">permissionServices</span> <span class="p">{</span>
+    <span class="n">permissionService</span><span class="o">.</span><span class="n">authorize</span> <span class="p">{</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span> <span class="k">in</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Result:</span>
+<span class="c1">// You have access to Camera</span>
+<span class="c1">// You have access to Photo</span>
+</code></pre></div></div>
+
+<p>카메라 퍼미션 서비스와 포토 퍼미션 서비스를 구현하고 이 두개의 권한을 요청하고 성공 실패시 처리하는 서비스를 구현합니다. 어떤 권한 요청이 추가되든 변동이 없고, 권한 실패시 처리 로직이 변경되어도 템플릿의 퍼미션 서비스만 수정하면 모든 서비스 요청에 적용할 수 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios-tip/">Ios tip</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastlaneFirebase">iOS fastlane - Fabric, Firebase</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_Paths_Shapes">SwiftUI - Paths와 Shapes</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Swift_Moya_Provider_custom">Swift Moya Provider 커스텀</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ios-tip/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/UnitTest_Manifest">
+                <div class="post-card-image" style="background-image: url(/assets/images/tdd/tdd_cover.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/UnitTest_Manifest">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Tdd</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">The iOS Testing Manifesto (번역)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># The iOS Testing Manifesto(번역) * https://blog.usejournal.com/the-ios-testing-manifesto-e1bc821cc4c3 대부분의 엔지니어는 테스트가 훌륭하다는 데 동의합니다. 테스트의 이점에 관한 기사와 블로그는 너무 많아 다 나열할 수 없습니다. 하지만 iOS 개발에서 유닛 테스트를 어떻게 작성해야 합니까?  좋은 유닛</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/xib-UIViewController">
+                <div class="post-card-image" style="background-image: url(/assets/images/XibUIViewController/banner.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xib-UIViewController">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xib로 UIViewController 만지기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>요구사항 회사 내부 프로젝트인 혈압 다이어리 추가 개발 사항으로 질병 예측 분야가 추가되었습니다. 코호트 DB를 분석하여 사용자의 향후 발병 가능성을 추측해보는 솔루션입니다. 그에 대한 개발로 사용자의 간단한 데이터를 입력받아 어떤 데이터를 내려줄 수</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Top 5 스위프트 디자인 패턴 (번역)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Top+5+%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8+%EB%94%94%EC%9E%90%EC%9D%B8+%ED%8C%A8%ED%84%B4+%28%EB%B2%88%EC%97%AD%29&amp;url=https://leejigun.github.io/Top_5_Design_Patterns"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Top_5_Design_Patterns"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

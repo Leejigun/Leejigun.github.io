@@ -1,0 +1,946 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[Tayga 개발기] (1) - Login, Version check</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Tayga 앱 회고 첫번째 login과 version check." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Tayga-Login,Version" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[Tayga 개발기] (1) - Login, Version check" />
+    <meta property="og:description" content="Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다. 사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다. 사전 학습 백앤드로 firebase를 사용했다. firebase의 프로젝트를 만들고 앱과 연동하는 부분은 가이드 에 충분히 잘 나와있으니 이쪽을 보고" />
+    <meta property="og:url" content="https://leejigun.github.io//Tayga-Login,Version" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/tayga/retro_image-cutout.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-06-04T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-06-04T09:00:00+09:00" />
+    <meta property="article:tag" content="Project" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[Tayga 개발기] (1) - Login, Version check" />
+    <meta name="twitter:description" content="Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다. 사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다. 사전 학습 백앤드로 firebase를 사용했다. firebase의 프로젝트를 만들고 앱과 연동하는 부분은 가이드 에 충분히 잘 나와있으니 이쪽을 보고" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/tayga/retro_image-cutout.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Project" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Tayga-Login,Version",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/tayga/retro_image-cutout.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Tayga-Login,Version"
+    },
+    "description": "Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다. 사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다. 사전 학습 백앤드로 firebase를 사용했다. firebase의 프로젝트를 만들고 앱과 연동하는 부분은 가이드 에 충분히 잘 나와있으니 이쪽을 보고"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[Tayga 개발기] (1) - Login, Version check" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 June 2018"> 4 June 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/project/'>PROJECT</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[Tayga 개발기] (1) - Login, Version check</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/tayga/retro_image-cutout.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다.</p>
+
+<p>사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다.</p>
+
+<hr />
+
+<h3 id="사전-학습">사전 학습</h3>
+
+<ol>
+  <li>백앤드로 firebase를 사용했다.
+    <ol>
+      <li>firebase의 프로젝트를 만들고 앱과 연동하는 부분은 <a href="https://firebase.google.com/docs/guides/?hl=ko">가이드</a> 에 충분히 잘 나와있으니 이쪽을 보고 수행할 것.</li>
+    </ol>
+  </li>
+  <li>UI로 깃 허브에 올라와있는 오픈소스 라이브러리인 <a href="https://github.com/CosmicMind/Material">Material</a> 을 사용했다.
+    <ol>
+      <li>디자이너가 없는 환경에서 안드로이드의 Material 디자인은 훌륭한 가이드라인이 되어준다. iOS와 안드로이드는 UI 가이드가 완전히 다르지만, 예전에 안드로이드로 프로젝트를 진행할 때 디자인 때문에 너무 고생을 한 경험이 있기 때문에 쉽게 Material을 따르려고 한다.</li>
+      <li>위 Material라이브러리는 구글의 Materail 디자인에 맞는 수 많은 컴포넌트들을 지원하고 있어 쉽게 디자인을 구현할 수 있지만, 학습 난이도가 조금 있다.</li>
+    </ol>
+  </li>
+  <li>전체적인 아키텍쳐는 RxSwift를 사용하는 MVVM으로 구성하려 한다.
+    <ol>
+      <li>Rx는 오래전부터 이슈가 되어왔던 개발 방법이고, 협업하는 환경에서는 쓸 수 없었지만, 이번이 좋은 기회가 될 것 같다.</li>
+      <li>MVVM 패턴은 사내 기존 앱들을 보면서 끝 없는 컨트롤러를 보면서 꼭 익숙해져야 겠다고 항상 생각해왔다. 일부 유지 보수를 진행하는데 MVVM을 사용해봤지만, 프로젝트 전체에 사용하기는 이번이 처음이다. 많이 부족하지만 익숙해져야한다.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="화면-구성">화면 구성</h2>
+
+<p><img src="../assets/images/tayga/login_2018-06-04.png" alt="로그인화면" /></p>
+
+<p>이 화면이 지금까지 구현한 로그인 화면이다. 구체적으로 뜯어볼 점은 다음과 같다.</p>
+
+<hr />
+
+<ul>
+  <li>가장 외곽으로 Material의 NavigationDrawer가 감싸고있다.</li>
+  <li>하단에 Google Login과 facebook login 버튼이 있다.</li>
+</ul>
+
+<hr />
+
+<p>먼저 가장 외곽을 감싸고 있는 NavigationDrawer를 살펴보자.</p>
+
+<h2 id="navigation-drawer">Navigation Drawer</h2>
+
+<p>Navigation drawer는 알다싶이 안드로이드에 기본 컴보넌트로 존재하지만, iOS에는 지원하지 않는다. 하지만, 살면서 너무 익숙한 기능이라 빼고 갈 수 없었다. 그리고 먼저 만들었던 Tayga 안드로이드 버전과 동일한 UI를 구성하도록 노력했기 때문에 집에넣게 되었다.</p>
+
+<p>사용법은 매우 간단한데, Navigation Drawer의 생성자를 살펴보면</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">AppDelegate</span><span class="o">.</span><span class="n">swift</span>
+<span class="n">window</span> <span class="o">=</span> <span class="kt">UIWindow</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">Screen</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+<span class="n">window</span><span class="o">!.</span><span class="n">rootViewController</span> <span class="o">=</span> <span class="kt">NaviDrawerController</span><span class="p">(</span>
+    <span class="nv">rootViewController</span><span class="p">:</span> <span class="n">toolbar</span><span class="p">,</span>
+    <span class="nv">leftViewController</span><span class="p">:</span> <span class="kt">SideMenuViewController</span><span class="p">(),</span>
+    <span class="nv">rightViewController</span><span class="p">:</span> <span class="kt">SideMenuViewController</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">window</span><span class="o">!.</span><span class="nf">makeKeyAndVisible</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>가운데의 rootViewController와 왼쪽, 오른쪽 각각에 위치할 controller들을 만들에 붙여주면 된다. 이 때 왼쪽 오른쪽에 위치할 viewController는 일반적인 viewController를 만드는 방식으로 붙이면 되니까 특별할게 없는데, 가운데에 위치할 rootController의 경우 생각해야 할 점이 많다.</p>
+
+<p>navigation drawer에 당연히 toolbar가 존재해야 한다고 생각해서 custom toolbar Controller를 만들었다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">NaviToolbarController</span><span class="p">:</span> <span class="kt">ToolbarController</span> <span class="p">{</span>
+    <span class="c1">/// 왼쪽 메뉴바 버튼</span>
+    <span class="k">let</span> <span class="nv">menuButton</span><span class="p">:</span> <span class="kt">IconButton</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">IconButton</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">Icon</span><span class="o">.</span><span class="n">menu</span><span class="p">,</span>
+                                <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColorFromRGB</span><span class="p">(</span><span class="nv">rgbValue</span><span class="p">:</span> <span class="kt">ColorPalette</span><span class="o">.</span><span class="n">mainColor</span><span class="o">.</span><span class="n">rawValue</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">button</span>
+    <span class="p">}()</span>
+    <span class="c1">/// 임시로 적용</span>
+    <span class="k">let</span> <span class="nv">rightButton</span><span class="p">:</span> <span class="kt">IconButton</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">IconButton</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">Icon</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+                                <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColorFromRGB</span><span class="p">(</span><span class="nv">rgbValue</span><span class="p">:</span> <span class="kt">ColorPalette</span><span class="o">.</span><span class="n">mainColor</span><span class="o">.</span><span class="n">rawValue</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">button</span>
+    <span class="p">}()</span>
+    <span class="k">let</span> <span class="nv">disposeBag</span> <span class="o">=</span> <span class="kt">DisposeBag</span><span class="p">()</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">prepare</span><span class="p">()</span>
+        <span class="n">statusBarStyle</span> <span class="o">=</span> <span class="o">.</span><span class="n">lightContent</span>
+        <span class="n">toolbar</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">UIColorFromRGB</span><span class="p">(</span><span class="nv">rgbValue</span><span class="p">:</span> <span class="kt">ColorPalette</span><span class="o">.</span><span class="n">mainColor</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+        <span class="c1">//toolbar setting</span>
+        <span class="n">toolbar</span><span class="o">.</span><span class="n">leftViews</span> <span class="o">=</span> <span class="p">[</span><span class="n">menuButton</span><span class="p">]</span>
+        <span class="n">toolbar</span><span class="o">.</span><span class="n">rightViews</span> <span class="o">=</span> <span class="p">[</span><span class="n">rightButton</span><span class="p">]</span>
+        <span class="c1">// event binding</span>
+        <span class="n">menuButton</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">tap</span><span class="o">.</span><span class="n">bind</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">navigationDrawerController</span><span class="p">?</span><span class="o">.</span><span class="nf">toggleLeftView</span><span class="p">()</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+        <span class="n">rightButton</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">tap</span><span class="o">.</span><span class="n">bind</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">navigationDrawerController</span><span class="p">?</span><span class="o">.</span><span class="nf">toggleRightView</span><span class="p">()</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>내용을 보면 알겠지만, 간단하게 색상을 정하고 왼쪽, 오른쪽 버튼을 붙여준게 전부다. 조금 눈여겨 봐야 할 부분이면 rx로 버튼에 이벤트를 바인딩한 부분인데, 보면 알겠지만, 간단하다.</p>
+
+<p>여기서 버튼은 IconButton이라는 Material의 icon만 있는 버튼을 사용했는데, 이 역시 일반 UIButton을 상속하고 있기 때문에 RxCocoa의 일반 사용법과 같다.</p>
+
+<p>(RxCocoa는 안드로이드의 RxAndroid와 마찬가지로 사용 언어를 넘어서 OS의 컴포넌트의 속성을 Rx로 접근하여 사용 가능하게 한다.)</p>
+
+<p>이는 복잡한 부분이 아니니까 간단하게 넘어가며 이 부분에 대해서는 Material의 github가 더 자세하게 나와있다.</p>
+
+<p>처음에 고생했던게 이 toolbar에 들어가는 rootViewController를 뭐로 넣어햐나나에서 고민을 많이 했다. 그냥 당연하게 toolbar와 nav drawer에 당연히 navigation controller의 기능을 포함하고 있을 것이라 생각해 처음 진입점인 LoginViewContoller를 root로 설정했었는데, 이렇게하면 navigation controller의 segue를 통한 이동을 할 수 없었다.</p>
+
+<p>그래서 그 상단에 일반적인 navigationController를 만들고 root로 그 컨트롤러를 지정해서 사용하니 segue를 통한 이동과 push, pop을 이용한 view의 스택 관리도 iOS 구현과 일치해 변수가 줄었다.</p>
+
+<p>이 라이브러리는 정말로 Material의 UI만을 제공하도록 지향하는 것 같다. 만약, 여기서 material의 다른 컴포넌트를 붙이게 된다면, root를 건드리면 된다.</p>
+
+<p>내 경우에는 Snackbar를 구현하기 위해서 navbar를 snackbar가 감싸고 그 snackbar를 toolbar가 감싸고, toolbar를 drawer가 감싸는 형태로 되어있다.</p>
+
+<p>말로만 보면 복잡해 보일 수 있으니 아래 코드를 보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 네비게이션 컨트롤러를 스토리보드에서 불러온다. 이름으로 "Navigation"을 줘서 찾아오도록 했다.</span>
+<span class="c1">// 네비게이션의 root controller가 LoginViewController</span>
+<span class="k">let</span> <span class="nv">storyBoard</span> <span class="o">=</span> <span class="kt">UIStoryboard</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Main"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">rootViewController</span> <span class="o">=</span> <span class="n">storyBoard</span>
+<span class="o">.</span><span class="nf">instantiateViewController</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"Navigation"</span><span class="p">)</span>
+<span class="c1">// 스낵바를 띄워줄 스낵바 컨트롤러로 감싼다.</span>
+<span class="n">snackBarController</span> <span class="o">=</span> <span class="kt">SnackbarController</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="n">rootViewController</span><span class="p">)</span>
+<span class="c1">// SnackBar close button</span>
+<span class="k">let</span> <span class="nv">closeBtn</span> <span class="o">=</span> <span class="kt">IconButton</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">Icon</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">Color</span><span class="o">.</span><span class="n">yellow</span><span class="o">.</span><span class="n">accent4</span><span class="p">)</span>
+<span class="n">closeBtn</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">Color</span><span class="o">.</span><span class="n">clear</span>
+<span class="n">closeBtn</span><span class="o">.</span><span class="nf">addTarget</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="kd">#selector(</span><span class="nf">closeSnackBar</span><span class="kd">)</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">touchUpInside</span><span class="p">)</span>
+<span class="n">snackBarController</span><span class="p">?</span><span class="o">.</span><span class="n">snackbar</span><span class="o">.</span><span class="n">rightViews</span> <span class="o">=</span> <span class="p">[</span><span class="n">closeBtn</span><span class="p">]</span>
+<span class="c1">// 그 스낵바를 툴바로 감싼다.</span>
+<span class="k">let</span> <span class="nv">toolbar</span> <span class="o">=</span> <span class="kt">NaviToolbarController</span><span class="p">(</span><span class="nv">rootViewController</span><span class="p">:</span> <span class="n">snackBarController</span><span class="o">!</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="kt">UIWindow</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">Screen</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+<span class="c1">// 툴바를 드로워로 감싸고 그 드로워를 루트로 설정한다.</span>
+<span class="n">window</span><span class="o">!.</span><span class="n">rootViewController</span> <span class="o">=</span> <span class="kt">NaviDrawerController</span><span class="p">(</span>
+<span class="nv">rootViewController</span><span class="p">:</span> <span class="n">toolbar</span><span class="p">,</span>
+<span class="nv">leftViewController</span><span class="p">:</span> <span class="kt">SideMenuViewController</span><span class="p">(),</span>
+<span class="nv">rightViewController</span><span class="p">:</span> <span class="kt">SideMenuViewController</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">window</span><span class="o">!.</span><span class="nf">makeKeyAndVisible</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>이렇게 루트 컨트롤러는 드로워로 계속 고정하고 안에 있는 네비게이션 컨트롤러에서 스택 관리를 하도록 했다. 복잡할거 같았던 수 많은 기능들을 쉽게 구현할 수 있었고, 디자인 역시 간단하게 수정 가능하게 되었다.</p>
+
+<h2 id="version-check-observable--single">Version Check (Observable  Single)</h2>
+
+<p>버전 체크로 firebase의 DB에서 정보를 꺼내서 비교하도록 했다. 코드를 보면 아래와 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">AppDelegate</span><span class="o">.</span><span class="n">swift</span>
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="kt">Database</span><span class="o">.</span><span class="nf">database</span><span class="p">()</span><span class="o">.</span><span class="nf">reference</span><span class="p">()</span>
+        <span class="nf">checkUpVersion</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onSuccess</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nv">$0</span> <span class="p">?</span> <span class="nf">print</span><span class="p">(</span><span class="s">"version pass"</span><span class="p">)</span> <span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="s">"version error"</span><span class="p">)</span>
+            <span class="p">})</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>firebase DB 설정은 최 상단의 가이드를 살펴보기를 바란다. 내가 이 부분에서 언급하고 싶은 부분은 Rx와 관련된 부분이다.  checkUpVersion() 메소드를 보면 아래와 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">AppDelegate</span><span class="o">.</span><span class="n">swift</span>
+<span class="c1">/// Check Version on firebase DB</span>
+<span class="kd">private</span> <span class="kd">func</span> <span class="nf">checkUpVersion</span><span class="p">()</span> <span class="o">-&gt;</span><span class="kt">Single</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kt">LoadingIndicator</span><span class="o">.</span><span class="nf">startLoading</span><span class="p">(</span><span class="nv">view</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">deviceVersion</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">infoDictionary</span><span class="p">?[</span><span class="s">"CFBundleShortVersionString"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span>
+    <span class="k">return</span> <span class="kt">Single</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;.</span><span class="n">create</span> <span class="p">{</span> <span class="n">single</span> <span class="k">in</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="nf">child</span><span class="p">(</span><span class="s">"Version"</span><span class="p">)</span><span class="o">.</span><span class="nf">child</span><span class="p">(</span><span class="s">"iOS"</span><span class="p">)</span><span class="o">.</span><span class="nf">observeSingleEvent</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="n">snapshot</span> <span class="k">in</span>
+        <span class="c1">// get user value</span>
+        <span class="kt">LoadingIndicator</span><span class="o">.</span><span class="nf">stopLoading</span><span class="p">()</span>
+        <span class="k">let</span> <span class="nv">version</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">value</span> <span class="k">as?</span> <span class="kt">String</span>
+        <span class="nf">single</span><span class="p">(</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">deviceVersion</span> <span class="o">==</span> <span class="n">version</span><span class="p">))</span>
+        <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kt">Disposables</span><span class="o">.</span><span class="n">create</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>핵심 부분을 보면 firebase DB의 ref.child(“Version”).child(“iOS”) 에 접근해서 서버에 사전에 올려둔 version을 읽어오는 부분이다.</p>
+
+<p>(내 앱의 버전을 읽는 방법은 <code class="highlighter-rouge">let deviceVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String</code> 를 통해서 info.plist에 접근해 버전을 가져오는 것이다.)</p>
+
+<p>여기서 db에 접근하는데 <code class="highlighter-rouge">func observeSingleEvent(of eventType: DataEventType, with block: @escaping (DataSnapshot) -&gt; Void)</code> 메소드를 사용하는 모습을 볼 수 있다. 원래는 여기에 클로져를 보면 알겠지만 return 값이 없기 때문에 checkUpVersion() 메소드에 클로져를 넣어서 처리했었는데, RxSwift 깃허브를 읽다보니 Single이라는 클래스가 있어서 유심히 읽어봤다.</p>
+
+<p>Single은 한번만 처리되는 이벤트를 다루기 위해서 사용되는데, 리턴으로 Success혹은 error만을 반환하고 이벤트가 넘어가면 해제되도록 디자인되어있다.</p>
+
+<p>이 Single의 가장 큰 장점은 기존에 개발하면서 이렇게 리턴이 없고 비동기 처리를 내부 클로져로만 처리하도록 구현되어있는 메소드들을 많이 만나봤고 이런 메소드들 때문에 Rx로 구현하는 이벤트 체인이 중간에 루즈해지는 경험을 많이 했었다. 하지만 이것처럼 Single을 비동기 메소드를 감싸서 Rx 형태로 만들어 사용할 수 있게 되어 흐름이 끊기지 않고 Rx 체인을 구현하게 되었고 이것을 꼭 공유하고 싶었다.</p>
+
+<p>추가적으로 하단에 <code class="highlighter-rouge">return Disposables.create {}</code> 안에는 dispose될 경우 처리하는 로직을 넣으면 된다. (통신 취소, loading 중단 등)</p>
+
+<h2 id="login-button-snapkit">Login Button (SnapKit)</h2>
+
+<p>구글, 페이스북 로그인을 앱에 구현하는 방법은 firebase 가이드가 더 잘 설명되어 있으니 넘어가고 Button을 만들어 붙이는 과정을 공유하고 싶다.</p>
+
+<p>구글, 페이스북 로그인 프레임워에는 각자 디자인되어있는 버튼을 제공하는데, 이 버튼들은 서로 너무 다르고 커스텀해서 사용하기도 힘들다. (서로 통일시키려고 시간을 많이 잡아먹었다.) 그래서 그냥 커스텀 버튼을 만들고 이벤트를 연결하도록 했는데, 이 때 SnapKit을 사용했다.</p>
+
+<p>SnapKit은 단순히 오토 레이아웃을 쉽게 구현하도록 도와주는 라이브러리고 핵심은 코드를 통해서 뷰를 구성하는데 있다. 대부분의 나 같은 초보 개발자들은 코드로 뷰를 구성하는데 익숙하지 않다. 하지만, 많은 개발 회고들을 읽어보니 스토리보드,  xib, 코드를 적절하게 섞어서 화면을 개발하고 있었다. 말 그대로 흐름이 있으면 Storyboard를 통해서 화면을 구현하고, 스토리와 상관없이 팝업 창 등 독립된 화면을 구성하는데는 xib를 사용하는 패턴을 보여준다. 코드를 사용하여 화면을 구성하는 경우는 동적이고, lazy하게 화면을 구성할 때 사용하는데, 여기 화면을 구성할 때에는 코드로 구현할 필요는 없지만 UI를 구성하는 Materail 라이브러리가 인터페이스 빌더를 사용할 수 없어 코드로 화면을 구성했다.</p>
+
+<p>두 버튼은 아래 코드와 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">googleButton</span><span class="p">:</span> <span class="kt">RaisedButton</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">RaisedButton</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Google Login"</span><span class="p">,</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">Color</span><span class="o">.</span><span class="n">grey</span><span class="o">.</span><span class="n">base</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="err">#</span><span class="nf">imageLiteral</span><span class="p">(</span><span class="nv">resourceName</span><span class="p">:</span> <span class="s">"ic_google"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">imageEdgeInsets</span> <span class="o">=</span> <span class="kt">EdgeInsets</span><span class="p">(</span><span class="nv">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">pulseColor</span> <span class="o">=</span> <span class="kt">Color</span><span class="o">.</span><span class="n">orange</span><span class="o">.</span><span class="n">lighten1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColorFromRGB</span><span class="p">(</span><span class="nv">rgbValue</span><span class="p">:</span> <span class="kt">ColorPalette</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">button</span>
+    <span class="p">}()</span>
+    <span class="k">let</span> <span class="nv">facebookButton</span><span class="p">:</span> <span class="kt">RaisedButton</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">RaisedButton</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Facebook Login"</span><span class="p">,</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">pulseColor</span> <span class="o">=</span> <span class="kt">Color</span><span class="o">.</span><span class="n">amber</span><span class="o">.</span><span class="n">base</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="err">#</span><span class="nf">imageLiteral</span><span class="p">(</span><span class="nv">resourceName</span><span class="p">:</span> <span class="s">"ic_facebook"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">imageEdgeInsets</span> <span class="o">=</span> <span class="kt">EdgeInsets</span><span class="p">(</span><span class="nv">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColorFromRGB</span><span class="p">(</span><span class="nv">rgbValue</span><span class="p">:</span> <span class="kt">ColorPalette</span><span class="o">.</span><span class="n">facebookDark</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">button</span>
+    <span class="p">}()</span>
+</code></pre></div></div>
+
+<p>이 두 버튼을 화면에 붙이고 constraints를 설정하는데 Snapkit을 썼다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">/// 화면 UI 설정</span>
+<span class="kd">private</span> <span class="kd">func</span> <span class="nf">setUpUI</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">toolbarController</span><span class="p">?</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"PRESS START"</span>
+    <span class="c1">// make Google login UI</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">googleButton</span><span class="p">)</span>
+    <span class="n">googleButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">makeConstraints</span> <span class="p">{</span> <span class="p">(</span><span class="n">make</span><span class="p">)</span> <span class="k">in</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">facebookButton</span><span class="p">)</span>
+    <span class="n">facebookButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">makeConstraints</span> <span class="p">{</span> <span class="p">(</span><span class="n">make</span><span class="p">)</span> <span class="k">in</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">googleButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">googleButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">googleButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">top</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">googleButton</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// event binding</span>
+    <span class="n">googleButton</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">tap</span><span class="o">.</span><span class="n">bind</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">tapGoogle</span><span class="p">()</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+    <span class="n">facebookButton</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">tap</span><span class="o">.</span><span class="n">bind</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">tapFacebook</span><span class="p">()</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>구현 기술들은 위와 같고 별 다른 복잡한 내용은 없이 구현했다. Loading Indicator과 같은 자잘한 부분들이 틈틈히 껴있지만, 복잡한 내용은 아니니 그렇구나 하고 넘어갈 수 있는 수준이다.</p>
+
+<p>앞으로 중점적으로 소개할 부분으로는 MVVM과 RxSwift를 중심으로 소개하려 한다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/project/">Project</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_page_based_navigation">SwiftUI에서 page based navigation 사용하기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_4_MVVM_Combine">Circle Timer 만들기_4_MVVM_Combine</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_3_User_Interation">Circle Timer 만들기_3_User_Interation(SwiftUI, gesture, DragGesture)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/project/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Tayga-TwitchAPI-Moya">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/moya_logo_github.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-TwitchAPI-Moya">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면,</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/IGListKit2">
+                <div class="post-card-image" style="background-image: url(/assets/images/IGListKit/profile.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListKit2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListKit 가이드(2)- Action&relaodData</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>이전 포스트에서는 IGListkit의 Model Binding의 개념을 살펴보고 데이터를 어떻게 설계하는지 고민해 봤습니다. Post라는 하 하나의 Post를 화면에 각각의 모델로 나눠서 여러 셀로 그려주면서 복잡할 수 있는 UI 구성을 단순하고 독립되게 표현할 수 있었습니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[Tayga 개발기] (1) - Login, Version check</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BTayga+%EA%B0%9C%EB%B0%9C%EA%B8%B0%5D+%281%29+-+Login%2C+Version+check&amp;url=https://leejigun.github.io/Tayga-Login,Version"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Tayga-Login,Version"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

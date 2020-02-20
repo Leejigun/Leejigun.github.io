@@ -1,0 +1,980 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[Kaggle] titanic 데이터 분석</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="케글 타이타닉 데이터 분석." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//titanic_1" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[Kaggle] titanic 데이터 분석" />
+    <meta property="og:description" content="데이터 분석 강좌 train_df.info() print('_'*40) test_df.info() 표본에 대한 숫자형 값의 분포는? 우리가 케글에서 내려받은 데이터를 기반으로 학습 데이터가 전체 데이터를 대포하는 좋은 교육 데이터 세트인지 파악할 필요가 있다. 먼저 숫자형 데이터를 살펴본다. 총 샘플은 타이타닉호(2224명)의 실제 탑승객 수의 40%에 해당하는 891명. 생존자(Survived)는 0 또는 1 값을 갖는 범주형 형상이다. (1:" />
+    <meta property="og:url" content="https://leejigun.github.io//titanic_1" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/titanic/titanic_1/titanic_data_analysis_background.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-12-08T09:00:02+09:00" />
+    <meta property="article:modified_time" content="2019-12-08T09:00:02+09:00" />
+    <meta property="article:tag" content="Ml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[Kaggle] titanic 데이터 분석" />
+    <meta name="twitter:description" content="데이터 분석 강좌 train_df.info() print('_'*40) test_df.info() 표본에 대한 숫자형 값의 분포는? 우리가 케글에서 내려받은 데이터를 기반으로 학습 데이터가 전체 데이터를 대포하는 좋은 교육 데이터 세트인지 파악할 필요가 있다. 먼저 숫자형 데이터를 살펴본다. 총 샘플은 타이타닉호(2224명)의 실제 탑승객 수의 40%에 해당하는 891명. 생존자(Survived)는 0 또는 1 값을 갖는 범주형 형상이다. (1:" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/titanic/titanic_1/titanic_data_analysis_background.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//titanic_1",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/ml/titanic/titanic_1/titanic_data_analysis_background.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//titanic_1"
+    },
+    "description": "데이터 분석 강좌 train_df.info() print('_'*40) test_df.info() 표본에 대한 숫자형 값의 분포는? 우리가 케글에서 내려받은 데이터를 기반으로 학습 데이터가 전체 데이터를 대포하는 좋은 교육 데이터 세트인지 파악할 필요가 있다. 먼저 숫자형 데이터를 살펴본다. 총 샘플은 타이타닉호(2224명)의 실제 탑승객 수의 40%에 해당하는 891명. 생존자(Survived)는 0 또는 1 값을 갖는 범주형 형상이다. (1:"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[Kaggle] titanic 데이터 분석" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 8 December 2019"> 8 December 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ml/'>ML</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[Kaggle] titanic 데이터 분석</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/ml/titanic/titanic_1/titanic_data_analysis_background.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="데이터-분석">데이터 분석</h1>
+<ul>
+  <li><a href="https://www.kaggle.com/startupsci/titanic-data-science-solutions">강좌</a></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'_'</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">test_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/info.png" alt="Untitled/Untitled.png" /></p>
+
+<h2 id="표본에-대한-숫자형-값의-분포는">표본에 대한 숫자형 값의 분포는?</h2>
+
+<p>우리가 케글에서 내려받은 데이터를 기반으로 학습 데이터가 전체 데이터를 대포하는 좋은 교육 데이터 세트인지 파악할 필요가 있다.
+먼저 숫자형 데이터를 살펴본다.</p>
+
+<ul>
+  <li>
+    <p>총 샘플은 타이타닉호(2224명)의 실제 탑승객 수의 40%에 해당하는 891명.</p>
+  </li>
+  <li>
+    <p>생존자(Survived)는 0 또는 1 값을 갖는 범주형 형상이다. (1: 생존, 0: 사망)</p>
+  </li>
+  <li>
+    <p>데이터의 생존율 38퍼센트는 실제 데이터의 생존율인 32퍼센트와 유사해 학습 데이터가 실제 생존율을 대표한다고 볼 수 있다.</p>
+  </li>
+  <li>
+    <p>대부분의 승객(&gt;75%)은 부모나 아이들과 함께 여행을 하지 않았다.</p>
+  </li>
+  <li>
+    <p>탑승객의 30% 가까이가 형제자매 및/또는 배우자가 타고 있었다.</p>
+  </li>
+  <li>
+    <p>512달러까지 높은 요금을 내는 승객은 거의 없고(&lt;1%&gt;) 요금은 다양하게 분포되어 있다.</p>
+  </li>
+  <li>
+    <p>65~80세 범위 내 노약자(1%)는 거의 없음</p>
+  </li>
+</ul>
+
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled.png" alt="Untitled/Untitled.png" /></p>
+
+<h2 id="범주형-특성의-분포는">범주형 특성의 분포는?</h2>
+
+<ul>
+  <li>
+    <p>이름은 전체 데이터에서 고유한 값을 가지고 있다. (891개의 이름이 다 다르다.)</p>
+  </li>
+  <li>
+    <p>성별은 2가지 종류를 가진 범주형 데이터로 65퍼센트는 남성이다. (top=male, freq=577/count=891)</p>
+  </li>
+  <li>
+    <p>객실 정보는 표본 전체에 걸쳐 여러 개의 중복된 값을 갖는다. (몇 명의 승객이 객실을 함께 이용했다.)</p>
+  </li>
+  <li>
+    <p>Embarked는 세 가지 가능한 값을 갖는다. 대부분의 승객이 사용하는 S 포트에서 탑승했다. (top=S)</p>
+  </li>
+  <li>
+    <p>티켓은 중복 값의 높은 비율(22%)을 가지고 있다(유니크=681).</p>
+  </li>
+</ul>
+
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 1.png" alt="assets/images/ml/titanic/titanic_1/Untitled 1.png" /></p>
+
+<h2 id="데이터-분석에-따른-추정치">데이터 분석에 따른 추정치</h2>
+<p>우리는 앞서 확인한 데이터를 다음과 같은 순서로 분석해야 한다.</p>
+
+<h3 id="상관-관계">상관 관계</h3>
+
+<ul>
+  <li>각각의 특성이 라벨(생존여부)과 얼마나 잘 연관되어 있는지 알고 싶다.</li>
+  <li>프로젝트 초기에 상관 관계를 파악하고 프로젝트의 후반부에 모델링에 적용 시켜야 한다.</li>
+</ul>
+
+<h3 id="보완">보완</h3>
+
+<ul>
+  <li>나이 특성은 생존 여부와 관련이 있어 보이는 중요한 특성이다. 하지만 중간 중간 빈 값이 있어 이를 채워야 한다.</li>
+  <li>Embarked 특성도 생존 혹은 다른 특성과 연관되어 있을 지 모른다. 빈 공간을 채우기 위해 다양한 방법을 생각해 봐야 한다.</li>
+</ul>
+
+<h3 id="수정">수정</h3>
+
+<ul>
+  <li>티켓 정보는 중복 비율(22%)이 높기 때문에 이 데이터를 어떻게 다룰지 고민해볼 필요가 있다. 어쩌면 생존 가능성과 티켓 정보는 상관 관계가 없어 분석에서 제외해야 할 수 있다.</li>
+  <li>객실 번호 특성은 빈 데이터가 과도하게 많아 훈련 및 검증 데이터셋에서 제거해야 할 수 있다.</li>
+  <li>PassengerId 는 생존에 기여하지 않으므로 교육 데이터 집합에서 삭제할 수 있다.</li>
+  <li>이름 특성은 비교적 비표준적이며, 생존에 직접 기여하지 않을 수 있으므로 제거 할 수도 있다.</li>
+</ul>
+
+<h3 id="생성">생성​</h3>
+
+<ul>
+  <li>Parch와 SibSp 특성을 기반으로 Family라는 새로운 특성을 만들어 선내에 있는 가족 구성원들의 총수를 구하고자 할 수 있다. (Parch + SibSp)</li>
+  <li>이름 특성을 사용해 새로운 특성으로 타이틀 특성을 만들 수 있다.</li>
+  <li>Age band라는 새로운 특성을 만들 수 있다. 나이는 연속적인 숫자형 데이터인데, 약간의 차이는 생존율과 영향이 없으니 이것을 비슷한 데이터끼리 묶어 범주형 데이터로 변경할 수 있다. (21세 32세 등으로 나이를 표시하는 것에서 20대 30대 같은 범주형 데이터로 표시하는 것)</li>
+  <li>Fare(요금) 특성 역시 분석에 도움이 된다면 범주형 데이터로 만들 수 있다.</li>
+</ul>
+
+<h3 id="분류">분류</h3>
+
+<p>위와 같은 데이터에 기반하여 아래와 같은 가설을 만들 수 있다.</p>
+
+<ul>
+  <li>여성(성별=여성)은 살아남았을 가능성이 더 높았다.</li>
+  <li>아이들 (에이지 &lt;?)은 살아남았을 가능성이 더 높았다.</li>
+  <li>상류층 승객(Pclass=1)이 살아남았을 가능성이 높았다.</li>
+</ul>
+
+<h2 id="analyze-by-pivoting-features">Analyze by pivoting features</h2>
+
+<p>일부 가정들을 확인하기 위해서 특성 데이터를 매칭해 생존 여부와 상관 관계를 쉽게 분석할 수 있다. 빈 값이 없는 데이터에 대해서만 매칭할 수 있다.</p>
+
+<ul>
+  <li>Pclass(티켓 등급) - pclass와 survived 데이터를 묶어 관찰한다.</li>
+  <li>pclass가 1인 경우 Survived가 0.5보다 크기 떄문에 의미있는 상관 관계가 있어 보인다.</li>
+  <li>pclass의 값이 작을수록 생존율도 높아진다.</li>
+</ul>
+
+<p>따라서 이 특성을 모델에 포함시키기로 했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span><span class="p">[[</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Survived'</span><span class="p">]]</span>
+  <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Pclass'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 2.png" alt="assets/images/ml/titanic/titanic_1/Untitled 2.png" /></p>
+
+<ul>
+  <li>성별이 여성인 경우 생존율이 74%로 매우 높은 생존율을 보인다.</li>
+</ul>
+
+<p>이 특성 역시 모델에 포함한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span><span class="p">[[</span><span class="s">"Sex"</span><span class="p">,</span> <span class="s">"Survived"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Sex'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 3.png" alt="assets/images/ml/titanic/titanic_1/Untitled 3.png" /></p>
+
+<ul>
+  <li>SibSp 및 Parch - 이 두 특성은 단일 특성으로 사용하기에는 생존 여부와 상관 관계가 없어 보인다.</li>
+  <li>두 특성은 합성 특성으로 사용하는게 최선으로 보인다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_df</span><span class="p">[[</span><span class="s">"SibSp"</span><span class="p">,</span> <span class="s">"Survived"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'SibSp'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">[[</span><span class="s">"Parch"</span><span class="p">,</span> <span class="s">"Survived"</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Parch'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 4.png" alt="assets/images/ml/titanic/titanic_1/Untitled 4.png" /></p>
+
+<h2 id="analyze-by-visualizing-data">Analyze by visualizing data</h2>
+<p>표로 확인하는 것보다 데이터를 분석하기 위해서 차트를 사용해 시각화해보면 놓친 관계를 찾을 수 있을지 모른다.</p>
+
+<h3 id="correlating-numerical-features">Correlating numerical features</h3>
+<p>숫자형 특성과 생존 사이의 관계를 파악하는 것 먼저 시작해보자.</p>
+
+<p>histogram 차트는 나이같이 연속된 숫자의 숫자형 데이터의 패턴을 분석하는데 도움이 된다. 이런 연속된 데이터의 흐름을 보고 유아의 생존율이 더 높았나?, 노인의 생존율은 어떤가 같은 질문에 답할 수 있게 된다.</p>
+
+<p>아래 차트를 보면 다음과 같은 결과를 볼 수 있다.</p>
+
+<ul>
+  <li>유아(age &lt;= 4)의 생존율이 높았다.</li>
+  <li>가장 나이든 승객들 (age = 80)은 살아남았다.</li>
+  <li>15~25세의 나이대는 다수가 살아남지 못했다.</li>
+  <li>승객 대부분이 15-35세 사이에 분포되어 있다.</li>
+</ul>
+
+<h3 id="결정">결정</h3>
+<p>위와 같은 분석을 기반으로 아래와 같이 데이터를 사용하기로 결정했다.</p>
+
+<ul>
+  <li>모델 트레이닝에서 연령을 고려해야 한다.</li>
+  <li>나이 데이터를 사용하기로 했기 때문에 빈 데이터를 채워야 한다.</li>
+  <li>연령대(age band) 그룹 특성을 만들어야 한다.</li>
+</ul>
+
+<h2 id="correlating-numerical-and-ordinal-features-숫자형과-서수형">Correlating numerical and ordinal features (숫자형과 서수형)</h2>
+
+<p>우리는 단일 그림을 사용하여 상관관계를 식별하기 위해 여러 특성을 조합할 수 있다. 이 작업은 숫자 값을 갖는 숫자형 및 범주형 특성으로 수행할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grid = sns.FacetGrid(train_df, col='Pclass', hue='Survived')</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">'Pclass'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">,</span> <span class="s">'Age'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">add_legend</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 6.png" alt="assets/images/ml/titanic/titanic_1/Untitled 6.png" /></p>
+
+<ul>
+  <li>Pclass == 3인 승객이 다수였지만 대부분 살아남지 못했다.</li>
+  <li>Pclass == 2거나 3 인 승객 중 영유아 승객들은 대부분 살아남았다.</li>
+  <li>Pclass == 1 승객들은 대부분 살아남았다.</li>
+</ul>
+
+<h2 id="correlating-categorical-features-범주형-특성의-상관-관계">Correlating categorical features (범주형 특성의 상관 관계)</h2>
+
+<p>이제 범주형 특성을 솔루션 목표와 연관시킬 수 있다.
+ pclass, Embarked, sex 데이터의 패턴을 확인해보자.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grid = sns.FacetGrid(train_df, col='Embarked')</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">'Embarked'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">pointplot</span><span class="p">,</span> <span class="s">'Pclass'</span><span class="p">,</span> <span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'deep'</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 7.png" alt="assets/images/ml/titanic/titanic_1/Untitled 7.png" /></p>
+
+<ul>
+  <li>여성 승객은 남성보다 생존율이 훨씬 높았다.</li>
+  <li>Embarked=C 인 케이스는 예외적으로 남성 생존율이 더 높다. 이는 pclass와 Embarked 사이의 상관 관계가 될 수 있으며 Pclass 와 생존여부는 상관 관계가 있기 때문에 Embarked와 생존 여부 사이의 직접적인 상관 관계가 없더라도 합성 특성을 만들면 상관 관계를 찾을 수 있게 된다.</li>
+</ul>
+
+<h2 id="correlating-categorical-and-numerical-features-범주형과-숫자형-사이의">Correlating categorical and numerical features (범주형과 숫자형 사이의)</h2>
+
+<p>이번에는 범주형 데이터와 숫자형 데이터 사이의 상관관계를 알고 싶을 수 있다. 우리는 Embarked(범주적 비수적), Sex(범주적 비수적), Fare(수적 연속적), Survived(범주적 숫자)와의 상관성을 고려할 수 있다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># grid = sns.FacetGrid(train_df, col='Embarked', hue='Survived', palette={0: 'k', 1: 'w'})</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">'Embarked'</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">'Survived'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">,</span> <span class="s">'Fare'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="assets/images/ml/titanic/titanic_1/Untitled 8.png" alt="assets/images/ml/titanic/titanic_1/Untitled 8.png" /></p>
+
+<ul>
+  <li>요금을 더 많이 내는 승객들은 더 나은 생존이 가능했다. 요금 범위를 만들기 위한 우리의 가정을 확정한다.</li>
+  <li>승선항은 생존율과 상관관계가 있다.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ml/">Ml</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_3">[Kaggle] titanic 모델, 예측, 해결</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_2">[Kaggle] titanic 데이터 가공</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_0">[Kaggle] titanic intro</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ml/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/titanic_2">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/titanic/titanic_2/background.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/titanic_2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Kaggle] titanic 데이터 가공</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># 데이터 가공 앞서 데이터 세트와 요구사항에 대해서 몇 가지 가정을 확인헀다. 지금까지 데이터의 패턴을 파악하기 위해서 차트를 만들었지만 데이터를 변경할 필요는 없었다. 이제는 일반 데이터에서 보이지 않는 패턴을 확인하고 모델에 사용하기 위해서</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/titanic_0">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/titanic/titaic_background.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/titanic_0">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Kaggle] titanic intro</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>타이타닉 케글에서 전통적인 예제인 타이타닉 문제를 상세한 튜토리얼과 함께 올렸다. 케글 경진 대회 타이타닉 튜토리얼 강좌를 기반으로 타이타닉 데이터에서 생존자를 예측하는 문제를 해결해본다. 목표 타이타닉 침몰은 역사상 가장 악명 높은 난파선 중 하나입니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[Kaggle] titanic 데이터 분석</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BKaggle%5D+titanic+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EB%B6%84%EC%84%9D&amp;url=https://leejigun.github.io/titanic_1"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/titanic_1"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

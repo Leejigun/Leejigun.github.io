@@ -1,0 +1,862 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Everyday Reactive (번역)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Everyday Reactive 번역" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Everyday_Reactive" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Everyday Reactive (번역)" />
+    <meta property="og:description" content="Everyday Reactive https://academy.realm.io/posts/everyday-reactive/ 이 챕터에서는 일상적인 경험을 바탕으로 앱 개발 과정에서 반응적인 프로그래밍을 실제로 사용하는 방법에 대해 살펴보겠습니다. 우리는 언제 반응적인 프로그래밍이 강력한 도구가 될 수 있는지를 결정하기 위한 팁과 요령, 그리고 코드 품질과 성능을 위협하지 않는 시나리오를 살펴볼 것이다. 이 포스트는 반응적 프로그래밍의 개념에 초점을 맞출 것이며, 이 코드는" />
+    <meta property="og:url" content="https://leejigun.github.io//Everyday_Reactive" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/RxSwift/Everyday_Reactive_cover.jpeg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-07-04T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-07-04T09:00:00+09:00" />
+    <meta property="article:tag" content="Rxswift" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Everyday Reactive (번역)" />
+    <meta name="twitter:description" content="Everyday Reactive https://academy.realm.io/posts/everyday-reactive/ 이 챕터에서는 일상적인 경험을 바탕으로 앱 개발 과정에서 반응적인 프로그래밍을 실제로 사용하는 방법에 대해 살펴보겠습니다. 우리는 언제 반응적인 프로그래밍이 강력한 도구가 될 수 있는지를 결정하기 위한 팁과 요령, 그리고 코드 품질과 성능을 위협하지 않는 시나리오를 살펴볼 것이다. 이 포스트는 반응적 프로그래밍의 개념에 초점을 맞출 것이며, 이 코드는" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/RxSwift/Everyday_Reactive_cover.jpeg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Rxswift" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Everyday_Reactive",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/RxSwift/Everyday_Reactive_cover.jpeg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Everyday_Reactive"
+    },
+    "description": "Everyday Reactive https://academy.realm.io/posts/everyday-reactive/ 이 챕터에서는 일상적인 경험을 바탕으로 앱 개발 과정에서 반응적인 프로그래밍을 실제로 사용하는 방법에 대해 살펴보겠습니다. 우리는 언제 반응적인 프로그래밍이 강력한 도구가 될 수 있는지를 결정하기 위한 팁과 요령, 그리고 코드 품질과 성능을 위협하지 않는 시나리오를 살펴볼 것이다. 이 포스트는 반응적 프로그래밍의 개념에 초점을 맞출 것이며, 이 코드는"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Everyday Reactive (번역)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 July 2018"> 4 July 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/rxswift/'>RXSWIFT</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Everyday Reactive (번역)</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/RxSwift/Everyday_Reactive_cover.jpeg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="everyday-reactive">Everyday Reactive</h1>
+
+<ul>
+  <li>https://academy.realm.io/posts/everyday-reactive/</li>
+</ul>
+
+<p>이 챕터에서는 일상적인 경험을 바탕으로 앱 개발 과정에서 반응적인 프로그래밍을 실제로 사용하는 방법에 대해 살펴보겠습니다. 우리는 언제 반응적인 프로그래밍이 강력한 도구가 될 수 있는지를 결정하기 위한 팁과 요령, 그리고 코드 품질과 성능을 위협하지 않는 시나리오를 살펴볼 것이다. 이 포스트는 반응적 프로그래밍의 개념에 초점을 맞출 것이며, 이 코드는 다양한 스위프트 반응적 구현을 보여 줄 것입니다.</p>
+
+<hr />
+
+<p>제 이름은 아그네스입니다. 저는 여러분과 함께 제가 반응적인 프로그래밍을 배우는 동안 알게된 몇가지 팁, 요령, 그리고 피해야 할 것들을 나누려고 합니다.</p>
+
+<p>저는 Ustream의 iOS개발자입니다. 즉, 사람들이 비디오를 보고방송하는 데 사용하는 앱을 개발하고 있습니다. 또한 수백만명의 사용자에게 앱을 제공하기 때문에 안정적이고 읽기 쉽고 느슨하게 연결된 코드 기반을 유지하여 품질을 높게 유지할 수 있었습니다. 우리는 이를 위해 반응적인 코드를 쓰고 있습니다. 하지만 그렇다고 우리가 반응형 프로그래밍을 성배라고 생각한다는 의미는 아닙니다. 우리는 의도적으로 여러 패러다임을 혼합하고 있으며, 우리는 우리의 코드에서 원하는 수준의 품질을 유지하는 데 도움이 되는 다른 패턴을 사용하고 있습니다.</p>
+
+<h2 id="reactive-programming">Reactive Programming</h2>
+
+<p>비동기 데이터의 문제를 해결함으로써 얻을 수 있는 이점을 살펴보겠습니다.</p>
+
+<h3 id="is-there-a-framework-for-that">Is There A Framework For That?</h3>
+
+<p>iOS에서는 어떤 기술로 반응형 코드를 쓸 수 있을까요? RxSwift, ReactiveCocoa, ReactiveSwift 등 많은 것들이 있습니다.</p>
+
+<p>이 프레젠테이션에서는 여러가지 다른 프레임워크의 소스 코드를 살펴보겠습니다. 개념이 비슷하기 때문에 한번만 배우면 다른 것들은 익숙하게 대응 할 수 있을 것 입니다.</p>
+
+<h3 id="when-do-i-apply-it">When Do I Apply It?</h3>
+
+<p>저희는 우리팀에 언제부터 반응형 프로그래밍을 적용할 것인가 토론했습니다. 저희는 특정한 수준에서는 반응형이 복잡하지만, 어느 시점 이후로는 복잡한 코드를 더 간단하게 만든다고 합니다.</p>
+
+<p>복잡한 애플리케이션에서 반응형 프로그래밍을 선택했다고 가정해 보겠습니다. 일반적으로 뷰와 뷰 모델 간의 바인딩에 반응적으로 사용하거나 네트워크 요청과 같은 특정 비동기 작업에 대응하는 경우 쉽게 적용할 수 있습니다. 이것을 MVVM이라 할 수 있지만, 뷰와 뷰 모델간의 바인딩 로직이라고 할 수도 있습니다. 이 기능은 비동기 이벤트를 기반으로 상태를 업데이트하기 때문에 쉽게 적용할 수 있습니다. 이 같이 UI 또는 네트워크 비동기 이벤트의 많은 상태 변경 작업이 반응적 프로그래밍이 해결해야 하는 복잡성의 전형적인 예입니다.</p>
+
+<h3 id="observation">Observation</h3>
+
+<p>반응형 프로그래밍에서 가장 단순하고 일반적으로 사용되는 패턴은 관심 있는 데이터의 흐름을 관찰하는 것입니다.</p>
+
+<p>우리가 어떻게 특정한 사건의 흐름을 관찰할 수 있는지 봅시다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">let</span> <span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">observer</span><span class="p">)</span> <span class="o">=</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">NoError</span><span class="o">&gt;.</span><span class="nf">pipe</span><span class="p">()</span>
+
+<span class="n">signal</span><span class="o">.</span><span class="n">observeValues</span> <span class="p">{</span> <span class="n">animal</span> <span class="k">in</span> <span class="nf">print</span><span class="p">(</span> <span class="s">"value: </span><span class="se">\(</span><span class="n">animal</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">observer</span><span class="o">.</span><span class="nf">sendNext</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">"😸"</span><span class="p">)</span>
+<span class="n">observer</span><span class="o">.</span><span class="nf">sendNext</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">"🐰"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>여기서 여러분은 ReactiveCocoa의 핵심 개념인 시그널을 볼 수 있습니다. 이는 관찰 가능한 이벤트 스트림을 나타내며, 다음 값 또는 오류, 완료된 이벤트 또는 해당 스트림에서 중단된 이벤트를 채울 수 있습니다. 신호에 새로운 값이 있는 경우 값은 신호를 통해 이동한 다음 관찰 기능한 바디로 들어갑니다.</p>
+
+<h3 id="lets-reduce-some-state">Let’s Reduce Some state</h3>
+
+<p>우리의 반응형 프로그래밍으로 다수의 상태를 합쳐 나가는 방법을 알아봅시다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">loading</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">userLoggedIn</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">didShowAlert</span><span class="p">:</span> <span class="kt">Bool</span>
+</code></pre></div></div>
+
+<p>여기에는 세가지 플래그가 있습니다. 예를 들어, 어떤 클래스가 API요청의 콜백 또는 특정 UI작업을 기준으로 상태가 변한다고 가정합니다. 우리가 세개의 플레그를 가지고 있을 때, 이 플래그의 상태 변화로 8가지의 상태값을 가질 수 있습니다.</p>
+
+<p>반응형 프로그래밍을 통해 특정 상태를 관찰할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">loading</span> <span class="o">=</span>
+<span class="nf">reactive</span><span class="p">(</span><span class="n">userLoggedIn</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+<span class="nf">reactive</span><span class="p">(</span><span class="n">didShowAlert</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="transform--combine">Transform / Combine</h3>
+
+<p>스트림을 변환하거나 결합하면 복잡성을 줄이고 코드를 단순화하는 데 도움이 될 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">loading</span> <span class="o">=</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">combineLatest</span><span class="p">(</span><span class="n">userLoggedIn</span><span class="p">,</span> <span class="n">didLoadContent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">!</span><span class="p">(</span><span class="nv">$0</span> <span class="o">&amp;&amp;</span> <span class="nv">$1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">loading</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"loading: </span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">})</span>
+
+<span class="n">userLoggedIn</span><span class="o">.</span><span class="nf">onNext</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="n">didLoadContent</span><span class="o">.</span><span class="nf">onNext</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<span class="n">userLoggedIn</span><span class="o">.</span><span class="nf">onNext</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="n">didLoadContent</span><span class="o">.</span><span class="nf">onNext</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+
+<span class="o">&gt;</span> <span class="nv">loading</span><span class="p">:</span> <span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nv">loading</span><span class="p">:</span> <span class="kc">true</span>
+<span class="o">&gt;</span> <span class="nv">loading</span><span class="p">:</span> <span class="kc">false</span>
+</code></pre></div></div>
+
+<p>여기서는 두개의 데이터 스트림을 병합할 수 있습니다. 그 이후부터는 결합된 스트림의 요소를 사용하여 작업하게 됩니다. 우리는 두개의 관측치를 결합하고, 둘 다 최신 값을 조합할 수 있는 값을 갖게 되면, 두 값의 최신 값으로 트리거 됩니다. 이것은 스트림을 결합하는 특정 전략이지만 조합할 때 필요한 전략이 다를 수 있으므로 병합과 같은 모든 값을 얻을 수 있는 방법이 있습니다.</p>
+
+<h3 id="simplify--unify-async-operations">Simplify / Unify Async Operations</h3>
+
+<p>다른 비동기 작업을 반응적 스트림으로 변환할 수 있습니다. 예를 들어 버튼 클릭 이벤트가 있습니다. 이벤트를 결합할 수도 있고 이러한 작업을 체인으로 묶을 수도 있습니다. 즉, 이러한 작업에 응답하거나 IP작업 방법을 정의하고 적절한 동작을 위해 상태를 유지하기 위해 더 이상 특정 메타 데이터가 필요하지 않습니다. 그것들은 사실상 동일한 스트림이며, 당신은 그것들을 서로 결합할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">catButton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"😸"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"http://catfacts-api.appspot.com/api/facts?
+number=1"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">catFact</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="nf">json</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
+  <span class="o">.</span><span class="nf">map</span><span class="p">(</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"</span><span class="se">\(</span><span class="nf">parsedCatFact</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span><span class="se">)</span><span class="s">"</span> <span class="p">})</span>
+
+<span class="kt">Observable</span><span class="o">.</span><span class="nf">combineLatest</span><span class="p">(</span><span class="n">catButton</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">tap</span><span class="p">,</span> <span class="n">catFact</span><span class="p">)</span> <span class="p">{</span> <span class="n">c</span><span class="p">,</span> <span class="n">fact</span> <span class="k">in</span>
+    <span class="s">"</span><span class="se">\(</span><span class="n">c</span><span class="se">)</span><span class="s"> 👉 </span><span class="se">\(</span><span class="n">fact</span><span class="se">)</span><span class="s">"</span>
+  <span class="p">}</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">})</span>
+
+
+<span class="o">&gt;</span> <span class="nv">😸</span><span class="p">:</span> <span class="kt">Cats</span> <span class="n">can</span> <span class="n">be</span> <span class="n">right</span><span class="o">-</span><span class="n">pawed</span> <span class="n">or</span> <span class="n">left</span><span class="o">-</span><span class="n">pawed</span><span class="o">.</span>
+</code></pre></div></div>
+
+<p>여기서는 버튼 클릭과 요청 응답을 결합하여 버튼을 클릭하면 매우 쉽게 이벤트를 알 수 있습니다.</p>
+
+<p>##Trade-offs, Complications</p>
+
+<p>첫번째 문제는 당신의 호출 스택이 더 이상 당신의 가장 익숙히 사용하던 형태가 아니기 때문에 디버깅 하는데 어려움을 격을 수 있습니다. 최소한 전통적인 필수적인 호출 스택에서 일어났던 것만큼 정확한 이벤트를 알려 줄 수는 없을 것입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">logAnimals</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">animal</span> <span class="o">=</span> <span class="kt">MutableProperty</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"😸"</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">animalStream</span> <span class="o">=</span> <span class="n">animal</span><span class="o">.</span><span class="n">producer</span><span class="o">.</span><span class="nf">logEvents</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"📋"</span><span class="p">)</span>
+
+    <span class="n">animalStream</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="n">animal</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"🐰"</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="n">📋</span><span class="p">]</span> <span class="n">starting</span> <span class="nv">fileName</span><span class="p">:</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">/</span><span class="kt">A</span><span class="o">.</span><span class="n">swift</span><span class="p">,</span> <span class="nv">functionName</span><span class="p">:</span> <span class="nf">logAnimals</span><span class="p">(),</span> <span class="nv">lineNumber</span><span class="p">:</span> <span class="mi">16</span>
+<span class="p">[</span><span class="n">📋</span><span class="p">]</span> <span class="n">value</span> <span class="n">🦊</span> <span class="nv">fileName</span><span class="p">:</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">/</span><span class="kt">A</span><span class="o">.</span><span class="n">swift</span><span class="p">,</span> <span class="nv">functionName</span><span class="p">:</span> <span class="nf">logAnimals</span><span class="p">(),</span> <span class="nv">lineNumber</span><span class="p">:</span> <span class="mi">16</span>
+<span class="p">[</span><span class="n">📋</span><span class="p">]</span> <span class="n">started</span> <span class="nv">fileName</span><span class="p">:</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">/</span><span class="kt">A</span><span class="o">.</span><span class="n">swift</span><span class="p">,</span> <span class="nv">functionName</span><span class="p">:</span> <span class="nf">logAnimals</span><span class="p">(),</span> <span class="nv">lineNumber</span><span class="p">:</span> <span class="mi">16</span>
+<span class="p">[</span><span class="n">📋</span><span class="p">]</span> <span class="n">value</span>
+</code></pre></div></div>
+
+<p>이를 도와줄 트릭이 있습니다. 문제를 일으키는 특정 스트림이 의심스러운 경우 프레임워크의 일부 이벤트 스트림에 콘솔 로그를 첨부하는 방법이 있습니다. 예를 들어, 여기 로그 이벤트가 있습니다. 로그는 스트림의 값이 어디서 발생했는지를 보여 준다. 이 로그는 이미 시간과 골치를 줄여 줄 수 있지만, 당신이 이를 보고 직접 해결해야 하는 어려움은 피할 수 없다.</p>
+
+<p>두번째 문제는 반응형 프로그래밍을 배우는 단계에서 생깁니다. 사람들이 옵져버 패턴의 힘을 깨닫고 그것을 어디서나 사용하고 싶어 할 때는 괜찮지만, 약간의 상용화 코드를 줄이기 위해서 반응형 프로그래밍을 도입하는 것은 오버 헤드일 수 있다.</p>
+
+<p>관찰 결과를 사용하여 수동으로 상태를 업데이트하면 반응성을 잃을 수 있습니다. 이미 해당 용도로 반응형 프레임워크를 사용 중인 경우 대신 바인딩을 사용할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titleLabel</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>여기서 우리는 뷰 모델의 제목을 레이블에 묶고, 뷰 모델이 새로운 제목을 얻을 때마다 텍스트로 라벨을 업데이트할 것입니다. 만약, 조건 적용이 필요한 경우, 로직에 조건을 추가할 수 있습니다.</p>
+
+<p>이것은 Bond의 예입니다. 뷰와 뷰모델 사이의 연결을 정의할 때 유용한 단 방향 바인딩 또는 양방향 바인딩을 사용할 수 있습니다. 예를 들어 사용자 입력과 해당 데이터의 모델 표현 방법입니다. 스트림에 사이드 이펙트를 수동으로 주입할 수 있다는 것은 좋은 일입니다. 부작용이 나쁘다고 여겨진다는 사실과 상관 없이, 사이드 이펙트들은 복잡성을 야기한다. 어떤 것이 더 많은 부작용을 가질수록, 한번의 변화 후에 무슨 일이 일어날지 측정하거나 정의하기가 더 어렵습니다.</p>
+
+<p>만약, 특정 행동의 사이드 이펙트가 필요하다면 추가하고 제거하기 용이합니다. 여기 코드에서는 제목을 라벨과 바인드하기 전, nil 체크를 하는 로직을 추가한 것 입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">!=</span> <span class="kc">nil</span>
+<span class="p">}</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">refreshButton</span><span class="o">.</span><span class="n">reactive</span><span class="o">.</span><span class="n">isEnabled</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>다양한 사용 방법들이 존재합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titleLabel</span><span class="p">)</span>
+<span class="n">viewModel</span><span class="o">.</span><span class="n">title</span>
+  <span class="o">.</span><span class="nf">bidirectionalBind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titleTextField</span><span class="o">.</span><span class="n">reactive</span><span class="o">.</span><span class="n">bnd_text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>반응형 프로그래밍의 세번째 어려움으로는 뜨거운 옵져버블과 차가운 옵져버블과 같은 다양한 관측 가능성이 있다. cold의 경우 시그널에 사이드 이펙트를 주입하면 해당 시그널에 새로운 가입자가 생길 때마다 효과가 나타납니다. 이것은 좋습니다. 왜냐하면 그것이 의도한 설계 방식이기 때문입니다. 하지만 여러분은 반드시 구현이 어떻게 되어 있는지 상기해야 합니다. 따라서 꼭 필요한 경우에만 사이드 이펙트를 추가해야 합니다. 예를 들어 앱의 사용 추적 기능을 추가하려면 이벤트 스트림에 사이드 이펙트를 추가하는 것이 좋습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">catFact</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="nf">json</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
+  <span class="o">.</span><span class="nf">map</span><span class="p">(</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"</span><span class="se">\(</span><span class="nf">parsedCatFact</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span><span class="se">)</span><span class="s">"</span> <span class="p">})</span>
+  <span class="o">.</span><span class="nf">do</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"EFFECT"</span><span class="p">)</span>
+  <span class="p">})</span>
+
+<span class="n">catFact</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"1. 😸: </span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">})</span>
+<span class="n">catFact</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"2. 😸: </span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">})</span>
+
+<span class="o">&gt;</span> <span class="kt">EFFECT</span>
+<span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span> <span class="nv">😸</span><span class="p">:</span> <span class="kt">Most</span> <span class="n">cats</span> <span class="n">adore</span> <span class="n">sardines</span><span class="o">.</span>
+<span class="o">&gt;</span> <span class="kt">EFFECT</span>
+<span class="o">&gt;</span> <span class="mi">2</span><span class="o">.</span> <span class="nv">😸</span><span class="p">:</span> <span class="kt">In</span> <span class="mi">1987</span> <span class="n">cats</span> <span class="n">overtook</span> <span class="n">dogs</span> <span class="k">as</span> <span class="n">the</span> <span class="n">number</span> <span class="n">one</span> <span class="n">pet</span> <span class="k">in</span> <span class="kt">America</span><span class="o">.</span>
+
+<span class="o">...</span>
+    <span class="o">.</span><span class="nf">do</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">fact</span> <span class="k">in</span>
+        <span class="kt">Analytics</span><span class="o">.</span><span class="nf">trackEvent</span><span class="p">(</span><span class="s">"cat fact generated: </span><span class="se">\(</span><span class="n">fact</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<p>또한, 사용할 관측 가능성이 로직에 맞는 종류인지 확인해야 합니다. 예를 들어, 버튼 클릭인 경우 뜨거운 시그널이여야 하므로 이 업데이트에 가입한 사용자가 기준이 아니라 아니라 버튼을 누를 때 분석 이벤트를 보내는 것이 좋습니다. 이는 가장 준비하기 어려운 문제입니다. 나중에 변경하기 어려울 수 있기 때문입니다.</p>
+
+<p>마지막으로 불필요하게 반응형 코드를 강제 될 수 있습니다. (이는 시간이 많이 걸리고 유용하지 않다.)</p>
+
+<p>반응형 없이도 쉽게 수행할 수 있지만 불필요하게 반응형을 추가 할수 도 있습니다. 이 동작으로 인해 예기치 않은 결과가 발생할 수 있습니다. 하지만 일반적으로 여러분의 상태를 변하지 않게 설계함으로써 쉽게 해결할 수 있습니다.</p>
+
+<p>또한, 하나의 작은 스위치만으로 복잡한 로직을 수행할 수도 있습니다. 이것은 멋진 일이지만, 단순하게 하는 것이 좋다고 생각합니다. 그렇지 않으면 한가지 변화의 효과는 한 사람이 항상 기억할 수 있는 것보다 더 클 것입니다. 구현된 코드를 잘 이해하지 못한 채 이벤트가 어디서 발생하는지조차 알 수 없는 신입 개발자들은 말할 것도 없습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/rxswift/">Rxswift</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift+Moya+MVVM_1)">RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift_MVVM">RxSwift MVVM 실무 적용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift_Deep_Cuts">RxSwift: Deep Cuts (번역)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/rxswift/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/RxSwift_Deep_Cuts">
+                <div class="post-card-image" style="background-image: url(/assets/images/RxSwift/Deep_Cuts.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/RxSwift_Deep_Cuts">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Rxswift</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">RxSwift: Deep Cuts (번역)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># RxSwift: Deep Cuts 지난 몇년간, 반응형 프로그래밍 아이디어들은 iOS커뮤니티를 사로잡았습니다. 조금 열기가 가라앉은 지금, 우리는 때때로 혼란스럽고 읽을 수 없는 코드를 접하기 시작하고 있습니다. 하지만 이러한 중대한 책임을 어떻게 감당할 수 있을까요?</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/breakPointGuide">
+                <div class="post-card-image" style="background-image: url(/assets/images/tdd/breakPoint.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/breakPointGuide">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Tdd</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Edit Breakpoints in Xcode (번역)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Edit Breakpoints in Xcode 브레이크 포인트는 디버깅에 있어 중요한 역할을 하며, 함께 강력한 기능을 제공합니다. 다음은 디버깅 하는 동안 효율성을 높이기 위한 브레이크 포인트와 관련된 몇가지 팁입니다. 다음과 같이 루프에 대한 가 있다고</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Everyday Reactive (번역)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Everyday+Reactive+%28%EB%B2%88%EC%97%AD%29&amp;url=https://leejigun.github.io/Everyday_Reactive"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Everyday_Reactive"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

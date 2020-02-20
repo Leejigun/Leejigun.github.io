@@ -1,0 +1,822 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="실제 현업에서 사용하고 있는 RxSwift와 Moya를 이용한 네티워크 로직" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//RxSwift+Moya+MVVM_1)" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리" />
+    <meta property="og:description" content="현업 RxSwift + Moya - 네트워킹 처리 저번 포스트에서 제가 실제로 사용하고 있는 RxSwift+MVVM 코드를 살펴봤습니다. 장바구니 화면이었는데, 네트워크 없이 로컬 DB를 사용하고 있는 부분이라 크게 복잡한 게 없었습니다. 이번 포스트에서는 Moya를 통한 네트워크 통신을 적용한 코드 부분을 공유하려고 합니다. 개요 화면은 실제 서비스 하는 앱이라 실제 화면을 보여드리기는 힘들거" />
+    <meta property="og:url" content="https://leejigun.github.io//RxSwift+Moya+MVVM_1)" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/RxSwift/RxSwift_MVVVM_Moya.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-08-29T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2019-08-29T09:00:01+09:00" />
+    <meta property="article:tag" content="Rxswift" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리" />
+    <meta name="twitter:description" content="현업 RxSwift + Moya - 네트워킹 처리 저번 포스트에서 제가 실제로 사용하고 있는 RxSwift+MVVM 코드를 살펴봤습니다. 장바구니 화면이었는데, 네트워크 없이 로컬 DB를 사용하고 있는 부분이라 크게 복잡한 게 없었습니다. 이번 포스트에서는 Moya를 통한 네트워크 통신을 적용한 코드 부분을 공유하려고 합니다. 개요 화면은 실제 서비스 하는 앱이라 실제 화면을 보여드리기는 힘들거" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/RxSwift/RxSwift_MVVVM_Moya.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Rxswift" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//RxSwift+Moya+MVVM_1)",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/RxSwift/RxSwift_MVVVM_Moya.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//RxSwift+Moya+MVVM_1)"
+    },
+    "description": "현업 RxSwift + Moya - 네트워킹 처리 저번 포스트에서 제가 실제로 사용하고 있는 RxSwift+MVVM 코드를 살펴봤습니다. 장바구니 화면이었는데, 네트워크 없이 로컬 DB를 사용하고 있는 부분이라 크게 복잡한 게 없었습니다. 이번 포스트에서는 Moya를 통한 네트워크 통신을 적용한 코드 부분을 공유하려고 합니다. 개요 화면은 실제 서비스 하는 앱이라 실제 화면을 보여드리기는 힘들거"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="29 August 2019">29 August 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/rxswift/'>RXSWIFT</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/RxSwift/RxSwift_MVVVM_Moya.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="현업-rxswift--moya---네트워킹-처리">현업 RxSwift + Moya - 네트워킹 처리</h1>
+<p>저번 포스트에서 제가 실제로 사용하고 있는 RxSwift+MVVM 코드를 살펴봤습니다. 장바구니 화면이었는데, 네트워크 없이 로컬 DB를 사용하고 있는 부분이라 크게 복잡한 게 없었습니다.
+ 이번 포스트에서는 Moya를 통한 네트워크 통신을 적용한 코드 부분을 공유하려고 합니다.</p>
+
+<h2 id="개요">개요</h2>
+
+<p>화면은 실제 서비스 하는 앱이라 실제 화면을 보여드리기는 힘들거 같아서 제가 그냥 손으로 그려서 글과 함께 설명하겠습니다.</p>
+
+<p><img src="https://paper-attachments.dropbox.com/s_99D04CF0394BDDE57A7192F243FD57A382078ADA78559AE7642D731E45277DD7_1567131263862_image.png" alt="" /></p>
+
+<p>여기서 보여드릴 코드는 체중 상세 페이지입니다.
+    상단에 하나의 차트가 있고 이 차트는 상단 세그 컨트롤러를 이용해서 최근, 전체 데이터를 보여줍니다.
+      하단에는 오전, 오후 체중을 표시하며 없으면 클릭 시 입력할 수 있는 팝업을 보여주는 버튼으로 사용하고 있습니다.    차트 데이터를 읽어오는 API의 경우에는 하나의 API를 파라미터로 최근, 전체를 불러오도록 나뉘어 있어서 처음 화면을 들어갈 때 찌르는 API만 3개입니다. (최근 차트, 전체 차트, 금일 오전 오후 체중)</p>
+
+<hr />
+
+<h2 id="구조-잡기">구조 잡기</h2>
+
+<p>저번 포스트에서 MVVM 구조 잡는 방법을 설명했었는데, 요는 Input과 Output을 분리하는데 있었습니다.</p>
+
+<p><img src="https://paper-attachments.dropbox.com/s_99D04CF0394BDDE57A7192F243FD57A382078ADA78559AE7642D731E45277DD7_1567132520234_image.png" alt="" /></p>
+
+<p><strong>Input</strong></p>
+
+<ul>
+  <li>차트 데이터 요청</li>
+  <li>오전, 오후 체중 등록, 수정 삭제</li>
+</ul>
+
+<p><strong>Output</strong></p>
+
+<ul>
+  <li>최근 차트 데이터</li>
+  <li>전체 차트 데이터</li>
+  <li>금일 차트 데이터</li>
+</ul>
+
+<p>데이터 베이스가 서버단이라 모든 input에 대한 결과값이 Output으로 화면에 그려지게 되는 구조입니다. 이 포스트에서 알려드리고 싶은 네트워크 예시로 적당한거 같아 이 화면을 택했습니다.</p>
+
+<hr />
+<h2 id="input-로직">Input 로직</h2>
+
+<p>제가 만든 커스텀 Moya Provider는 다른 포스트에서 설명하고 일단 Input으로 Output 까지 가공하는 네트워크 RxSwift 블록을 보여드리겠습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// 차트 데이터 API</span>
+    <span class="n">input</span><span class="o">.</span><span class="n">chartData</span>
+      <span class="o">.</span><span class="nf">do</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="n">output</span><span class="o">.</span><span class="n">isLoading</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="kc">true</span><span class="p">)})</span>
+      <span class="o">.</span><span class="n">flatMapLatest</span> <span class="p">{</span> <span class="n">fddDate</span> <span class="o">-&gt;</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">Result</span><span class="p">,</span> <span class="kt">Result</span><span class="p">)</span><span class="o">&gt;</span> <span class="k">in</span>
+        <span class="c1">// parameters</span>
+        <span class="k">let</span> <span class="nv">recentParam</span> <span class="o">=</span> <span class="p">[</span><span class="s">"fddDate"</span><span class="p">:</span> <span class="n">fddDate</span><span class="p">,</span><span class="s">"keyword"</span> <span class="p">:</span> <span class="s">"recent"</span><span class="p">]</span>
+        <span class="k">let</span> <span class="nv">totalParam</span> <span class="o">=</span> <span class="p">[</span><span class="s">"fddDate"</span><span class="p">:</span> <span class="n">fddDate</span><span class="p">]</span>
+
+        <span class="c1">// 최근 차트 데이터</span>
+        <span class="k">let</span> <span class="nv">recent</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">rx</span>
+          <span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="nf">searchFoodDiaryWeightList</span><span class="p">(</span><span class="n">recentParam</span><span class="p">))</span>
+          <span class="o">.</span><span class="nf">retry</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">WeightDetailViewControllerModel</span><span class="o">.</span><span class="nf">checkStatusCode</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+          <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">result</span> <span class="o">-&gt;</span> <span class="kt">Result</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">anyData</span><span class="p">)</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">anyData</span> <span class="k">as?</span> <span class="kt">Response</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">try</span> <span class="n">data</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="kt">WeightChartResponse</span><span class="o">.</span><span class="k">self</span><span class="p">))</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">result</span>
+            <span class="p">}</span>
+          <span class="p">}</span><span class="o">.</span><span class="n">catchError</span> <span class="p">{</span>
+            <span class="kt">Crashlytics</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">recordError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="nf">jsonMappingError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)))</span>
+          <span class="p">}</span>
+        <span class="c1">// 전체 차트 데이터</span>
+        <span class="k">let</span> <span class="nv">total</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">rx</span>
+          <span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="nf">searchFoodDiaryWeightList</span><span class="p">(</span><span class="n">totalParam</span><span class="p">))</span>
+          <span class="o">.</span><span class="nf">retry</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">WeightDetailViewControllerModel</span><span class="o">.</span><span class="nf">checkStatusCode</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+          <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">result</span> <span class="o">-&gt;</span> <span class="kt">Result</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">anyData</span><span class="p">)</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">anyData</span> <span class="k">as?</span> <span class="kt">Response</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">try</span> <span class="n">data</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="kt">WeightChartResponse</span><span class="o">.</span><span class="k">self</span><span class="p">))</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">result</span>
+            <span class="p">}</span>
+          <span class="p">}</span><span class="o">.</span><span class="n">catchError</span> <span class="p">{</span>
+            <span class="kt">Crashlytics</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">recordError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="nf">jsonMappingError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)))</span>
+          <span class="p">}</span>
+        <span class="k">return</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">combineLatest</span><span class="p">(</span><span class="n">recent</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">do</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span><span class="n">_</span> <span class="k">in</span> <span class="n">output</span><span class="o">.</span><span class="n">isLoading</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="kc">false</span><span class="p">)})</span>
+      <span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">chartResults</span><span class="p">)</span>
+      <span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposebag</span><span class="p">)</span>
+</code></pre></div></div>
+<p>길고 복잡해 보이지만 사실 간단합니다.
+ 먼저 <strong>input.chartData</strong> 에 onNext(param)이 들어오면 로직 시작과 끝에 있는 <strong>.do(onNext: {})</strong> 부분에서 로딩의 시작과 끝을 알려주고 <strong>viewController</strong> 에서 이 <strong>isLoading</strong> 을 보고 있다가 로딩을 해줍니다.
+ 로딩을 시작하고 종료하는 행위는 전체 로직과 상관없는 사이드 이펙트이기 때문에 <strong>do</strong> 부분에서 처리합니다.
+ 그리고 크게 보면 한번의 input으로 두개의 독립된 api 통신을 수행해야합니다. 그래서 recent 로직과 total 로직을 만들고 CombineLatest로 묶어서 믿으로 내렸습니다.</p>
+
+<p>그 중에서 최근 차트 데이터를 요청하는 부분만 확인해 봅시다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// 최근 차트 데이터</span>
+    <span class="k">let</span> <span class="nv">recent</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">rx</span>
+      <span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="nf">searchFoodDiaryWeightList</span><span class="p">(</span><span class="n">recentParam</span><span class="p">))</span>
+      <span class="o">.</span><span class="nf">retry</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+      <span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">WeightDetailViewControllerModel</span><span class="o">.</span><span class="nf">checkStatusCode</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+      <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">result</span> <span class="o">-&gt;</span> <span class="kt">Result</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">anyData</span><span class="p">)</span> <span class="o">=</span> <span class="n">result</span><span class="p">,</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">anyData</span> <span class="k">as?</span> <span class="kt">Response</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">try</span> <span class="n">data</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="kt">WeightChartResponse</span><span class="o">.</span><span class="k">self</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">result</span>
+        <span class="p">}</span>
+      <span class="p">}</span><span class="o">.</span><span class="n">catchError</span> <span class="p">{</span>
+        <span class="kt">Crashlytics</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">recordError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="nf">jsonMappingError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)))</span>
+      <span class="p">}</span>
+</code></pre></div></div>
+
+<p>provider.rx.request 부분은 Moya에 대한 부분이니까 넘어가고 <strong>retry(3)</strong> 은 재시도 3회를 의미합니다. status code 200에서 299까지는 성공이라고 보고 기타 사유는 자동으로 3회까지 재시도 합니다. 이 것 말고도 <strong>timeout</strong> 10초도 적용해뒀는데, 그건 제가 만든 <strong>커스텀 provider</strong> 안에 있습니다.
+( <strong>retry</strong> 만 예외적으로 비지니스 로직상 밖으로 빼놨습니다.)
+ 그리고 다음줄에서 status code를 체크하는 부분이 있습니다. 이번 프로젝트에서는 일부 api 통신에 대한 결과값으로 status code를 보고 처리하는 케이스가 있습니다. 여기서는 204의 경우 데이터 없음으로 보고 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">checkStatusCode</span><span class="p">(</span><span class="n">_</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span> <span class="p">{</span>
+      <span class="k">switch</span> <span class="n">response</span><span class="o">.</span><span class="n">statusCode</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">204</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="n">noContent</span><span class="p">)</span>
+        <span class="k">case</span> <span class="mi">200</span><span class="o">...</span><span class="mi">299</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">default</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="nf">statusCodeError</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">statusCode</span><span class="p">))</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>그리고 다음 map에서는 response를 codable을 사용해서 모델로 파싱하는 부분입니다. 예전 포스트에서도 썼듯이 RxSwift와 Moya, Codable을 함께 사용하면 복잡한 로직이 상당히 가독성 좋고 간단해집니다.
+ 그리고 그 과정에서 발생하는 error 케이스를 잡기 위해서 catchError를 사용하고 있습니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">catchError</span> <span class="p">{</span>
+      <span class="kt">Crashlytics</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">recordError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">Result</span><span class="o">.</span><span class="nf">fail</span><span class="p">(</span><span class="o">.</span><span class="nf">jsonMappingError</span><span class="p">(</span><span class="nv">$0</span><span class="p">)))</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 모든 api 통신과 모델 맵핑 사이에서 발생하는 모든 케이스의 error를 잡을 수 있습니다. 그리고 보시면 알겠지만 추가적으로 <strong>Crashlytics</strong> 에 기록까지 하고 있습니다. 이 때 기록된 에러들은 나중에 fabric에서 non-fatal error로 올라오게 됩니다.</p>
+
+<hr />
+
+<h2 id="마무리">마무리</h2>
+
+<p>이렇게 해서 api request와 response를 처리하는 부분을 살펴봤습니다. 대부분의 api 통신이 다 이런 구조로 되어있습니다. 실제 데이터를 가공하는 부분은 다른 로직에서 처리하게 되는데, 저는 하나의 로직을 너무 길지 않도록 유지하고 있습니다. 이런 식으로 input을 output으로 만드는 로직을 통신, 가공, 표시 등 다양한 로직의 뭉텅이로 분리해서 처리하고 있습니다. 이렇게 로직을 분리하고 error 처리를 다양하게 하면 가독성도 높일 수 있고 유지 보수도 쉬워집니다.
+  실제 데이터를 가공해서 output으로 만드는 부분은 다음 포스트에서 설명하겠습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/rxswift/">Rxswift</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift_MVVM">RxSwift MVVM 실무 적용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift_Deep_Cuts">RxSwift: Deep Cuts (번역)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Everyday_Reactive">Everyday Reactive (번역)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/rxswift/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/SwiftUI_Dribbble_OldAgeHomeApp">
+                <div class="post-card-image" style="background-image: url(/assets/images/SwiftUI/oldAgeHomeApp.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/SwiftUI_Dribbble_OldAgeHomeApp">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Swiftui</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">SwiftUI 화면 만들기 - Old Age Home App</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># SwiftUI 화면 만들기 - Old Age Home App https://dribbble.com/shots/7074019-Old-Age-Home-App ## 원본 ![](https://paper-attachments.dropbox.com/s_0C5B5B0D688EBF9B5C8128D090AEE98920DCD8C81B9D089DF1E9F05DFF470BDD_1567387551103_image.png) ---------- ## 인트로 화면 구현 ![](https://paper-attachments.dropbox.com/s_0C5B5B0D688EBF9B5C8128D090AEE98920DCD8C81B9D089DF1E9F05DFF470BDD_1567387614121_image.png) - 화면 전체를 덮는 이미지, 상 하단 세이프 에어리어 무시 - 상단 앱 제목과</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/IGListkit+Texture">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios_tips/iglistkit_with_texture.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListkit+Texture">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListkit + Texture 적용</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>IGListkit+Texture 적용 예전에 Let us:Go 에서 Texture에 대한 영상을 보고 이번 프로젝트에서 적용해봤습니다. 검색도 많이하고 이것 저것 시도도 많이 하며 적용했는데, 특히 제가 계속 써오던 IGListkit과 함께 사용하면 궁합이 아주 좋아서 소개해보려 합니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=RxSwift%2BMoya%2BMVVM+1%29+%ED%98%84%EC%97%85+RxSwift+-+%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9+%EC%B2%98%EB%A6%AC&amp;url=https://leejigun.github.io/RxSwift+Moya+MVVM_1)"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/RxSwift+Moya+MVVM_1)"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

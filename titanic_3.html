@@ -1,0 +1,975 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[Kaggle] titanic 모델, 예측, 해결</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="케글 타이타닉 데이터 분석." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//titanic_3" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[Kaggle] titanic 모델, 예측, 해결" />
+    <meta property="og:description" content="모델, 예측, 해결 이제 우리는 모델을 훈련시키고 필요한 해결책을 예측할 준비가 되었다. 우리가 선택할 수 있는 60개 이상의 예측 모델링 알고리즘이 있다. 우리는 우리가 평가할 수 있는 선택된 몇 개의 모델로 좁혀지는 문제와 해결 요건의 유형을 이해해야 한다. 우리의 문제는 분류와 회귀 문제다. 출력(생존여부)과 다른 변수나 특징(성인, 연령, 포트…)과의 관계를" />
+    <meta property="og:url" content="https://leejigun.github.io//titanic_3" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/titanic/titanic_3/titanic_3_background.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-12-08T09:00:04+09:00" />
+    <meta property="article:modified_time" content="2019-12-08T09:00:04+09:00" />
+    <meta property="article:tag" content="Ml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[Kaggle] titanic 모델, 예측, 해결" />
+    <meta name="twitter:description" content="모델, 예측, 해결 이제 우리는 모델을 훈련시키고 필요한 해결책을 예측할 준비가 되었다. 우리가 선택할 수 있는 60개 이상의 예측 모델링 알고리즘이 있다. 우리는 우리가 평가할 수 있는 선택된 몇 개의 모델로 좁혀지는 문제와 해결 요건의 유형을 이해해야 한다. 우리의 문제는 분류와 회귀 문제다. 출력(생존여부)과 다른 변수나 특징(성인, 연령, 포트…)과의 관계를" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/titanic/titanic_3/titanic_3_background.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//titanic_3",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/ml/titanic/titanic_3/titanic_3_background.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//titanic_3"
+    },
+    "description": "모델, 예측, 해결 이제 우리는 모델을 훈련시키고 필요한 해결책을 예측할 준비가 되었다. 우리가 선택할 수 있는 60개 이상의 예측 모델링 알고리즘이 있다. 우리는 우리가 평가할 수 있는 선택된 몇 개의 모델로 좁혀지는 문제와 해결 요건의 유형을 이해해야 한다. 우리의 문제는 분류와 회귀 문제다. 출력(생존여부)과 다른 변수나 특징(성인, 연령, 포트…)과의 관계를"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[Kaggle] titanic 모델, 예측, 해결" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 8 December 2019"> 8 December 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ml/'>ML</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[Kaggle] titanic 모델, 예측, 해결</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/ml/titanic/titanic_3/titanic_3_background.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="모델-예측-해결">모델, 예측, 해결</h1>
+
+<p>이제 우리는 모델을 훈련시키고 필요한 해결책을 예측할 준비가 되었다.</p>
+
+<p>우리가 선택할 수 있는 60개 이상의 예측 모델링 알고리즘이 있다. 우리는 우리가 평가할 수 있는 선택된 몇 개의 모델로 좁혀지는 문제와 해결 요건의 유형을 이해해야 한다.</p>
+
+<p>우리의 문제는 분류와 회귀 문제다.</p>
+
+<p>출력(생존여부)과 다른 변수나 특징(성인, 연령, 포트…)과의 관계를 파악하고자 한다. 우리는 또한 주어진 데이터셋으로 우리의 모델을 훈련시키기 때문에 감독된 학습이라고 불리는 기계 학습의 범주를 수행하고 있다.</p>
+
+<p>우리가 지도 학습 - 분류 에서 사용할 수 있는 모델들은 다음과 같다.</p>
+
+<ul>
+  <li>Logistic Regression - 로지스틱스 회기
+    <ul>
+      <li><a href="https://www.notion.so/61aa171cb3c34160bc03b9c1e7c69829#84b8a2baecf745e2a47f96190ef495e5">https://www.notion.so/61aa171cb3c34160bc03b9c1e7c69829#84b8a2baecf745e2a47f96190ef495e5</a></li>
+    </ul>
+  </li>
+  <li>KNN or k-Nearest Neighbors - 최근접 알고리즘
+    <ul>
+      <li><a href="https://nittaku.tistory.com/275">https://nittaku.tistory.com/275</a></li>
+    </ul>
+  </li>
+  <li>Support Vector Machines - 서포트 벡터 머신
+    <ul>
+      <li><a href="https://bkshin.tistory.com/entry/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-2%EC%84%9C%ED%8F%AC%ED%8A%B8-%EB%B2%A1%ED%84%B0-%EB%A8%B8%EC%8B%A0-SVM">https://bkshin.tistory.com/entry/머신러닝-2서포트-벡터-머신-SVM</a></li>
+    </ul>
+  </li>
+  <li>Naive Bayes classifier - 나이브 베이즈
+    <ul>
+      <li><a href="https://bkshin.tistory.com/entry/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-1%EB%82%98%EC%9D%B4%EB%B8%8C-%EB%B2%A0%EC%9D%B4%EC%A6%88-%EB%B6%84%EB%A5%98-Naive-Bayes-Classification">https://bkshin.tistory.com/entry/머신러닝-1나이브-베이즈-분류-Naive-Bayes-Classification</a></li>
+    </ul>
+  </li>
+  <li>Decision Tree - 결정 트리
+    <ul>
+      <li><a href="https://bkshin.tistory.com/entry/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-4-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%ACDecision-Tree?category=1057680">https://bkshin.tistory.com/entry/머신러닝-4-결정-트리Decision-Tree?category=1057680</a></li>
+    </ul>
+  </li>
+  <li>Random Forrest - 랜덤 포레스트 (결정 트리가 모여 구성)
+    <ul>
+      <li><a href="https://bkshin.tistory.com/entry/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-5-%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8Random-Forest%EC%99%80-%EC%95%99%EC%83%81%EB%B8%94Ensemble?category=1057680">https://bkshin.tistory.com/entry/머신러닝-5-랜덤-포레스트Random-Forest와-앙상블Ensemble?category=1057680</a></li>
+    </ul>
+  </li>
+  <li>Perceptron - 인공 신경망 모형 이진 분류 모델(linear classifier)
+    <ul>
+      <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=hobbang143&amp;logNo=221469060596&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F">https://m.blog.naver.com/PostView.nhn?blogId=hobbang143&amp;logNo=221469060596&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F</a></li>
+      <li><a href="https://sacko.tistory.com/10">https://sacko.tistory.com/10</a></li>
+    </ul>
+  </li>
+  <li>Artificial neural network - 인공 신경망</li>
+  <li>RVM or Relevance Vector Machine</li>
+</ul>
+
+<h2 id="데이터-준비">데이터 준비</h2>
+
+<p>학습 데이터와 테스트 데이터를 특성과 라벨 데이터로 분리한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train = train_df.drop("Survived", axis=1)
+Y_train = train_df["Survived"]
+X_test  = test_df.drop("PassengerId", axis=1).copy()
+X_train.shape, Y_train.shape, X_test.shape
+
+======
+((891, 8), (891,), (418, 8))
+</code></pre></div></div>
+
+<p>로지스틱 회귀 분석은 워크플로우의 초기에 실행하기 위한 유용한 모델이다.</p>
+
+<p>로지스틱 회귀 분석은 누적 로지스틱 분포인 로지스틱 함수를 사용하여, 확률 추정을 통해 범주형 종속 변수(기능)와 하나 이상의 독립 변수(기능) 사이의 관계를 측정한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logreg = LogisticRegression()
+logreg.fit(X_train, Y_train)
+Y_pred = logreg.predict(X_test)
+acc_log = round(logreg.score(X_train, Y_train) * 100, 2)
+acc_log
+========
+80.36
+</code></pre></div></div>
+
+<p>우리가 만든 모델의 정확도는 80.36으로 로지스틱 회귀 분석을 사용하여 가정과 결정을 검증할 수 있다.</p>
+
+<p>우리가 가공한 특성과 라벨의 상관 관계를 확인해보자. 양의 계수는 반응 노드를 증가시키고(따라서 확률을 증가) 음의 계수를 가지면 반응 노드를 감소시킨다.(따라서 확률을 감소)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>coeff_df = pd.DataFrame(train_df.columns.delete(0))
+coeff_df.columns = ['Feature']
+coeff_df["Correlation"] = pd.Series(logreg.coef_[0])
+
+coeff_df.sort_values(by='Correlation', ascending=False)
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/titanic/titanic_3/Untitled.png" alt="Untitled/Untitled.png" /></p>
+
+<ul>
+  <li>성별은 양위계수가 가장 높은 것으로, 성별값이 상승(남성:0~여성:1)될수록 생존 확률이 높아진다. (여성일수록 생존 확률이 높다)</li>
+  <li>반대로 Pclass가 증가하면 생존확률이 가장 많이 감소한다.</li>
+  <li>이런 방식으로 age * class 는 생존확률과 음의 상관관계가 두 번째로 높기 때문에 모델링하기에 좋은 특성이다.</li>
+  <li>두 번째로 높은 양의 상관관계인 Title도 마찬가지다.</li>
+</ul>
+
+<hr />
+
+<p>다음으로 우리는 지도학습에서 Support Vector Machines 알고리즘을 사용해 모델링한다.</p>
+
+<p>각각 <strong>2개 범주</strong>의 하나 또는 다른 범주에 속하는 것으로 표시된 일련의 훈련 샘플에 대해, SVM 훈련 알고리즘은 새로운 테스트 샘플을 한 범주 또는 다른 범주에 할당하는 모델을 구축하여 확률론적 이진 선형 분류기가 된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>svc = SVC()
+svc.fit(X_train, Y_train)
+Y_pred = svc.predict(X_test)
+acc_svc = round(svc.score(X_train, Y_train) * 100, 2)
+acc_svc
+=====
+83.84
+</code></pre></div></div>
+
+<hr />
+
+<p>패턴 인식에서 k-Nearest Neighbors 알고리즘(또는 줄여서 k-NN)은 분류 및 회귀 분석에 사용되는 비모수 방법이다.</p>
+
+<p>표본은 이웃의 과반수 투표에 의해 분류되며, 표본은 가장 가까운 k 이웃들 사이에서 가장 일반적인 등급에 할당된다(k는 양의 정수, 일반적으로 작다). k = 1인 경우, 개체는 가장 가까운 단일 이웃의 클래스에 간단히 할당된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>knn = KNeighborsClassifier(n_neighbors = 3)
+knn.fit(X_train, Y_train)
+Y_pred = knn.predict(X_test)
+acc_knn = round(knn.score(X_train, Y_train) * 100, 2)
+acc_knn
+====
+84.74
+</code></pre></div></div>
+
+<hr />
+
+<p>기계학습에서 naive Bayes classifiers는 특성들 사이에 강한 (생존적) 독립적 가정을 가진 베이즈의 정리를 적용한 것에 기초한 단순한 확률론적 분류자의 계열이다. Naive Bayes 분류기는 확장성이 뛰어나, 학습 문제의 변수 수(기능)에 선형적인 다수의 매개변수가 필요하다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Gaussian Naive Bayes
+
+gaussian = GaussianNB()
+gaussian.fit(X_train, Y_train)
+Y_pred = gaussian.predict(X_test)
+acc_gaussian = round(gaussian.score(X_train, Y_train) * 100, 2)
+acc_gaussian
+=====
+72.28
+</code></pre></div></div>
+
+<hr />
+
+<p>perceptron 은 이진 분류기의 지도 학습을 위한 알고리즘이다. (숫자 벡터로 대표되는 입력이 어떤 특정 클래스에 속하는지 아닌지를 결정할 수 있는 기능). 그것은 선형 분류기의 일종으로, 즉 형상 벡터와 가중치 집합을 결합한 선형 예측기 함수에 기초해 예측을 하는 분류 알고리즘이다. 알고리즘은 한 번에 하나씩 훈련의 요소를 처리한다는 점에서 온라인 학습을 허용한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Perceptron
+
+perceptron = Perceptron()
+perceptron.fit(X_train, Y_train)
+Y_pred = perceptron.predict(X_test)
+acc_perceptron = round(perceptron.score(X_train, Y_train) * 100, 2)
+acc_perceptron
+=====
+78.0
+
+# Linear SVC
+
+linear_svc = LinearSVC()
+linear_svc.fit(X_train, Y_train)
+Y_pred = linear_svc.predict(X_test)
+acc_linear_svc = round(linear_svc.score(X_train, Y_train) * 100, 2)
+acc_linear_svc
+=========
+79.01
+
+# Stochastic Gradient Descent
+
+sgd = SGDClassifier()
+sgd.fit(X_train, Y_train)
+Y_pred = sgd.predict(X_test)
+acc_sgd = round(sgd.score(X_train, Y_train) * 100, 2)
+acc_sgd
+========
+74.3
+</code></pre></div></div>
+
+<hr />
+
+<p>의사 결정 트리 모델은 대상 값이 가질 수 있는 타겟에 대해 매핑하는 용도로 사용한다. 대상 변수가 유한한 값 집합을 취할 수 있는 트리 모델을 분류 트리라고 한다. 이러한 트리 구조에서 잎은 클래스 라벨을 나타내고 가지는 해당 클래스 라벨을 유도하는 형상의 결합을 나타낸다. 대상 변수가 연속적인 값(일반적으로 실제 숫자)을 취할 수 있는 의사결정 트리를 회귀 트리라고 한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Decision Tree
+
+decision_tree = DecisionTreeClassifier()
+decision_tree.fit(X_train, Y_train)
+Y_pred = decision_tree.predict(X_test)
+acc_decision_tree = round(decision_tree.score(X_train, Y_train) * 100, 2)
+acc_decision_tree
+===
+86.76
+</code></pre></div></div>
+
+<hr />
+
+<p>다음 모델인 랜덤 포레스트는 가장 인기 있는 모델 중 하나이다. 랜덤 포리스트 또는 랜덤 디시젼 포리스트는 분류, 회귀 및 기타 작업을 위한 앙상블 학습 방법으로, 훈련 시간에 다수의 디시젼 트리(n_estimators=100)를 구성하고 개별 트리의 클래스(분류) 또는 평균 예측(회귀)의 모드인 클래스를 출력하여 운영된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Random Forest
+
+random_forest = RandomForestClassifier(n_estimators=100)
+random_forest.fit(X_train, Y_train)
+Y_pred = random_forest.predict(X_test)
+random_forest.score(X_train, Y_train)
+acc_random_forest = round(random_forest.score(X_train, Y_train) * 100, 2)
+acc_random_forest
+======
+86.76
+</code></pre></div></div>
+
+<h2 id="model-evaluation">Model evaluation</h2>
+
+<p>우리는 이제 우리의 문제에 가장 적합한 모델을 선택하기 위해 모든 모델에 대한 평가를 순위를 매길 수 있다. 의사결정 트리와 랜덤 포레스트 모두 같은 점수를 받지만, 우리는 랜덤 포레스트가 그들의 훈련 세트에 과도하게 적응하는 의사결정 트리의 습성을 교정하기 때문에 랜덤 포리스트를 사용하는 것을 선택한다.</p>
+
+<p><img src="assets/images/ml/titanic/titanic_2/Untitled 1.png" alt="Untitled/Untitled%201.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 제출을 위해 파일 생성
+submission = pd.DataFrame({
+        "PassengerId": test_df["PassengerId"],
+        "Survived": Y_pred
+    })
+# submission.to_csv('../output/submission.csv', index=False)
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ml/">Ml</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_2">[Kaggle] titanic 데이터 가공</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_1">[Kaggle] titanic 데이터 분석</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_0">[Kaggle] titanic intro</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ml/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/apple_watch_project">
+                <div class="post-card-image" style="background-image: url(/assets/images/watchOS/2019-12-17-apple_watch_project/watchOs_background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/apple_watch_project">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Watchos</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">apple watch 프로젝트</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># apple watch 프로젝트 최근 애플 워치를 구매하고 워치 앱에 관심이 생겼다. 워치 앱을 공부하며 타임 타이머와 유사한 기능을 가진 워치 앱을 만들어 보려 한다. ## 타임 타이머 ![apple%20watch/timeTimer.png](assets/images/watchOS/2019-12-17-apple_watch_project/timeTimer.png) 타임 타이머의 핵심은 시각적으로</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/titanic_2">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/titanic/titanic_2/background.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/titanic_2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Kaggle] titanic 데이터 가공</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>데이터 가공 앞서 데이터 세트와 요구사항에 대해서 몇 가지 가정을 확인헀다. 지금까지 데이터의 패턴을 파악하기 위해서 차트를 만들었지만 데이터를 변경할 필요는 없었다. 이제는 일반 데이터에서 보이지 않는 패턴을 확인하고 모델에 사용하기 위해서 데이터를</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[Kaggle] titanic 모델, 예측, 해결</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BKaggle%5D+titanic+%EB%AA%A8%EB%8D%B8%2C+%EC%98%88%EC%B8%A1%2C+%ED%95%B4%EA%B2%B0&amp;url=https://leejigun.github.io/titanic_3"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/titanic_3"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

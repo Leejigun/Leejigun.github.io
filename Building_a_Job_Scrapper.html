@@ -1,0 +1,1105 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Building a Job Scrapper</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="노마드의 파이썬 강의를 인트로" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Building_a_Job_Scrapper" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Building a Job Scrapper" />
+    <meta property="og:description" content="Building a Job Scrapper 특정 URL의 페이지를 페이스북에 포스트할 때 미리보기 이미지와 제목을 즉시 함께 포스트 한다. 어떻게 동작하는 것일까? URL의 웹 사이트를 스크랩핑해서 이미지와 제목을 읽어오는 것이다. https://academy.nomadcoders.co/courses/681401/lectures/12171966 구글에서 검색할 때에도 마찬가지다. 구글은 페이지를 보여주면서 동시에 내용을 미리보기로 제공한다. 우리의 프로젝트는 이런 스크랩핑을 사용해서 스택 오버플로우에 있는 구인 페이지를" />
+    <meta property="og:url" content="https://leejigun.github.io//Building_a_Job_Scrapper" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/Building_a_Job_Scrapper/background.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-11-06T09:00:02+09:00" />
+    <meta property="article:modified_time" content="2019-11-06T09:00:02+09:00" />
+    <meta property="article:tag" content="Ml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Building a Job Scrapper" />
+    <meta name="twitter:description" content="Building a Job Scrapper 특정 URL의 페이지를 페이스북에 포스트할 때 미리보기 이미지와 제목을 즉시 함께 포스트 한다. 어떻게 동작하는 것일까? URL의 웹 사이트를 스크랩핑해서 이미지와 제목을 읽어오는 것이다. https://academy.nomadcoders.co/courses/681401/lectures/12171966 구글에서 검색할 때에도 마찬가지다. 구글은 페이지를 보여주면서 동시에 내용을 미리보기로 제공한다. 우리의 프로젝트는 이런 스크랩핑을 사용해서 스택 오버플로우에 있는 구인 페이지를" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/Building_a_Job_Scrapper/background.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Building_a_Job_Scrapper",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/ml/Building_a_Job_Scrapper/background.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Building_a_Job_Scrapper"
+    },
+    "description": "Building a Job Scrapper 특정 URL의 페이지를 페이스북에 포스트할 때 미리보기 이미지와 제목을 즉시 함께 포스트 한다. 어떻게 동작하는 것일까? URL의 웹 사이트를 스크랩핑해서 이미지와 제목을 읽어오는 것이다. https://academy.nomadcoders.co/courses/681401/lectures/12171966 구글에서 검색할 때에도 마찬가지다. 구글은 페이지를 보여주면서 동시에 내용을 미리보기로 제공한다. 우리의 프로젝트는 이런 스크랩핑을 사용해서 스택 오버플로우에 있는 구인 페이지를"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Building a Job Scrapper" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 6 November 2019"> 6 November 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ml/'>ML</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Building a Job Scrapper</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/ml/Building_a_Job_Scrapper/background.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="building-a-job-scrapper">Building a Job Scrapper</h1>
+
+<p>특정 URL의 페이지를 페이스북에 포스트할 때 미리보기 이미지와 제목을 즉시 함께 포스트 한다. 어떻게 동작하는 것일까? URL의 웹 사이트를 스크랩핑해서 이미지와 제목을 읽어오는 것이다.</p>
+
+<p><a href="https://academy.nomadcoders.co/courses/681401/lectures/12171966">https://academy.nomadcoders.co/courses/681401/lectures/12171966</a></p>
+
+<p>구글에서 검색할 때에도 마찬가지다. 구글은 페이지를 보여주면서 동시에 내용을 미리보기로 제공한다.</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_0.png" alt="Building%20a%20Job%20Scrapper/Untitled.png" /></p>
+
+<p>우리의 프로젝트는 이런 스크랩핑을 사용해서 스택 오버플로우에 있는 구인 페이지를 스크랩핑 하려 한다.</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_1.png" alt="Building%20a%20Job%20Scrapper/Untitled%201.png" /></p>
+
+<p>특정 단어로 검색하면 어마어마하게 많은 결과가 나오고 이것을 하나 하나 옮겨 적는 것은 많은 노력이 필요하다. 파이썬을 이용해서 페이지를 이동하며 게시물을 스크랩핑 하려 한다.</p>
+
+<h1 id="navigating-with-python">Navigating with Python</h1>
+
+<p>검색에 따른 많은 결과값이 있지만 한 페이지에 나타나는 내용은 한정되어 있다.  페이지를 이동하면서 스크롤링을 해야하는데, 한 페이지의 게시물의 수와 전체 페이지의 수를 안다면 도움이 된다.</p>
+
+<p>먼저 페이지를 읽기 위해서 Requests 라이브러리를 사용하자.</p>
+
+<ul>
+  <li><a href="https://realpython.com/python-requests/">https://realpython.com/python-requests/</a></li>
+  <li><a href="https://requests.kennethreitz.org/en/master/">https://requests.kennethreitz.org/en/master/</a></li>
+</ul>
+
+<p>왼쪽에 페키지 탭을 눌러 rqeusts 라이브러리를 설치하자</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_2.png" alt="Building%20a%20Job%20Scrapper/Untitled%202.png" /></p>
+
+<p>라이브러리를 추가하고 채용 페이지를 읽어보자
+    ```python</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import requests
+
+indeed_result = requests.get("https://kr.indeed.com/취업?q=python&amp;limit=50")
+
+print(indeed_result)
+
+========================
+&lt;Response [200]&gt;
+```
+</code></pre></div></div>
+
+<p>여기에는 이 데이터를 text, json, html 등으로 변경해주는 기능이 같이 들어있다.</p>
+
+<p>text로 찍어내면 상당히 어지럽고 복잡하다.</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_3.png" alt="Building%20a%20Job%20Scrapper/Untitled%203.png" /></p>
+
+<p>이를 보기 쉽게 하기 위해서 BeautifulSoup 라이브러리를 추가한다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">indeed_result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://kr.indeed.com/취업?q=python&amp;limit=50"</span><span class="p">)</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">indeed_result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s">'html'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+
+<span class="o">=========</span>
+
+<span class="o">.....</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"tellafriend-container result-tab email_job_content"</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"sign-in-container result-tab"</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"notes-container result-tab"</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"jobToJobRec_Hide"</span> <span class="nb">id</span><span class="o">=</span><span class="s">"jobToJobRec_f7c8a03dbcc659a7_sj"</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"jobsearch-SerpJobCard unifiedRow row result"</span> <span class="n">data</span><span class="o">-</span><span class="n">jk</span><span class="o">=</span><span class="s">"4233609a843b5e96"</span> <span class="n">data</span><span class="o">-</span><span class="n">tn</span><span class="o">-</span><span class="n">component</span><span class="o">=</span><span class="s">"organicJob"</span> <span class="nb">id</span><span class="o">=</span><span class="s">"p_4233609a843b5e96"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"title"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s">"jobtitle turnstileLink"</span> <span class="n">data</span><span class="o">-</span><span class="n">tn</span><span class="o">-</span><span class="n">element</span><span class="o">=</span><span class="s">"jobTitle"</span>
+  <span class="n">href</span><span class="o">=</span><span class="s">"/rc/clk?jk=4233609a843b5e96&amp;amp;fccid=aba87288e4cc3687&amp;amp;vjs=3"</span>
+  <span class="nb">id</span><span class="o">=</span><span class="s">"jl_4233609a843b5e96"</span>
+  <span class="n">onclick</span><span class="o">=</span><span class="s">"setRefineByCookie([]); return rclk(this,jobmap[3],true,0);"</span>
+  <span class="n">onmousedown</span><span class="o">=</span><span class="s">"return rclk(this,jobmap[3],0);"</span>
+  <span class="n">rel</span><span class="o">=</span><span class="s">"noopener nofollow"</span> <span class="n">target</span><span class="o">=</span><span class="s">"_blank"</span> <span class="n">title</span><span class="o">=</span><span class="s">"분석지원팀 -데이터 분석가"</span><span class="o">&gt;</span>
+  <span class="err">분석지원팀</span> <span class="o">-</span> <span class="err">데이터</span> <span class="err">분석가</span>
+<span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"sjcl"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"company"</span><span class="o">&gt;</span>
+<span class="n">Nexon</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"recJobLoc"</span> <span class="n">data</span><span class="o">-</span><span class="n">rc</span><span class="o">-</span><span class="n">loc</span><span class="o">=</span><span class="s">"성남 분당구"</span> <span class="nb">id</span><span class="o">=</span><span class="s">"recJobLoc_4233609a843b5e96"</span> <span class="n">style</span><span class="o">=</span><span class="s">"display: none"</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"location accessible-contrast-color-location"</span><span class="o">&gt;</span><span class="err">성남</span> <span class="err">분당구</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"summary"</span><span class="o">&gt;</span>
+<span class="err">및</span> <span class="err">커뮤니케이션</span> <span class="err">능력</span> <span class="o">-</span> <span class="p">(</span><span class="err">필수</span><span class="p">)</span> <span class="err">새로운</span> <span class="err">기술</span> <span class="err">습득에</span> <span class="err">능동적이고</span> <span class="err">거부감이</span> <span class="err">없는</span> <span class="err">분</span> <span class="o">-</span> <span class="p">(</span><span class="err">선택</span><span class="p">)</span> <span class="n">R</span> <span class="err">혹은</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="n">Python</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span><span class="err">을</span> <span class="err">이용한</span> <span class="err">데이터분석</span> <span class="err">능력</span> <span class="o">-</span> <span class="p">(</span><span class="err">선택</span><span class="p">)</span> <span class="n">SQL</span> <span class="err">기본</span> <span class="err">활용</span> <span class="err">능력</span> <span class="o">-</span> <span class="p">(</span><span class="err">선택</span><span class="p">)</span> <span class="err">통계</span> <span class="err">및</span> <span class="err">분석에</span> <span class="err">대한</span> <span class="err">이론</span><span class="o">...</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"jobsearch-SerpJobCard-footer"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">"jobsearch-SerpJobCard-footerAc</span><span class="err">
+</span><span class="s">.......</span><span class="err">
+</span></code></pre></div></div>
+
+<p>뷰티풀스프의 문서를 살펴보면 html을 파싱하는 여러가지 방법들을 제공한다.</p>
+
+<p>html의 특정 컴포넌트를 뽑아오거나 제목만 추출하는 기능들을 제공한다.</p>
+
+<p>여기서는 페이지 네비게이션 컴포넌트를 추출해보자.</p>
+
+<p>해당 페이지를 크롬 개발자 모드로 뜯어보면 네비게이션 부분을 찾을 수 있다. 이 부분만 뽑아내보자.</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_4.png" alt="Building%20a%20Job%20Scrapper/Untitled%204.png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">indeed_result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://kr.indeed.com/취업?q=python&amp;limit=50"</span><span class="p">)</span>
+
+<span class="n">indeed_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">indeed_result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s">'html'</span><span class="p">)</span>
+
+<span class="n">pagination</span> <span class="o">=</span> <span class="n">indeed_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'pagination'</span><span class="p">})</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pagination</span><span class="p">)</span>
+</code></pre></div></div>
+<p>이제 여기서 각각의 페이지로 이동하는 링크들만 추출해보자. <strong><code class="highlighter-rouge">&lt;a&gt;</code></strong> 태그를 가진 부분만 꺼내면 된다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 각각의 페이지 링크들만 꺼냄</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="n">pagination</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+</code></pre></div></div>
+<p>이제 a 태그를 지닌 페이지 배열이 완성된다. 여기서 url만 페이지 번호만 꺼내려면 span 태그로 감싼 부분을 꺼내면 된다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 각각의 페이지 링크들만 꺼냄</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="n">pagination</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">))</span>
+
+<span class="o">======</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">9</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"pn"</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s">"np"</span><span class="o">&gt;</span><span class="err">다음</span> <span class="err">»</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>여기서 함수형을 조금 추가하고 페이지의 숫자들만 저장하고 마지막 페이지를 뽑아보자.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 각각의 페이지 링크들만 꺼냄</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="n">pagination</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+<span class="c"># 각 페이지에서 숫자만 뽑아내고</span>
+<span class="n">spans</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">span</span><span class="p">)</span> <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">)</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">))</span>
+<span class="c"># 마지막 페이지 숫자를 추출해 최대값을 꺼낸다.</span>
+<span class="n">max_page</span> <span class="o">=</span> <span class="n">spans</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+<p>다음 페이지는 무시한다.</p>
+
+<p>이제 최대 페이지를 알았으니까 반복해서 페이지를 호출할 수 있게 되었다.</p>
+
+<h2 id="함수형-프로그래밍">함수형 프로그래밍</h2>
+
+<p>함수형으로 마지막 페이지 값을 꺼내는 함수를 만들었다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">INDEED_URL</span> <span class="o">=</span> <span class="s">"https://kr.indeed.com/취업?q=python&amp;limit=50"</span>
+
+<span class="k">def</span> <span class="nf">extract_indeed_pages</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">INDEED_URL</span><span class="p">)</span>
+  <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s">"html.parser"</span><span class="p">)</span>
+  <span class="c"># 화면에서 페이지 네비게이션을 생성</span>
+  <span class="n">pagination</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'pagination'</span><span class="p">})</span>
+  <span class="c"># 각각의 페이지 링크들만 꺼냄</span>
+  <span class="n">pages</span> <span class="o">=</span> <span class="n">pagination</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+  <span class="n">pages_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+  <span class="c"># 페이지 넘버만 꺼냄</span>
+  <span class="n">string_spans</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">page</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">pages_iter</span><span class="p">)</span>
+  <span class="c"># int로 형변환 (이 과정에서 '다음' 문구 제거)</span>
+  <span class="n">optional_int_spans</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">string</span><span class="p">:</span> <span class="n">optional_casting</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="n">string_spans</span><span class="p">)</span>
+  <span class="c"># None 값 제거</span>
+  <span class="n">nonNull_spans</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">,</span> <span class="n">optional_int_spans</span><span class="p">)</span>
+  <span class="c"># 마지막 페이지값 꺼냄</span>
+  <span class="n">max_page</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">last</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">nonNull_spans</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">max_page</span>
+
+<span class="c"># 숫자 string을 int로 안전하게 변환</span>
+<span class="k">def</span> <span class="nf">optional_casting</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+<p>이 내용을 다른 파일로 분리해서 모듈화시키면 다음과 같이 사용 가능하다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#main.py</span>
+
+<span class="kn">from</span> <span class="nn">scraping.indeed</span> <span class="kn">import</span> <span class="n">extract_indeed_pages</span>
+<span class="n">max_indeed_pages</span> <span class="o">=</span> <span class="n">extract_indeed_pages</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">max_indeed_pages</span><span class="p">)</span>
+<span class="o">================================================</span>
+<span class="mi">11</span>
+</code></pre></div></div>
+<p>indeed 페이지를 보면 2페이지로 넘어간 URL은 start=50으로 시작한다. start=0은 1페이지로 특정 값부터 시작해서 limit값까지의 데이터를 읽는 형태로 되어있다.</p>
+
+<p>저 start값을 변경해서 반복적으로 모든 페이지를 가져올 수 있다. 일단 status_code를 찍어보자.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_indeed_jobs</span><span class="p">(</span><span class="n">last_page</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_page</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="s">'{URL}&amp;start={page * LIMIT}'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">'{page}: {result.status_code}'</span><span class="p">)</span>
+<span class="o">=========================================================</span>
+<span class="mi">0</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">1</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">2</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">3</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">4</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">5</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">6</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">7</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">8</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">9</span><span class="p">:</span> <span class="mi">200</span>
+<span class="mi">10</span><span class="p">:</span> <span class="mi">200</span>
+</code></pre></div></div>
+<p>이제 실제 데이터의 하나의 셀을 뜯어보자</p>
+
+<p><img src="assets/images/ml/Building_a_Job_Scrapper/Building a Job Scrapper_4.png" alt="Building%20a%20Job%20Scrapper/Untitled%205.png" /></p>
+
+<p>저 안에서 ‘title’ 클래스 안에 있는 속성의 title의 값을 꺼냅니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_indeed_jobs</span><span class="p">(</span><span class="n">last_page</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_page</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="s">'{URL}&amp;start={page * LIMIT}'</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s">"html.parser"</span><span class="p">)</span>
+    <span class="c">#'jobsearch-SerpJobCard' 카드의 키값</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'jobsearch-SerpJobCard'</span><span class="p">})</span>
+
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+      <span class="n">title</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'title'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="s">'title'</span><span class="p">]</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">'{page}: {title}'</span><span class="p">)</span>
+<span class="o">============================================================================</span>
+<span class="o">...</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">Researcher</span><span class="p">(</span><span class="n">AI</span><span class="o">/</span><span class="n">Deep</span> <span class="n">Learning</span><span class="p">)</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">Field</span> <span class="n">Application</span> <span class="n">Engineer</span> <span class="p">(</span><span class="n">FAE</span><span class="p">)</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">Smart</span> <span class="n">Manufacturing</span> <span class="n">Data</span> <span class="n">Scientist</span>
+<span class="mi">8</span><span class="p">:</span> <span class="err">프로그래머</span><span class="p">,</span> <span class="err">개발자</span>
+<span class="mi">8</span><span class="p">:</span> <span class="err">컨설팅회사</span> <span class="err">분야별</span><span class="p">(</span><span class="n">PMO</span><span class="p">,</span><span class="n">PI</span><span class="p">,</span><span class="n">ISP</span><span class="p">,</span> <span class="n">Data</span> <span class="n">Analytics</span><span class="err">등</span><span class="p">)</span><span class="err">컨설턴트</span> <span class="err">포지션</span> <span class="n">asap</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">Data</span> <span class="n">Scientist</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">RF</span> <span class="n">Layout</span> <span class="n">CAE</span> <span class="mi">4</span><span class="n">G</span> <span class="n">LTE</span> <span class="mi">5</span><span class="n">G</span> <span class="n">NR</span> <span class="n">Software</span> <span class="n">Engineer</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">Principal</span><span class="p">,</span> <span class="n">Business</span> <span class="n">Analysis</span> <span class="p">(</span><span class="n">Retail</span> <span class="n">Systems</span><span class="p">)</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">SW</span><span class="err">개발자</span> <span class="p">(</span><span class="err">경력</span> <span class="mi">3</span><span class="err">년이상</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div></div>
+<p>같은 방법으로 회사명도 출력한다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">optional_casting_srt</span><span class="p">(</span><span class="nb">any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">if</span> <span class="nb">any</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">''</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">any</span><span class="p">)</span>
+  <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">''</span>
+
+<span class="n">company</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'sjcl'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'company'</span><span class="p">})</span><span class="o">.</span><span class="n">string</span>
+<span class="n">compnayName</span> <span class="o">=</span> <span class="n">optional_casting_srt</span><span class="p">(</span><span class="n">company</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">compnayName</span><span class="p">)</span>
+</code></pre></div></div>
+<p>회사명, 지역, 링크를 추출하도록 함수화 한다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">functools</span> <span class="k">as</span> <span class="n">fp</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="n">f</span><span class="s">"https://kr.indeed.com/취업?q=python&amp;limit={LIMIT}"</span>
+
+<span class="k">def</span> <span class="nf">extract_indeed_pages</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+  <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s">"html.parser"</span><span class="p">)</span>
+  <span class="c"># 화면에서 페이지 네비게이션을 생성</span>
+  <span class="n">pagination</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'pagination'</span><span class="p">})</span>
+  <span class="c"># 각각의 페이지 링크들만 꺼냄</span>
+  <span class="n">pages</span> <span class="o">=</span> <span class="n">pagination</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+  <span class="n">pages_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+  <span class="c"># 페이지 넘버만 꺼냄</span>
+  <span class="n">string_spans</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">page</span><span class="p">:</span> <span class="n">page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">pages_iter</span><span class="p">)</span>
+  <span class="c"># int로 형변환 (이 과정에서 '다음' 문구 제거)</span>
+  <span class="n">optional_int_spans</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">string</span><span class="p">:</span> <span class="n">optional_casting</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="n">string_spans</span><span class="p">)</span>
+  <span class="c"># None 값 제거</span>
+  <span class="n">nonNull_spans</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">,</span> <span class="n">optional_int_spans</span><span class="p">)</span>
+  <span class="c"># 마지막 페이지값 꺼냄</span>
+  <span class="n">max_page</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">last</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">nonNull_spans</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">max_page</span>
+
+<span class="k">def</span> <span class="nf">extract_indeed_jobs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+  <span class="n">last_page</span> <span class="o">=</span> <span class="n">extract_indeed_pages</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_page</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="s">'{URL}&amp;start={page * LIMIT}'</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s">"html.parser"</span><span class="p">)</span>
+    <span class="c">#'jobsearch-SerpJobCard' 카드의 키값</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'jobsearch-SerpJobCard'</span><span class="p">})</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">cell</span><span class="p">:</span> <span class="n">extract_job_dic</span><span class="p">(</span><span class="n">cell</span><span class="p">),</span> <span class="n">cells</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">extract_job_dic</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+  <span class="n">title</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'title'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="s">'title'</span><span class="p">]</span>
+  <span class="n">company</span> <span class="o">=</span> <span class="n">exteract_compny_name</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+  <span class="n">location</span> <span class="o">=</span> <span class="n">exteract_location</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+  <span class="n">link</span> <span class="o">=</span> <span class="n">exteract_link</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s">'title'</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s">'company'</span><span class="p">:</span> <span class="n">company</span><span class="p">,</span> <span class="s">'location'</span><span class="p">:</span> <span class="n">location</span><span class="p">,</span> <span class="s">'link'</span><span class="p">:</span> <span class="n">link</span><span class="p">}</span>
+<span class="c">#제목 추출</span>
+<span class="k">def</span> <span class="nf">extreact_title</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">return</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'title'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="s">'title'</span><span class="p">]</span>  
+
+<span class="c"># 회사 이름 추출</span>
+<span class="k">def</span> <span class="nf">exteract_compny_name</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="c"># 회사 이름이 표시되는 방식이 2가지</span>
+  <span class="n">company</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'sjcl'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'company'</span><span class="p">})</span>
+  <span class="k">if</span> <span class="n">company</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">compnayName</span> <span class="o">=</span> <span class="n">company</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">compnayName</span> <span class="o">=</span> <span class="s">''</span>
+  <span class="n">company_string</span> <span class="o">=</span> <span class="n">optional_casting_srt</span><span class="p">(</span><span class="n">company</span><span class="o">.</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="n">compnayName</span> <span class="o">=</span> <span class="n">optional_casting_srt</span><span class="p">(</span><span class="n">compnayName</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="c"># 별점이 붙은 회사 이름이 있는데 그것 때문에 2가지 타입으로 뽑아내야함</span>
+  <span class="k">if</span> <span class="n">compnayName</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">compnayName</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">company_string</span>
+
+<span class="c"># 위치값 뽑아오기</span>
+<span class="k">def</span> <span class="nf">exteract_location</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">return</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'sjcl'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'recJobLoc'</span><span class="p">})[</span><span class="s">'data-rc-loc'</span><span class="p">]</span>
+
+<span class="c">#이동 링크 뽑아오기</span>
+<span class="k">def</span> <span class="nf">exteract_link</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="nb">id</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'title'</span><span class="p">})</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)[</span><span class="s">'id'</span><span class="p">]</span>
+  <span class="nb">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'jl_'</span><span class="p">,</span><span class="s">''</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">f</span><span class="s">'https://kr.indeed.com/채용보기?jk={id}'</span>
+<span class="c"># 숫자 string을 int로 안전하게 변환</span>
+<span class="k">def</span> <span class="nf">optional_casting</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+  <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">optional_casting_srt</span><span class="p">(</span><span class="nb">any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">if</span> <span class="nb">any</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">''</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">any</span><span class="p">)</span>
+  <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">''</span>
+</code></pre></div></div>
+<p>파일에 저장한다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">save_to_file</span><span class="p">(</span><span class="n">jobs</span><span class="p">):</span>
+  <span class="c"># 파일 열기, 없으면 생성</span>
+  <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'jobs.csv'</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s">'w'</span><span class="p">)</span>
+  <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+  <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">'title'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">,</span> <span class="s">'location'</span><span class="p">,</span> <span class="s">'link'</span><span class="p">])</span>
+
+  <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">:</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+  <span class="k">return</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ml/">Ml</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_3">[Kaggle] titanic 모델, 예측, 해결</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_2">[Kaggle] titanic 데이터 가공</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_1">[Kaggle] titanic 데이터 분석</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ml/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Python_theory_01">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/theory/python_theory_background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Python_theory_01">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">노마드 파이썬 이론</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># 이론 노마드 파이썬 강의를 보고 파이썬 이론 정리 노트를 작성한다. # 1. Variable ## a = somthing int형 ```python a = 2 b = 3 print(a + b) ``` string 형 ```python</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Python_00">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/ml_tag_background.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Python_00">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">노마드 파이썬 강의 - 00</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>파이썬 강의 https://academy.nomadcoders.co/courses/python-for-absolute-beginners/lectures/12154590 1. Intro 파이썬은 엄청나게 많은 분야와 많은 사람들이 사용하고 있다. 웹, 데이터 사이언스 머신러닝, 소프트웨어 등의 용도로 사용하고 있다. 드롭박스, 나사, 유튜브 등 많은 그룹에서 파이썬을 사용하고 커뮤니티도 커 도움받기</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Building a Job Scrapper</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Building+a+Job+Scrapper&amp;url=https://leejigun.github.io/Building_a_Job_Scrapper"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Building_a_Job_Scrapper"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

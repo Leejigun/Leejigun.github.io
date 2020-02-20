@@ -1,0 +1,999 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>SwiftUI 화면 만들기 - Challenges App</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="SwiftUI 앱 디자인 테스트" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//SwiftUI_Dribbble_challengesApp" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SwiftUI 화면 만들기 - Challenges App" />
+    <meta property="og:description" content="SwiftUI 화면 만들기 - Challenges App 이미지 출처: https://dribbble.com/shots/7047168-Challenges-App 원본 1. 화면 분석 상단 전형적인 SwiftUI의 네비게이션 뷰 형태 타이틀을 제외하고 오른쪽에 검색 버튼 중단 횡 스크롤의 ListView 사용 카드 이미지는 새로 비율 구성 하단 하단으로 길어지는 ListView 사용 왼쪽의 가이드 라인은 Rect로 그리기 2. 상단 전형적인 SwiftUI의 네비게이션 뷰" />
+    <meta property="og:url" content="https://leejigun.github.io//SwiftUI_Dribbble_challengesApp" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/SwiftUI/challengesApp.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-08-28T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2019-08-28T09:00:01+09:00" />
+    <meta property="article:tag" content="Swiftui" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SwiftUI 화면 만들기 - Challenges App" />
+    <meta name="twitter:description" content="SwiftUI 화면 만들기 - Challenges App 이미지 출처: https://dribbble.com/shots/7047168-Challenges-App 원본 1. 화면 분석 상단 전형적인 SwiftUI의 네비게이션 뷰 형태 타이틀을 제외하고 오른쪽에 검색 버튼 중단 횡 스크롤의 ListView 사용 카드 이미지는 새로 비율 구성 하단 하단으로 길어지는 ListView 사용 왼쪽의 가이드 라인은 Rect로 그리기 2. 상단 전형적인 SwiftUI의 네비게이션 뷰" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/SwiftUI/challengesApp.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Swiftui" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//SwiftUI_Dribbble_challengesApp",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/SwiftUI/challengesApp.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//SwiftUI_Dribbble_challengesApp"
+    },
+    "description": "SwiftUI 화면 만들기 - Challenges App 이미지 출처: https://dribbble.com/shots/7047168-Challenges-App 원본 1. 화면 분석 상단 전형적인 SwiftUI의 네비게이션 뷰 형태 타이틀을 제외하고 오른쪽에 검색 버튼 중단 횡 스크롤의 ListView 사용 카드 이미지는 새로 비율 구성 하단 하단으로 길어지는 ListView 사용 왼쪽의 가이드 라인은 Rect로 그리기 2. 상단 전형적인 SwiftUI의 네비게이션 뷰"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="SwiftUI 화면 만들기 - Challenges App" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="28 August 2019">28 August 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/swiftui/'>SWIFTUI</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">SwiftUI 화면 만들기 - Challenges App</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/SwiftUI/challengesApp.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="swiftui-화면-만들기---challenges-app">SwiftUI 화면 만들기 - Challenges App</h1>
+
+<ul>
+  <li>이미지 출처: https://dribbble.com/shots/7047168-Challenges-App</li>
+</ul>
+
+<h2 id="원본">원본</h2>
+
+<p><img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566886774253_image.png" alt="" /></p>
+
+<hr />
+<h2 id="1-화면-분석">1. 화면 분석</h2>
+
+<p><strong>상단</strong></p>
+
+<ul>
+  <li>전형적인 SwiftUI의 네비게이션 뷰 형태</li>
+  <li>타이틀을 제외하고 오른쪽에 검색 버튼</li>
+</ul>
+
+<p><strong>중단</strong></p>
+
+<ul>
+  <li>횡 스크롤의 ListView 사용</li>
+  <li>카드 이미지는 새로 비율 구성</li>
+</ul>
+
+<p><strong>하단</strong></p>
+
+<ul>
+  <li>하단으로 길어지는 ListView 사용</li>
+  <li>왼쪽의 가이드 라인은 Rect로 그리기</li>
+</ul>
+
+<p><img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566886810679_image.png" alt="" /></p>
+
+<hr />
+<h2 id="2-상단">2. 상단</h2>
+<ul>
+  <li>전형적인 SwiftUI의 네비게이션 뷰 형태</li>
+  <li>타이틀을 제외하고 오른쪽에 검색 버튼</li>
+</ul>
+
+<p><img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566983794613_image.png" alt="" />
+<img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566984028659_image.png" alt="" /></p>
+
+<p>왼쪽 오른쪽 네비게이션 바의 버튼을 만들어 추가했습니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">/// 왼쪽 네비게이션 버튼</span>
+    <span class="kd">struct</span> <span class="kt">LeadingNaviView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+      <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"line.horizontal.3"</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+        <span class="o">.</span><span class="nf">scaledToFit</span><span class="p">()</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// 오른쪽 네비게이션 버튼</span>
+    <span class="kd">struct</span> <span class="kt">TrailingNavView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+      <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"person"</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+        <span class="o">.</span><span class="nf">scaledToFit</span><span class="p">()</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">()</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">cornerRadius</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">antialiased</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>이벤트는 따로 추가하지 않았습니다. 여기까지는 별 문제 없이 생성해서 추가했습니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">.</span><span class="nf">navigationBarItems</span><span class="p">(</span><span class="nv">leading</span><span class="p">:</span> <span class="kt">LeadingNaviView</span><span class="p">(),</span>
+                        <span class="nv">trailing</span><span class="p">:</span> <span class="kt">TrailingNavView</span><span class="p">())</span>
+</code></pre></div></div>
+<p>근데 타이틀이 문제인게 <strong>.navigationBarTitle()</strong> 로 만들어서 추가해주면 똑같은 형태로 보여주기는 하지만 오른쪽에 있는 검색 버튼을 추가 할 수 없었습니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="kd">public</span> <span class="kd">func</span> <span class="nf">navigationBarTitle</span><span class="p">(</span><span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">some</span> <span class="kt">View</span>
+</code></pre></div></div>
+<p>그래서 상단 타이틀을 커스텀해서 타이틀 뷰를 만들어서 해결했습니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="kd">struct</span> <span class="kt">TitleView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+            <span class="kd">@Binding</span> <span class="k">var</span> <span class="nv">isSearch</span><span class="p">:</span> <span class="kt">Bool</span>
+
+            <span class="k">let</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Home"</span>
+
+            <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+                <span class="kt">HStack</span> <span class="p">{</span>
+                    <span class="kt">Text</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+                        <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="kt">Font</span><span class="o">.</span><span class="nf">system</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">design</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">))</span>
+                        <span class="o">.</span><span class="nf">bold</span><span class="p">()</span>
+
+                    <span class="kt">Spacer</span><span class="p">()</span>
+                    <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+                       <span class="k">self</span><span class="o">.</span><span class="n">isSearch</span> <span class="o">=</span> <span class="kc">true</span>
+                    <span class="p">})</span> <span class="p">{</span>
+                        <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"magnifyingglass"</span><span class="p">)</span>
+                            <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+                            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+                            <span class="o">.</span><span class="nf">scaledToFit</span><span class="p">()</span>
+                            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">secondary</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">leading</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+<p>여기서 오른쪽 검색 버튼에 적용된 <strong>isSearch</strong> 는 검색 버튼을 누르면 검색 바로 변경하기 위해서 적용했습니다. 검색을 해도 이렇다할 기능은 없지만 화면 만드는 김에 만들어 봤습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">isSearching</span> <span class="p">{</span>
+      <span class="kt">SearchBar</span><span class="p">(</span><span class="nv">searchText</span><span class="p">:</span> <span class="err">$</span><span class="n">searchWord</span><span class="p">,</span> <span class="nv">isSearching</span><span class="p">:</span> <span class="err">$</span><span class="n">isSearching</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="kt">TitleView</span><span class="p">(</span><span class="nv">isSearch</span><span class="p">:</span> <span class="err">$</span><span class="n">isSearching</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566984409995_image.png" alt="" />
+<img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566984424981_image.png" alt="" /></p>
+
+<p>이 때 <strong>Button</strong> 으로 이미지를 감싸면 이미지가 버튼의 틴트 컬러를 적용받아서 파란색으로 변경되는데, 이를 막기 위해서 <strong>.foregroundColor(.secondary)</strong> 를 추가해주면 원래의 색상으로 돌아옵니다.
+ 그리고 여기서 사용하는 시스템 이미지들은 iOS 13에 추가된 이미지들로 <strong>SF Symbols</strong> 로 검색하면 찾을 수 있습니다.</p>
+
+<p>검색바는 SwiftUI에선 SearchBar가 따로 없기 때문에 적당하게 만들어 줍니다.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">struct</span> <span class="kt">SearchBar</span> <span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+      <span class="kd">@Binding</span> <span class="k">var</span> <span class="nv">searchText</span><span class="p">:</span> <span class="kt">String</span>
+      <span class="kd">@Binding</span> <span class="k">var</span> <span class="nv">isSearching</span><span class="p">:</span> <span class="kt">Bool</span>
+
+      <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+
+        <span class="kt">ZStack</span> <span class="p">{</span>
+
+          <span class="kt">RoundedRectangle</span><span class="p">(</span><span class="nv">cornerRadius</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">gray</span><span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+        <span class="kt">HStack</span> <span class="p">{</span>
+            <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"magnifyingglass"</span><span class="p">)</span><span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">secondary</span><span class="p">)</span>
+
+            <span class="kt">TextField</span><span class="p">(</span><span class="err">$</span><span class="n">searchText</span><span class="p">,</span>
+            <span class="nv">placeholder</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="s">"Search"</span><span class="p">),</span>
+            <span class="nv">onEditingChanged</span><span class="p">:</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="p">},</span>
+            <span class="nv">onCommit</span><span class="p">:</span> <span class="p">{</span>
+              <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">keyWindow</span><span class="p">?</span><span class="o">.</span><span class="nf">endEditing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+              <span class="k">self</span><span class="o">.</span><span class="n">isSearching</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="p">})</span>
+
+            <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+              <span class="k">self</span><span class="o">.</span><span class="n">searchText</span> <span class="o">=</span> <span class="s">""</span>
+            <span class="p">})</span> <span class="p">{</span>
+              <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"xmark.circle.fill"</span><span class="p">)</span>
+              <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">secondary</span><span class="p">)</span>
+              <span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="n">searchText</span> <span class="o">==</span> <span class="s">""</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">leading</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">leading</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>저기서 잘 보면 text가 길어지면 자동으로 삭제 버튼이 나타나며 삭제 버튼을 클릭하면 text를 “”로 바꾸는 로직이 있는데 실제로 돌려보면 반응하지 않습니다.</p>
+
+<h2 id="3-중단">3. 중단</h2>
+<ul>
+  <li>횡 스크롤의 ListView 사용</li>
+  <li>카드 이미지는 새로 비율 구성</li>
+</ul>
+
+<p><img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1566984915416_image.png" alt="" /></p>
+
+<p>횡으로 스크롤되는 카드뷰 형태의 아이템입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">ScrollView</span><span class="p">(</span><span class="o">.</span><span class="n">horizontal</span><span class="p">,</span> <span class="nv">showsIndicators</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">HStack</span> <span class="p">{</span>
+        <span class="kt">ForEach</span><span class="p">((</span><span class="mi">1</span><span class="o">...</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="nf">reversed</span><span class="p">(),</span> <span class="nv">id</span><span class="p">:</span> <span class="err">\</span><span class="o">.</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span>
+          <span class="kt">HomeCardView</span><span class="p">()</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">leading</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+      <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">height</span><span class="p">:</span> <span class="p">(</span><span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">40</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>일단 sample에는 20개 횡으로 붙여놨습니다만, 실제는 ListView를 사용해서 횡으로 붙여햐 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">struct</span> <span class="kt">HomeCardView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+      <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"The future of healthy lifestyle."</span>
+
+      <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">ZStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">topLeading</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kt">RoundedRectangle</span><span class="p">(</span><span class="nv">cornerRadius</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+          <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+
+          <span class="kt">VStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">leading</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="kt">Font</span><span class="o">.</span><span class="nf">system</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">design</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">))</span>
+            <span class="o">.</span><span class="nf">bold</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">lineLimit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">150</span><span class="p">)</span>
+
+            <span class="kt">Spacer</span><span class="p">()</span>
+
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Read"</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="kt">Font</span><span class="o">.</span><span class="nf">system</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">design</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">))</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">underline</span><span class="p">()</span>
+          <span class="p">}</span>
+          <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">80</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="p">(</span><span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">40</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p><strong>RoundedRectangle</strong> 로 배경 카드뷰를 만들고 그리고 <strong>ZStack</strong> 으로 안쪽에 데이터를 넣었습니다.
+ <strong>Tex</strong>t에 <strong>lineLimit</strong> 을 넣지 않으면 …으로 짤리게 되기 때문에 4줄까지 표현하도록 처리했습니다.
+ 하단에 Read 버튼은 지금은 아무런 이벤트도 넣지 않았지만 Button으로 감싸서 화면 전환 이벤트 같은 것을 추가할 수 있습니다.</p>
+
+<h2 id="4-하단">4. 하단</h2>
+<ul>
+  <li>하단으로 길어지는 ListView 사용</li>
+  <li>왼쪽의 가이드 라인은 Rect로 그리기
+<img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1567042197102_image.png" alt="" />
+<img src="https://paper-attachments.dropbox.com/s_619B197BA64A8385C25262FF40C7091481BBE02E7B9BA78EA2EB3D5FB5A5ECE2_1567042207333_image.png" alt="" /></li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">struct</span> <span class="kt">DayListCardView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+      <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">HStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kt">ZStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">Circle</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+            <span class="kt">Circle</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">center</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+          <span class="p">}</span>
+          <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+          <span class="kt">Spacer</span><span class="p">()</span>
+
+          <span class="kt">ZStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">leading</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">RoundedRectangle</span><span class="p">(</span><span class="nv">cornerRadius</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">gray</span><span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+            <span class="kt">HStack</span> <span class="p">{</span>
+              <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"hare"</span><span class="p">)</span>
+              <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+              <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">gray</span><span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+              <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">70</span><span class="p">)</span>
+              <span class="o">.</span><span class="nf">cornerRadius</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+              <span class="o">.</span><span class="nf">scaledToFit</span><span class="p">()</span>
+              <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">leading</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+              <span class="kt">VStack</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">leading</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Hydration"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="kt">Font</span><span class="o">.</span><span class="nf">system</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">design</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">))</span>
+                <span class="o">.</span><span class="nf">bold</span><span class="p">()</span>
+                <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+                <span class="kt">Spacer</span><span class="p">()</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"200 ml"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="kt">Font</span><span class="o">.</span><span class="nf">system</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">design</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">))</span>
+                <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="kt">Spacer</span><span class="p">()</span>
+
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"06:00 AM"</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+          <span class="p">}</span>
+          <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">height</span><span class="p">:</span> <span class="mi">70</span><span class="p">)</span>
+
+          <span class="p">}</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">minWidth</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">maxWidth</span><span class="p">:</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">idealHeight</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">maxHeight</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>똑같이 카드뷰 형태로 감싸서 만들었습니다. 여기서 특이사항은 원 두개를 ZStack으로 겹쳐서 검은 원에 흰색 구멍이 있는 것처럼 표현한 것인데 크게 어려운 부분은 아니라 생각됩니다.
+ 번거로워서 넘어간 부분이 하단이나 상단으로 라인을 그리는 부분인데 이거는 크게 어려운 부분이 아닐테니 넘어가도록 하겠습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/swiftui/">Swiftui</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_page_based_navigation">SwiftUI에서 page based navigation 사용하기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_4_MVVM_Combine">Circle Timer 만들기_4_MVVM_Combine</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_3_User_Interation">Circle Timer 만들기_3_User_Interation(SwiftUI, gesture, DragGesture)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/swiftui/">
+                                
+                                    See all 9 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/IGListkit+Texture">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios_tips/iglistkit_with_texture.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListkit+Texture">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListkit + Texture 적용</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># IGListkit+Texture 적용 예전에 **Let us:Go** 에서 Texture에 대한 영상을 보고 이번 프로젝트에서 적용해봤습니다. 검색도 많이하고 이것 저것 시도도 많이 하며 적용했는데, 특히 제가 계속 써오던 IGListkit과 함께 사용하면 궁합이 아주 좋아서 소개해보려</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/RxSwift_MVVM">
+                <div class="post-card-image" style="background-image: url(/assets/images/RxSwift/RxSwift_MVVM_Title.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/RxSwift_MVVM">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Rxswift</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">RxSwift MVVM 실무 적용</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>RxSwift MVVM 실무 적용 최근 외부 프로젝트를 진행하면서 RxSwift와 MVVM 아키텍처를 사용했습니다. 여러 라이브러리를 사용하고 다양한 방법들을 시도한 도전적인 프로젝트였는데 RxSwift와 MVVM을 사용하면서 수행했던 실제 적용 사례를 소개하려 합니다. Protocol 정의 작업 처음</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">SwiftUI 화면 만들기 - Challenges App</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SwiftUI+%ED%99%94%EB%A9%B4+%EB%A7%8C%EB%93%A4%EA%B8%B0+-+Challenges+App&amp;url=https://leejigun.github.io/SwiftUI_Dribbble_challengesApp"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/SwiftUI_Dribbble_challengesApp"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>iOS 삽질 블로그</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//page5/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="iOS 삽질 블로그" />
+    <meta property="og:description" content="iOS developer." />
+    <meta property="og:url" content="https://leejigun.github.io//page5/" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="iOS 삽질 블로그" />
+    <meta name="twitter:description" content="iOS developer." />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//page5/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//page5/"
+    },
+    "description": "iOS developer."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="iOS 삽질 블로그" href="/feed.xml" />
+
+
+</head>
+<body class="paged archive-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer " style="background-image:  url(/assets/images/blog-cover.jpg) ">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                
+                    <img class="site-logo" src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그"/>
+                
+            </h1>
+            <h2 class="site-description">iOS developer.</h2>
+        </div>
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/Top_5_Design_Patterns">
+                <div class="post-card-image" style="background-image: url(/assets/images/top_5_design_patterns.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Top_5_Design_Patterns">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Top 5 스위프트 디자인 패턴 (번역)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Top 5 Design Patterns in Swift for iOS App Development (번역) Top 5 Design Patterns in Swift for iOS App Development 2014년에 공개된 애플의 프로그래밍 언어인 스위프트는 점점 더 인기를 끌고 있다. Swift는</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/xib-UIViewController">
+                <div class="post-card-image" style="background-image: url(/assets/images/XibUIViewController/banner.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/xib-UIViewController">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Xib로 UIViewController 만지기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>요구사항 회사 내부 프로젝트인 혈압 다이어리 추가 개발 사항으로 질병 예측 분야가 추가되었습니다. 코호트 DB를 분석하여 사용자의 향후 발병 가능성을 추측해보는 솔루션입니다. 그에 대한 개발로 사용자의 간단한 데이터를 입력받아 어떤 데이터를 내려줄 수</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/DynamicView2">
+                <div class="post-card-image" style="background-image: url(/assets/images/snapkit.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/DynamicView2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Programmatically Views](2) - 코드를 이용한 뷰 만들기 활용</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 저번 포스트에 코드를 사용해 뷰를 만들고 붙이는 작업을 살펴봤습니다. 이번 포스트에서는 제가 이번 혈압 다이어리 추가 개발 과정에서 xib 파일과</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/DynamicView1">
+                <div class="post-card-image" style="background-image: url(/assets/images/snapkit.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/DynamicView1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Programmatically Views](1) - 코드를 통한 기초적인 다이나믹 뷰 디자인</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 간단하게 라벨을 코드로 만들어 붙이고 제약 조건을 걸어봅시다. 짧지만 유용하고 적용 가능한 곳이 많아 꼭 알고 넘어가도록 합시다. 요구사항 자사의</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/JSON_parsing_using_Codable">
+                <div class="post-card-image" style="background-image: url(/assets/images/Swift-JSON-Encoding.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/JSON_parsing_using_Codable">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Codable을 사용한 JSON 데이터 파싱</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/Tayga-Moya,RxSwift">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/ReactiveX_logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-Moya,RxSwift">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (3) - RxSwift를 통한 Moya 비동기 처리</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>저번 포스트에 이어서 Moya 타겟에 실제로 RxSwift를 통해 데이터를 읽어오겠습니다. 저번 포스트에서 만든 Endpoint로 이루어진 타겟 enum은 실제로는 아무 동작도 하지 않습니다. 그저 타겟 타입들을 정해주는 역할을 수행할 뿐 실제 동작을 위해서는 Provider가</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/Tayga-TwitchAPI-Moya">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/moya_logo_github.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-TwitchAPI-Moya">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면,</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/Tayga-Login,Version">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/retro_image-cutout.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-Login,Version">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (1) - Login, Version check</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다. 사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다. 사전</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/IGListKit2">
+                <div class="post-card-image" style="background-image: url(/assets/images/IGListKit/profile.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListKit2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListKit 가이드(2)- Action&relaodData</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>이전 포스트에서는 IGListkit의 Model Binding의 개념을 살펴보고 데이터를 어떻게 설계하는지 고민해 봤습니다. Post라는 하 하나의 Post를 화면에 각각의 모델로 나눠서 여러 셀로 그려주면서 복잡할 수 있는 UI 구성을 단순하고 독립되게 표현할 수 있었습니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/IGListKit">
+                <div class="post-card-image" style="background-image: url(/assets/images/IGListKit/profile.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListKit">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListKit 가이드(1)- 모델 바인딩</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>IGListKit [IGListKit Tutorial](https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews) IGListkit에 대한 가이드가 많이 있지만, 버전이 3.0으로 올라가면서 binding 부분이 강화되면서 변경된 부분들에 대한 포스트가 미흡하여 인스타그램의 예제를 보충하려 한다. Modeling and Binding과 필요성 우선 예제를 fork 하고 받는다. 이</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+
+        </div>
+
+    </div>
+</main>
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+            
+                <nav class="pagination" role="pagination">
+    
+        
+            <a class="newer-posts" href="/page4/" title="Previous Page">&laquo; Newer Posts</a>
+      
+    
+    <span class="page-number"> Page 5 of 6 </span>
+     
+        <a class="older-posts" href="/page6/" title="Next Page">Older Posts &raquo;</a>
+     
+</nav>
+            
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('6');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

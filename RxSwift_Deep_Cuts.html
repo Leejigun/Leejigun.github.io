@@ -1,0 +1,1053 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>RxSwift: Deep Cuts (번역)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="RxSwift Deep Cuts 번역" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//RxSwift_Deep_Cuts" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="RxSwift: Deep Cuts (번역)" />
+    <meta property="og:description" content="RxSwift: Deep Cuts 지난 몇년간, 반응형 프로그래밍 아이디어들은 iOS커뮤니티를 사로잡았습니다. 조금 열기가 가라앉은 지금, 우리는 때때로 혼란스럽고 읽을 수 없는 코드를 접하기 시작하고 있습니다. 하지만 이러한 중대한 책임을 어떻게 감당할 수 있을까요? 제 강연에서 이 질문에 대답하도록 하겠습니다. ##Introduction 제 이름은 Kr.estof Siejkowski입니다. 이 프로그램에서는 한번 더 집중적인 프로그래밍에 대해" />
+    <meta property="og:url" content="https://leejigun.github.io//RxSwift_Deep_Cuts" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/RxSwift/Deep_Cuts.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-07-04T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2018-07-04T09:00:01+09:00" />
+    <meta property="article:tag" content="Rxswift" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RxSwift: Deep Cuts (번역)" />
+    <meta name="twitter:description" content="RxSwift: Deep Cuts 지난 몇년간, 반응형 프로그래밍 아이디어들은 iOS커뮤니티를 사로잡았습니다. 조금 열기가 가라앉은 지금, 우리는 때때로 혼란스럽고 읽을 수 없는 코드를 접하기 시작하고 있습니다. 하지만 이러한 중대한 책임을 어떻게 감당할 수 있을까요? 제 강연에서 이 질문에 대답하도록 하겠습니다. ##Introduction 제 이름은 Kr.estof Siejkowski입니다. 이 프로그램에서는 한번 더 집중적인 프로그래밍에 대해" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/RxSwift/Deep_Cuts.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Rxswift" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//RxSwift_Deep_Cuts",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/RxSwift/Deep_Cuts.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//RxSwift_Deep_Cuts"
+    },
+    "description": "RxSwift: Deep Cuts 지난 몇년간, 반응형 프로그래밍 아이디어들은 iOS커뮤니티를 사로잡았습니다. 조금 열기가 가라앉은 지금, 우리는 때때로 혼란스럽고 읽을 수 없는 코드를 접하기 시작하고 있습니다. 하지만 이러한 중대한 책임을 어떻게 감당할 수 있을까요? 제 강연에서 이 질문에 대답하도록 하겠습니다. ##Introduction 제 이름은 Kr.estof Siejkowski입니다. 이 프로그램에서는 한번 더 집중적인 프로그래밍에 대해"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="RxSwift: Deep Cuts (번역)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 July 2018"> 4 July 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/rxswift/'>RXSWIFT</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">RxSwift: Deep Cuts (번역)</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/RxSwift/Deep_Cuts.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="rxswift-deep-cuts">RxSwift: Deep Cuts</h1>
+
+<p>지난 몇년간, 반응형 프로그래밍 아이디어들은 iOS커뮤니티를 사로잡았습니다. 조금 열기가 가라앉은 지금, 우리는 때때로 혼란스럽고 읽을 수 없는 코드를 접하기 시작하고 있습니다. 하지만 이러한 중대한 책임을 어떻게 감당할 수 있을까요? 제 강연에서 이 질문에 대답하도록 하겠습니다.</p>
+
+<p>##Introduction</p>
+
+<p>제 이름은 Kr.estof Siejkowski입니다. 이 프로그램에서는 한번 더 집중적인 프로그래밍에 대해 설명하겠습니다. 이 강연의 주제는 우리가 이 강연에 참여하고 있는 그 순간을 얼마나 잘 알지에 관한 것입니다.</p>
+
+<p>이 이야기는 한 디버깅과 세가지 중요한 질문에 대한 이야기입니다.</p>
+
+<p>알렉스, 우리 이야기의 주인공을 만나 봅시다. 알렉스는 인기 있는 앱을 개발하는 iOS개발자입니다. 그는 지역 사회의 동향을 예의 주시하고, 최신의 훌륭한 도구를 사용하며, 항상 최고의 해결책을 찾습니다.</p>
+
+<p>모바일 개발 컨퍼런스에서 연설자는 비동기식 코드를 통일된 방식으로 쓰는 더 나은 방법으로 반응형 프로그래밍을 제안했습니다. 반응형 프로그래밍은 타겟 액션, 완료 블록, 델리게이트 등과 같은 패턴보다 관측 가능하고 유지하기 쉽고 설득하기 쉽습니다.</p>
+
+<p>알렉스는 이 패러다임이 신선하고 매력적이라는 것을 알았고, 팀 전체가 아키텍처의 핵심으로 한 단계 도약하기로 합의했습니다. 다시 로드 버튼을 누르면 액티비티 인디케이터가 무한 회전하는 버그가 보고되기 전까지는 모든 작업이 순조롭게 진행되었습니다.</p>
+
+<p>제 생각에, 이것은 반응적인 프로그래밍을 사용할 때 가장 흔히 발생하는 버그의 종류입니다. 데이터가 제대로 전달되지 않기 때문입니다.</p>
+
+<p>알렉스는 신선한 논리를 다루는 데에 책임이 있는 코드를 재빨리 찾았다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataProvider</span><span class="o">.</span><span class="nf">refreshData</span><span class="p">()</span>
+	<span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span>
+		<span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">self</span><span class="o">!</span><span class="p">?</span><span class="nf">update</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="nv">$0</span><span class="p">)</span>
+		<span class="p">},</span>
+		<span class="nv">onError</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nv">$0</span> <span class="k">as?</span> <span class="kt">ReasonableError</span> <span class="p">{</span>
+				<span class="k">self</span><span class="o">!</span><span class="p">?</span><span class="nf">showUserMessage</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">)</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>첫째, <code class="highlighter-rouge">refreshData</code> 메서드는<code class="highlighter-rouge"> dataProvide</code> 서비스에서 호출되며, 새로 고침 데이터를 방출하는 <code class="highlighter-rouge">Observable</code> 을 반환합니다. 우리는 이벤트들이 어떻게 소비되는지를 규정하는 두개의 클로져를 제공함으로써 관찰할 있는 이벤트를 구독한다. 모든 작업이 성공하면 새 데이터를 사용하여 업데이트 메소드를 호출합니다. 실패할 경우 지역화된 오류메시지가 생성됩니다.</p>
+
+<p>이와 같은 기본적인 문제의 원인은 무엇입니까?</p>
+
+<p>첫째, 알렉스는 이벤트가 도착하는 시점에 구독 마감 안에 <code class="highlighter-rouge">self </code> 가 nil인지 물었다. 만일 그렇다면, 업데이트는 아무것도 일어나지 않을 것이다.</p>
+
+<h2 id="what-references-does-the-observable-carry">What References Does the Observable Carry?</h2>
+
+<p>이것에 대답하기 위해서, <code class="highlighter-rouge">Observable</code>을 만들고 구독할 때 후드 아래에서 무슨 일이 일어나는지 고려해 보세요. 첫째, 개체는 메모리에 할당되며, 타입은 <code class="highlighter-rouge">Observable</code> 의 서브 클래스입니다.</p>
+
+<p>여기서는 단순 개체가 이벤트의 소스이며 이벤트의 흐름은 연산자를 추가하여 형성됩니다. 여기서는 <code class="highlighter-rouge">map</code> 과 <code class="highlighter-rouge">filter</code>입니다. 각 계층은 그것의 종류에 따라 다른 <code class="highlighter-rouge">Observable</code> 인스턴스이며, 각각의 인스턴스는 이전의 것에 대한 참조를 유지한다. 함께, 그들은 사슬을 만듭니다.</p>
+
+<p>클라이언트의 관점에서 보면 알 수 있듯 가장 바깥쪽에 <code class="highlighter-rouge">Observable&lt;String&gt;</code> 을 생성하고 내부는 완전히 숨겨집니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">observable</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">filter</span> <span class="p">{</span><span class="nv">$0</span><span class="o">&gt;</span><span class="mi">30</span><span class="p">}</span>
+	<span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">}</span>
+	<span class="o">.</span><span class="n">distinctUntilChanged</span> <span class="p">{</span>
+        <span class="nv">$0</span> <span class="o">==</span> <span class="nv">$1</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<p>사용되는 연산자들 ( <code class="highlighter-rouge">filter</code>, <code class="highlighter-rouge">map</code>, <code class="highlighter-rouge">distinctUnitlChanged</code> )은 매개 변수로 클로저를 취하고 클로져 내부에서 사용되는 참조 변수들을 저장합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">observable</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Observable</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">filter</span> <span class="p">{</span><span class="nv">$0</span><span class="o">&gt;</span><span class="mi">30</span><span class="p">}</span>
+	<span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span><span class="p">}</span>
+	<span class="o">.</span><span class="n">distinctUntilChanged</span> <span class="p">{</span>
+        <span class="nv">$0</span> <span class="o">==</span> <span class="nv">$1</span>
+	<span class="p">}</span>
+	<span class="o">.</span><span class="n">subscribe</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Observable</code> 객체를 구독하면 새로운 객체의 스탭이 생깁니다. 이러한 스탭을 싱크라고 합니다. 각각의 싱크에서는 넘어오는 이벤트를 수행하는데 필요한 로직이 들어있습니다.</p>
+
+<p>이 로직을 수행하려면 싱크에 필요한 도구가 있어야 합니다. 예를 들어 <code class="highlighter-rouge">filter</code> 연산자에 의해서 <code class="highlighter-rouge">filter sink</code> 가 생성되었다면 이를 수행하기 위해서 필터 클로져가 필요합니다. 따라서 싱크 객체에 클로져가 전달되어야 한다는 것을 의미합니다.</p>
+
+<p>또한 구독하는 순간 <code class="highlighter-rouge">dispose</code> 가능한 디스포져들이 생성되는데 이 때 디스포져는 또 싱크를 참조하고 있기 때문에 <code class="highlighter-rouge">Observable</code> 을 생성하고 구독하는 과정에 참조 사이클이 복잡하게 생성되어 무기한 참조를 하게 됩니다.</p>
+
+<p>이 무기한 참조를 해제하기 위해 <code class="highlighter-rouge">dispose</code> 를 호출해야 합니다. 그 순간 싱크에 대한 참조가 없어지고 싱크는 또 클로져에 대한 참조가 없어집니다.</p>
+
+<h2 id="memory-management-bugs">Memory Management Bugs</h2>
+
+<p>RxSwift API에는 메모리 관리 관련 버그를 쉽게 만들 수있는 두 가지 속성이 있습니다.</p>
+
+<ul>
+  <li>그것은 많은 참조가있는 클로저를 광범위하게 사용합니다.</li>
+  <li>구독은 자체적으로 유지됩니다. 결과적으로 싱크 처리기와 싱크 사이의 참조주기가 포함됩니다.</li>
+</ul>
+
+<p>RxSwift에서 제대로 할당이 해제되지 않으면 메모리 누수가 생깁니다.</p>
+
+<p>다행히도 RxSwift를 사용한 반응형 프로그래밍에서 메모리 관련 버그가 발생할 가능성을 최소화하기위한 세 가지 간단한 규칙이 있습니다.</p>
+
+<h3 id="1-dispose-your-subscriptions">1. Dispose Your Subscriptions</h3>
+
+<p>항상 구독을 수행 후 처리해야 합니다. 처분 방법은 특정 상황에 따라 달라집니다.</p>
+
+<h3 id="2-watch-your-references">2. Watch Your References</h3>
+
+<p>가능하다면 <code class="highlighter-rouge">strong</code> 참조나 <code class="highlighter-rouge">closure</code>  를 피해야합니다. 특히 자기 자신에 대한 강한 참조를 피해야합니다.</p>
+
+<h3 id="3-take-care-with-instance-methods">3. Take Care with Instance Methods</h3>
+
+<p>인스턴스 객체를 매개변수로 전달하지 말아야 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataProvider</span><span class="o">.</span><span class="nf">refreshData</span><span class="p">()</span>
+	<span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span>
+		<span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="nf">update</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="nv">$0</span><span class="p">)</span>
+		<span class="p">},</span>
+		<span class="nv">onError</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nv">$0</span> <span class="k">as?</span> <span class="kt">ReasonableError</span> <span class="p">{</span>
+				<span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="nf">showUserMessage</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">)</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">self?</code> 를 통해서 참조 여부를 확인하고 <code class="highlighter-rouge">[weak self]</code> 를 통해서 클로져를 약한 참조로 유지하게 된다.</p>
+
+<h2 id="call-ui-from-main-thread">Call UI from Main Thread</h2>
+
+<p>Alex는 또한 버그가 스레딩 문제라고 생각했습니다. 결국 업데이트 메소드가 일부 백그라운드 스레드에서 UI 요소를 호출하면 이상하고 정의되지 않은 동작이 발생할 수 있습니다. 가끔 충돌하거나 때로는 결함이 생길 수 있습니다.</p>
+
+<p>관찰 가능한 스트림의 특정 부분이 어떤 스레드에서 실행되는지 알아내는 몇 가지 간단한 규칙이 있습니다.</p>
+
+<h3 id="how-schedulers-work">How Schedulers Work</h3>
+
+<p>먼저 RxSwift에서 스케줄러 개념을 빠르게 새로 고쳐 봅시다. 스케줄러는 특정 컨텍스트에서 작업을 수행하는 다양한 방법에 대한 추상화입니다. 스케줄러는 어디서, 언제, 어떻게 작업이 실행될 것인지를 정의합니다. 컨텍스트를 수행하는 작업의 일부로 많은 것을 볼 수 있습니다. 이것은 기본 스케줄러의 프로토콜입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">schedule</span><span class="o">&lt;</span><span class="kt">StateType</span><span class="o">&gt;</span><span class="p">(</span>
+	<span class="n">_</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">StateType</span><span class="p">,</span>
+	<span class="nv">action</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">StateType</span><span class="p">)</span> <span class="o">!-</span> <span class="kt">Disposable</span>
+<span class="p">)</span> <span class="o">!-</span> <span class="kt">Disposable</span>
+</code></pre></div></div>
+
+<p>그것은 인수로 <code class="highlighter-rouge">_state</code>하고 <code class="highlighter-rouge">action</code> 를 취합니다. 그리고 그것은 스케줄러가 언제 어디서 무엇을 할지 결정합니다.</p>
+
+<p>당신이 커스텀 스케줄러를 만들면 그것은 계속 동작하지 않을 수 있다. 그러나 실제로 스케줄러는 스레딩 및 대기열, 작업 대기열 및 디스패치 대기열과 같은 Cocoa API의 기존 메커니즘에 대한 래퍼로 가장 많이 사용됩니다.</p>
+
+<p>몇 가지 예를 살펴 보겠습니다. 은 <code class="highlighter-rouge">MainScheduler</code>메인 큐에 작업을 실행하기위한 것입니다 :</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">mainQueue</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
+
+<span class="c1">// simplified essence of schedule method</span>
+<span class="k">if</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">isMain</span> <span class="p">{</span>
+	<span class="nf">action</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="n">mainQueue</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
+		<span class="nf">action</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>먼저 메인 큐에 있는지 여부를 확인합니다. 그렇다면 바로 일을 처리합니다. 그리고 그렇지 않은 경우에는 <code class="highlighter-rouge">.async</code>메소드를 사용하여 수행 할 작업을 기본 대기열로 전달합니다.</p>
+
+<p>직렬 스케줄러 <code class="highlighter-rouge">DispatchQueue</code> 에서 수행하는 것은 매우 유사하지만 메인 큐가 아니여도 동작합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// internal serial dispatch queue of given properties</span>
+<span class="k">let</span> <span class="nv">queue</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="nf">global</span><span class="p">(</span><span class="nv">qos</span><span class="p">:</span> <span class="n">qos</span><span class="o">.</span><span class="n">qosClass</span><span class="p">)</span>
+
+<span class="c1">// simplified essence of schedule method</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span>
+	<span class="nf">action</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>내부적으로는 이니셜 라이저에서 클라이언트가 제공 한 매개 변수를 사용하여 직렬 대기열을 만든 다음이 <code class="highlighter-rouge">.async</code>방법을 사용하여 수행 할 작업을 항상이 대기열에 전달합니다.</p>
+
+<p><code class="highlighter-rouge">OperationQueue</code>스케줄러도 매우 비슷하게 사용합니다. 당신은 <code class="highlighter-rouge">BlockOperation</code> 에 작업을 추가합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// operation queue provided by client in the initializer</span>
+<span class="k">let</span> <span class="nv">operationQueue</span><span class="p">:</span> <span class="kt">OperationQueue</span>
+
+<span class="c1">// simplified essence of schedule method</span>
+<span class="n">operationQueue</span><span class="o">.</span><span class="nf">addOperation</span><span class="p">(</span>
+	<span class="kt">BlockOperation</span> <span class="p">{</span>
+		<span class="nf">action</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+	<span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>RxSwift에는 많은 다른 스케줄러가 정의되어 있지만 개념은 같습니다. 예를 들어, 일부는 지연된 방식으로 작업을 실행할 수 있고 다른 작업은 반복적으로 수행 할 수 있습니다.</p>
+
+<h3 id="operators-and-schedulers">Operators and Schedulers</h3>
+
+<p>스케줄러를 만들 때 전달해야하는 연산자들이 있습니다. 스케줄러로 수행하는 작업은 실제 연산자에 따라 다릅니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">interval</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">)</span>
+
+<span class="nf">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">)</span>
+
+<span class="nf">throttle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>다른 연산자는 스케줄러에 독립적입니다. 작업 실행 컨텍스트에 대한 정보를 전달하지 않습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map</span> <span class="p">{</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">flatMap</span> <span class="p">{</span> <span class="nf">bar</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">!=</span> <span class="n">wanted</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>마지막으로, 스케줄러의 동작을 정의하는 연산자가 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">observeOn</span><span class="p">(</span><span class="n">scheduler</span><span class="p">)</span>
+
+<span class="nf">subscribeOn</span><span class="p">(</span><span class="n">scheduler</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>예를들어 스케쥴러에 의존하지 않는 관측자로만 구성되는 관찰 대상이 있다고 가정합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Observable</span>
+	<span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="mi">33</span> <span class="p">}</span>
+	<span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span> <span class="p">}</span>
+	<span class="o">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이 연산자 체인에는 실행 컨텍스트에 대한 정보가 없습니다. 따로 정의된 컨텍스트가 없기 때문에 <code class="highlighter-rouge">subscribe</code> 메소드가 호출 된 스레드에서 모든 작업이 실행됩니다. 왜냐하면 이것이 유일한 스레드이기 때문입니다.</p>
+
+<p>하지만 <code class="highlighter-rouge">observeOn</code>연산자 를 사용하여 변경할 수 있습니다 . 그것은 어떤 스케줄러가 모든 연산자의 실행을 위해 사용될 것인지를 정의합니다. <code class="highlighter-rouge">observable</code>은 이벤트 시퀀스이므로 항상 단일 <code class="highlighter-rouge">observeOn</code>스레드입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Observable</span>
+	<span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+	<span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span><span class="n">greenScheduler</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="mi">33</span> <span class="p">}</span>
+	<span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span> <span class="p">}</span>
+	<span class="o">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">observeOn</code>호출 위의 연산자 는 여전히 구독한 스레드에서 실행되고 있습니다. 따라서 이동 <code class="highlighter-rouge">observeOn</code> 연산자 이후의 경우에만 적용되며 이전에는 적용되지 않습니다. 원하는만큼의 <code class="highlighter-rouge">observeOn</code> 을 사용할 수 있습니다 . 하지만 <code class="highlighter-rouge">observeOn</code> 을 사용하는 경우 첫 번째 실행 컨텍스트 인 생성 스레드를 변경할 수 없습니다.</p>
+
+<p>그를 위해서 또 다른 연산자 <code class="highlighter-rouge">subscribeOn</code>가있다. 이 연산자는 구독이 실행될 스케줄러를 지정합니다.  모든 이벤트의 생성은 구독 로직의 일부이며 초기 스케줄러 또는 첫 번째 실행 컨텍스트를 정의합니다.</p>
+
+<p>이벤트 생성은 단일 단계이므로 여러 번 길을 따라 변경하는 것은 의미가 없습니다. 따라서 첫 번째  <code class="highlighter-rouge">subscribeOn</code>호출 만 중요하며 다른 호출은 무시됩니다. 또한 생성자를 생성 연산자로 명시 적으로 제공하는 커스텀 스케줄러를 사용한다면 스케줄러가 이미 정의되었으므로 늦은 호출이 무시됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Observable</span>
+	<span class="o">.</span><span class="nf">just</span><span class="p">(</span> <span class="mi">42</span><span class="p">,</span> <span class="nv">scheduler</span><span class="p">:</span> <span class="n">blueScheduler</span><span class="p">)</span>			<span class="c1">//blueScheduler</span>
+	<span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span><span class="n">greenScheduler</span><span class="p">)</span>						<span class="c1">//greenScheduler</span>
+	<span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="mi">33</span> <span class="p">}</span>								<span class="c1">//greenScheduler</span>
+	<span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span> <span class="n">redScheduler</span> <span class="p">)</span>						<span class="c1">//redScheduler</span>
+	<span class="o">.</span><span class="nf">subscribeOn</span><span class="p">(</span> <span class="n">redScheduler</span> <span class="p">)</span>					<span class="c1">//redScheduler</span>
+	<span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="s">"</span><span class="se">\(</span><span class="nv">$0</span><span class="se">)</span><span class="s">"</span> <span class="p">}</span>								<span class="c1">//redScheduler</span>
+	<span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span> <span class="n">greenScheduler</span> <span class="p">)</span>					<span class="c1">//greenScheduler</span>
+	<span class="o">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>						<span class="c1">//greenScheduler</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">.subscribeOn( redScheduler )</code> 을 통해 red로 스케줄러를 지정하고 있지만, 생성자에서 스케줄러를 blue로 지정하고 있기 때문에 무시된다.</li>
+  <li><code class="highlighter-rouge">.observeOn</code> 을 통해서 스케줄러가 변경되는 순간부터는 그 스케줄러에서 이후 연산자가 수행된다.</li>
+</ul>
+
+<h2 id="what-is-the-protocol">What is the Protocol?</h2>
+
+<p>이벤트가 관찰자에게 전달되지 않을 수있는 많은 방법이 있습니다. 구독이 이벤트가 생성되기 전에 끝나거나 생성 논리의 구현에 버그가 있거나 관찰 가능한 스트림이 이벤트 클래스를 필터링하는 방식으로 정의되어 전파되지 않을 수 있습니다.</p>
+
+<p><code class="highlighter-rouge">observable</code>은 일련의 이벤트를 생성하며, 각 시퀀스가 유지해야하는 기본적인 요구 사항 집합이 있습니다. 항상 0 개 이상의 <code class="highlighter-rouge">next</code>이벤트 로 구성되며 시퀀스를 닫는 이벤트, 즉 시퀀스의 마지막 요소는 <code class="highlighter-rouge">completed</code>또는 중 하나 <code class="highlighter-rouge">error</code>입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">.</span><span class="nf">next</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="o">.</span><span class="n">completed</span>
+<span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>매우 기본적인 질문 중 하나는 이벤트의 순서가 끝날 것인가하는 것입니다. 그리고 그것이 끝나면 우리는 절대적으로 100 % 확신 할 것이며, 우리는 메모리 관리를 무시할 수 있습니다. 다음은 관찰 가능 항목에 의해 방출 된 완료 또는 오류 이벤트가 있기 때문에 구독이 종료된다는 것을 증명하는 몇 가지 예제 코드입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">disposable</span> <span class="o">=</span> <span class="n">observable</span>
+	<span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+		<span class="k">self</span><span class="o">!</span><span class="p">?</span><span class="nf">work</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="nv">$0</span><span class="p">)</span>
+	<span class="p">})</span>
+
+<span class="c1">// ensure subscription disposed</span>
+<span class="n">disposable</span><span class="o">.</span><span class="nf">dispose</span><span class="p">()</span>
+<span class="n">disposable</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>우리의 일은 구독이 폐기 될 것임을 보증하는 것입니다. 따라서 관찰 가능 프로토콜의 통신 프로토콜이 실제로 완료되었거나 완료되지 않은 경우 실제로 우리가 일회용 객체를 사용하는지 여부를 정의합니다.</p>
+
+<p>긴 시퀀스 인 경우 다중 이벤트가 발생한다는 것을 의미하므로 데이터를 사용자에게 푸시하는 관찰 가능한 작업 일 수 있습니다. 그런 다음 한 번만 구독하고 앞으로 적절한 순간에 정보가 제공 될 것으로 기대합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">disposeBag</span> <span class="o">=</span> <span class="kt">DisposeBag</span><span class="p">()</span>
+
+<span class="c1">// call only once in the object lifetime</span>
+<span class="kd">func</span> <span class="nf">listenForFreshData</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">observable</span>
+		<span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">unowned</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">self</span><span class="o">.</span><span class="nf">work</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="nv">$0</span><span class="p">)</span>
+	<span class="p">})</span>
+	<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="exposing-communication-protocols">Exposing Communication Protocols</h2>
+
+<p>숨겨진 통신 프로토콜의 미로에서 길을 잃지 않게하려면 어떻게해야합니까? 가장 좋은 방법은 그들에게 빛을 비추는 것이고, 그것을하는 방법은 여러 가지가 있습니다.</p>
+
+<p>먼저 유형 시스템에서 프로토콜을 노출합니다. 이것은 RxSwift와 RxCocoa가 이미하는 것입니다. RxCocoa에는 통신 프로토콜의 속성을 유지하는 많은 특성이 있습니다. 예를 들어, <code class="highlighter-rouge">Driver</code>, <code class="highlighter-rouge">Signal</code>, <code class="highlighter-rouge">ControlProperty </code> 입니다.</p>
+
+<p><strong>핵심</strong> RxSwift 라이브러리 에는 더 많은 특성이 있습니다. 예를 들어,가 <code class="highlighter-rouge">Single</code>, <code class="highlighter-rouge">Completable</code>, <code class="highlighter-rouge">Maybe</code>, 등 종류. 이러한 유형의 모든 목적은 통신 프로토콜에 대한 정보를 공개하는 것입니다 (예 : 전송되는 이벤트 수, 완료 여부).</p>
+
+<p>프로토콜을 훨씬 이해하기 쉽게 만들 때마다 특성을 사용합니다. 그러나 때로는 상황에 맞는 특성이 없습니다. 이러한 경우 사용자가 직접 래퍼를 작성할 수 있습니다. 또는 문서에서 일반적인 오래된 주석을 사용하여 다른 개발자가 관찰 할 수있는 프로토콜을 설명 할 수 있습니다. (사용 목적과 쓰임을 명시)</p>
+
+<p>예를 들어, 관찰 할 수있는 복잡한 도메인 논리가 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+Returns an Observable that emits at most three times,
+starting with the first event emitted immediately
+and synchronously upon subscription.
+Times of other two events are not guaranteed.
+May not complete, but never errors out.
+Doesn’t cache any data.
+*/</span>
+
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">thirdTimeLucky</span><span class="p">()</span> <span class="o">!-</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="use-conventions">Use Conventions</h2>
+
+<p>대용량 응용 프로그램과 큰 팀에서 작업 할 때 종종 통신 프로토콜과 같이 개발되는 일반적인 패턴과 규칙이 있습니다.</p>
+
+<p>예를 들어, 다음은 뷰 모델에 대한 데이터를 제공하는 서비스의 일부입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">DataProvider</span> <span class="p">{</span>
+
+<span class="kd">private</span> <span class="k">let</span> <span class="nv">proxySubject</span> <span class="o">=</span> <span class="kt">PublishSubject</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span><span class="p">()</span>
+
+<span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">Data</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">proxySubject</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">refreshData</span><span class="p">()</span> <span class="o">!-</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">networkService</span>
+		<span class="o">.</span><span class="nf">requestData</span><span class="p">()</span>
+		<span class="o">.</span><span class="nf">do</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">proxySubject</span><span class="o">.</span><span class="nf">onNext</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+		<span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 <code class="highlighter-rouge">refreshData</code>방법은 데이터를 제공하지 않습니다. 새로 고침이 발생했는지 알려주고 새로 고침이 성공했는지 또는 오류가 발생했는지 알려줍니다.</p>
+
+<h2 id="code-distance">Code Distance</h2>
+
+<p>프로토콜을 다루는 마지막 방법은 프로토콜에서 변경이나 특성의 영향을받는 위치의 수가 제한되도록 관찰 가능 범위를 제한하는 것입니다. 이것은 버그의 가능성을 제한합니다.</p>
+
+<p>범위를 제한 할 때 매우 유용하다고 생각한 개념이 하나 있습니다. 이 개념을 <strong>코드 거리</strong>라고합니다. 코드에 액션이있을 때 액션이 어떤 반응을 일으키는 거리가 중요합니다. 즉, 관계와 연결이 지역적인지 또는 개념적으로 관련이없는 것이 서로 영향을 줄 수 있는지를 보여줍니다.</p>
+
+<p>나는 앱 아키텍처 측면에서 실제 코드 거리를 생각하고 싶다. 따라서 네트워크 레이어의 변경 사항이 지속성 또는 뷰 모델의 어느 곳에도 표시되지 않지만 뷰 레이어에 영향을 주면 여기에는 긴 코드 거리 관계가 있음을 의미합니다.</p>
+
+<p>내가 싫어하는 한 가지 패턴이 <a href="https://davidnix.io/post/stop-using-nsnotificationcenter/"><code class="highlighter-rouge">NotificationCenter</code></a>있습니다. 이 긴 코드 거리 관계에 있습니다!</p>
+
+<p>그러나 어떤 레이어의 변경 사항이 근처의 어딘가에서 볼 수 있다면 로직이 짧은 코드 거리로 유지된다는 의미입니다. 예를 들어, 네트워크 계층에서 관찰 가능한 프로토콜의 변경이 서비스 계층 또는 지속성 계층에 영향을 주면 코드 거리가 짧음을 나타냅니다.</p>
+
+<p>엄지 손가락의 규칙은 가능한 한 작은 범위에서 관찰 가능을 유지하는 것입니다. 왜냐하면 이벤트의 원인, 보장 및 이벤트의 속성, 이벤트에 의해 생성되는 효과에 대해 추론하는 데 도움이되기 때문입니다.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>그동안 Alex는 버그의 출처를 발견하고 수정했습니다! 문제는 <code class="highlighter-rouge">onError</code>종결에있었습니다. 코드 거리와 매우 밀접하게 관련되어 있습니다. 네트워크 서비스에서 작업 할 때 팀원 중 한 명은 던진 모든 오류가 해당 <code class="highlighter-rouge">ReasonableError</code>유형과 일치하는지 확인하는 것을 잊었습니다 . 사실 구독 코드에 아무런 문제가 없었습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataProvider</span><span class="o">.</span><span class="nf">refreshData</span><span class="p">()</span>
+	<span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span><span class="kt">MainScheduler</span><span class="o">.</span><span class="n">instance</span><span class="p">)</span>
+	<span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span>
+		<span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">unowned</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+			<span class="k">self</span><span class="o">.</span><span class="nf">update</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="nv">$0</span><span class="p">)</span>
+		<span class="p">},</span>
+	<span class="nv">onError</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">unowned</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+		<span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="nv">$0</span> <span class="k">as?</span> <span class="kt">ReasonableError</span> <span class="p">{</span>
+			<span class="k">self</span><span class="o">.</span><span class="nf">showUserMessage</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">)</span>
+<span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/rxswift/">Rxswift</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift+Moya+MVVM_1)">RxSwift+Moya+MVVM 1) 현업 RxSwift - 네트워킹 처리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/RxSwift_MVVM">RxSwift MVVM 실무 적용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Everyday_Reactive">Everyday Reactive (번역)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/rxswift/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/RxSwift_MVVM">
+                <div class="post-card-image" style="background-image: url(/assets/images/RxSwift/RxSwift_MVVM_Title.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/RxSwift_MVVM">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Rxswift</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">RxSwift MVVM 실무 적용</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># RxSwift MVVM 실무 적용 최근 외부 프로젝트를 진행하면서 RxSwift와 MVVM 아키텍처를 사용했습니다. 여러 라이브러리를 사용하고 다양한 방법들을 시도한 도전적인 프로젝트였는데 RxSwift와 MVVM을 사용하면서 수행했던 실제 적용 사례를 소개하려 합니다. ## Protocol 정의</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Everyday_Reactive">
+                <div class="post-card-image" style="background-image: url(/assets/images/RxSwift/Everyday_Reactive_cover.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Everyday_Reactive">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Rxswift</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Everyday Reactive (번역)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Everyday Reactive https://academy.realm.io/posts/everyday-reactive/ 이 챕터에서는 일상적인 경험을 바탕으로 앱 개발 과정에서 반응적인 프로그래밍을 실제로 사용하는 방법에 대해 살펴보겠습니다. 우리는 언제 반응적인 프로그래밍이 강력한 도구가 될 수 있는지를 결정하기 위한 팁과 요령, 그리고 코드</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">RxSwift: Deep Cuts (번역)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=RxSwift%3A+Deep+Cuts+%28%EB%B2%88%EC%97%AD%29&amp;url=https://leejigun.github.io/RxSwift_Deep_Cuts"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/RxSwift_Deep_Cuts"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -1,0 +1,970 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Codable을 사용한 JSON 데이터 파싱</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//JSON_parsing_using_Codable" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Codable을 사용한 JSON 데이터 파싱" />
+    <meta property="og:description" content="이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의" />
+    <meta property="og:url" content="https://leejigun.github.io//JSON_parsing_using_Codable" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/Swift-JSON-Encoding.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-06-11T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-06-11T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios Tip" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Codable을 사용한 JSON 데이터 파싱" />
+    <meta name="twitter:description" content="이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/Swift-JSON-Encoding.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios Tip" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//JSON_parsing_using_Codable",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/Swift-JSON-Encoding.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//JSON_parsing_using_Codable"
+    },
+    "description": "이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Codable을 사용한 JSON 데이터 파싱" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="11 June 2018">11 June 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ios-tip/'>IOS TIP</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Codable을 사용한 JSON 데이터 파싱</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/Swift-JSON-Encoding.jpg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>이번 포스트에서는 Swift4에서 추가된 <strong>Codable</strong> 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다.</p>
+
+<p>과거 제가 처음으로 iOS를 공부할 때에는 <code class="highlighter-rouge">JSONSerialization</code> 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의 프로젝트들이 JSON 관련 라이브러리를 사용하고 있었습니다.</p>
+
+<p>시간이 지나서 혼자 결정해야 할 경우가 생기자 JSON 라이브러리를 프로젝트에 추가하는 것을 고민하게 되었습니다. 물론 그런 라이브러리들은 단순히 JSON을 파싱하는데서 끝나는게 아닌 다양한 기능들을 내장하고 있지만, 그 중 실제로 사용하는 기능은 JSON 파싱정도가 전부였기에 Podfile에 한 줄 더 추가하는 일에 소극적이었습니다.</p>
+
+<p>이제는 개발할 때 JSON 을 만져야 할 경우 대부분 Codable을 사용하고 있습니다. Codable은 Swift4 버전에 추가된 프로토콜로 단순히 JSON을 만지는 것을 넘어서 다양한 쓰임세가 있습니다. 하지만, 이번 포스트에서는 제가 실제로 사용하는 코드를 보고 사용법을 알아보겠습니다.</p>
+
+<h1 id="codable-이전-이후">Codable 이전, 이후</h1>
+
+<ul>
+  <li>http://kka7.tistory.com/88</li>
+</ul>
+
+<p>Codable을 사용하기 이전에는 JSON 파싱을 위해서 <code class="highlighter-rouge">JSONSerialization</code> 을 사용했습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="k">let</span> <span class="nv">todoJSON</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">JSONSerialization</span><span class="o">.</span><span class="nf">jsonObject</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">responseData</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[])</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="k">let</span> <span class="nv">todo</span> <span class="o">=</span> <span class="kt">Todo</span><span class="p">(</span><span class="nv">json</span><span class="p">:</span> <span class="n">todoJSON</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// created a TODO object</span>
+		<span class="nf">completionHandler</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="c1">// couldn't create a todo object from the JSON</span>
+		<span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="kt">BackendError</span><span class="o">.</span><span class="nf">objectSerialization</span><span class="p">(</span><span class="nv">reason</span><span class="p">:</span> <span class="s">"Couldn't create a todo object from the JSON"</span><span class="p">)</span>
+		<span class="nf">completionHandler</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+	<span class="c1">// error trying to convert the data to JSON using JSONSerialization.jsonObject 			completionHandler(nil, error) return</span>
+<span class="p">}</span>
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<p>살펴보면<code class="highlighter-rouge">JSONSerialization</code> 을 사용해서 Data를 [String:Any] 형태의 딕셔너리로 만들어 그것을 하나하나 파싱해서 사용했습니다. 이 [String: Any] 데이터를 Todo의 객체로 만들기 위해 Todo 구조체에 하나 하나 파싱하는 생성자를 만들어 추가하는 방법을 사용했었는데, 이 방법을 쓰면 JSON관련 라이브러리를 사용하지 않고도 JSON 데이터를 파싱해서 사용 할 수 있었습니다.</p>
+
+<p>하지만, 너무 번거롭고 많은 시간이 소요되기 때문에 단순히 JSON을 파싱하는 용도로 라이브러리를 추가해 사용하는 경우도 많았습니다.</p>
+
+<p>Codable이 추가된 이후에는 이렇게 사용하게 되었습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decoder</span> <span class="o">=</span> <span class="kt">JSONDecoder</span><span class="p">()</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">todo</span> <span class="o">=</span> <span class="k">try</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="kt">Todo</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="n">responseData</span><span class="p">)</span>
+    <span class="nf">completionHandler</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"error trying to convert data to JSON"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="nf">completionHandler</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<p>자동으로 JSON Data를 Todo 구조체로 맵핑하는 동작을 수행합니다. 구조체마다 생성자를 사전에 만들 필요가 없기 때문에 코드도 짧아지고 코딩 시간도 줄었습니다.</p>
+
+<h1 id="codable-다양한-활용">Codable 다양한 활용</h1>
+
+<h4 id="1-json-배열-파싱">1. JSON 배열 파싱</h4>
+
+<p>만약, Todo의 배열이 내려온다고 해도 Codable을 추가했으면 똑같이 사용 가능합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">decoder</span> <span class="o">=</span> <span class="kt">JSONDecoder</span><span class="p">()</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">todos</span> <span class="o">=</span> <span class="k">try</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decode</span><span class="p">([</span><span class="kt">Todo</span><span class="p">]</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="n">responseData</span><span class="p">)</span>
+    <span class="nf">completionHandler</span><span class="p">(</span><span class="n">todos</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"error trying to convert data to JSON"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="nf">completionHandler</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">decoder.decode([Todo].self, from: responseData)</code> 를 통해서 내려오는 데이터를 배열로 추측하고 디코딩을 수행합니다.</p>
+
+<h4 id="2-tojson">2. toJSON</h4>
+
+<p><code class="highlighter-rouge">Codable</code> 은 두개의 프로토콜이 합쳐진 프로토콜입니다. 지금까지는 <code class="highlighter-rouge">Decodable</code> 만을 사용했는데, <code class="highlighter-rouge">Encodable</code> 역시 가지고 있습니다.</p>
+
+<p>과거에는 <code class="highlighter-rouge">toJSON</code> 메소드를 내부에서 따로 만들어서 [String: Any] 로 만들도록 했습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">toJSON</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">json</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]()</span>
+    <span class="n">json</span><span class="p">[</span><span class="s">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="n">title</span>
+    <span class="n">json</span><span class="p">[</span><span class="s">"userId"</span><span class="p">]</span> <span class="o">=</span> <span class="n">userId</span>
+    <span class="n">json</span><span class="p">[</span><span class="s">"completed"</span><span class="p">]</span> <span class="o">=</span> <span class="n">completed</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">id</span> <span class="o">=</span> <span class="n">id</span> <span class="p">{</span>
+    	<span class="n">json</span><span class="p">[</span><span class="s">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">id</span>
+    <span class="p">}</span> <span class="k">return</span> <span class="n">json</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<p>하지만, <code class="highlighter-rouge">Codable</code> 을 수행한다면,  디코더를 사용하는 것처럼 사용하면 됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">encoder</span> <span class="o">=</span> <span class="kt">JSONEncoder</span><span class="p">()</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">newTodoAsJSON</span> <span class="o">=</span> <span class="k">try</span> <span class="n">encoder</span><span class="o">.</span><span class="nf">encode</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
+    <span class="n">todosUrlRequest</span><span class="o">.</span><span class="n">httpBody</span> <span class="o">=</span> <span class="n">newTodoAsJSON</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="nf">completionHandler</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<h4 id="3-복잡한-json">3. 복잡한 JSON</h4>
+
+<p>JSON 객체 내부가 복잡하게 JSON들로 중첩된 경우도 간단합니다. 내부에 들어가는 JSON 형태가 구조체로 정의되어있고 이 역시 <code class="highlighter-rouge">Codable</code> 을 사용한다면 자동으로 파싱해줍니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Address</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">zipcode</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span>
+    <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">email</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">Address</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<h4 id="4-다른-프로퍼티-이름">4. 다른 프로퍼티 이름</h4>
+
+<p>이제 실제 외부의 데이터를 파싱할 때 종종 경험하는 현상들인데, JSON의 프로퍼티 이름이 사용 언어의 지정어인 경우가 있습니다. 예를 들자면 특정 프로퍼티의 이름이 <code class="highlighter-rouge">id</code> 일 경우는 상당히 많이 경험했습니다. 이런 경우 Struct 내부에 <code class="highlighter-rouge">enum CodingKeys</code> 를 선언해주면 자동으로 맵핑되는 기능을 제공하고 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Todo</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">displayTitle</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">serverId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">completed</span><span class="p">:</span> <span class="kt">Int</span>
+
+    <span class="kd">enum</span> <span class="kt">CodingKeys</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CodingKey</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">displayTitle</span> <span class="o">=</span> <span class="s">"title"</span>
+        <span class="k">case</span> <span class="n">serverId</span> <span class="o">=</span> <span class="s">"id"</span>
+        <span class="k">case</span> <span class="n">userId</span>
+        <span class="k">case</span> <span class="n">completed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">출처</span><span class="p">:</span> <span class="nv">http</span><span class="p">:</span><span class="c1">//kka7.tistory.com/88 [때로는 까칠하게..]</span>
+</code></pre></div></div>
+
+<h1 id="tayga">Tayga</h1>
+
+<p>이제 제가 실제 <code class="highlighter-rouge">Tayga</code> 앱에서 사용한 코드를 한번 보겠습니다.</p>
+
+<p>저는 TwitchAPI를 통해서 데이터를 받아오기 때문에 먼저 Postman으로 API를 찔러서 데이터를 읽어왔습니다. 1개의 데이터만 요청해보겠습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s">"_total"</span><span class="p">:</span> <span class="mi">1549</span><span class="p">,</span>
+    <span class="s">"_links"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"self"</span><span class="p">:</span> <span class="s">"https://api.twitch.tv/kraken/games/top?limit=1"</span><span class="p">,</span>
+        <span class="s">"next"</span><span class="p">:</span> <span class="s">"https://api.twitch.tv/kraken/games/top?limit=1&amp;offset=1"</span>
+    <span class="p">},</span>
+    <span class="s">"top"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"game"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"name"</span><span class="p">:</span> <span class="s">"Fortnite"</span><span class="p">,</span>
+                <span class="s">"popularity"</span><span class="p">:</span> <span class="mi">127648</span><span class="p">,</span>
+                <span class="s">"_id"</span><span class="p">:</span> <span class="mi">33214</span><span class="p">,</span>
+                <span class="s">"giantbomb_id"</span><span class="p">:</span> <span class="mi">37030</span><span class="p">,</span>
+                <span class="s">"box"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s">"large"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-272x380.jpg"</span><span class="p">,</span>
+                    <span class="s">"medium"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-136x190.jpg"</span><span class="p">,</span>
+                    <span class="s">"small"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-52x72.jpg"</span><span class="p">,</span>
+                    <span class="s">"template"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-{width}x{height}.jpg"</span>
+                <span class="p">},</span>
+                <span class="s">"logo"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s">"large"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-logoart/Fortnite-240x144.jpg"</span><span class="p">,</span>
+                    <span class="s">"medium"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-logoart/Fortnite-120x72.jpg"</span><span class="p">,</span>
+                    <span class="s">"small"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-logoart/Fortnite-60x36.jpg"</span><span class="p">,</span>
+                    <span class="s">"template"</span><span class="p">:</span> <span class="s">"https://static-cdn.jtvnw.net/ttv-logoart/Fortnite-{width}x{height}.jpg"</span>
+                <span class="p">},</span>
+                <span class="s">"_links"</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="s">"localized_name"</span><span class="p">:</span> <span class="s">"Fortnite"</span><span class="p">,</span>
+                <span class="s">"locale"</span><span class="p">:</span> <span class="s">"ko-kr"</span>
+            <span class="p">},</span>
+            <span class="s">"viewers"</span><span class="p">:</span> <span class="mi">129320</span><span class="p">,</span>
+            <span class="s">"channels"</span><span class="p">:</span> <span class="mi">8241</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 정도의 긴 데이터를 만약 <code class="highlighter-rouge">Codable</code> 없이 처리하려고 한다면 엄청나게 번거롭고 수고스러울 것 같습니다. 이제 제가 짠 구조체를 봅시다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">GamesStruct</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">_total</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">top</span><span class="p">:</span> <span class="p">[</span><span class="kt">TopGame</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">TopGame</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">channels</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">viewers</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">game</span><span class="p">:</span> <span class="kt">GameInfo</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">GameInfo</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">_id</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">box</span><span class="p">:</span> <span class="kt">BoxContainer</span>
+    <span class="kd">struct</span> <span class="kt">BoxContainer</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">large</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">medium</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">small</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="p">}</span>
+    <span class="k">let</span> <span class="nv">giantbomb_id</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">logo</span><span class="p">:</span> <span class="kt">Logo</span>
+    <span class="kd">struct</span> <span class="kt">Logo</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">large</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">medium</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">small</span><span class="p">:</span> <span class="kt">String</span>
+        <span class="k">let</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="p">}</span>
+    <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">popularity</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Codable</code> 구조체의 중첩된 형태로 들어가게 되었습니다.</p>
+
+<h1 id="rx와-궁합">Rx와 궁합</h1>
+
+<p>제가 ` Codable` 을 사용하는 것을 선호하는 다른 한가지 이유는 Rx를 사용할 때 더욱 가독성이 좋기 때문입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">provider</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="o">.</span><span class="nf">getTopGame</span><span class="p">(</span><span class="n">param</span><span class="p">))</span>
+    <span class="o">.</span><span class="nf">observeOn</span><span class="p">(</span><span class="kt">ConcurrentDispatchQueueScheduler</span><span class="p">(</span><span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">background</span><span class="p">))</span>
+    <span class="o">.</span><span class="nf">retry</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="k">try</span> <span class="kt">JSONDecoder</span><span class="p">()</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="kt">GamesStruct</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="nv">$0</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="p">}</span>
+    <span class="o">.</span><span class="nf">catchErrorJustReturn</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nv">$0</span><span class="p">?</span><span class="o">.</span><span class="n">top</span> <span class="p">??</span> <span class="p">[]</span> <span class="p">}</span>
+    <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">GameViewModel</span><span class="p">(</span><span class="nv">game</span><span class="p">:</span> <span class="nv">$1</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>간단하게 한줄로 받아온 데이터를 파싱해서 사용하고 있습니다. 사실 Rx랑 전혀 연관이 없지만, 기존에 사용하던 방식은 가독성이 조금 떨어졌는데 Rx와 Codable을 한번에 사용하니 보기 편해서 많이 사용하고 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios-tip/">Ios tip</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastlaneFirebase">iOS fastlane - Fabric, Firebase</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_Paths_Shapes">SwiftUI - Paths와 Shapes</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Swift_Moya_Provider_custom">Swift Moya Provider 커스텀</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ios-tip/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/DynamicView1">
+                <div class="post-card-image" style="background-image: url(/assets/images/snapkit.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/DynamicView1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Programmatically Views](1) - 코드를 통한 기초적인 다이나믹 뷰 디자인</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 간단하게 라벨을 코드로 만들어 붙이고 제약 조건을 걸어봅시다. 짧지만 유용하고 적용 가능한 곳이 많아 꼭 알고 넘어가도록 합시다. # 요구사항</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Tayga-Moya,RxSwift">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/ReactiveX_logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-Moya,RxSwift">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (3) - RxSwift를 통한 Moya 비동기 처리</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>저번 포스트에 이어서 Moya 타겟에 실제로 RxSwift를 통해 데이터를 읽어오겠습니다. 저번 포스트에서 만든 Endpoint로 이루어진 타겟 enum은 실제로는 아무 동작도 하지 않습니다. 그저 타겟 타입들을 정해주는 역할을 수행할 뿐 실제 동작을 위해서는 Provider가</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Codable을 사용한 JSON 데이터 파싱</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Codable%EC%9D%84+%EC%82%AC%EC%9A%A9%ED%95%9C+JSON+%EB%8D%B0%EC%9D%B4%ED%84%B0+%ED%8C%8C%EC%8B%B1&amp;url=https://leejigun.github.io/JSON_parsing_using_Codable"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/JSON_parsing_using_Codable"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

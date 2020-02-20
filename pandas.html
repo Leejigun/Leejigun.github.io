@@ -1,0 +1,1311 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Pandas 이론 강좌</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="판다스 강의를 기반으로 판다스 사용법을 적는다." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//pandas" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pandas 이론 강좌" />
+    <meta property="og:description" content="pandas 판다스 강의를 기반으로 판다스 사용법을 적는다. https://www.inflearn.com/course/pandas-팬더스-데이터분석-기초# https://github.com/minsuk-heo/pandas 개발 환경 Jupyter Notebook을 사용해서 학습 https://brunch.co.kr/@mapthecity/16 를 보고 설치 터미널에서 폴더로 이동해 jupyter notebook을 치면 브라우저가 열림 원래 Atom을 사용했지만, 여기 강의에서 이걸 사용해서 그대로 설치 후 사용 # pandas가 설치되어있는지 체크 **!conda list | grep pandas pandas 0.25.1 py37h0a44026_0" />
+    <meta property="og:url" content="https://leejigun.github.io//pandas" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/pandas/pandas_background.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-12-05T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2019-12-05T09:00:01+09:00" />
+    <meta property="article:tag" content="Ml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pandas 이론 강좌" />
+    <meta name="twitter:description" content="pandas 판다스 강의를 기반으로 판다스 사용법을 적는다. https://www.inflearn.com/course/pandas-팬더스-데이터분석-기초# https://github.com/minsuk-heo/pandas 개발 환경 Jupyter Notebook을 사용해서 학습 https://brunch.co.kr/@mapthecity/16 를 보고 설치 터미널에서 폴더로 이동해 jupyter notebook을 치면 브라우저가 열림 원래 Atom을 사용했지만, 여기 강의에서 이걸 사용해서 그대로 설치 후 사용 # pandas가 설치되어있는지 체크 **!conda list | grep pandas pandas 0.25.1 py37h0a44026_0" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/pandas/pandas_background.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//pandas",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/ml/pandas/pandas_background.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//pandas"
+    },
+    "description": "pandas 판다스 강의를 기반으로 판다스 사용법을 적는다. https://www.inflearn.com/course/pandas-팬더스-데이터분석-기초# https://github.com/minsuk-heo/pandas 개발 환경 Jupyter Notebook을 사용해서 학습 https://brunch.co.kr/@mapthecity/16 를 보고 설치 터미널에서 폴더로 이동해 jupyter notebook을 치면 브라우저가 열림 원래 Atom을 사용했지만, 여기 강의에서 이걸 사용해서 그대로 설치 후 사용 # pandas가 설치되어있는지 체크 **!conda list | grep pandas pandas 0.25.1 py37h0a44026_0"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Pandas 이론 강좌" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 December 2019"> 5 December 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ml/'>ML</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Pandas 이론 강좌</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/ml/pandas/pandas_background.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="pandas">pandas</h1>
+
+<p>판다스 강의를 기반으로 판다스 사용법을 적는다.</p>
+
+<p><a href="https://www.inflearn.com/course/pandas-%ED%8C%AC%EB%8D%94%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D-%EA%B8%B0%EC%B4%88#">https://www.inflearn.com/course/pandas-팬더스-데이터분석-기초#</a></p>
+
+<p><a href="https://github.com/minsuk-heo/pandas">https://github.com/minsuk-heo/pandas</a></p>
+
+<p>개발 환경</p>
+
+<ul>
+  <li>Jupyter Notebook을 사용해서 학습</li>
+  <li><a href="https://brunch.co.kr/@mapthecity/16">https://brunch.co.kr/@mapthecity/16</a> 를 보고 설치</li>
+  <li>터미널에서 폴더로 이동해 jupyter notebook을 치면 브라우저가 열림</li>
+  <li>
+    <p>원래 Atom을 사용했지만, 여기 강의에서 이걸 사용해서 그대로 설치 후 사용</p>
+
+    <p># pandas가 설치되어있는지 체크
+  **!conda list | grep pandas</p>
+    <blockquote>
+      <blockquote>
+        <p>pandas                    0.25.1           py37h0a44026_0</p>
+      </blockquote>
+    </blockquote>
+
+    <p># pandas를 pd라는 이름으로 추가
+  import pandas as pd**</p>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">jobs.csv</code> 파일을 pd의 <code class="highlighter-rouge">read_csv</code> 메소드로 읽는 코드</p>
+
+<p><img src="assets/images/ml/pandas/Untitled.png" alt="pandas/Untitled.png" /></p>
+
+<p>만약, 데이터가 너무 많다면 <code class="highlighter-rouge">head</code> 메소드를 사용하면 5개의 데이터만 읽어 온다.</p>
+
+<hr />
+
+<p>만약, 쉼표가 아니라 탭으로 데이터를 구분하는 파일의 경우 아래와 같이 사용해서 읽는다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 1.png" alt="assets/images/ml/pandas/Untitled1.png" /></p>
+
+<hr />
+
+<p>지금까지 읽은 파일은 항상 첫번째 행은 리스트의 해더였다.  하지만 해더가 없는 경우에는 어떻게 읽어야 하는가?</p>
+
+<p><code class="highlighter-rouge">header = None</code> 을 추가해주면 된다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 2.png" alt="assets/images/ml/pandas/Untitled 2.png" /></p>
+
+<p>해더를 추가하고 싶다면?</p>
+
+<p><code class="highlighter-rouge">colemns = ['name', 'age','job']</code> 으로 해더 추가</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 3.png" alt="assets/images/ml/pandas/Untitled 3.png" /></p>
+
+<p>읽으면서 해더를 한번에 추가하고 싶다면?</p>
+
+<p>파라미터로 <code class="highlighter-rouge">names = ['name', 'age','job']</code> 를 추가한다.</p>
+
+<hr />
+
+<p>데이터 프레임 만들기</p>
+
+<ol>
+  <li>Dic에서 만들기
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">friend_dict_list</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'Jone'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">'student'</span><span class="p">},</span>
+     <span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'Jenny'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">'job'</span><span class="p">:</span> <span class="s">'teacher'</span><span class="p">}</span>
+ <span class="p">]</span>
+
+ <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">friend_dict_list</span><span class="p">)</span>
+ <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <p><img src="assets/images/ml/pandas/Untitled 4.png" alt="assets/images/ml/pandas/Untitled 4.png" /></p>
+  </li>
+  <li>순서가 있는 Dic에서 만들기 (OrderedDict)
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+ <span class="c"># 키의 순서를 보장</span>
+ <span class="n">friend_ordered_dict_list</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+     <span class="p">[</span>
+         <span class="p">(</span><span class="s">'name'</span><span class="p">,</span> <span class="p">[</span><span class="s">'Jone'</span><span class="p">,</span> <span class="s">'Nate'</span><span class="p">]),</span>
+         <span class="p">(</span><span class="s">'age'</span><span class="p">,</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">35</span><span class="p">]),</span>
+         <span class="p">(</span><span class="s">'job'</span><span class="p">,</span> <span class="p">[</span><span class="s">'student'</span><span class="p">,</span><span class="s">'teacher'</span><span class="p">])</span>
+     <span class="p">]</span>
+ <span class="p">)</span>
+
+ <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">friend_ordered_dict_list</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p><img src="assets/images/ml/pandas/Untitled 5.png" alt="assets/images/ml/pandas/Untitled 5.png" /></p>
+  </li>
+</ol>
+
+<hr />
+
+<p>데이터 프레임을 파일에 저장하기</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.to_csv('friends.csv', index= True, header=True)
+</code></pre></div></div>
+
+<p>frends.csv 파일에 저장됨.</p>
+
+<p>index 를 false로 주면 rowId가 생략됨</p>
+
+<p>header를 false로 주면 header 없이 생성됨</p>
+
+<p>만약, 비어있는 값이 있다면 (None) 그냥 빈칸으로 표시된다. 하지만 - 같이 특정 문자를 넣어 주고 싶다면? <code class="highlighter-rouge">na_rep</code> 키워드를 사용해주면 된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.to_csv('friends.csv', index= True, header=True, na_rep='-')
+</code></pre></div></div>
+
+<p>이렇게 처리하면 None 데이터는 - 로 표시한다.</p>
+
+<hr />
+
+<p>인덱스를 통해서 일부만 읽어오기</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 6.png" alt="assets/images/ml/pandas/Untitled 6.png" /></p>
+
+<p>특정 인덱스의 데이터만 읽어오기</p>
+
+<p>0과 2 번 인덱스의 데이터만 가져온다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 7.png" alt="assets/images/ml/pandas/Untitled 7.png" /></p>
+
+<hr />
+
+<h3 id="by-column-condition">by column condition</h3>
+
+<p>특정 조건으로 뽑아내기</p>
+
+<ol>
+  <li>25세 이상인 것만 뽑기</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 8.png" alt="assets/images/ml/pandas/Untitled 8.png" /></p>
+
+<ol>
+  <li>쿼리 명령어도 가능</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 9.png" alt="assets/images/ml/pandas/Untitled 9.png" /></p>
+
+<ol>
+  <li>복잡한 쿼리도 가능</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 10.png" alt="assets/images/ml/pandas/Untitled 10.png" /></p>
+
+<hr />
+
+<h3 id="filter-column">Filter Column</h3>
+
+<ol>
+  <li>Index</li>
+</ol>
+
+<p>앞부분은 row를 나타내고 뒷부분은 컬럼을 나타낸다. row에 조건이 없으니까 전체 행에서 앞에 1부터 2까지의 퀄럼만 뽑아낸 것이다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 11.png" alt="assets/images/ml/pandas/Untitled 11.png" /></p>
+
+<ol>
+  <li>퀄럼의 이름을 사용해서 필터링</li>
+</ol>
+
+<p>name과 age만 꺼냄</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 12.png" alt="assets/images/ml/pandas/Untitled 12.png" /></p>
+
+<p>filter 함수도 사용 가능</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.filter(items=['age', 'job'])
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 13.png" alt="assets/images/ml/pandas/Untitled 13.png" /></p>
+
+<p>like도 사용 가능</p>
+
+<p>퀄럼 이름에 a가 들어가는 퀄럼 꺼내기’</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 14.png" alt="assets/images/ml/pandas/Untitled 14.png" /></p>
+
+<hr />
+
+<p>정규식을 사용가능</p>
+
+<p>b$ → b로 끝나는 컬럼</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 15.png" alt="assets/images/ml/pandas/Untitled 15.png" /></p>
+
+<hr />
+
+<p>삭제하고 싶다면?</p>
+
+<p>drop 메소드 사용</p>
+
+<ol>
+  <li>index를 사용해 삭제</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 16.png" alt="assets/images/ml/pandas/Untitled 16.png" /></p>
+
+<ol>
+  <li>특정 조건만 삭제</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 17.png" alt="assets/images/ml/pandas/Untitled 17.png" /></p>
+
+<p><img src="assets/images/ml/pandas/Untitled 18.png" alt="assets/images/ml/pandas/Untitled 18.png" /></p>
+
+<ol>
+  <li>특정 퀄럼 통으로 삭제</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 19.png" alt="assets/images/ml/pandas/Untitled 19.png" /></p>
+
+<hr />
+
+<h3 id="새로운-열-삽입">새로운 열 삽입</h3>
+
+<p><img src="assets/images/ml/pandas/Untitled 20.png" alt="assets/images/ml/pandas/Untitled 20.png" /></p>
+
+<h3 id="데이터-수정">데이터 수정</h3>
+
+<ol>
+  <li>학생이 아니면 연봉을 입력할 것이다.</li>
+</ol>
+
+<p><img src="assets/images/ml/pandas/Untitled 21.png" alt="assets/images/ml/pandas/Untitled 21.png" /></p>
+
+<h3 id="열의-값을-다-더하기">열의 값을 다 더하기</h3>
+
+<p>학생의 데이터 정보가 있다고 할 때</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>friend_dict_list2 = [
+    {'name':'Jone', 'midterm':15, 'final': 30},
+    {'name':'Nate', 'midterm':95, 'final': 80},
+    {'name':'Ury', 'midterm':75, 'final': 60},
+    {'name':'Jullia', 'midterm':30, 'final': 15},
+    {'name':'Brian', 'midterm':88, 'final': 85},
+    {'name':'Jake', 'midterm':100, 'final': 98},
+    {'name':'Jenny', 'midterm':77, 'final': 68}
+]
+df = pd.DataFrame.from_dict(friend_dict_list2)
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 22.png" alt="assets/images/ml/pandas/Untitled 22.png" /></p>
+
+<p>중간고사와 기말고사 값을 다 더한 total이라는 데이터를 만들고 싶을 경우</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 23.png" alt="assets/images/ml/pandas/Untitled 23.png" /></p>
+
+<p>평균을 추가하고 싶다면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 24.png" alt="assets/images/ml/pandas/Untitled 24.png" /></p>
+
+<p>등급을 매기고 싶다면?</p>
+
+<p>로직이 필요하기 때문에grades 배열을 만들어서 퀄럼에 추가한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grades = []
+
+for row in df['average']:
+    if row &gt;= 90:
+        grades.append('A')
+    elif row &gt;= 80:
+        grades.append('B')
+    elif row &gt;= 70:
+        grades.append('C')
+    else:
+        grades.append('F')
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 25.png" alt="assets/images/ml/pandas/Untitled 25.png" /></p>
+
+<p>이제 grade를 보고 F가 아니면 Pass로 바꿔보자</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 26.png" alt="assets/images/ml/pandas/Untitled 26.png" /></p>
+
+<p>apply 는 함수를 받는 고차 함수로 각 row마다 함수를 적용하도록 한다.</p>
+
+<p>특정 날짜가 있을 때</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 27.png" alt="assets/images/ml/pandas/Untitled 27.png" /></p>
+
+<p>여기서 연도만 빼고 싶다면 어떻게 할까?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 28.png" alt="assets/images/ml/pandas/Untitled 28.png" /></p>
+
+<hr />
+
+<h3 id="행을-추가하려면">행을 추가하려면?</h3>
+
+<p>새로운 데이터 프레임이 있을 때</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 29.png" alt="assets/images/ml/pandas/Untitled 29.png" /></p>
+
+<p>기존에 있는 데이터에 추가한다.</p>
+
+<p>ignore_index=True 는 인덱스를 무시하고 새로 할당한다. False를 주면 Ben도 0을 할당 받는다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 30.png" alt="assets/images/ml/pandas/Untitled 30.png" /></p>
+
+<hr />
+
+<h2 id="groupby">groupBy</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>student_list = [{'name': 'John', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Nate', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Abraham', 'major': "Physics", 'sex': "male"},
+                {'name': 'Brian', 'major': "Psychology", 'sex': "male"},
+                {'name': 'Janny', 'major': "Economics", 'sex': "female"},
+                {'name': 'Yuna', 'major': "Economics", 'sex': "female"},
+                {'name': 'Jeniffer', 'major': "Computer Science", 'sex': "female"},
+                {'name': 'Edward', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Zara', 'major': "Psychology", 'sex': "female"},
+                {'name': 'Wendy', 'major': "Economics", 'sex': "female"},
+                {'name': 'Sera', 'major': "Psychology", 'sex': "female"}
+         ]
+df = pd.DataFrame(student_list, columns = ['name', 'major', 'sex'])
+df
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 31.png" alt="assets/images/ml/pandas/Untitled 31.png" /></p>
+
+<p>일단 학과 별로 묶어보자</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 32.png" alt="assets/images/ml/pandas/Untitled 32.png" /></p>
+
+<p>출력하면 다음과 같다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 33.png" alt="assets/images/ml/pandas/Untitled 33.png" /></p>
+
+<p>학과당 인원</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 34.png" alt="assets/images/ml/pandas/Untitled 34.png" /></p>
+
+<p>성별당 인원</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 35.png" alt="assets/images/ml/pandas/Untitled 35.png" /></p>
+
+<hr />
+
+<h2 id="중복행-제거">중복행 제거</h2>
+
+<p>학생 데이터가 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>student_list = [{'name': 'John', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Nate', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Abraham', 'major': "Physics", 'sex': "male"},
+                {'name': 'Brian', 'major': "Psychology", 'sex': "male"},
+                {'name': 'Janny', 'major': "Economics", 'sex': "female"},
+                {'name': 'Yuna', 'major': "Economics", 'sex': "female"},
+                {'name': 'Jeniffer', 'major': "Computer Science", 'sex': "female"},
+                {'name': 'Edward', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Zara', 'major': "Psychology", 'sex': "female"},
+                {'name': 'Wendy', 'major': "Economics", 'sex': "female"},
+                {'name': 'Sera', 'major': "Psychology", 'sex': "female"},
+                {'name': 'John', 'major': "Computer Science", 'sex': "male"},
+         ]
+df = pd.DataFrame(student_list, columns = ['name', 'major', 'sex'])
+df
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 36.png" alt="assets/images/ml/pandas/Untitled 36.png" /></p>
+
+<p>여기 보면 0번째와 11번째가 같은 것을 확인 할 수 있다.</p>
+
+<p>눈으로 말고 코드로 확인하고 싶다면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 37.png" alt="assets/images/ml/pandas/Untitled 37.png" /></p>
+
+<p>11 번째 값은 이미 있는 데이터 (중복)</p>
+
+<p>중복된 값을 제거하려면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 38.png" alt="assets/images/ml/pandas/Untitled 38.png" /></p>
+
+<hr />
+
+<p>중복에 조건 넣기</p>
+
+<p>major가 같은 것 체크</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 39.png" alt="assets/images/ml/pandas/Untitled 39.png" /></p>
+
+<p><img src="assets/images/ml/pandas/Untitled 40.png" alt="assets/images/ml/pandas/Untitled 40.png" /></p>
+
+<p>keep에서 first 혹은 last를 줄 수 있다.</p>
+
+<hr />
+
+<h3 id="nan값을-찾아서-다른-값으로-변경하기">NaN값을 찾아서 다른 값으로 변경하기</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>student_list = [{'name': 'John', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Nate', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Abraham', 'major': "Physics", 'sex': "male"},
+                {'name': 'Brian', 'major': "Psychology", 'sex': "male"},
+                {'name': 'Janny', 'major': "Economics", 'sex': "female"},
+                {'name': 'Yuna', 'major': "Economics", 'sex': "female"},
+                {'name': 'Jeniffer', 'major': "Computer Science", 'sex': "female"},
+                {'name': 'Edward', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Zara', 'major': "Psychology", 'sex': "female"},
+                {'name': 'Wendy', 'major': "Economics", 'sex': "female"},
+                {'name': 'Nate', 'major': None, 'sex': "male"},
+                {'name': 'John', 'major': "Computer Science", 'sex': None},
+         ]
+df = pd.DataFrame(student_list, columns = ['name', 'major', 'sex'])
+</code></pre></div></div>
+
+<p>값 중에서 None이 있는 값을 추가해서 테스트 한다.</p>
+
+<p>쉽게 전체 데이터를 확인하려면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 41.png" alt="assets/images/ml/pandas/Untitled 41.png" /></p>
+
+<p>12개의 행과 3개의 열이 있고 major와 sex에서 non-null이 11개씩만 존재한다.</p>
+
+<p><code class="highlighter-rouge">isna()</code> 혹은 <code class="highlighter-rouge">isnull()</code> 로 빈 곳을 쉽게 찾는다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 42.png" alt="assets/images/ml/pandas/Untitled 42.png" /></p>
+
+<p><img src="assets/images/ml/pandas/Untitled 43.png" alt="assets/images/ml/pandas/Untitled 43.png" /></p>
+
+<p>이제 None 값을 다른 값으로 변경해보자</p>
+
+<p>fillna 를 사용해서 None 값을 기본값으로 변경할 수 있다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 44.png" alt="assets/images/ml/pandas/Untitled 44.png" /></p>
+
+<hr />
+
+<h2 id="map">map</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>date_list = [
+    {
+        'yyyy-mm-dd': '2000-06-27'
+    },
+    {
+        'yyyy-mm-dd': '2000-10-27'
+    }
+]
+df = pd.DataFrame(date_list, columns=['yyyy-mm-dd'])
+
+def extract_year(row):
+    return row.split('-')[0]
+
+df['year'] = df['yyyy-mm-dd'].map(extract_year)
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 45.png" alt="assets/images/ml/pandas/Untitled 45.png" /></p>
+
+<p>map 함수도 예전에 apply 함수를 사용했던 것과 동일하게 동작함</p>
+
+<p>만약 다음과 같은 데이터가 있을 때</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 46.png" alt="assets/images/ml/pandas/Untitled 46.png" /></p>
+
+<p>student는 1 developer는 2 teacher는 3 dentist는 4 manager는 5로 바꾸게 하고 싶다면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 47.png" alt="assets/images/ml/pandas/Untitled 47.png" /></p>
+
+<p>하나가 없다면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 48.png" alt="assets/images/ml/pandas/Untitled 48.png" /></p>
+
+<hr />
+
+<h2 id="applymap">applymap</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_y = [{'x': 5.5, 'y': -5.6},
+         {'x': -5.2, 'y': 5.5},
+         {'x': -1.6, 'y': -4.5}]
+df = pd.DataFrame(x_y)
+df
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 49.png" alt="assets/images/ml/pandas/Untitled 49.png" /></p>
+
+<p>이런 데이터가 있는데 만약 전체를 다 바꾸고 싶다면?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = df.applymap(np.around)
+df
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 50.png" alt="assets/images/ml/pandas/Untitled 50.png" /></p>
+
+<p>전체를 바꾸고 싶다면 applymap 하나만 바꾸고 싶다면 map</p>
+
+<hr />
+
+<h2 id="unique-한-값-추출">Unique 한 값 추출</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>job_list = [{'name': 'John', 'job': "teacher"},
+                {'name': 'Nate', 'job': "teacher"},
+                {'name': 'Fred', 'job': "teacher"},
+                {'name': 'Abraham', 'job': "student"},
+                {'name': 'Brian', 'job': "student"},
+                {'name': 'Janny', 'job': "developer"},
+                {'name': 'Nate', 'job': "teacher"},
+                {'name': 'Obrian', 'job': "dentist"},
+                {'name': 'Yuna', 'job': "teacher"},
+                {'name': 'Rob', 'job': "lawyer"},
+                {'name': 'Brian', 'job': "student"},
+                {'name': 'Matt', 'job': "student"},
+                {'name': 'Wendy', 'job': "banker"},
+                {'name': 'Edward', 'job': "teacher"},
+                {'name': 'Ian', 'job': "teacher"},
+                {'name': 'Chris', 'job': "banker"},
+                {'name': 'Philip', 'job': "lawyer"},
+                {'name': 'Janny', 'job': "basketball player"},
+                {'name': 'Gwen', 'job': "teacher"},
+                {'name': 'Jessy', 'job': "student"}
+         ]
+df = pd.DataFrame(job_list, columns = ['name', 'job'])
+</code></pre></div></div>
+
+<p><img src="assets/images/ml/pandas/Untitled 51.png" alt="assets/images/ml/pandas/Untitled 51.png" /></p>
+
+<p>유일한 값만 확인하고 싶다면?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 52.png" alt="assets/images/ml/pandas/Untitled 52.png" /></p>
+
+<p><img src="assets/images/ml/pandas/Untitled 53.png" alt="assets/images/ml/pandas/Untitled 53.png" /></p>
+
+<hr />
+
+<h2 id="두개의-데이터-프레임-합치기">두개의 데이터 프레임 합치기</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>l1 = [{'name': 'John', 'job': "teacher"},
+      {'name': 'Nate', 'job': "student"},
+      {'name': 'Fred', 'job': "developer"}]
+
+l2 = [{'name': 'Ed', 'job': "dentist"},
+      {'name': 'Jack', 'job': "farmer"},
+      {'name': 'Ted', 'job': "designer"}]
+
+df1 = pd.DataFrame(l1, columns = ['name', 'job'])
+df2 = pd.DataFrame(l2, columns = ['name', 'job'])
+</code></pre></div></div>
+
+<p>df1</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 54.png" alt="assets/images/ml/pandas/Untitled 54.png" /></p>
+
+<p>df2</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 55.png" alt="assets/images/ml/pandas/Untitled 55.png" /></p>
+
+<p>concat을 사용해서 합치고 인덱스가 겹치니까 무시하도록 한다.</p>
+
+<p><img src="assets/images/ml/pandas/Untitled 56.png" alt="assets/images/ml/pandas/Untitled 56.png" /></p>
+
+<p>열로 합치고 싶을 경우에는?</p>
+
+<p><img src="assets/images/ml/pandas/Untitled57.png" alt="assets/images/ml/pandas/Untitled 57.png" /></p>
+
+<hr />
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ml/">Ml</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_3">[Kaggle] titanic 모델, 예측, 해결</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_2">[Kaggle] titanic 데이터 가공</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/titanic_1">[Kaggle] titanic 데이터 분석</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ml/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_2">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_1/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 2. 텐서플로 사용하기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># 텐서플로 사용하기 * [강좌](https://www.creapple.com/lecture) ## 텐서플로(Tensorflow) 소개 tensorfow는 머신러닝 플랫폼으로 다른 플랫폼으로 케라스도 있지만 tensorflow 2.0으로 들어가며 케라스가 깊게 연관되어 힘들게 케라스를 사용하기 더 쉽게 되었다. 이 강의에서는 텐서 플로우 1.0과 2.0</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_1">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_1/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 1. 머신러닝 문제해결</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>머신러닝 문제해결 토끼와 거북이가 알려주는 회귀 회귀는 연속된 데이터를 가지고 가설을 만드는 방법인데, 그 중 선형 회귀는 1차 방정식을 만드는 학습 방법 아래와 같이 시간당 토끼의 이동 거리와 거북이의 이동 거리에 대한 데이터가</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Pandas 이론 강좌</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Pandas+%EC%9D%B4%EB%A1%A0+%EA%B0%95%EC%A2%8C&amp;url=https://leejigun.github.io/pandas"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/pandas"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

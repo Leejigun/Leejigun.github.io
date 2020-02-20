@@ -1,0 +1,679 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>iOS 삽질 블로그</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//page2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="iOS 삽질 블로그" />
+    <meta property="og:description" content="iOS developer." />
+    <meta property="og:url" content="https://leejigun.github.io//page2/" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="iOS 삽질 블로그" />
+    <meta name="twitter:description" content="iOS developer." />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//page2/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//page2/"
+    },
+    "description": "iOS developer."
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="iOS 삽질 블로그" href="/feed.xml" />
+
+
+</head>
+<body class="paged archive-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer " style="background-image:  url(/assets/images/blog-cover.jpg) ">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                
+                    <img class="site-logo" src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그"/>
+                
+            </h1>
+            <h2 class="site-description">iOS developer.</h2>
+        </div>
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/titanic_1">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/titanic/titanic_1/titanic_data_analysis_background.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/titanic_1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Kaggle] titanic 데이터 분석</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>데이터 분석 강좌 train_df.info() print('_'*40) test_df.info() 표본에 대한 숫자형 값의 분포는? 우리가 케글에서 내려받은 데이터를 기반으로 학습 데이터가 전체 데이터를 대포하는 좋은 교육 데이터 세트인지 파악할 필요가 있다. 먼저 숫자형 데이터를 살펴본다. 총</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/titanic_0">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/titanic/titaic_background.jpeg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/titanic_0">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Kaggle] titanic intro</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>타이타닉 케글에서 전통적인 예제인 타이타닉 문제를 상세한 튜토리얼과 함께 올렸다. 케글 경진 대회 타이타닉 튜토리얼 강좌를 기반으로 타이타닉 데이터에서 생존자를 예측하는 문제를 해결해본다. 목표 타이타닉 침몰은 역사상 가장 악명 높은 난파선 중 하나입니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_5">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_5/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_5">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 5. 머신러닝 최적화</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>머신러닝 최적화 Overshooting 경사 하강법을 사용하면서 우리는 조금 조금씩 아래로 내려오면서 수렴하는 지점을 찾아 나간다. 근데 만약 learning rate 값이 너무 크면 수렴하는 지점을 넘어가게 된다. 아래와 같이 learning rate가 너무 커 수렴값을</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_4">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_4/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_4">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 4. 분류(Classification) 프로젝트</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>분류(Classification) 프로젝트 지도학습 (supervisor learning)의 문제 해결 방법은 2가지가 있다. 회귀 분류 앞서 선형 회귀를 통해서 다수의 입력으로 다수의 예측 결과를 가져오는 방법까지 학습했다. 여기서 더 나아가야 할 부분은 선형으로 표현할 수 있는</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_3">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_3/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_3">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 3. 회귀 프로젝트</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>회귀 프로젝트 [텐서플로우2] - 마라톤 남은 기록 예측 모델 만들기 앞서 마라톤 데이터를 가져와 텐서플로우 1을 사용해 선형 회귀를 구현한 모델이 있었다. tensorflow 1 linear regression 이제 여기서 learning 부분을 수정해본다. 기존 learning</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_2">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_1/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 2. 텐서플로 사용하기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>텐서플로 사용하기 강좌 텐서플로(Tensorflow) 소개 tensorfow는 머신러닝 플랫폼으로 다른 플랫폼으로 케라스도 있지만 tensorflow 2.0으로 들어가며 케라스가 깊게 연관되어 힘들게 케라스를 사용하기 더 쉽게 되었다. 이 강의에서는 텐서 플로우 1.0과 2.0 다 다룬다. 다행히</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/pandas">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/pandas/pandas_background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/pandas">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Pandas 이론 강좌</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>pandas 판다스 강의를 기반으로 판다스 사용법을 적는다. https://www.inflearn.com/course/pandas-팬더스-데이터분석-기초# https://github.com/minsuk-heo/pandas 개발 환경 Jupyter Notebook을 사용해서 학습 https://brunch.co.kr/@mapthecity/16 를 보고 설치 터미널에서 폴더로 이동해 jupyter notebook을 치면 브라우저가 열림 원래 Atom을 사용했지만, 여기 강의에서 이걸</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_1">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_1/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_1">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 1. 머신러닝 문제해결</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>머신러닝 문제해결 토끼와 거북이가 알려주는 회귀 회귀는 연속된 데이터를 가지고 가설을 만드는 방법인데, 그 중 선형 회귀는 1차 방정식을 만드는 학습 방법 아래와 같이 시간당 토끼의 이동 거리와 거북이의 이동 거리에 대한 데이터가</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/tensorflow2_0">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/tensorflow2_0/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/tensorflow2_0">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[tensoflow 2.0] 0.머신러닝 이해하기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>머신러닝 이해하기 머신러닝, 딥러닝, AI의 차이를 배웠다. 머신러닝의 정의 전통적인 프로그래밍의 절차 머신러닝의 프로그래밍 절차 데이터를 보고 룰을 찾아낸다. 큐브를 돌리는 맞추는 것을 보면 어떤 상황에서도 그 상황에 맞는 룰을 정의해 그 상황을</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
+            <a class="post-card-image-link" href="/Logistic_Regression_Classification">
+                <div class="post-card-image" style="background-image: url(/assets/images/ml/Logistic_Regression_Classification/background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Logistic_Regression_Classification">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ml</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Logistic Regression Classification</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Logistic Regression Classification 이진 분류 알고리즘 모델 중 하나인 로지스틱 회기 분류에 대해 알아본다. 강좌 Logistic 분류 알고리즘에서 정확도가 높다고 알려진 알고리즘 Regression 지난 학습에서 배운 내용을 다시 한번 돌이켜보면… 가설 손실 함수</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+
+        </div>
+
+    </div>
+</main>
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+            
+                <nav class="pagination" role="pagination">
+    
+        
+            <a class="newer-posts" href="/" title="Previous Page">&laquo; Newer Posts</a>
+        
+    
+    <span class="page-number"> Page 2 of 6 </span>
+     
+        <a class="older-posts" href="/page3/" title="Next Page">Older Posts &raquo;</a>
+     
+</nav>
+            
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('6');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

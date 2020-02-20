@@ -1,0 +1,815 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Tayga 앱 회고 두번째 Twitch API를 통해 data 가져오기." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Tayga-TwitchAPI-Moya" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기." />
+    <meta property="og:description" content="네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면, 이제는 이런 네트워크 라이브러리를 사용하지 않으면 개발을 못하겠다고 하는 사람들이 있을 정도로 폭 넓고 쉽게 네트워크 기능들을" />
+    <meta property="og:url" content="https://leejigun.github.io//Tayga-TwitchAPI-Moya" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/tayga/moya_logo_github.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-06-05T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-06-05T09:00:00+09:00" />
+    <meta property="article:tag" content="Project" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기." />
+    <meta name="twitter:description" content="네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면, 이제는 이런 네트워크 라이브러리를 사용하지 않으면 개발을 못하겠다고 하는 사람들이 있을 정도로 폭 넓고 쉽게 네트워크 기능들을" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/tayga/moya_logo_github.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Project" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Tayga-TwitchAPI-Moya",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/tayga/moya_logo_github.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Tayga-TwitchAPI-Moya"
+    },
+    "description": "네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면, 이제는 이런 네트워크 라이브러리를 사용하지 않으면 개발을 못하겠다고 하는 사람들이 있을 정도로 폭 넓고 쉽게 네트워크 기능들을"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기." href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 June 2018"> 5 June 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/project/'>PROJECT</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/tayga/moya_logo_github.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>네트워크 라이브러리의 경우, 개발 과정에서 거의 필수로 사용하고 있다. 안드로이드 개발을 진행할 땐 주로 Retrofit과 Gson을 사용해 네트워크 이벤트를 처리했었다. 사실 네트워크 라이브러리를 사용하지 않더라도 개발을 진행할 수 있지만, 많은 개발자들의 회고들을 보면, 이제는 이런 네트워크 라이브러리를 사용하지 않으면 개발을 못하겠다고 하는 사람들이 있을 정도로 폭 넓고 쉽게 네트워크 기능들을 구현할 수 있다.</p>
+
+<p>그 중 Alamofire는 Swift의 대표적인 네트워크 라이브러리다. 대부분의 앱들이 Alamofire를 사용해 개발을 진행하고, 많은 사람들이 이 Alamofire를 사용하는 포스트를 올려놓았기 때문에 사용하는데 크게 어렵지 않을 것이다. 나 역시 Alamofire의 github repo를 보면서 사용법을 많이 찾아봤었다. 그러던 중 Moya라는 프레임워크에 대해서 포스트해 놓은 글을 발견해 써봤는데, 상당히 좋은 것 같아서 오늘까지도 계속 사용하고 있다.</p>
+
+<p>이번 포스트에서는 Moya를 사용해 Twitch API를 이용하는 과정을 정리한다.</p>
+
+<p><img src="../assets/images/tayga/moya_logo_github.png" alt="moya_logo" /></p>
+
+<h1 id="moya">Moya</h1>
+
+<p>Moya는 우리가 Alamofire를 사용할 때 만드는 모든 네트워크 요소들을 추상화 시키는 레이어를 제공한다. Moya를 사용하면 API와 바로 연결을 할 수 있고, RxSwift나 다른 라이브러리가 제공하는 기능들을 쉽게 익스텐션으로 제공한다. Moya를 사용하면서 수행하는 기능들은 대부분 그저 Alamofire를 사용해서 구현하는 기능과 다를바 없다.</p>
+
+<p>하지만, Moya는 이 모든 엔드 포인트를 감싸는 추상화 레이어를 제공해 네트워크 사용 과정에 단일화와 명확함을 준다.</p>
+
+<p><img src="../assets/images/tayga/moya_diagram.png" alt="diagram" /></p>
+
+<p>처음에는 뭐가 좋은지 Moya를 내 앱에 추가해도 문제가 없을지 많은 고민을 했는데, 처음 Moya를 공부하게된 계기는 Moya 자체가 Alamofire를 포함하고 있기 때문에 cocoaPods에 Alamofire를 쓰던 Moya를 쓰던 줄 수 가 변함 없다는 마음에  시작했다.</p>
+
+<p>단, 나는 RxSwift를 사용하기 때문에 Podfile에 아래와 같이 추가해야 한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pod</span> <span class="err">'</span><span class="kt">Moya</span><span class="o">/</span><span class="kt">RxSwift</span><span class="err">'</span>
+</code></pre></div></div>
+
+<p>( Moya가 제공하는 RxSwift 익스텐션을 함께 불러온다. )</p>
+
+<h2 id="endpoint">Endpoint</h2>
+
+<p>내가 할 동작은 TwitchAPI를 통해서 방송 중인 게임을 인기순으로 불러오는 작업이다. 이번 포스트에서는 UI 관련 작업을 진행하지 않지만 구현된 화면은 다음과 같다.</p>
+
+<p><img src="../assets/images/tayga/Screen Shot 2018-06-05.png" alt="GameListViewController screenshot" /></p>
+
+<p>TwitchAPI.swift 파일을 만들고 다음과 같이 코딩한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Moya</span>
+<span class="kd">enum</span> <span class="kt">TwitchAPI</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">getTopGame</span><span class="p">([</span><span class="kt">String</span><span class="p">:</span><span class="kt">String</span><span class="p">])</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Moya를 사용할 때 Endpoint 는 Enum으로 구현하도록 하고 있다. Objective -c 를 사용할 때에는 생각도 못했던 방법이다. 먼저, 타겟에 대한 enum case를 만든다. getTopGame안의 [String : String] 파라미터는 나중에 http body나 url의 파라미터 등으로 사용될 수 있다. 여기서는 가져올 수, api key 등을 전달하는데 사용한다.</p>
+
+<p>여기서 이제 여기에 Moya.TargetType을 따라야한다고 git에서는 설명하고 있다. 익스텐션으로 TargetType를 추가하면 필수로 구현해야하는 변수들이 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">TwitchAPI</span><span class="p">:</span><span class="kt">TargetType</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">URL</span>
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Moya</span><span class="o">.</span><span class="kt">Method</span>
+    <span class="k">var</span> <span class="nv">sampleData</span><span class="p">:</span> <span class="kt">Data</span>
+    <span class="k">var</span> <span class="nv">task</span><span class="p">:</span> <span class="kt">Task</span>
+    <span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 6개의 변수들이 필수로 구현해야하는 Moya의 타겟 타입들인데, 하나 하나 풀어서 뜯어보자.</p>
+
+<ol>
+  <li>baseURL: 통신을 위한 URL을 지정한다.</li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="s">"https://api.twitch.tv/kraken/"</span>
+<span class="k">var</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">URL</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Path:  타겟에 따라 path를 지정합니다. 상단의 enum에는 stream case가 없었는데, 분기타는 과정을 보여주기 위해서 추가했습니다.</li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">stream</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"streams/"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">getTopGame</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"games/top"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>method: Http 프로토콜 메소드를 정의합니다. 이번에는 get만 사용하지만 경우에 따라서 Path에서처럼 분기 처리가 가능합니다.</li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Moya</span><span class="o">.</span><span class="kt">Method</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="k">get</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Task: 통신 Task를 어떤 것을 사용할 것인지 선택합니다. 이 때 선택하는 Task는 API의 동작 방식과 데이터에 따라서 다양한 종류가 존재합니다. (Upload, Json, data 등)</p>
+
+    <p>여기서는 그저 get방식으로 뒤에 파라미터를 붙이면 되고, 이 역시 이미 준비되어있는 requestParameters를 사용해 &amp; 형식으로 뒤에 파라미터를 붙입니다.</p>
+  </li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">task</span><span class="p">:</span> <span class="kt">Task</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">stream</span><span class="p">(</span><span class="k">let</span> <span class="nv">param</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">.</span><span class="nf">requestParameters</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="n">param</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">getTopGame</span><span class="p">(</span><span class="k">let</span> <span class="nv">param</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">.</span><span class="nf">requestParameters</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="n">param</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>headers: 해더에 박을 인자 셋팅, TwitchAPI의 경우에는 해더에 제가 발급받은 키를 붙여줘야 합니다. 이 경우 다양한데, YoutubeAPI의 경우에는 파라미터랑 같이 붙여서 처리하도록 디자인되어 있습니다.</li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s">"Client-ID"</span><span class="p">:</span><span class="kt">TwitchAPIKey</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>이로서 enum에서 할 동작은 끝입니다. 이렇게 사전에 정의된 타겟과 endpoint를 사용하면 통일된 API를 제공할 수 있고, 이 파일 자체가 하나의 API문서의 역할을 제공하기 때문에 협업 환경에서도 네트워크 API를 한눈에 확인 가능합니다.</p>
+
+<p>다음 포스트에서는 이제 이 TwitchAPI와 Moya를 사용해 Rx를 통한 비동기 네트워크의 처리를 알아보겠습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/project/">Project</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_page_based_navigation">SwiftUI에서 page based navigation 사용하기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_4_MVVM_Combine">Circle Timer 만들기_4_MVVM_Combine</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_3_User_Interation">Circle Timer 만들기_3_User_Interation(SwiftUI, gesture, DragGesture)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/project/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Tayga-Moya,RxSwift">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/ReactiveX_logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-Moya,RxSwift">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (3) - RxSwift를 통한 Moya 비동기 처리</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>저번 포스트에 이어서 Moya 타겟에 실제로 RxSwift를 통해 데이터를 읽어오겠습니다. 저번 포스트에서 만든 Endpoint로 이루어진 타겟 enum은 실제로는 아무 동작도 하지 않습니다. 그저 타겟 타입들을 정해주는 역할을 수행할 뿐 실제 동작을 위해서는 Provider가</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Tayga-Login,Version">
+                <div class="post-card-image" style="background-image: url(/assets/images/tayga/retro_image-cutout.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Tayga-Login,Version">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Project</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[Tayga 개발기] (1) - Login, Version check</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Tayga 앱 구현의 첫번째 게시물로 가장 첫 진입점인 LoginViewController의 구현부를 기록한다. 사실 이미 어느정도 개발을 진행하고 회고를 작성하고 있기 때문에 게시물의 순서는 실제 개발 순서와 조금 다를 수 있지만, 처음부터 찬찬히 적어본다. 사전</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[Tayga 개발기] (2) - Moya, TwitchAPI를 통해 데이터 불러오기.</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BTayga+%EA%B0%9C%EB%B0%9C%EA%B8%B0%5D+%282%29+-+Moya%2C+TwitchAPI%EB%A5%BC+%ED%86%B5%ED%95%B4+%EB%8D%B0%EC%9D%B4%ED%84%B0+%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.&amp;url=https://leejigun.github.io/Tayga-TwitchAPI-Moya"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Tayga-TwitchAPI-Moya"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

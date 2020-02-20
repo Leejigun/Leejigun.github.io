@@ -1,0 +1,1224 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>IGListKit 가이드(1)- 모델 바인딩</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다." />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//IGListKit" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="IGListKit 가이드(1)- 모델 바인딩" />
+    <meta property="og:description" content="IGListKit [IGListKit Tutorial](https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews) IGListkit에 대한 가이드가 많이 있지만, 버전이 3.0으로 올라가면서 binding 부분이 강화되면서 변경된 부분들에 대한 포스트가 미흡하여 인스타그램의 예제를 보충하려 한다. Modeling and Binding과 필요성 우선 예제를 fork 하고 받는다. 이 예제는 기본적인 목 데이터와 UI가 구현되어 있다. 한 게시물을 클릭했을 때 보이는 화면을 Post 데이터로 바인딩해서 표현해야" />
+    <meta property="og:url" content="https://leejigun.github.io//IGListKit" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/IGListKit/profile.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-04-05T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-04-05T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios Tip" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IGListKit 가이드(1)- 모델 바인딩" />
+    <meta name="twitter:description" content="IGListKit [IGListKit Tutorial](https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews) IGListkit에 대한 가이드가 많이 있지만, 버전이 3.0으로 올라가면서 binding 부분이 강화되면서 변경된 부분들에 대한 포스트가 미흡하여 인스타그램의 예제를 보충하려 한다. Modeling and Binding과 필요성 우선 예제를 fork 하고 받는다. 이 예제는 기본적인 목 데이터와 UI가 구현되어 있다. 한 게시물을 클릭했을 때 보이는 화면을 Post 데이터로 바인딩해서 표현해야" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/IGListKit/profile.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios Tip" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//IGListKit",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/IGListKit/profile.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//IGListKit"
+    },
+    "description": "IGListKit [IGListKit Tutorial](https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews) IGListkit에 대한 가이드가 많이 있지만, 버전이 3.0으로 올라가면서 binding 부분이 강화되면서 변경된 부분들에 대한 포스트가 미흡하여 인스타그램의 예제를 보충하려 한다. Modeling and Binding과 필요성 우선 예제를 fork 하고 받는다. 이 예제는 기본적인 목 데이터와 UI가 구현되어 있다. 한 게시물을 클릭했을 때 보이는 화면을 Post 데이터로 바인딩해서 표현해야"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="IGListKit 가이드(1)- 모델 바인딩" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios-tip/">iOS tip</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 5 April 2018"> 5 April 2018</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ios-tip/'>IOS TIP</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">IGListKit 가이드(1)- 모델 바인딩</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/IGListKit/profile.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <ul>
+  <li><a href="https://github.com/Instagram/IGListKit">IGListKit</a></li>
+  <li><a href="https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews">[IGListKit Tutorial](https://www.raywenderlich.com/147162/iglistkit-tutorial-better-uicollectionviews)</a></li>
+</ul>
+
+<p>IGListkit에 대한 가이드가 많이 있지만, 버전이 3.0으로 올라가면서 binding 부분이 강화되면서 변경된 부분들에 대한 포스트가 미흡하여 인스타그램의 예제를 보충하려 한다.</p>
+
+<h2 id="modeling-and-binding과-필요성">Modeling and Binding과 필요성</h2>
+
+<p>우선 <a href="https://github.com/rnystrom/IGListKit-Binding-Guide">예제</a>를 fork 하고 받는다. 이 예제는 기본적인 목 데이터와 UI가 구현되어 있다. 한 게시물을 클릭했을 때 보이는 화면을 Post 데이터로 바인딩해서 표현해야 한다.</p>
+
+<p><img src="../assets/images/IGListKit/first.png" alt="first" /></p>
+
+<p>위 View를 보면 1개의 Post 데이터를 4종류의 cell로 바인딩을 해 생성하고 각각의 cell에 필요한 데이터를 분배하는 일련의 작업을 요구한다.</p>
+
+<p>왜 1개의 Post를 4개의 cell로 나눠서 표현하는 장점은 무엇일까? 이 예제는 큰 의미가 있는데, 단순히 반복되는 comment 부분만을 tableView로 구현하는게 아닌 전체를 collectionView로 구현해서 화면을 구성하는 것 이다.</p>
+
+<p>기존의 TableView를 구성할 때에는 <code class="highlighter-rouge">CellForRows</code>에서 Cell의 내용을 설정해주기 때문에 미리 가변적인 셀 전체의 높이를 계산하고 그 높이만큼 <code class="highlighter-rouge">heightForRowAtIndexPath</code>에서 지정하는 등 자칫 복잡해질 수 있는 로직들이 존재한다.</p>
+
+<p>이렇게 구현하면 Comment가 몇개든 쉽게 구현할 수 있고 각각의 셀이 독립되어 있어 유지보수도 쉬워진다. 여기서 이미지는 1개 뿐이지만, 만약 요구사항에 다수의 이미지를 표현할 수 있도록 추가하라고 한다면, 쉽게 ImageCell을 반복해서 표현할 수 있고 무언가 새로운 요소가 추가된다 해도 새로운 셀을 하나 디자인하면 될 뿐이다.</p>
+
+<p>이렇게 각각의 아이템들을 분리하면 반복될 수 있는 부분에서 처리가 쉽고 각각의 셀이 독립되어 있어 커스텀도 쉽다. 다만, 이런 방식을 지금까지 이용하기 힘들었던 이유는 이렇게 Post의 배열해서 하나하나 4가지의 모델로 분리하고 관리하는 것이 힘들었기 때문이다.</p>
+
+<p>하지만, IGlistKit의 모델 바인딩을 통해서 쉽게 이것들을 분리하고 관리할 수 있기 때문에 여러가지 복잡한 UI 모델도 쉽게 관리할 수 있다. 현재 인스타그램처럼 게시물처럼 사진과 글이 반복되는 사내 메신저 프로젝트를 관리하고 있는 와중에 이런 방식은 필자가 가지고 있던 많은 문제들을 해결해 줄 수 있게되어 관심을 가지게 되었다.</p>
+
+<p>IGlistkit을 사용하면 또 다른 장점이 있는데, 기존의 사내 메신저의 경우 20개의 데이터를 서버에서 가져와 한꺼번에 모든 이미지를 로드해 화면에 표현하는 방식을 사용했다. 이 방식을 사용한 이유를 물어보니 스크롤 할 때 조금 더 깔끔하게 동작하기 때문이라 했는데, 이 때문에 20개씩 셀을 가져오고 화면에 보여주기까지의 로딩 시간이 길어 오히려 답답했다.</p>
+
+<p>그래서 동적으로 Rx를 공부하면서 동적으로 이미지를 로드해 로드되면 셀을 갱신하는 방법을 적용하려고 했는데, 상당히 많은 버그가 생겼다. 셀의 높이를 동적으로 높이면서 발생하는 버그와 빠르게 스크롤 하면 이미지가 로드되었는데 높이가 변하지 않았던 버그 등등 내 미숙한 개발 능력과 경험으로는 점점 복잡해지는 코드들을 관리하기 힘들었다.</p>
+
+<p>서론이 길었고 이제 IGListKit으로 위 화면을 구성하는 방법을 살펴보고 인스타 그램쪽의 개발자가 무슨 생각을 가지고 이렇게 설계하게 되었는지 알아보자.</p>
+
+<h2 id="1-최상위-post-모델-설계">1. 최상위 Post 모델 설계</h2>
+
+<p>4 종류의 셀을 구성할 최상위의 Post 모델은 다음과 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">Post</span><span class="p">:</span> <span class="kt">ListDiffable</span> <span class="p">{</span>
+  <span class="c1">// 1</span>
+  <span class="k">let</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="k">let</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="k">let</span> <span class="nv">imageURL</span><span class="p">:</span> <span class="kt">URL</span>
+  <span class="k">let</span> <span class="nv">likes</span><span class="p">:</span> <span class="kt">Int</span>
+  <span class="k">let</span> <span class="nv">comments</span><span class="p">:</span> <span class="p">[</span><span class="kt">Comment</span><span class="p">]</span>
+  <span class="c1">// 2</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">imageURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">likes</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">comments</span><span class="p">:</span> <span class="p">[</span><span class="kt">Comment</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">imageURL</span> <span class="o">=</span> <span class="n">imageURL</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">likes</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>일반적인 게시물처럼 사용자 정보 1개의 이미지, 다수의 댓글(Comment)로 구성된다. 사실 이미지가 여러가일 수 있지만 여기서는 일단 1개의 이미지로 제한하고 생각해보자.</p>
+
+<p>이것만 놓고보면 일반적인 Post 모델인데 ListDiffable 프로토콜을 준수하고 있다는 점을 보자.</p>
+
+<h3 id="iglistdiffable-protocol">IGListDiffable Protocol</h3>
+
+<p>ListDiffable 프로토콜이 가지고 있는 메소드는 다음과 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">Boolean</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>왜 Diffing에서 diffIdentifier와 isEqual메소드를 구현해야 할까? 이 두 메소드를 사용하는 이유는 이 두 메소드가 diffing을 수행하는 데 있어서 identity(정체성)과 equality(평등성)을 수행한다는 것이다. 일반적인 데이터베이스에서 primary key와 같이 유일한 데이터를 표현한다. equality는 두 개의 유일한 객체의 값을 비교할 때 사용됩니다.</p>
+
+<p><strong>따라서 고유한 값을 가진(diffIdentifier가 같은) 객체를 비교해서 (isEqual) false가 나온다면 객체가 변형된 것이고 UI를 갱신할 필요가 있는 것이다.</strong></p>
+
+<p>또한 -isEqual 로 구현된 메소드는 2개의 객체를 비교할 때 NSDictionary와 마찬가지로 성능에 영향을 주지 않고 객체를 비교한다. 따라서 diffIdentifier와 isEqual을 구현하면 성능에 영향을 주지 않고 많은 데이터를 비교할 수 있다.</p>
+
+<h4 id="diffidentifier">diffIdentifier</h4>
+
+<p>diffIdentifier을 구현하는 가장 간단한 방법은 그냥 자신의 클래스를 비교하는 것이다. (self as NSObjectProtocol) 하지만 인스타그램 측에서는 Post 중에서 username과 timastamp가 일치하는 Post는 존재할 수 없기 때문에 아래와 같이 처리한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+	<span class="nf">return</span> <span class="p">(</span><span class="n">username</span> <span class="o">+</span> <span class="n">timestamp</span><span class="p">)</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="isequal">isEqual</h4>
+
+<p>자, 앞서 <code class="highlighter-rouge">diffIdentifier</code>를 구현했기 때문에 [ListDiffable] 속에서 이 객체가 Post라는 것을 알 수 있게 되었다. 이제 다수의 Post 속에서 2개의 Post를 어떻게 비교할 수 있을까? <code class="highlighter-rouge">isEqual</code>를 통해서 2개의 객체를 구분해야 한다. <code class="highlighter-rouge">isEqual</code>을 구현하는 적절한 방법은 무엇일까?</p>
+
+<ol>
+  <li>값을 비교하기 전에 먼저 포인터를 비교해야 한다.</li>
+  <li>먼저 nil 체크를 해야한다.</li>
+  <li>가장 낮은 레벨의 값부터 비교해야한다. 리스트와 리스트를 비교하기 전에 int와 int를 먼저 비교하자.</li>
+</ol>
+
+<p>권장하는 방법은 다음과 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">isEqual</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="n">object</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">self</span> <span class="o">==</span> <span class="n">object</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kt">YES</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">object</span> <span class="nv">isKindOfClass</span><span class="p">:[</span><span class="kt">User</span> <span class="kd">class</span><span class="p">]])</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kt">NO</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">User</span> <span class="o">*</span><span class="n">right</span> <span class="o">=</span> <span class="n">object</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="n">right</span><span class="o">.</span><span class="n">identifier</span>
+      <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">right</span><span class="o">.</span><span class="n">name</span> <span class="o">||</span> <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="nv">isEqual</span><span class="p">:</span><span class="n">right</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+      <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">posts</span> <span class="o">==</span> <span class="n">right</span><span class="o">.</span><span class="n">posts</span> <span class="o">||</span> <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">posts</span> <span class="nv">isEqualToArray</span><span class="p">:</span><span class="n">right</span><span class="o">.</span><span class="n">posts</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그렇다면 Post를 비교할 때에는 어떻게 구현해야 할까? 아쉽게도 여기서는 무조건 true를 반환한다. 왜 무조건 true를 반환할까? 우리는 <code class="highlighter-rouge">diffIdentifier</code>에서 username과 timeStamp를 통해서 고유한 키 값을 만들었다. 만약 isEqual이 수행된다면 이미 username과 timestamp가 일치하는 값이라 볼 수 있기 때문에 무조건 같은 Post라 볼 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>비교연산 <code class="highlighter-rouge">isEqual</code>은 항상 동일안 primary key를 가진 객체 사이에서만 발생한다.</strong></p>
+
+<h2 id="2-comment-설계">2. Comment 설계</h2>
+
+<h4 id="comment">Comment</h4>
+
+<p>이제 Post 안에 있는 Comment를 만들어보자. Comment.swift 파일을 만든다. Comment 파일을 어떻게 구성해야 할까? 생각해보자 Comment 안에는 username, username의 2개의 String이 존재한다. 이것은 간단하다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Comment</span><span class="p">:</span><span class="kt">ListDiffable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">username</span><span class="p">:</span><span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">text</span><span class="p">:</span><span class="kt">String</span>
+    <span class="c1">// MARK: - init</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span><span class="nv">text</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>자 그럼 ListDiffable의 메소드 <code class="highlighter-rouge">diffIdentifier</code>  ,<code class="highlighter-rouge">isEqual</code>은 어떻게 구현해야 할까? Comment를 구분할 수 있게 diffIdentifier 를 구현해야 한다. 단순히 self as NSObjectProtocol을 사용해도 되지만, 인스타그램에서 권장하는 방식으로 앞의 Post에서 사용한 방식을 따르자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+	<span class="nf">return</span> <span class="p">(</span><span class="n">username</span> <span class="o">+</span> <span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>다음으로 <code class="highlighter-rouge">isEqual</code>은 어떻게 해야 할까? 이 역시 Post와 마찬가지로 username과 text는 변경되지 않는 값으로 <code class="highlighter-rouge">diffIdentifier</code>에서 고유값으로 사용했다. isEqual이 수행되려면 <code class="highlighter-rouge">diffIdentifier</code>이 일치한다는 것으로 무조건 같은 객체라 볼 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="3-viewmodel-설계">3. ViewModel 설계</h2>
+
+<p>Post 모델과 Comment 모델은 설계가 끝났다. 우리는 최상단의 그림에도 나와있듯 Post라는 하나의 객체를 4 종류의 view로 나누려 한다. 이 셀들은 배열처럼 순서를 가지고 표현되는데 comment의 경우 Post의 데이터를 Comment로 따로 담은 것이기 때문에 배열화 하기 쉽지만 나머지 요소들도 따로 담아야 한다. 이 아이템들을 분리하기 위해서 ViewModel을 만들 필요가 있다. 이 view model들은 <code class="highlighter-rouge">ListBindingSectionController</code>안에서 관리되는데 <code class="highlighter-rouge">ListBindingSectionController </code>자체를 작은 IGListKit이라 볼 수 있다.</p>
+
+<p><code class="highlighter-rouge">ListBindingSectionController</code>에 Post 객체 하나를 넣으면 4종류의 View model로 나눠서 관리해 주기 때문에 IGListKit 안에 또 IGListKit을 구현하는 것과 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">UserViewModel</span><span class="p">:</span> <span class="kt">ListDiffable</span> <span class="p">{</span>
+
+  <span class="k">let</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="k">let</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">String</span>
+
+  <span class="nf">init</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span>
+  <span class="p">}</span>
+
+  <span class="c1">// MARK: ListDiffable</span>
+
+  <span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"user"</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+  <span class="p">}</span>
+
+  <span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">object</span> <span class="o">=</span> <span class="n">object</span> <span class="k">as?</span> <span class="kt">UserViewModel</span> <span class="k">else</span>  <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">username</span> <span class="o">==</span> <span class="n">object</span><span class="o">.</span><span class="n">username</span>
+    <span class="o">&amp;&amp;</span> <span class="n">timestamp</span> <span class="o">==</span> <span class="n">object</span><span class="o">.</span><span class="n">timestamp</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>인스타그램에서 구현한 UserViewModel을 보자. Post에서 첫번째 셀을 구성할 username과 timestamp만으로 뷰모델을 구성했다. 이것까지는 쉽게 감을 잡을 수 있을 것이다. 우리가 눈여겨 봐야 할 것은 하단의 <code class="highlighter-rouge">ListDiffable</code> 구현이다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"user"</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>하드 코딩으로 “user”를 반환하도록 했다. 이것이 무엇을 의미하는지 알겠는가? 로직을 상상해보자. 이제 모든 <code class="highlighter-rouge">UserViewModel</code> 객체는 같은 primary key를 가지게 되는 것이다. 만약 data source에 <code class="highlighter-rouge">UserViewModel</code> 객체가 새로 추가된다면 무조건 <code class="highlighter-rouge">isEqual</code>이 호출되고 둘이 다르다면 기존의 <code class="highlighter-rouge">UserViewModel</code>객체는 data source에서 대체되는 것이다.</p>
+
+<p><strong>하나의 <code class="highlighter-rouge">ListBindingSectionController</code> 안에는 한개의 <code class="highlighter-rouge">UserViewModel</code>만이 존재하도록 구현한 것이다.</strong></p>
+
+<p>이제 <code class="highlighter-rouge">isEqual</code>을 잘 구현하는 것이 정말 중요해졌다. 하나라도 값이 변경된다면 cell의 UI가 갱신되는 것이다. <code class="highlighter-rouge">isEqual</code> 부분은 따로 살펴볼 필요 없이 그저 내부의 모든 값을 비교한다.</p>
+
+<p>이제 나머지 <strong>image</strong>와 <strong>action</strong> view model을 만들어보자.</p>
+
+<p><strong>ImageViewModel</strong>은 화면에 표시할 하나의 Image url을 가지고 있다. <code class="highlighter-rouge">diffIdentifier</code> 역시 이 비지니스 로직에서 하나의 Post에서는 하나의 Image만을 가지고 있다고 가정하기 때문에 하드코딩으로 사용할 수 있다. <code class="highlighter-rouge">isEqual</code> 역시 하나의 아이템이 같은지 다른지 비교하면 간단하다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ImageViewModel</span><span class="p">:</span> <span class="kt">ListDiffable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">imageURL</span><span class="p">:</span><span class="kt">String</span>
+    <span class="c1">// MARK: - init</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">imageURL</span> <span class="o">=</span> <span class="n">url</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">extension</span> <span class="kt">ImageViewModel</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"image"</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">right</span> <span class="o">=</span> <span class="n">object</span> <span class="k">as?</span> <span class="kt">ImageViewModel</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">imageURL</span> <span class="o">==</span> <span class="n">right</span><span class="o">.</span><span class="n">imageURL</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>여기서 개념을 잡고 가야 할 것은 하나의 Post에는 하나의 <code class="highlighter-rouge">ImageViewModel</code>만이 존재한다는 것을 명심해야 한다. 모델의 설계에 따라서 <code class="highlighter-rouge">ListDiffable</code>을 구현 방향을 정의할 수 있다.</strong></p>
+
+<hr />
+
+<p>다음으로 ActionViewModel을 만들어야 한다. Action cell은 이미지 하단의 좋아요 버튼이 있는 셀로 담고있어야 하는 정보로는 현재는 좋아요 숫자만을 가지고 있다.</p>
+
+<p>이 역시 Post에서 유일한 셀임으로 하드코딩으로 <code class="highlighter-rouge">diffIdentifier</code>를 만들고 좋아요 숫자를 <code class="highlighter-rouge">isEqual</code>에서 비교하면 된다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">ActionViewModel</span><span class="p">:</span> <span class="kt">ListDiffable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">likes</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="c1">// MARK: - init</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">likes</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="n">likes</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// MARK: - ListDiffable</span>
+<span class="kd">extension</span> <span class="kt">ActionViewModel</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">diffIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"action"</span> <span class="k">as</span> <span class="kt">NSObjectProtocol</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">isEqual</span><span class="p">(</span><span class="n">toDiffableObject</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">ListDiffable</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">object</span> <span class="o">=</span> <span class="n">object</span> <span class="k">as?</span> <span class="kt">ActionViewModel</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">likes</span> <span class="o">==</span> <span class="n">object</span><span class="o">.</span><span class="n">likes</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이제 모델과 뷰 모델이 완성되었다. 시나리오를 생각해보면 하나의 데이터를 받아서 Post를 만들었다. 이 Post 객체를 ViewModel과 Comment로 쪼개서 cell들과 바인딩 시킬 수 있게되었다.</p>
+
+<h2 id="4-listbindingsectioncontroller">4. ListBindingSectionController</h2>
+
+<p>앞서 만든 모델들을 이제 실제로 쪼개고 뷰에 바인딩 시키는 작업이 필요하다. Post를 아래와 같은 4가지 데이터도 분할해야 한다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">UserViewModel</code></li>
+  <li><code class="highlighter-rouge">ImageViewModel</code></li>
+  <li><code class="highlighter-rouge">ActionViewModel</code></li>
+  <li><code class="highlighter-rouge">Comment</code></li>
+</ul>
+
+<p>그 작업을 수행하는 SectionController를 만들고 만들어보자. 여기서 주목해야 할 것은 들어오는 데이터 형태를 Post로 제한시킬 수 있다는 점이다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">PostSectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">Post</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">ListBindingSectionControllerDataSource</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+        <span class="n">dataSource</span> <span class="o">=</span> <span class="k">self</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">ListBindingSectionControllerDataSource</code>에서 구현해야 하는 메소드는 다음과 같다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MARK: - DataSource</span>
+<span class="kd">extension</span> <span class="kt">PostSectionController</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">viewModelsFor</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">ListDiffable</span><span class="p">]</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cellForViewModel</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionViewCell</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">sizeForViewModel</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>메소드 이름을 보면 많이 사용하는 TableView delegate나 CollectionView의 delegate 형태와 유사해 이해하기 어렵지 않다.</p>
+
+<p>위 3가지 메소드에서 요구하는 사항은 다음과 같다.</p>
+
+<ul>
+  <li>최상위 모델(<code class="highlighter-rouge">Post</code>)에서 사전에 정의한 ViewModel들의 리스트를 반환한다. (<code class="highlighter-rouge">viewModelsFor</code>)</li>
+  <li>뷰 모델에 맞는 뷰의 사이즈를 반환한다. (<code class="highlighter-rouge">sizeForViewModel</code>)</li>
+  <li>뷰 모델에 맞는 셀을 반환한다. (<code class="highlighter-rouge">cellForViewModel</code>)</li>
+</ul>
+
+<p>가장 먼저 Post를 viewmodel의 리스트로 쪼개는 <code class="highlighter-rouge">viewModelsFor</code>를 구현한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">viewModelsFor</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">ListDiffable</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">post</span> <span class="o">=</span> <span class="n">object</span> <span class="k">as?</span> <span class="kt">Post</span> <span class="k">else</span> <span class="p">{</span><span class="nf">fatalError</span><span class="p">()}</span>
+        <span class="k">let</span> <span class="nv">result</span><span class="p">:[</span><span class="kt">ListDiffable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        		<span class="kt">UserViewModel</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="n">post</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="n">post</span><span class="o">.</span><span class="n">timestamp</span><span class="p">),</span>
+                <span class="kt">ImageViewModel</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">post</span><span class="o">.</span><span class="n">imageURL</span><span class="p">),</span>
+                <span class="kt">ActionViewModel</span><span class="p">(</span><span class="nv">likes</span><span class="p">:</span> <span class="n">post</span><span class="o">.</span><span class="n">likes</span><span class="p">)</span>
+                <span class="p">]</span>
+        <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="n">post</span><span class="o">.</span><span class="n">comments</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>내용을 살펴보면 object 를 Post로 컨버팅해서 ListDiffable 리스트로 만드는 단순한 과정이다.</p>
+
+<p>다음으로 셀의 사이즈를 반환한다. 이 메소드는 셀을 그리기 전에 리스트의 아이템의 숫자만큼 호출된다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">sizeForViewModel</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"call sizeForViewModel"</span><span class="p">)</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">width</span> <span class="o">=</span> <span class="n">collectionContext</span><span class="p">?</span><span class="o">.</span><span class="n">containerSize</span><span class="o">.</span><span class="n">width</span> <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">()</span> <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">height</span><span class="p">:</span><span class="kt">CGFloat</span>
+
+        <span class="k">switch</span> <span class="n">viewModel</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">ImageViewModel</span><span class="p">:</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="mi">250</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">Comment</span><span class="p">:</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="mi">35</span>
+        <span class="k">default</span><span class="p">:</span> <span class="c1">// UserViewModel,ActionViewModel</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="mi">55</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">height</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 부분은 크게 고민할 부분은 없다. 넓이는 SectionController가 가지고 있는 IGListkit의 CollectionView를 통해서 넓이를 얻어오는 작업이고, 높이의 경우에는 디자인 적으로 이미 정해진 높이가 있기 때문에 상관 없다. 추후에 동적으로 Image의 높이를 변경하는 로직을 다음 포스트에서 추가할 예정이다.</p>
+
+<p>Swift에서는 Switch문을 사용해서 타입을 찾았는데  Objective-C 에서는 <code class="highlighter-rouge">isKindOfClass:</code>를 사용해 찾을 수 있다.</p>
+
+<p>마지막으로 cell이 화면에 보여지기 전에 cell을 만들어 주는 작업이 필요하다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sectionController</span><span class="p">(</span><span class="n">_</span> <span class="nv">sectionController</span><span class="p">:</span> <span class="kt">ListBindingSectionController</span><span class="o">&lt;</span><span class="kt">ListDiffable</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cellForViewModel</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionViewCell</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"call cellForViewModel"</span><span class="p">)</span>
+
+        <span class="k">let</span> <span class="nv">identifier</span><span class="p">:</span><span class="kt">String</span>
+        <span class="k">switch</span> <span class="n">viewModel</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">UserViewModel</span><span class="p">:</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">"user"</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">ImageViewModel</span><span class="p">:</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">"image"</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">ActionViewModel</span><span class="p">:</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">"action"</span>
+        <span class="k">case</span> <span class="k">is</span> <span class="kt">Comment</span><span class="p">:</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">"comment"</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="nf">fatalError</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">collectionContext</span><span class="p">?</span><span class="o">.</span><span class="nf">dequeueReusableCellFromStoryboard</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="n">identifier</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">fatalError</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">cell</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>각각의 cell에 대한 <code class="highlighter-rouge">identifier</code>는 <code class="highlighter-rouge">Storyboard</code>에 정의되어 있으니 확인해 채워 넣은 것 뿐이다.</p>
+
+<p>여기서 조금 의문점이 생길 수 있다. tableView의 delegate의 경우 셀을 만들고 그 셀을 채워주는 작업까지 필요했는데, 여기서는 그냥 셀을 만들고 반환하고 끝난다. 그럼 셀과 뷰모델을 어떻게 바인드 해야할까?</p>
+
+<h2 id="5-binding-models-to-cells">5. Binding Models to Cells</h2>
+
+<p><code class="highlighter-rouge">ListBindingSectionController</code>에서 할 작업은 끝났다. 이제 셀과 뷰 모델을 바인드해 줘야 하는데 이 동작은 자동으로 이루어 지기 때문에 우리는 신경 쓸 필요가 없다. 우리가 해 줘야 할 작업은 Cel에서 바인드 되었을 때 할 동작을 구현해 주는 것 뿐이다. 이 동작을 구현하기 위해서는 각각의 셀들이 <code class="highlighter-rouge">ListBindable</code> 프로토콜을 준수해야 한다.</p>
+
+<p>먼저 <code class="highlighter-rouge">ImageCell</code>을 열어보고 <code class="highlighter-rouge">ListBindable</code>을 추가해보자. <code class="highlighter-rouge">ListBindable</code>에서 구현해야 할 메소드는 단 하나 <code class="highlighter-rouge">bindViewModel</code>뿐인데, 이 메소드는 <code class="highlighter-rouge">ListBindingSectionController</code>에서 뷰모델이 셀과 바인드되면 호출되는 메소드다. 여기에 바인드되면 해야할 작업들을 추가해보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">SDWebImage</span>
+<span class="kd">import</span> <span class="kt">IGListKit</span>
+
+<span class="kd">final</span> <span class="kd">class</span> <span class="kt">ImageCell</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">ListBindable</span> <span class="p">{</span>
+
+    <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span><span class="o">!</span>
+<span class="p">}</span>
+<span class="c1">// MARK: - ListBindable</span>
+<span class="kd">extension</span> <span class="kt">ImageCell</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">bindViewModel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="n">viewModel</span> <span class="k">as?</span> <span class="kt">ImageViewModel</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="nf">sd_setImage</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">viewModel</span><span class="o">.</span><span class="n">imageURL</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서 이미지를 로드하는데 <code class="highlighter-rouge">SDWebImage</code>라이브러리를 사용하는데 그건 일단 신경쓰지 말자. 이미지를 동적으로 로드하는데는 다양한 방법들이 있으니까 취향에 맞게 사용하자.</p>
+
+<p>별로 어려운 내용이 없으니 다른 cell들도 추가해 보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// UserCell.swift</span>
+<span class="kd">extension</span> <span class="kt">UserCell</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">bindViewModel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="n">viewModel</span> <span class="k">as?</span> <span class="kt">UserViewModel</span> <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">()</span> <span class="p">}</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">usernameLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">viewModel</span><span class="o">.</span><span class="n">username</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">dateLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">viewModel</span><span class="o">.</span><span class="n">timestamp</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ActionCell.swift</span>
+<span class="kd">extension</span> <span class="kt">ActionCell</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">bindViewModel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="n">viewModel</span> <span class="k">as?</span> <span class="kt">ActionViewModel</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">fatalError</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">likesLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">viewModel</span><span class="o">.</span><span class="n">likes</span><span class="se">)</span><span class="s">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// CommentCell.swift</span>
+<span class="kd">extension</span> <span class="kt">CommentCell</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">bindViewModel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="n">viewModel</span> <span class="k">as?</span> <span class="kt">Comment</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nf">fatalError</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">usernameLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">viewModel</span><span class="o">.</span><span class="n">username</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">commentLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">viewModel</span><span class="o">.</span><span class="n">text</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이제 완성되었다. 한번 화면에 찍어보자 ViewController로 가서 목 데이터를 만든다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">data</span> <span class="o">=</span> <span class="p">[</span><span class="kt">ListDiffable</span><span class="p">]()</span>
+<span class="kd">lazy</span> <span class="k">var</span> <span class="nv">adapter</span><span class="p">:</span> <span class="kt">ListAdapter</span> <span class="o">=</span> <span class="p">{</span> <span class="k">return</span> <span class="kt">ListAdapter</span><span class="p">(</span><span class="nv">updater</span><span class="p">:</span> <span class="kt">ListAdapterUpdater</span><span class="p">(),</span> <span class="nv">viewController</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">}()</span>
+
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+        <span class="n">data</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Post</span><span class="p">(</span>
+            <span class="nv">username</span><span class="p">:</span> <span class="s">"@janedoe"</span><span class="p">,</span>
+            <span class="nv">timestamp</span><span class="p">:</span> <span class="s">"15min"</span><span class="p">,</span>
+            <span class="nv">imageURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://placekitten.com/g/375/250"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
+            <span class="nv">likes</span><span class="p">:</span> <span class="mi">384</span><span class="p">,</span>
+            <span class="nv">comments</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@ryan"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"this is beautiful!"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@jsq"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"😱"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@caitlin"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"#blessed"</span><span class="p">),</span>
+                <span class="p">]</span>
+        <span class="p">))</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="n">collectionView</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">collectionView</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>마지막으로 짚고 넘어가는 부분은 <code class="highlighter-rouge">ListAdapterDataSource</code>에서 구현해야하는 메소드다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">objects</span><span class="p">(</span><span class="k">for</span> <span class="nv">listAdapter</span><span class="p">:</span> <span class="kt">ListAdapter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">ListDiffable</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">listAdapter</span><span class="p">(</span><span class="n">_</span> <span class="nv">listAdapter</span><span class="p">:</span> <span class="kt">ListAdapter</span><span class="p">,</span> <span class="n">sectionControllerFor</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ListSectionController</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="n">object</span> <span class="k">is</span> <span class="kt">Post</span> <span class="k">else</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">()</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="kt">PostSectionController</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">emptyView</span><span class="p">(</span><span class="k">for</span> <span class="nv">listAdapter</span><span class="p">:</span> <span class="kt">ListAdapter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span><span class="p">?</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>첫번째는 DataSource, 두번째는 data에 맞는 SectionViewController를 만드는 부분이다. 만약에 아이템을 여러개 넣는다면?</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Post</span><span class="p">(</span>
+            <span class="nv">username</span><span class="p">:</span> <span class="s">"@janedoe"</span><span class="p">,</span>
+            <span class="nv">timestamp</span><span class="p">:</span> <span class="s">"15min"</span><span class="p">,</span>
+            <span class="nv">imageURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://placekitten.com/g/375/250"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
+            <span class="nv">likes</span><span class="p">:</span> <span class="mi">384</span><span class="p">,</span>
+            <span class="nv">comments</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@ryan"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"this is beautiful!"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@jsq"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"😱"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@caitlin"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"#blessed"</span><span class="p">),</span>
+                <span class="p">]</span>
+        <span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Post</span><span class="p">(</span>
+            <span class="nv">username</span><span class="p">:</span> <span class="s">"@janedoe1"</span><span class="p">,</span>
+            <span class="nv">timestamp</span><span class="p">:</span> <span class="s">"15min"</span><span class="p">,</span>
+            <span class="nv">imageURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://placekitten.com/g/375/250"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>
+            <span class="nv">likes</span><span class="p">:</span> <span class="mi">384</span><span class="p">,</span>
+            <span class="nv">comments</span><span class="p">:</span> <span class="p">[</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@ryan"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"this is beautiful!"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@jsq"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"😱"</span><span class="p">),</span>
+                <span class="kt">Comment</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"@caitlin"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="s">"#blessed"</span><span class="p">),</span>
+                <span class="p">]</span>
+        <span class="p">))</span>
+</code></pre></div></div>
+
+<p>아이템을 하나 추가했다. 주의 할 점은 username을 바꿨다는 것이다. 우리는 앞서 Post의 <code class="highlighter-rouge">identifier</code>를 (username + timestamp)로 설정했기 때문에 만약 같은 이름이 들어갔다면 primarykey가 같은 아이템이 DB에 들어가는 것이다.</p>
+
+<p><img src="../assets/images/IGListKit/last.png" alt="first" /></p>
+
+<hr />
+
+<p>만약 우리가 아이템을 서버에서 받아올 때 이런 오류가 생긴다면, <code class="highlighter-rouge">identifier</code> 설계를 잘못한게 아닌지 다시 생각해봐야한다.</p>
+
+<p>다음 포스트에서는 여기서 각 셀에 대한 이벤트와 데이터가 변경되면서 발생하는 reloadData를 어떻게 처리해야 하는지 포스팅 하려 한다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios-tip/">Ios tip</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastlaneFirebase">iOS fastlane - Fabric, Firebase</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_Paths_Shapes">SwiftUI - Paths와 Shapes</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Swift_Moya_Provider_custom">Swift Moya Provider 커스텀</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ios-tip/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/IGListKit2">
+                <div class="post-card-image" style="background-image: url(/assets/images/IGListKit/profile.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/IGListKit2">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">IGListKit 가이드(2)- Action&relaodData</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>[이전 포스트](https://leejigun.github.io/IGListKit)에서는 IGListkit의 Model Binding의 개념을 살펴보고 데이터를 어떻게 설계하는지 고민해 봤습니다. Post라는 하 하나의 Post를 화면에 각각의 모델로 나눠서 여러 셀로 그려주면서 복잡할 수 있는 UI 구성을 단순하고 독립되게 표현할 수 있었습니다.</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/CoreBlutooth">
+                <div class="post-card-image" style="background-image: url(/assets/images/CoreBluetooth/first.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/CoreBlutooth">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios tip</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">CoreBluetooth 가이드</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>CoreBluetooth 프로젝트를 진행한 경험을 포스팅한다. Core Bluetooth Programming Guide Central과 Periphral 최근 Fido 생체 인증 개발을 진행하면서 생체 인증 기기를 어플리케이션에 연동하는 작업을 진행하게 되면서 격은 경험을 포스팅 하려고 합니다. iOS에서 CoreBluetooth 프레임워크를</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">IGListKit 가이드(1)- 모델 바인딩</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=IGListKit+%EA%B0%80%EC%9D%B4%EB%93%9C%281%29-+%EB%AA%A8%EB%8D%B8+%EB%B0%94%EC%9D%B8%EB%94%A9&amp;url=https://leejigun.github.io/IGListKit"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/IGListKit"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2020</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

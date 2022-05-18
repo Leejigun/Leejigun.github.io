@@ -1,0 +1,763 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>SwiftUI 개요</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="SwiftUI 개요" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//SwiftUI_overview" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SwiftUI 개요" />
+    <meta property="og:description" content="SwiftUI 개요 SwiftUI에 대해서 집중적으로 다루기 전에 SwiftUI의 개요에 대하서 알고 정리하고 넘어가려 한다. SwiftUI 2019년 발표된 SwiftUI는 애플 계열의 어플리케이션을 개발하는데 기존과 다른 완전히 새로운 방법을 제공한다. SwiftUI의 기본 설계 목적은 앱을 개발하는데 더 쉽고 빠르게 함과 동시에 개발할 때 발생하는 일반적인 버그를 줄이는 것이다. 이러한 요소들은 SwiftUI와 함께" />
+    <meta property="og:url" content="https://leejigun.github.io//SwiftUI_overview" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/SwiftUI/swiftUI-banner.jpg.webp" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-04-25T09:00:01+09:00" />
+    <meta property="article:modified_time" content="2020-04-25T09:00:01+09:00" />
+    <meta property="article:tag" content="Swiftui" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SwiftUI 개요" />
+    <meta name="twitter:description" content="SwiftUI 개요 SwiftUI에 대해서 집중적으로 다루기 전에 SwiftUI의 개요에 대하서 알고 정리하고 넘어가려 한다. SwiftUI 2019년 발표된 SwiftUI는 애플 계열의 어플리케이션을 개발하는데 기존과 다른 완전히 새로운 방법을 제공한다. SwiftUI의 기본 설계 목적은 앱을 개발하는데 더 쉽고 빠르게 함과 동시에 개발할 때 발생하는 일반적인 버그를 줄이는 것이다. 이러한 요소들은 SwiftUI와 함께" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/SwiftUI/swiftUI-banner.jpg.webp" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Swiftui" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//SwiftUI_overview",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/SwiftUI/swiftUI-banner.jpg.webp",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//SwiftUI_overview"
+    },
+    "description": "SwiftUI 개요 SwiftUI에 대해서 집중적으로 다루기 전에 SwiftUI의 개요에 대하서 알고 정리하고 넘어가려 한다. SwiftUI 2019년 발표된 SwiftUI는 애플 계열의 어플리케이션을 개발하는데 기존과 다른 완전히 새로운 방법을 제공한다. SwiftUI의 기본 설계 목적은 앱을 개발하는데 더 쉽고 빠르게 함과 동시에 개발할 때 발생하는 일반적인 버그를 줄이는 것이다. 이러한 요소들은 SwiftUI와 함께"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="SwiftUI 개요" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios/">iOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/cs/">CS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flutter/">flutter</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="25 April 2020">25 April 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/swiftui/'>SWIFTUI</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">SwiftUI 개요</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/SwiftUI/swiftUI-banner.jpg.webp)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="swiftui-개요">SwiftUI 개요</h1>
+
+<p>SwiftUI에 대해서 집중적으로 다루기 전에 SwiftUI의 개요에 대하서 알고 정리하고 넘어가려 한다.</p>
+
+<h2 id="swiftui">SwiftUI</h2>
+
+<p>2019년 발표된 SwiftUI는 애플 계열의 어플리케이션을 개발하는데 기존과 다른 완전히 새로운 방법을 제공한다. SwiftUI의 기본 설계 목적은 앱을 개발하는데 더 쉽고 빠르게 함과 동시에 개발할 때 발생하는 일반적인 버그를 줄이는 것이다. 이러한 요소들은 SwiftUI와 함께 xCode에 추가된 기능을(라이브 프리뷰) 사용해 실시간으로 테스트를 할 수 있게 한다.</p>
+
+<p>SwiftUI의 가장 큰 장점은 선언적 구문과 데이터 주도 기반에서 비롯되며 선언적 구문은 RxSwift와 함수형 프로그래밍에서도 사용되는 주목을 받고 있는 코딩 기법이다.</p>
+
+<h2 id="swiftui와-uikit">SwiftUI와 UiKit</h2>
+
+<p>스위프트UI에서 사용될 선언적 구문에 대해서 이해하려면 기존에 사용했던 UIKit에 대해서 먼저 살펴보는 게 좋다. UI를 설계할 수 있도록 기존에 xCode는 인터페이스 빌더라는 강력한 도구를 포함하고 있었다. 이를 통해서 xib파일, storyboard 파일을 생성해 시각적으로 UI를 개발할 수 있었다.</p>
+
+<p>UI를 구성하는데 필요한 레이아웃은 인터페이스 빌더 안에서 구성되며 좌측 하단 라이브러리 패널에서 버튼, 레이블, 텍스트 필드 등의 컴포넌트를 드래그해 화면을 구성할 수 있었다. 그리고 컨스트레인트를 사용해 화면에 제약을 설정할 수 있었다. 제약을 통해서 화면의 레이아웃이 디바이스 화면 크기에 따라 어떻게 달라지는지, 그리고 방향에 때라서 어떻게 변하는지 등을 결정했다.</p>
+
+<p>하지만 인터페이스 빌더를 통해 작업하는 것은 많은 어려움이 있었는데, 첫째로 시각적으로 명확하게 화면을 볼 수 있지만, 미세한 수치 변화를 사람의 눈으로 판단해야 하는 부분에서 코드 리뷰와 유지 보수가 힘들었다. 그리고 협업 과정에서 스토리 보드 파일을 공유하다 보면 충돌 문제가 발생할 수 있었다.</p>
+
+<p>이러한 어려움을 극복하기 위해서 많은 개발자가 코드 기반의 UI 구성 방법을 사용했고 이를 지원하는 다양한 라이브러리가 있다. 나 역시 오랜 기간 Texture라는 UI 라이브러리를 사용해왔다.</p>
+
+<p>하지만 코드 기반 프로그래밍의 단점은 빌드를 통해 앱을 실행해야 시각적인 변화와 버그를 확인 할 수 있다는 점인데, SwiftUI는 실시간 랜더링을 지원하는 라이브 프리뷰를 통해서 부분적 UI 랜더링을 통해 이러한 단점을 극복한다.</p>
+
+<h2 id="선언적-구문">선언적 구문</h2>
+
+<p>같은 코드 기반 프로그래밍이라고 해도 기존의 코드 기반 프로그래밍과 SwiftUI는 많은 차이가 있다. 기존 코드 기반의 프로그래밍에서는 UIKit의 컨포넌트를 코드로 선언해 설계하고 화면을 구성했는데, 이 과정에서 많은 레거시 코드가 발생하고 가독성이 떨어졌다. 이를 극복하기 위해서 Texture, SnapKit 등 다양한 코드 기반 UI 라이브러리가 존재하지만 애플 정식 프레임워크가 아니다보니 항상 리스크가 있고 라이브러리 사용법을 배워야 한다는 부분도 어려움이 있었다.</p>
+
+<p>하지만 SwiftUI는 선언적 구문을 통해서 레이아웃과 복잡한 세부 사항을 직접 설계하는 대신 단순하면서도 직관적인 구문을 이용하여 화면을 기술하며 구현할 수 있게 해준다. 따라서 SwiftUI를 사용하면 화면의 복잡한 구현 방법을 고민할 필요 없이 UI가 어떤 모양을 해야하는지 선언하는 방식으로 레이아웃을 생성할 수 있다.</p>
+
+<p>SwiftUI의 선언적 구문은 계층적으로 구조화되어 있는데, 따라서 작고 재사용이 가능한 커스텀 뷰를 함께 사용해 복잡한 뷰를 쉽게 생성할 수 있다.</p>
+
+<h3 id="data-driven">Data Driven</h3>
+
+<p>SwiftUI는 데이터 주도적이다. 앱 데이터를 통한 바인딩을 통해 UI와 로직을 표현한다. 기존에는 앱의 상태값이 변함에 따라 UI를 변경하는 코드를 직접 포함해야 했다. 경우에 따라서는 주기적으로 값의 상태를 체크하는 코드를 작성할 필요가 있을 수 있다.</p>
+
+<p>SwiftUI는 앱의 데이터와 UI 그리고 로직 사이에 바인딩을 제공해 이러한 복잡도를 해결했다. 데이터 주도 구현은 Combine과 함께 구독(subscribe)과 게시(publish)로 이루어 지는데 기존 RxSwift를 사용하는데 익숙하다면 쉽게 사용할 수 있다.</p>
+
+<h3 id="ios-13">iOS 13</h3>
+
+<p>SwiftUI는 iOS 13 이후의 버전에서만 지원하는데 SE와 6s 이후 출시된 모델부터 지원한다. 2020년 1월 27일 애플 보고서에 따르면 모든 아이폰 디바이스 중에서 70%가 iOS 13이상을 사용하고 있으며 그 비율은 시간에 따라 계속 증가할 것이다. 따라서 빠르게 iOS 13에 대응해야 하며 SwifUI를 통한 개발을 준비해야 한다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/swiftui/">Swiftui</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/SwiftUI_page_based_navigation">SwiftUI에서 page based navigation 사용하기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_4_MVVM_Combine">Circle Timer 만들기_4_MVVM_Combine</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Circle_Timer_3_User_Interation">Circle Timer 만들기_3_User_Interation(SwiftUI, gesture, DragGesture)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/swiftui/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/DI_using_Swinject">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios/Swinject.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/DI_using_Swinject">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">DI(의존성 주입) using Swinject</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># DI(의존성 주입) using Swinject 최근 이직한 회사에서 모듈화 과정에서 DI에 대해 다루는 모습을 보고 DI에 대해서 정리하려 한다. 혼자서 일할 때는 DI에 대해서 알고 있었고 구조를 잡으면서 DI에 대해서 고민하면서 했었지만, 여기처럼</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/fastlane_release_testflight">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios/fastlane_background.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/fastlane_release_testflight">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">fastlane - release, testflight</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>fastlane_release_testflight 이전 포스트에서 실무에서 사용하고 있는 fastlane 베타 배포에 관해서 설명했다. 일반적인 단일 앱에 대한 베타 배포는 튜토리얼을 따라가도 충분하지만 지금 프로젝트는 두 개의 익스텐션을 포함하고 있기 때문에 어려움이 있었다. 각각의 타깃에 맞게</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">SwiftUI 개요</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SwiftUI+%EA%B0%9C%EC%9A%94&amp;url=https://leejigun.github.io/SwiftUI_overview"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/SwiftUI_overview"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2022</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

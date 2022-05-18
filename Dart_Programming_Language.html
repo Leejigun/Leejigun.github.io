@@ -1,0 +1,756 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Dart Programming Language</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="Dart Programming Language" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//Dart_Programming_Language" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dart Programming Language" />
+    <meta property="og:description" content="Dart Programming Language Created: June 4, 2020 5:46 PM Tags: Flutter, NotUploaded Flutter를 공부하면서 Dart 언어를 공부하며 Dart 언어의 특징과 문법을 정리한다. 본 내용은 플러터 생존코딩 책을 공부하며 정리한 내용입니다. Swift를 공부할 때 xcode 플레이그라운드를 이용하면 쉽게 공부할 수 있는 것처럼 Dart 언어를 공부하는데 dartpad.dev 사이트를 이용하면 쉽게 공부할 수" />
+    <meta property="og:url" content="https://leejigun.github.io//Dart_Programming_Language" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/flutter/Dart_Programming_Language/Dart-Tutorial.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2020-06-05T02:46:00+09:00" />
+    <meta property="article:modified_time" content="2020-06-05T02:46:00+09:00" />
+    <meta property="article:tag" content="Flutter" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dart Programming Language" />
+    <meta name="twitter:description" content="Dart Programming Language Created: June 4, 2020 5:46 PM Tags: Flutter, NotUploaded Flutter를 공부하면서 Dart 언어를 공부하며 Dart 언어의 특징과 문법을 정리한다. 본 내용은 플러터 생존코딩 책을 공부하며 정리한 내용입니다. Swift를 공부할 때 xcode 플레이그라운드를 이용하면 쉽게 공부할 수 있는 것처럼 Dart 언어를 공부하는데 dartpad.dev 사이트를 이용하면 쉽게 공부할 수" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/flutter/Dart_Programming_Language/Dart-Tutorial.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Flutter" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//Dart_Programming_Language",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/flutter/Dart_Programming_Language/Dart-Tutorial.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//Dart_Programming_Language"
+    },
+    "description": "Dart Programming Language Created: June 4, 2020 5:46 PM Tags: Flutter, NotUploaded Flutter를 공부하면서 Dart 언어를 공부하며 Dart 언어의 특징과 문법을 정리한다. 본 내용은 플러터 생존코딩 책을 공부하며 정리한 내용입니다. Swift를 공부할 때 xcode 플레이그라운드를 이용하면 쉽게 공부할 수 있는 것처럼 Dart 언어를 공부하는데 dartpad.dev 사이트를 이용하면 쉽게 공부할 수"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Dart Programming Language" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios/">iOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/cs/">CS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flutter/">flutter</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 June 2020"> 4 June 2020</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/flutter/'>FLUTTER</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Dart Programming Language</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/flutter/Dart_Programming_Language/Dart-Tutorial.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="dart-programming-language">Dart Programming Language</h1>
+
+<p>Created: June 4, 2020 5:46 PM
+Tags: Flutter, NotUploaded</p>
+
+<p>Flutter를 공부하면서 Dart 언어를 공부하며 Dart 언어의 특징과 문법을 정리한다.</p>
+
+<blockquote>
+  <p>본 내용은 플러터 생존코딩 책을 공부하며 정리한 내용입니다.</p>
+
+</blockquote>
+
+<p>Swift를 공부할 때 xcode 플레이그라운드를 이용하면 쉽게 공부할 수 있는 것처럼 Dart 언어를 공부하는데 <a href="http://dartpad.dev">dartpad.dev</a> 사이트를 이용하면 쉽게 공부할 수 있다.</p>
+
+<p><img src="assets/images/flutter/Dart_Programming_Language/Untitled.png" alt="assets/images/flutter/Dart_Programming_Language/Untitled.png" /></p>
+
+<h3 id="dart-기본-문법">Dart 기본 문법</h3>
+
+<p>다트는 다음과 같은 기본 타입을 제공한다.</p>
+
+<ul>
+  <li>int</li>
+  <li>double</li>
+  <li>String</li>
+  <li>bool</li>
+</ul>
+
+<p>이 중에서 int와 double의 경우 Num 타입의 하위 타입이다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">20.0</span><span class="o">;</span>
+
+<span class="kt">num</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>상수를 표시할 때 final 키워드를 앞에 붙이면 상수가 된다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="kt">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"홍길동"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>swift와 마찬가지로 타입 검사를 제공한다. (is, is!)</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span><span class="mi">10</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="k">is</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="s">"정수"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kt">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="k">is</span><span class="o">!</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="s">"숫자가 아님"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>swift와 마찬가지로 형변환 키워드 as를 제공한다. 단, int와 double은 상하 관계가 없기 때문에 불가능하다.</p>
+
+<hr />
+
+<h3 id="dart-함수">Dart 함수</h3>
+
+<p>다트의 기본 함수 형태는 일반적인 자바 문법과 유사하다.</p>
+
+<p>void 반환에 대해서는 일반적으로 생략한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">getPlusOne</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="n">printValue</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>다트에서는 람다식을 지원한다. 람다 형태는 스위프트, 코틀린, 파이썬 등에서 많이 사용되서 사용하는데, 익숙하고 굉장히 유용하다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">([])</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="err">동작</span> <span class="err">혹은</span> <span class="err">리턴값</span><span class="o">]</span>
+<span class="o">(</span><span class="n">number</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>선택 매개변수 기능을 제공한다. 함수의 매개변수가 있을 수 도 있고 null일 수 있는 형태다.</p>
+
+<p>선택적 매개변수로 지정하게 되면 라벨을 붙여서 해당 변수를 표시해야 한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">somePrint</span><span class="o">({</span><span class="kt">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">})</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$name</span><span class="s"> : </span><span class="si">$age</span><span class="s">"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">somePrint</span><span class="o">(</span><span class="nl">name:</span> <span class="s">"홍길동"</span><span class="o">);</span> <span class="c1">// 홍길동 : null</span>
+<span class="n">somePrint</span><span class="o">(</span><span class="nl">name:</span> <span class="s">"홍길동"</span><span class="o">,</span> <span class="nl">age:</span> <span class="mi">12</span><span class="o">);</span> <span class="c1">// 홍길동 : 12</span>
+<span class="n">somePrint</span><span class="o">();</span> <span class="c1">// null : null</span>
+</code></pre></div></div>
+
+<p>if문 for문 switch case문은 기존 레거시 언어와 같아 생략한다.</p>
+
+<h3 id="dart-class">Dart class</h3>
+
+<p>다트의 class는 역시 별로 어렵지 않다.</p>
+
+<p>dart는 특이한게 모든 타입이 클래스로 레퍼런스 타입이다. 그런데 new를 사용해서 생성한 적이 없다. dart에서는 일반적으로 객체를 생성할 때 new를 생략한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+  <span class="kt">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+  
+  <span class="n">printInfo</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$name</span><span class="s">: </span><span class="si">$age</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">var</span> <span class="n">hong</span> <span class="o">=</span> <span class="n">Person</span><span class="o">();</span>
+<span class="n">hong</span><span class="o">.</span><span class="na">printInfo</span><span class="o">();</span> <span class="c1">// null: null</span>
+</code></pre></div></div>
+
+<p>해당 내용의 특이점은 생성자가 없기 때문에 기본 생성자가 동작하고 모든 내부 변수가 null이 들어가게 된다. 위에서 말했듯이 다트의 모든 타입은 클래스라 null이 표시될 수 있다.</p>
+
+<p>또 특이한 부분이 변수 앞에 _ 를 사용해서 접근 지정자를 제어한다. _가 앞에 붙은 변수는 private이고 나머지는 public으로 간주된다.</p>
+
+<p>따라서 private 변수에 접근하기 위해서는 getter setter를 생성해야 한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+  <span class="kt">String</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">_age</span><span class="o">;</span>
+  
+  <span class="kd">get</span> <span class="n">name</span> <span class="o">=&gt;</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kd">set</span> <span class="n">name</span><span class="o">(</span><span class="kt">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">_name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+  
+  <span class="n">printInfo</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$_name</span><span class="s">: </span><span class="si">$_age</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="상속">상속</h3>
+
+<p>클래스를 상속하는 것은 동일하다. extends를 사용해 상속한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Hero</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hero</span> <span class="o">{</span>
+  <span class="kt">String</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">_age</span><span class="o">;</span>
+  
+  <span class="kd">get</span> <span class="n">name</span> <span class="o">=&gt;</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kd">set</span> <span class="n">name</span><span class="o">(</span><span class="kt">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">_name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+  
+  <span class="n">printInfo</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$_name</span><span class="s">: </span><span class="si">$_age</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>추상 클래스 역시 동일하게 존재하며 자바 키워드와 같다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Monster</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Hero</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hero</span> <span class="kd">implements</span> <span class="n">Monster</span> <span class="o">{</span>
+  <span class="kt">String</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">_age</span><span class="o">;</span>
+  
+  <span class="kd">get</span> <span class="n">name</span> <span class="o">=&gt;</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kd">set</span> <span class="n">name</span><span class="o">(</span><span class="kt">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">_name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+  
+  <span class="n">printInfo</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$_name</span><span class="s">: </span><span class="si">$_age</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 특이한 점이 하나 있다. Swift에서 프로토콜을 많이 사용하고 POP를 하는 이유 중 하나가 클래스는 하나만 상속 가능하기 때문인데, Dart에서는 with 키워드를 사용해 다른 클래스의 함수를 쓰거나 override할 수 있다.</p>
+
+<p>이를 믹스인이라 한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Monster</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Hero</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Man</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hero</span> <span class="k">with</span> <span class="n">Man</span> <span class="kd">implements</span> <span class="n">Monster</span> <span class="o">{</span>
+  <span class="kt">String</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">_age</span><span class="o">;</span>
+  
+  <span class="kd">get</span> <span class="n">name</span> <span class="o">=&gt;</span> <span class="n">_name</span><span class="o">;</span>
+  <span class="kd">set</span> <span class="n">name</span><span class="o">(</span><span class="kt">String</span> <span class="n">newName</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">_name</span> <span class="o">=</span> <span class="n">newName</span><span class="o">;</span>
+  
+  <span class="n">printInfo</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"</span><span class="si">$_name</span><span class="s">: </span><span class="si">$_age</span><span class="s">"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="컬렉션">컬렉션</h3>
+
+<p>기존에 알던 것과 유사한 내용의 자료형을 제공한다.</p>
+
+<ul>
+  <li>List: [1, 2, 3]</li>
+  <li>Map: {1: “One”, 2: “Two”}</li>
+  <li>Set:  {1, 2, 3} - 중복 불가</li>
+</ul>
+
+<p>스프레드 연산자라는게 있다. …을 사용하는데, 배열을 펼쳐주는 효과가 있다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">intList</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">];</span>
+<span class="kd">var</span> <span class="n">sumList</span> <span class="o">=</span> <span class="o">[...</span><span class="na">intList</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">];</span>
+<span class="n">print</span><span class="o">(</span><span class="n">sumList</span><span class="o">);</span> <span class="c1">// [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div></div>
+
+<p>꿀팁으로는 list를 펼쳐서 set에 넣어주면 중복 제거하는 효과가 있다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">dupList</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">];</span>
+<span class="kd">var</span> <span class="n">uniqueSet</span> <span class="o">=</span> <span class="o">{...</span><span class="na">dupList</span><span class="o">};</span>
+<span class="n">print</span><span class="o">(</span><span class="n">uniqueSet</span><span class="o">);</span> <span class="c1">// {1, 2}</span>
+<span class="n">dupList</span> <span class="o">=</span> <span class="n">uniqueSet</span><span class="o">.</span><span class="na">toList</span><span class="o">();</span>
+<span class="n">print</span><span class="o">(</span><span class="n">dupList</span><span class="o">);</span> <span class="c1">// [1, 2]</span>
+</code></pre></div></div>
+
+<p>Map은 순서가 없고 탐색이 매우 빠른 자료구조로 Swift의 Dict형과 사용법이 같다.</p>
+
+<h3 id="함수형-프로그래밍">함수형 프로그래밍</h3>
+
+<p>기존 함수형 프로그래밍 방법과 같아 보인다.</p>
+
+<ul>
+  <li>map</li>
+  <li>where</li>
+  <li>forEach</li>
+  <li>reduce</li>
+  <li>…</li>
+</ul>
+
+<p>다른 포스트에서도 지겹게 이야기했던 부분이라 넘어간다.</p>
+
+<h3 id="기타-특이-문법">기타 특이 문법</h3>
+
+<p>계단식 표기법이라는게 있다. ..을 사용하는 것인데, 기존 코딩에서 많이 사용했던 then 문법과 같다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">];</span>
+  <span class="n">items</span>
+    <span class="o">..</span><span class="na">add</span><span class="o">(</span><span class="mi">6</span><span class="o">)</span>
+    <span class="o">..</span><span class="na">add</span><span class="o">(</span><span class="mi">7</span><span class="o">)</span>
+    <span class="o">..</span><span class="na">remove</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">items</span><span class="o">);</span><span class="c1">// [2, 3, 4, 5, 6, 7]</span>
+</code></pre></div></div>
+
+<p>컬렉션 if, 컬렉션 for라는 콜렉션 내부에서 사용할 수 있는 문법이 있다.</p>
+
+<p>콜렉션 내부에서 사용하는 컨트롤 방법인데 이를 사용해 더 유연하게 콜렉션을 표현할 수 있다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">];</span>
+  
+<span class="kd">var</span> <span class="n">newList</span> <span class="o">=</span> <span class="o">[</span>
+  <span class="s">"#0"</span><span class="o">,</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">items</span><span class="o">.</span><span class="na">isNotEmpty</span><span class="o">)</span> <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">i</span> <span class="k">in</span> <span class="n">items</span><span class="o">)</span> <span class="s">"#</span><span class="si">$i</span><span class="s">"</span>
+<span class="o">];</span>
+<span class="n">print</span><span class="o">(</span><span class="n">newList</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="null-처리">null 처리</h3>
+
+<p>null에 접근하려하면 런타임 에러가 발생하는건 여느 프로그래밍 언어와 같다. 이를 해결하기 위해서 다양한 문법이 존재하는데, 이 역시 스위프트나 코틀린에서 봐온 익숙한 문법이다.</p>
+
+<p>?를 사용해서 접근하면 에러 대신에 null을 반환한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="n">print</span><span class="o">(</span><span class="n">name</span><span class="o">?.</span><span class="na">length</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>??를 사용하면 null일때 기본값을 반환한다.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="n">print</span><span class="o">(</span><span class="n">name</span><span class="o">?.</span><span class="na">length</span> <span class="o">??</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">// 1</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/clean_architecture">
+                <div class="post-card-image" style="background-image: url(/assets/images/CS/the-clean-architecture.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/clean_architecture">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Cs</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">클린 아키텍처 (Data-Domain-Presentation)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>클린 아키텍처 (Data-Domain-Presentation) Created: May 1, 2020 9:05 PM Tags: NotUploaded, iOS 최근 회사 발표에서 아키텍처에 대한 내용이 언급되었다. 여기 회사에 와서 당황했던 부분이 지금까지 혼자서 프로젝트를 관리할 때와 너무 달라서 뭐가 어디에</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Dart Programming Language</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Dart+Programming+Language&amp;url=https://leejigun.github.io/Dart_Programming_Language"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Dart_Programming_Language"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2022</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

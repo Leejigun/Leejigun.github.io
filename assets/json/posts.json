@@ -1,9 +1,41 @@
 [
 
 {
+"title"    : "Dart Programming Language",
+"category" : "",
+"tags"     : "flutter",
+"url"      : "/Dart_Programming_Language",
+"date"     : "2020-06-04 17:46:00 +0000"
+} ,
+
+{
+"title"    : "클린 아키텍처 (Data-Domain-Presentation)",
+"category" : "",
+"tags"     : "cs",
+"url"      : "/clean_architecture",
+"date"     : "2020-05-01 09:05:00 +0000"
+} ,
+
+{
+"title"    : "DI(의존성 주입) using Swinject",
+"category" : "",
+"tags"     : "ios",
+"url"      : "/DI_using_Swinject",
+"date"     : "2020-04-25 13:02:00 +0000"
+} ,
+
+{
+"title"    : "SwiftUI 개요",
+"category" : "",
+"tags"     : "swiftui",
+"url"      : "/SwiftUI_overview",
+"date"     : "2020-04-25 00:00:01 +0000"
+} ,
+
+{
 "title"    : "fastlane - release, testflight",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/fastlane_release_testflight",
 "date"     : "2020-02-20 00:00:01 +0000"
 } ,
@@ -11,7 +43,7 @@
 {
 "title"    : "iOS fastlane - Fabric, Firebase",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/fastlaneFirebase",
 "date"     : "2020-01-23 00:00:01 +0000"
 } ,
@@ -59,7 +91,7 @@
 {
 "title"    : "SwiftUI - Paths와 Shapes",
 "category" : "",
-"tags"     : "swiftui, ios tip",
+"tags"     : "swiftui, ios",
 "url"      : "/SwiftUI_Paths_Shapes",
 "date"     : "2019-12-18 17:58:00 +0000"
 } ,
@@ -243,7 +275,7 @@
 {
 "title"    : "Swift Moya Provider 커스텀",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/Swift_Moya_Provider_custom",
 "date"     : "2019-09-05 00:00:01 +0000"
 } ,
@@ -251,7 +283,7 @@
 {
 "title"    : "HealthKit - Steps Counter",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/HealthKit_-_Steps_Counter",
 "date"     : "2019-09-04 00:00:01 +0000"
 } ,
@@ -275,7 +307,7 @@
 {
 "title"    : "IGListkit + Texture 적용",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/IGListkit+Texture",
 "date"     : "2019-08-29 00:00:01 +0000"
 } ,
@@ -315,7 +347,7 @@
 {
 "title"    : "Edit Breakpoints in Xcode (번역)",
 "category" : "",
-"tags"     : "TDD, ios tip",
+"tags"     : "TDD, ios",
 "url"      : "/breakPointGuide",
 "date"     : "2018-07-02 00:00:02 +0000"
 } ,
@@ -323,7 +355,7 @@
 {
 "title"    : "The iOS Testing Manifesto (번역)",
 "category" : "",
-"tags"     : "TDD, ios tip",
+"tags"     : "TDD, ios",
 "url"      : "/UnitTest_Manifest",
 "date"     : "2018-07-02 00:00:01 +0000"
 } ,
@@ -331,7 +363,7 @@
 {
 "title"    : "Top 5 스위프트 디자인 패턴 (번역)",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/Top_5_Design_Patterns",
 "date"     : "2018-07-02 00:00:00 +0000"
 } ,
@@ -339,7 +371,7 @@
 {
 "title"    : "Xib로 UIViewController 만지기",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/xib-UIViewController",
 "date"     : "2018-06-20 00:00:00 +0000"
 } ,
@@ -347,7 +379,7 @@
 {
 "title"    : "[Programmatically Views](2) - 코드를 이용한 뷰 만들기 활용",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/DynamicView2",
 "date"     : "2018-06-14 00:00:00 +0000"
 } ,
@@ -355,7 +387,7 @@
 {
 "title"    : "[Programmatically Views](1) - 코드를 통한 기초적인 다이나믹 뷰 디자인",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/DynamicView1",
 "date"     : "2018-06-14 00:00:00 +0000"
 } ,
@@ -363,7 +395,7 @@
 {
 "title"    : "Codable을 사용한 JSON 데이터 파싱",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/JSON_parsing_using_Codable",
 "date"     : "2018-06-11 00:00:00 +0000"
 } ,
@@ -395,7 +427,7 @@
 {
 "title"    : "IGListKit 가이드(2)- Action&amp;relaodData",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/IGListKit2",
 "date"     : "2018-04-06 00:00:00 +0000"
 } ,
@@ -403,7 +435,7 @@
 {
 "title"    : "IGListKit 가이드(1)- 모델 바인딩",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/IGListKit",
 "date"     : "2018-04-05 00:00:00 +0000"
 } ,
@@ -411,7 +443,7 @@
 {
 "title"    : "CoreBluetooth 가이드",
 "category" : "",
-"tags"     : "ios tip",
+"tags"     : "ios",
 "url"      : "/CoreBlutooth",
 "date"     : "2018-03-29 00:00:00 +0000"
 } 

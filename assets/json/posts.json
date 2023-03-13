@@ -1,6 +1,22 @@
 [
 
 {
+"title"    : "[WWDC22] Design protocol interface in Swift",
+"category" : "",
+"tags"     : "ios",
+"url"      : "/WWDC22_Design_protocol_interface_in_Swift",
+"date"     : "2023-03-05 00:00:01 +0000"
+} ,
+
+{
+"title"    : "[WWDC22] Embreace swift generics - some, any",
+"category" : "",
+"tags"     : "ios",
+"url"      : "/WWDC22_Generic",
+"date"     : "2023-03-04 00:00:00 +0000"
+} ,
+
+{
 "title"    : "유닛 테스트에 대한 생각",
 "category" : "",
 "tags"     : "cs",

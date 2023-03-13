@@ -1,0 +1,1226 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[WWDC22] Embreace swift generics - some, any</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="[WWDC22] Embreace swift generics - some, any" />
+    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="https://leejigun.github.io//WWDC22_Generic" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[WWDC22] Embreace swift generics - some, any" />
+    <meta property="og:description" content="[WWDC22] Embreace swift generics - some, any 해당 포스트에서는 제네릭과 some, any를 사용하여 모델을 추상화하는 방법에 대해 설명하고 있습니다. some과 any의 개념만 이해하고 싶다면, 다른 포스트를 참고하는 것이 더 좋습니다. 하지만, 이 WWDC 영상에서는 모델을 추상화하면서 some과 any를 함께 사용하고 있어, some, any 그리고 추상화를 위한 사고까지 같이 경험할 수" />
+    <meta property="og:url" content="https://leejigun.github.io//WWDC22_Generic" />
+    <meta property="og:image" content="https://leejigun.github.io//assets/images/ios/2023-03-04-WWDC22_Generic/2023-03-04_02-26-02.jpeg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-03-04T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-03-04T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[WWDC22] Embreace swift generics - some, any" />
+    <meta name="twitter:description" content="[WWDC22] Embreace swift generics - some, any 해당 포스트에서는 제네릭과 some, any를 사용하여 모델을 추상화하는 방법에 대해 설명하고 있습니다. some과 any의 개념만 이해하고 싶다면, 다른 포스트를 참고하는 것이 더 좋습니다. 하지만, 이 WWDC 영상에서는 모델을 추상화하면서 some과 any를 함께 사용하고 있어, some, any 그리고 추상화를 위한 사고까지 같이 경험할 수" />
+    <meta name="twitter:url" content="https://leejigun.github.io//" />
+    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ios/2023-03-04-WWDC22_Generic/2023-03-04_02-26-02.jpeg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+    },
+    "url": "https://leejigun.github.io//WWDC22_Generic",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://leejigun.github.io//assets/images/ios/2023-03-04-WWDC22_Generic/2023-03-04_02-26-02.jpeg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://leejigun.github.io//WWDC22_Generic"
+    },
+    "description": "[WWDC22] Embreace swift generics - some, any 해당 포스트에서는 제네릭과 some, any를 사용하여 모델을 추상화하는 방법에 대해 설명하고 있습니다. some과 any의 개념만 이해하고 싶다면, 다른 포스트를 참고하는 것이 더 좋습니다. 하지만, 이 WWDC 영상에서는 모델을 추상화하면서 some과 any를 함께 사용하고 있어, some, any 그리고 추상화를 위한 사고까지 같이 경험할 수"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[WWDC22] Embreace swift generics - some, any" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios/">iOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/cs/">CS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flutter/">flutter</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://leejigun.notion.site/d96873c479d049cbb3f2476aa7990347?v=84936e8007664a6daaa211463819028d">notion</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 4 March 2023"> 4 March 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ios/'>IOS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[WWDC22] Embreace swift generics - some, any</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(/assets/images/ios/2023-03-04-WWDC22_Generic/2023-03-04_02-26-02.jpeg)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="wwdc22-embreace-swift-generics---some-any">[WWDC22] Embreace swift generics - some, any</h1>
+
+<blockquote>
+  <p>해당 포스트에서는 제네릭과 <code class="highlighter-rouge">some</code>, <code class="highlighter-rouge">any</code>를 사용하여 모델을 추상화하는 방법에 대해 설명하고 있습니다. <code class="highlighter-rouge">some</code>과 <code class="highlighter-rouge">any</code>의 개념만 이해하고 싶다면, 다른 포스트를 참고하는 것이 더 좋습니다. 하지만, 이 WWDC 영상에서는 모델을 추상화하면서 <code class="highlighter-rouge">some</code>과 <code class="highlighter-rouge">any</code>를 함께 사용하고 있어, <code class="highlighter-rouge">some</code>, <code class="highlighter-rouge">any</code> 그리고 추상화를 위한 사고까지 같이 경험할 수 있는 좋은 영상입니다. 이 영상과 이어지는 인터페이스 설계 WWDC 영상 역시 Swift에서 추상화를 어떻게 접근하는지 같이 고민할 수 있는 좋은 기회가 될 것입니다.</p>
+
+</blockquote>
+
+<h2 id="제네릭을-통한-추상화">제네릭을 통한 추상화</h2>
+
+<p>Swift에서 제네릭은 추상 코드를 작성하는 기본 도구로, 복잡성을 관리하는 데 매우 중요합니다. 코드에는 아이디어를 구체적인 세부 사항과 구분하는 데 유용한 추상화가 여러 가지 방법으로 쓰입니다.</p>
+
+<p>코드를 함수나 변수로 분해하는 것이 대표적인 추상화 방법입니다. 이렇게 하면 기능이나 값을 여러 번 사용할 때 편리합니다. 함수로 추출하면 세부 정보가 숨겨지며, 코드는 세부 정보를 반복하지 않고 현재 일에 대한 아이디어를 표현할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">startRadians</span> <span class="o">=</span> <span class="n">startAngle</span> <span class="o">*</span> <span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+<span class="k">let</span> <span class="nv">endRadians</span> <span class="o">=</span> <span class="n">endAngle</span> <span class="o">*</span> <span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+
+<span class="kd">func</span> <span class="nf">radians</span><span class="p">(</span><span class="nv">angle</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">angle</span> <span class="o">*</span> <span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Swift에서는 구체적인 유형을 추상화할 수 있습니다. 다른 세부 정보를 가진 유형 집합이 있으면 추상 코드를 작성하여 모든 구체적인 유형과 함께 작업할 수 있습니다.</p>
+
+<p>이번 포스트에서는 코드를 모델링할 때 구체적인 유형을 사용하고, 공통 기능을 식별하여 이를 나타내는 인터페이스를 만들고, 해당 인터페이스를 사용하여 제네릭 코드를 작성하는 워크플로를 살펴보겠습니다.</p>
+
+<blockquote>
+  <p>concrrete type: 일반적으로 사용하는 타입이 구체화된 타입을 번역에 따라서 구체적인 타입, 일반 타입, 콘크리트 타입 등으로 부르고 있습니다.</p>
+
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">Idea</span>
+</code></pre></div></div>
+
+<h2 id="model-with-concrrete-types-구체적인-타입을-사용하는-경우">Model with concrrete types (구체적인 타입을 사용하는 경우)</h2>
+
+<p>첫번째 단계로 제네릭을 사용하지 않고 구체적인 타입만 사용해서 농장 시뮬레이션 코드를 함께 작성하며 추상화하는 방법을 알아보겠습니다.</p>
+
+<p>해당 영상에서는 추상화를 위해서 구조를 조금 복잡하게 복잡한 단계를 거치도록 하고 있습니다.</p>
+
+<p>먼저, ‘<code class="highlighter-rouge">Cow</code>‘라는 구조체로 시작합니다. <code class="highlighter-rouge">Cow</code>는 <code class="highlighter-rouge">Hay</code>(건초)를 먹기 위해서 <code class="highlighter-rouge">eat</code> 라는 메소드를 가지고 있습니다. <code class="highlighter-rouge">Hay</code>에는 <code class="highlighter-rouge">grow</code> 메소드가 있습니다. <code class="highlighter-rouge">Hay</code>를 생산하기 위해서는 1차 생산물인 <code class="highlighter-rouge">Alfalfa</code>를 만들고 <code class="highlighter-rouge">Alfalfa</code>를 수확해야 <code class="highlighter-rouge">Cow</code> 먹을 수 있는 <code class="highlighter-rouge">Hay</code>를 만들 수 있습니다.</p>
+
+<ol>
+  <li><code class="highlighter-rouge">Hay Type</code>의 <code class="highlighter-rouge">static method gorw</code>를 통해서 <code class="highlighter-rouge">Alfalfa instance</code> 생성</li>
+  <li><code class="highlighter-rouge">Alfalfa</code>를 통해 <code class="highlighter-rouge">Hay</code>를 수확(<code class="highlighter-rouge">harvest</code>)</li>
+  <li>수확한 <code class="highlighter-rouge">Hay</code>를 <code class="highlighter-rouge">Cow</code>에게 먹임(eat)</li>
+</ol>
+
+<p>마지막으로, ‘<code class="highlighter-rouge">Farm</code>‘이라는 구조체를 추가하겠습니다. 이 구조체는 <code class="highlighter-rouge">Cow</code>에게 먹이를 주는 메서드를 가지고 있습니다. 우리는 <code class="highlighter-rouge">Cow</code>를 만들어 <code class="highlighter-rouge">Farm</code>의 <code class="highlighter-rouge">feed</code> 메소드에 넣어주면 위의 3가지 동작을 수행하도록 <code class="highlighter-rouge">feed</code> 메소드를 작성해야 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Cow</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Hay</span> <span class="p">{</span>
+	<span class="kd">static</span> <span class="kd">func</span> <span class="nf">grow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Alfalfa</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Alfalfa</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">harves</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Hay</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">Cow</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>앞서 정의한 1,2,3 단계를 작성하면 아래와 같습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">Cow</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">let</span> <span class="nv">alfalfa</span> <span class="o">=</span> <span class="kt">Hay</span><span class="o">.</span><span class="nf">grow</span><span class="p">()</span>
+		<span class="k">let</span> <span class="nv">haty</span> <span class="o">=</span> <span class="n">alfalfa</span><span class="o">.</span><span class="nf">harvest</span><span class="p">()</span>
+		<span class="n">animal</span><span class="o">.</span><span class="nf">eat</span><span class="p">(</span><span class="n">hay</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Farm</code>에서 <code class="highlighter-rouge">Cow</code> 타입에 먹이를 주는 <code class="highlighter-rouge">feed</code> 함수를 구현했습니다. 그런데, <code class="highlighter-rouge">Horse</code>, <code class="highlighter-rouge">Chicken</code> 타입을 추가하려고 하면 어떻게 해야 할까요?</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Cow</span> <span class="p">{}</span>
+<span class="kd">struct</span> <span class="kt">Horse</span> <span class="p">{}</span>
+<span class="kd">struct</span> <span class="kt">Chicken</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>가장 단순한 방법은 같은 이름의 다른 파라미터를 받는 메소드를 추가하는 것 입니다. 객체 지향 프로그래밍에서 하나의 클래스 내에 동일한 이름의 메소드를 여러 개 정의하는 것을 메소드 <strong>오버로딩(Method Overloading)</strong>이라고 합니다. 메소드 오버로딩은 대표적인 다형성의 한 형태입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">Cow</span><span class="p">)</span> <span class="p">{}</span>
+	<span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">Horse</span><span class="p">)</span> <span class="p">{}</span>
+	<span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">Chicken</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="identify-common-capabilities-공통적인-기능을-식별">Identify common capabilities (공통적인 기능을 식별)</h2>
+
+<p>모델을 작성하고 구체적인 타입과 메소드 오버로딩을 사용했습니다. 다음 단계에서는 작성된 모델을 보고 공통적인 기능을 식별하는 것입니다. 전체 모델에서 공통 기능과 중복 코드를 식별하는 것은 추상화의 첫 번째 단계입니다.</p>
+
+<p>우리는 특정 유형의 먹이를 먹을 수 있는 동물의 집합을 구축했습니다. 각 동물 유형은 먹는 방법이 다르므로 먹는 방법을 구현하는 행동에 차이가 있습니다. 추상 코드를 사용하여 먹는 방법을 호출하고, 추상 코드가 다른 유형에 따라 다르게 작동하도록 합니다.</p>
+
+<ul>
+  <li>공통된 부분: 동물은 무언가를 먹어야 한다. (eat)</li>
+  <li>다른 부분: 각각의 동물들은 먹는 먹이가 다르다. (food)</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Cow</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Horse</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Chicken</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>다양한 구체적인 유형에 대해 추상 코드가 다르게 동작하는 능력을 ‘<strong>다형성</strong>‘이라고 합니다. 다형성을 통해 하나의 코드로 여러 동작을 할 수 있습니다. 적절하게, 다형성은 다양한 형태로 나타납니다.</p>
+
+<ul>
+  <li>Overloads achieve <code class="highlighter-rouge">Ad-hoc polymoriphism</code>: 함수 오버로딩을 사용해 다형성을 구현하는 방법으로 앞서 Farm에 같은 이름인 feed 함수를 오버로드해 3가지 함수로 만든 것을 의미합니다.</li>
+  <li>Subtypes achieve <code class="highlighter-rouge">subtypes polymoriphism</code>: 슈퍼 유형에서 작동하는 코드는 런타임 시 코드가 사용하는 특정 하위 유형에 따라 다른 동작을 가질 수 있습니다.</li>
+  <li>Generics achieve <code class="highlighter-rouge">parametric polymoriphism</code>: 제네릭을 사용하여 달성되는 매개 변수 다형성도 있습니다. 제네릭 코드는 유형 매개 변수를 사용하여 서로 다른 유형으로 작동하는 하나의 코드를 작성할 수 있으며, 구체적인 유형 자체가 인수로 사용됩니다.</li>
+</ul>
+
+<p>함수 오버로딩을 통한 다형성은 위에서 살펴봤기 때문에 하위 유형 다형성을 살펴보겠습니다. 동물 유형을 구조체에서 클래스로 바꿔 클래스 계층을 사용하여 하위 유형 관계를 나타낼 수 있습니다. 각 특정 동물 클래스는 동물 슈퍼 클래스로부터 상속되며 먹기 메서드를 재정의합니다. 이제 모든 동물 유형을 추상적인 기본 클래스 동물로 나타낼 수 있습니다. 코드에서 먹기를 호출할 때는 하위 클래스 구현을 호출하도록 하위 유형 다형성을 사용합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Food</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Food</span><span class="p">)</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"subclass must implement 'eat'"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">Cow</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Hay</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">override</span> <span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="kt">Horse</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Carrot</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">override</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Carrot</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="kt">Chicken</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Grain</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">override</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Grain</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기 한 가지 문제가 있는데, <code class="highlighter-rouge">Food</code>는 분명 <code class="highlighter-rouge">Animal</code> 클래스를 구현하는 데 필요한 제네릭 파라미터입니다. 하지만 이렇게 하나씩 제네릭 파라미터를 추가하면 제네릭을 사용하는 의미가 없어집니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Food</span><span class="p">,</span> <span class="kt">Habitat</span><span class="p">,</span> <span class="kt">Commodity</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Food</span><span class="p">)</span> <span class="p">{</span> <span class="nf">fatalError</span><span class="p">(</span><span class="s">"subclass must implement 'eat'"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">...</span>
+<span class="kd">class</span> <span class="kt">Chicken</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&lt;</span><span class="kt">Grain</span><span class="p">,</span> <span class="kt">Coop</span><span class="p">,</span> <span class="kt">Egg</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="k">override</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Grain</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="build-an-interface">Build an interface</h2>
+
+<p>근본적인 문제는 클래스가 데이터 유형이라는 것입니다. 우리는 기능의 작동 방식에 대한 세부 정보 없이 유형의 기능을 나타내도록 설계된 언어 구조를 원합니다. 동물들에게는 두 가지 공통 기능이 있습니다.</p>
+
+<ul>
+  <li>각 동물에게는 특정 먹이 유형</li>
+  <li>그 음식 중 일부를 소비하는 작업</li>
+</ul>
+
+<p>Swift에서는 프로토콜을 사용하여 이를 수행합니다. 프로토콜은 추상화 도구로 적합한 유형의 기능을 설명합니다. 프로토콜을 사용하여 유형이 수행하는 작업에 대한 아이디어를 구현하고, 세부 정보와 분리할 수 있습니다. 유형이 수행하는 작업에 대한 아이디어는 인터페이스를 통해 표현됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Animal</span> <span class="p">{</span>
+	<span class="kd">associatedtype</span> <span class="kt">Feed</span><span class="p">:</span> <span class="kt">AnimalFeed</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Feed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Cow</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Horse</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Chicken</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>먼저, 제네릭 파라미터로 사용하던 타입을 <code class="highlighter-rouge">associatedtype</code> 키워드를 사용해 지정할 수 있습니다. 이는 프로토콜에서 플레이스 홀더 역할을 합니다. eat 메소드에서 앞서 선언한 <code class="highlighter-rouge">associatedtype Feed</code>를 자동으로 파라미터 타입에 매핑할 수 있습니다.</p>
+
+<p>프로토콜은 클래스뿐만 아니라 구조체와 열거형에서도 사용할 수 있습니다. 또한 해당 메소드를 구현했는지 컴파일 타임에 알 수 있습니다.</p>
+
+<h2 id="write-generic-code">Write generic code</h2>
+
+<p>이전에 <code class="highlighter-rouge">Farm</code>에서는 다양한 타입 (<code class="highlighter-rouge">Cow</code>, <code class="highlighter-rouge">Horse</code>, <code class="highlighter-rouge">Chicken</code> 등)을 받는 feed 함수를 오버로딩하여 다형성을 구현했습니다. 그러나 <code class="highlighter-rouge">Animal</code>이라는 프로토콜로 통합함으로써, 이제는 제네릭을 사용할 수 있게 되었습니다.</p>
+
+<p>제네릭에 타입을 지정하는 방법은 2가지가 있습니다. 파라미터 선언 부분에서 타입을 지정하는 것과 <code class="highlighter-rouge">where</code>을 사용하여 타입을 지정하는 것입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Animal</span> <span class="p">{</span>
+	<span class="kd">associatedtype</span> <span class="kt">Feed</span><span class="p">:</span> <span class="kt">AnimalFeed</span>
+	<span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Feed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// case 1</span>
+<span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="n">feed</span><span class="o">&lt;</span><span class="kt">A</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">A</span><span class="p">)</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// case 2</span>
+<span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+	<span class="kd">func</span> <span class="n">feed</span><span class="o">&lt;</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">A</span><span class="p">)</span> <span class="k">where</span> <span class="kt">A</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">where</code> 절을 사용하는 경우 메소드가 실제보다 더 복잡해보일 수 있다는 단점이 있습니다. 제네릭 패턴에서 <code class="highlighter-rouge">where</code> 절을 사용하는 것은 일반적으로 많이 사용되지만, 더 쉽게 표현할 수 있는 방법이 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">feed</span><span class="o">&lt;</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">A</span><span class="p">)</span> <span class="k">where</span> <span class="kt">A</span><span class="p">:</span> <span class="kt">Animal</span>
+</code></pre></div></div>
+
+<p>“<code class="highlighter-rouge">some</code>” 키워드를 사용하는 방법도 있습니다. 이 방법은 이전에 사용하던 <code class="highlighter-rouge">where</code>절이나 제네릭 파라미터를 사용하는 방법과 유사하지만, 더 간단합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">some</code> 키워드는 불투명 타입을 나타내는데 사용되는데, 키워드 ‘<code class="highlighter-rouge">some</code>‘은 해당 타입에 subtype이 있다는 것을 의미합니다. 이 경우, <code class="highlighter-rouge">some</code> 타입은 <code class="highlighter-rouge">Animal</code> 프로토콜을 반드시 준수해야 하며, 매개변수 타입으로 <code class="highlighter-rouge">Animal</code>을 직접 사용할 수 있게 됩니다. SwiftUI를 사용하면 ‘<code class="highlighter-rouge">some View</code>’ 타입이 나타나는데, 이는 <code class="highlighter-rouge">View</code>의 서브타입이 사용될 수 있다는 것을 의미합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some</span> <span class="kt">Aniaml</span>
+
+<span class="c1">// swiftUI에서의 some</span>
+<span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>구체적인 타입을 나타내는 기본유형과 마찬가지로 불투명 유형은 Return Type으로도 사용될 수 있는데,</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="kt">A</span><span class="p">:</span> <span class="kt">Animal</span><span class="o">&gt;</span>
+<span class="n">some</span> <span class="kt">Animal</span>
+
+<span class="kd">func</span> <span class="nf">getValue</span><span class="p">(</span><span class="kt">Parameter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span>
+</code></pre></div></div>
+
+<p>로컬 변수에 불투명 유형을 사용하는 경우 오른쪽의 값으로 타입을 결정한다. 따라서 불투명 유형의 로컬 변수는 항상 초기값을 가져야 한다. 이를 제공하지 않으면 컴파일러가 에러를 발생시킨다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span> <span class="o">=</span> <span class="kt">Horse</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">some</code> 키워드를 사용하는 불투명 타입은 실행 시 반드시 기본 유형이 고정되기 때문에 이후 변경하려고 하면 에러가 발생한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span> <span class="o">=</span> <span class="kt">Horse</span><span class="p">()</span>
+<span class="n">animal</span> <span class="o">=</span> <span class="kt">Chicken</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>불투명 타입의 함수의 경우 해당 함수를 호출해 파라미터로 특정 기본 유형을 넘겨줄 때 타입이 추론된다. 파라미터에 <code class="highlighter-rouge">some</code> 키워드가 사용되는 것은 swift 5.7의 신기능이다. <code class="highlighter-rouge">some</code> 매개변수를 가진 함수의 타입 추론은 함수를 실행 할 때 추론되기 때문에 다양한 기본유형을 사용할 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span>
+<span class="nf">feed</span><span class="p">(</span><span class="kt">Horse</span><span class="p">())</span>
+<span class="nf">feed</span><span class="p">(</span><span class="kt">Chicken</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>불투명 유형을 파라미터로 받는 경우와는 달리 반환값으로 불투명 유형을 사용하는 경우, 반환값의 타입을 런타임에 결정할 수 없습니다. 즉, 모든 호출에서 반환 타입이 동일해야 합니다. 따라서 아래와 같은 경우 에러가 발생합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">makeView</span><span class="p">(</span><span class="k">for</span> <span class="nv">farm</span><span class="p">:</span> <span class="kt">Farm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="n">condition</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kt">FarmView</span><span class="p">(</span><span class="n">farm</span><span class="p">)</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kt">EmptyView</span><span class="p">()</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>불투명한 SwiftUI 뷰의 경우 <code class="highlighter-rouge">ViewBuilder DSL</code>은 제어 흐름 구문을 변환하여 각 분기에서 동일한 기본 반환 유형을 갖도록 할 수 있습니다. 따라서 <code class="highlighter-rouge">View Builder DSL</code>을 사용하여 이 문제를 해결할 수 있습니다.</p>
+
+<p>메서드에 <code class="highlighter-rouge">@ViewBuilder</code> 주석을 작성하고 반환 구문을 제거하면 <code class="highlighter-rouge">ViewBuilder</code> 유형별로 결과를 빌드할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">@ViewBuilder</span>
+<span class="kd">func</span> <span class="nf">makeView</span><span class="p">(</span><span class="k">for</span> <span class="nv">farm</span><span class="p">:</span> <span class="kt">Farm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="n">condition</span> <span class="p">{</span>
+		<span class="kt">FarmView</span><span class="p">(</span><span class="n">farm</span><span class="p">)</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="kt">EmptyView</span><span class="p">()</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="불투명-유형을-여러번-참조해야-하는-경우"><strong>불투명 유형을 여러번 참조해야 하는 경우</strong></h3>
+
+<p>지금까지 불투명 타입의 <code class="highlighter-rouge">some</code>에 대해서 알아봤습니다.</p>
+
+<p>다시 농장 시뮬레이션 쪽 코드로 돌아가서, 불투명 타입을 여러번 참조해야 하는 경우 <code class="highlighter-rouge">associatedtype</code>을 유용하게 사용할 수 있습니다.</p>
+
+<p><code class="highlighter-rouge">Farm</code>에 <code class="highlighter-rouge">buildHome</code> 메소드를 추가하고 무엇인지 알 수 없는 <code class="highlighter-rouge">Animal</code>을 받아 그 <code class="highlighter-rouge">Animal</code>의 <code class="highlighter-rouge">Habitat</code>(서식지)를 만들도록 하는 함수를 가정해봅시다. 이 <code class="highlighter-rouge">Habitat</code> 값 역시 <code class="highlighter-rouge">Feed</code>와 마찬가지로 동물의 유형에 따라서 달라지기 때문에 <code class="highlighter-rouge">associatedtype</code>을 통해서 구체적으로 정하지 않고 추상화 할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Animal</span> <span class="p">{</span>
+    <span class="kd">associatedtype</span> <span class="kt">Feed</span><span class="p">:</span> <span class="kt">AnimalFeed</span>
+    <span class="kd">associatedtype</span> <span class="kt">Habitat</span>
+    
+    <span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Feed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+    
+    <span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="n">buildHome</span><span class="o">&lt;</span><span class="kt">A</span><span class="o">&gt;</span><span class="p">(</span><span class="k">for</span> <span class="nv">animal</span><span class="p">:</span> <span class="kt">A</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">A</span><span class="o">.</span><span class="kt">Habitat</span> <span class="k">where</span> <span class="kt">A</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>불투명 유형을 여러 번 참조해야 할 때 <code class="highlighter-rouge">associatedtype</code> 말고도 쓰기 좋은 방법은 제네릭을 활용하는 것입니다. 아래의 <code class="highlighter-rouge">Silo</code>를 보면 제네릭 변수로 <code class="highlighter-rouge">Material</code>을 선언하고, 내부 변수와 <code class="highlighter-rouge">생성자</code>에서 매개변수로 여러 번 반복해서 사용했습니다. 또한 해당 Silo를 사용할 때는 꺽쇠 괄호 안에 항상 불투명 유형에 대한 <strong>구체적인 이름을 지정</strong>해야 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Silo</span><span class="o">&lt;</span><span class="kt">Material</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">storage</span><span class="p">:</span> <span class="p">[</span><span class="kt">Material</span><span class="p">]</span>
+    
+    <span class="nf">init</span><span class="p">(</span><span class="n">storing</span> <span class="nv">materials</span><span class="p">:</span> <span class="p">[</span><span class="kt">Material</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">materials</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">hayStorage</span><span class="p">:</span> <span class="kt">Silo</span><span class="o">&lt;</span><span class="kt">Hay</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>불투명 타입을 사용해 만든 <code class="highlighter-rouge">feed</code>를 구현하고 살펴보겠습니다. <code class="highlighter-rouge">feed</code> 함수의 목적은 무엇인지 알 수 없는 animal 을 받아서 해당 <strong>animal의 알맞은 Feed를 만들어 eat 함수를 호출하는 것 입니다.</strong></p>
+
+<ol>
+  <li><code class="highlighter-rouge">type(of:)</code> 메소드를 통해서 불투명 타입의 <code class="highlighter-rouge">Animal</code>의 타입에 접근 할 수 있습니다. 아래의 경우 <code class="highlighter-rouge">Cow</code>를 넣었으니 <code class="highlighter-rouge">Cow</code> 타입을 얻을 수 있습니다.</li>
+  <li>그리고 해당 Cow 타입의 <code class="highlighter-rouge">associatedtype Feed</code> 값인 <code class="highlighter-rouge">Hay(목초)</code> 에 접근 할 수 있습니다.</li>
+  <li>모든 <code class="highlighter-rouge">Feed</code> 타입은 <code class="highlighter-rouge">AnimalFeed</code> 프로토콜을 채택하고 있고, 거기에 <code class="highlighter-rouge">static grow 함수</code>를 통해서 수확물을 생산하고 <code class="highlighter-rouge">harvest 함수</code>를 통해 수확할 수 있습니다.</li>
+  <li>마지막으로 얻은 수확물을 동물에게 먹입니다.</li>
+</ol>
+
+<p>여기에는 3가지 추상화된 프로토콜을 사용했습니다. 해당 feed 함수에서 불투명 타입 animal을 통해 <code class="highlighter-rouge">Cow</code> → <code class="highlighter-rouge">Hay</code> → <code class="highlighter-rouge">Alfalfa</code> 까지 도달할 수 있도록 <code class="highlighter-rouge">some</code> 과 <code class="highlighter-rouge">associatedtype</code> 을 따라 올라 올 수 있었습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">crop</span> <span class="o">=</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">animal</span><span class="p">)</span><span class="o">.</span><span class="kt">Feed</span><span class="o">.</span><span class="nf">grow</span><span class="p">()</span>
+        <span class="k">let</span> <span class="nv">produce</span> <span class="o">=</span> <span class="n">crop</span><span class="o">.</span><span class="nf">harvest</span><span class="p">()</span>
+        <span class="n">animal</span><span class="o">.</span><span class="nf">eat</span><span class="p">(</span><span class="n">produce</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">----</span>
+
+<span class="k">let</span> <span class="nv">farm</span> <span class="o">=</span> <span class="kt">Farm</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">cow</span> <span class="o">=</span> <span class="kt">Cow</span><span class="p">()</span>
+<span class="n">farm</span><span class="o">.</span><span class="nf">feed</span><span class="p">(</span><span class="n">cow</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Animal</code>이 어떤 타입인지 알 수 없기 때문에 직접적으로 <code class="highlighter-rouge">Hay</code> 타입을 집어넣으려하면 컴파일러가 에러를 만들어주게 됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">animal</span><span class="o">.</span><span class="nf">eat</span><span class="p">(</span><span class="kt">Hay</span><span class="o">.</span><span class="nf">gorw</span><span class="p">()</span><span class="o">.</span><span class="nf">harvest</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>다음으로 불투명 타입 <code class="highlighter-rouge">Animal</code>의 배열을 받아서 <code class="highlighter-rouge">feed</code>를 호출하는 <code class="highlighter-rouge">feedAll</code>을 만들어보겠습니다. 앞서 <code class="highlighter-rouge">Aniaml</code>의 하위 타입으로 <code class="highlighter-rouge">Cow</code>, <code class="highlighter-rouge">Horse</code>, <code class="highlighter-rouge">Chicken</code>을 만들었습니다. 이 때도 <code class="highlighter-rouge">some</code> 키워드를 쓸 수 있을까요? 앞서 <code class="highlighter-rouge">some</code> 키워드를 쓰는 경우 컴파일 타임에 구체적인 타입이 정해져야 한다고 했습니다. 변수로 <code class="highlighter-rouge">some</code> 타입을 쓰는 경우 반드시 초기화를 통해서 타입을 지정해야 하고 함수에 쓰일 때는 함수 호출 과정에서 타입이 정해져야 합니다.</p>
+
+<p>만약 우리가 받고 싶은 것이 특정 타입의 배열이라면, <code class="highlighter-rouge">[some Animal]</code>을 사용할 수 있습니다. 하지만 이 경우, 함수 호출 시점에서 <code class="highlighter-rouge">Animal</code>의 구체적인 타입이 정해져야 하기 때문에 한 가지 타입만 사용할 수 있습니다. 예를 들어 Cow 인스턴스를 만들어 넣는다면 <code class="highlighter-rouge">[some Animal]</code>을 사용할 수 있지만, 이는 <code class="highlighter-rouge">[Cow]</code>와 같은 의미이므로 이번 케이스에는 적합하지 않습니다.</p>
+
+<p>그렇다면 이렇게 다양한 타입의 불투명 유형을 함께 혼합해서 사용해야 하는 경우 어떻게 해야 할까요? Swift에서는 불투명 타입을 구체화 할 수 없는 경우 <code class="highlighter-rouge">any</code> 키워드를 사용할 수 있습니다. <code class="highlighter-rouge">any</code> 키워드는 런타임에 <code class="highlighter-rouge">Animal</code> 타입이 달라질 수 있음을 나타냅니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+		<span class="kd">func</span> <span class="nf">feedAll</span><span class="p">(</span><span class="n">_</span> <span class="nv">animals</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt">Animal</span><span class="p">])</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">----</span>
+<span class="k">let</span> <span class="nv">farm</span> <span class="o">=</span> <span class="kt">Farm</span><span class="p">()</span>
+<span class="n">farm</span><span class="o">.</span><span class="nf">feedAll</span><span class="p">([</span><span class="kt">Cow</span><span class="p">(),</span> <span class="kt">Horse</span><span class="p">(),</span> <span class="kt">Chicken</span><span class="p">()])</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Any</code> 키워드는 임의의 <code class="highlighter-rouge">Animal</code> 타입을 저장할 수 있고, 구체적인 기본 타입은 런타임에 달라질 수 있습니다. 이 유형을 상자처럼 생각할 수 있습니다. 값이 직접 들어갈 수 있을 정도로 작은 경우도 있을 수 있고, 너무 큰 경우 포인터로 저장 될 수 있습니다. (컴파일 타임에 구체적 유형을 알 수 없어 유형소거라 부릅니다.)</p>
+
+<p>이렇게 연관된 불투명 유형으로 배열을 만드는 건 Swift 5.7의 새로운 기능입니다.</p>
+
+<p><img src="assets/images/ios/2023-03-04-WWDC22_Generic/Untitled.png" alt="Untitled" /></p>
+
+<p>하지만, <code class="highlighter-rouge">Animal</code> 타입을 직접 사용할 수 없습니다. 타입 소거를 통하더라도 전달받은 <code class="highlighter-rouge">Animal</code> 의 <code class="highlighter-rouge">associatedtype Food</code>가 어떤 타입인지 컴파일러는 알 수 없기 때문에, <code class="highlighter-rouge">any</code> 키워드로 선언된 타입을 <code class="highlighter-rouge">some</code> 타입으로 고정해야 합니다.</p>
+
+<p><img src="assets/images/ios/2023-03-04-WWDC22_Generic/Untitled%201.png" alt="Untitled" /></p>
+
+<p>Swift 5.7 버전에서는 언박싱 기능이 추가되어, <code class="highlighter-rouge">any</code> 타입을 <code class="highlighter-rouge">some</code> 타입으로 고정할 수 있습니다.</p>
+
+<p><img src="assets/images/ios/2023-03-04-WWDC22_Generic/Untitled%202.png" alt="Untitled" /></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">feedAll</span><span class="p">(</span><span class="n">_</span> <span class="nv">animals</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt">Animal</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">animal</span> <span class="k">in</span> <span class="n">animals</span> <span class="p">{</span>
+        <span class="nf">feed</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">some</code></p>
+
+<ul>
+  <li>구체적 기본 유형이 고정된다.</li>
+  <li>제네릭 타입에서 고정 타입을 의존할 수 있다. (프로토콜의 API에 접근 가능)</li>
+</ul>
+
+<p><code class="highlighter-rouge">any</code></p>
+
+<ul>
+  <li>임의의 구체적인 기본 유형을 저장 할 수 있다.</li>
+  <li>유형 소거를 제공한다. (컴파일 타임에 유형을 정할 필요 없다)</li>
+</ul>
+
+<p><code class="highlighter-rouge">any</code> 키워드를 사용하면 스토리지의 유연성을 획득할 수 있지만, 인터페이스 접근을 위해서는 구체화를 위해 <code class="highlighter-rouge">some</code>을 사용해야 합니다. 따라서, 기본적으로 <code class="highlighter-rouge">some</code>으로 코드를 작성하고 필요에 따라 <code class="highlighter-rouge">any</code>로 확장해야 합니다.</p>
+
+<h2 id="warp-up">Warp-up</h2>
+
+<p>이번 WWDC 섹션에서 알아본 내용을 다시 한번 정리하면</p>
+
+<ul>
+  <li>구체적 유형을 작성</li>
+  <li>반복적인 보일러 코드를 발견</li>
+  <li>공통 기능을 발견해 프로토콜 작성</li>
+  <li>any, some 키워드를 사용해 추상화 코드 작성</li>
+  <li>표현적인 코드에서는 some 을 더 선호한다는 것을 발견</li>
+</ul>
+
+<h3 id="전체-코드">전체 코드</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">AnimalFeed</span> <span class="p">{</span>
+  <span class="kd">associatedtype</span> <span class="kt">CropType</span><span class="p">:</span> <span class="kt">Crop</span> <span class="k">where</span> <span class="kt">CropType</span><span class="o">.</span><span class="kt">Feed</span> <span class="o">==</span> <span class="k">Self</span>
+  <span class="kd">static</span> <span class="kd">func</span> <span class="nf">grow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CropType</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">Crop</span> <span class="p">{</span>
+  <span class="kd">associatedtype</span> <span class="kt">Feed</span><span class="p">:</span> <span class="kt">AnimalFeed</span> <span class="k">where</span> <span class="kt">Feed</span><span class="o">.</span><span class="kt">CropType</span> <span class="o">==</span> <span class="k">Self</span>
+  <span class="kd">func</span> <span class="nf">harvest</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Feed</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">Animal</span> <span class="p">{</span>
+  <span class="kd">associatedtype</span> <span class="kt">Feed</span><span class="p">:</span> <span class="kt">AnimalFeed</span>
+  <span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Feed</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Farm</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">feed</span><span class="p">(</span><span class="n">_</span> <span class="nv">animal</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Animal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">crop</span> <span class="o">=</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">animal</span><span class="p">)</span><span class="o">.</span><span class="kt">Feed</span><span class="o">.</span><span class="nf">grow</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">produce</span> <span class="o">=</span> <span class="n">crop</span><span class="o">.</span><span class="nf">harvest</span><span class="p">()</span>
+    <span class="n">animal</span><span class="o">.</span><span class="nf">eat</span><span class="p">(</span><span class="n">produce</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="kd">func</span> <span class="nf">feedAll</span><span class="p">(</span><span class="n">_</span> <span class="nv">animals</span><span class="p">:</span> <span class="p">[</span><span class="n">any</span> <span class="kt">Animal</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">animal</span> <span class="k">in</span> <span class="n">animals</span> <span class="p">{</span>
+      <span class="nf">feed</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Cow</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">eat</span><span class="p">(</span><span class="n">_</span> <span class="nv">food</span><span class="p">:</span> <span class="kt">Hay</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Hay</span><span class="p">:</span> <span class="kt">AnimalFeed</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="kd">func</span> <span class="nf">grow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Alfalfa</span> <span class="p">{</span>
+    <span class="kt">Alfalfa</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Alfalfa</span><span class="p">:</span> <span class="kt">Crop</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">harvest</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Hay</span> <span class="p">{</span>
+    <span class="kt">Hay</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios/">Ios</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC22_Design_protocol_interface_in_Swift">[WWDC22] Design protocol interface in Swift</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/DI_using_Swinject">DI(의존성 주입) using Swinject</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/fastlane_release_testflight">fastlane - release, testflight</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ios/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/WWDC22_Design_protocol_interface_in_Swift">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios/2023-03-05-WWDC22_Design_protocol_interface_in_Swift/post.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/WWDC22_Design_protocol_interface_in_Swift">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[WWDC22] Design protocol interface in Swift</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># WWDC22 - Design protocol interface in Swift > WWDC22 - Swift 제네릭의 활용 이후 연관된 세션입니다. 앞선 포스트를 보고 오시면 더 좋습니다. > 구체적 타입(일반 타입) 추상화 및 프로토콜로 타입 관계를 모델링하는</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/Unit_test">
+                <div class="post-card-image" style="background-image: url(/assets/images/CS/unit_test_01/Untitled.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Unit_test">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Cs</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">유닛 테스트에 대한 생각</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>유닛 테스트에 대한 생각 Created: 2022년 11월 21일 오전 10:24 Tags: NotUploaded, iOS 회사의 개발 문화에 따라 유닛 테스트를 강제하는 경우도 있고, 필요에 따라 직접 작성하는 경우도 있습니다. 최근 주니어 개발자 지인들로부터 유닛</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://leejigun.github.io//">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[WWDC22] Embreace swift generics - some, any</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BWWDC22%5D+Embreace+swift+generics+-+some%2C+any&amp;url=https://leejigun.github.io/WWDC22_Generic"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/WWDC22_Generic"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2023</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

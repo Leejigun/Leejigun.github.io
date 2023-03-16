@@ -1,6 +1,14 @@
 [
 
 {
+"title"    : "[WWDC22] Navigation Cook book in SwiftUI",
+"category" : "",
+"tags"     : "ios, swiftui",
+"url"      : "/WWDC22_Navigation_Cook_book_in_SwiftUI",
+"date"     : "2023-03-15 00:00:01 +0000"
+} ,
+
+{
 "title"    : "[WWDC22] Design protocol interface in Swift",
 "category" : "",
 "tags"     : "ios",

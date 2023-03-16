@@ -1,4 +1,478 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://leejigun.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://leejigun.github.io//" rel="alternate" type="text/html" /><updated>2023-03-13T21:44:53+09:00</updated><id>https://leejigun.github.io//</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">[WWDC22] Design protocol interface in Swift</title><link href="https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift" rel="alternate" type="text/html" title="[WWDC22] Design protocol interface in Swift" /><published>2023-03-05T09:00:01+09:00</published><updated>2023-03-05T09:00:01+09:00</updated><id>https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift</id><content type="html" xml:base="https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift">&lt;h1 id=&quot;wwdc22---design-protocol-interface-in-swift&quot;&gt;WWDC22 - Design protocol interface in Swift&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://leejigun.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://leejigun.github.io//" rel="alternate" type="text/html" /><updated>2023-03-16T22:48:22+09:00</updated><id>https://leejigun.github.io//</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">[WWDC22] Navigation Cook book in SwiftUI</title><link href="https://leejigun.github.io//WWDC22_Navigation_Cook_book_in_SwiftUI" rel="alternate" type="text/html" title="[WWDC22] Navigation Cook book in SwiftUI" /><published>2023-03-15T09:00:01+09:00</published><updated>2023-03-15T09:00:01+09:00</updated><id>https://leejigun.github.io//WWDC22_Navigation_Cook_book_in_SwiftUI</id><content type="html" xml:base="https://leejigun.github.io//WWDC22_Navigation_Cook_book_in_SwiftUI">&lt;h1 id=&quot;wwdc22---navigation-cook-book-in-swiftui&quot;&gt;WWDC22 - Navigation Cook book in SwiftUI&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://developer.apple.com/wwdc22/10054/&quot;&gt;developer.apple.com/wwdc22/10054/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;SwiftUI를 사용하면서 항상 문제가 되는 부분은 Navigation입니다. 이번 iOS16 업데이트에서 딥링크, 프로그래밍적 navigation 등 다양한 장벽들을 해소할 수 있는 새로운 API가 많이 등장했습니다. 개인적으로 iOS 16부터 본격적으로 기존 UIKit을 대체할 수 있을 것으로 생각합니다.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;기존에는 어떤 아이템의 상세 정보를 보기 위해서 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Bool&lt;/code&gt; 값인 &lt;code class=&quot;highlighter-rouge&quot;&gt;state property&lt;/code&gt;를 사용해야 했습니다.&lt;/p&gt;
+
+&lt;p&gt;아래 코드에서 “&lt;code class=&quot;highlighter-rouge&quot;&gt;Details&lt;/code&gt;“를 선택하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;showDetail&lt;/code&gt; 값이 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;로 변경되며 &lt;code class=&quot;highlighter-rouge&quot;&gt;DetailView&lt;/code&gt;가 표시됩니다. 프로그래밍적으로 이를 제어하려면 로컬 &lt;code class=&quot;highlighter-rouge&quot;&gt;state property&lt;/code&gt;인 &lt;code class=&quot;highlighter-rouge&quot;&gt;showDetail&lt;/code&gt; 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;로 변경해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;DetailView&lt;/code&gt;와 같은 특정 조건에 따라 진입해야 하는 다양한 종류의 &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt;가 있다면, 해당 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;에 대해 각각의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Bool&lt;/code&gt; 값 &lt;code class=&quot;highlighter-rouge&quot;&gt;state property&lt;/code&gt;가 필요합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Details&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;isActive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;showDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+	&lt;span class=&quot;kt&quot;&gt;DetailView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;새로운 네비게이션 API에서는 전체를 하나의 스택으로 만들 수 있습니다. 이때, &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;UIViewController&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;ViewControllers&lt;/code&gt; 배열처럼 각각의 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 값을 스택으로 가지고 있기 때문에 훨씬 직관적이고 프로그램적으로 컨트롤하기 쉬워졌습니다.&lt;/p&gt;
+
+&lt;p&gt;덕분에 SwiftUI Navigation에서 가장 큰 걸림돌인 deep link나 pot to root 같은 것들을 쉽게 프로그램적으로 컨트롤할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Details&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이번 포스트에서 분석할 화면은 아래와 같습니다. 화면의 좌측부터 아이템을 선택하면 우측으로 심층적으로 내려가도록 되어 있습니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;에서는 좌측부터 &lt;code class=&quot;highlighter-rouge&quot;&gt;Sidebar&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;detail&lt;/code&gt;이라고 부릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/SwiftUI/2023-03-15-WWDC22_Navigation_Cook_book_in_SwiftUI/Untitled.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;new-navigation-apis&quot;&gt;New Navigation APIs&lt;/h2&gt;
+
+&lt;p&gt;다음 파트에서 자세한 설명을 다룰 부분은 있지만, 여기서는 새롭게 추가된 내용만 간략히 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-navigationstack&quot;&gt;1. NavigationStack&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;은 워치, 아이폰 등에서 볼 수 있는 푸시 스타일을 제공합니다. 앞서 보여준 것과 같이 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; 배열을 추가하여 프로그래밍적으로 컨트롤할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;NavigationStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Details&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-navigationsplitview&quot;&gt;2. NavigationSplitView&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;를 사용하면 메일, 할 일 목록 등 다중 열 화면을 만들 수 있습니다. 각 열의 너비나 사이드 바와 같은 세부 조정이 가능합니다. 이번 포스트에서는 Navigation 컨테이너를 중요하게 다룰 예정입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;RecipeCategories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;RecipeList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;RecipeDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;자세한 설명은 WWDC22 “SwiftUI on iPad: Organize your interface” 동영상에서 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-navigationlink&quot;&gt;3. NavigationLink&lt;/h3&gt;
+
+&lt;p&gt;기존 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;는 타이틀과 해당 네비게이션의 액션으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;노출할 View&lt;/code&gt;로 구성되어 있었습니다. 그러나 변경된 구조에서는 View가 제거되고 타이틀과 &lt;code class=&quot;highlighter-rouge&quot;&gt;Value&lt;/code&gt;만 남게 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;그러면 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;를 선택했을 때 이동할 &lt;code class=&quot;highlighter-rouge&quot;&gt;destination View&lt;/code&gt;는 어디에 있을까요? &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;가 아닌 &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination modifier&lt;/code&gt;를 통해 구현하게 됩니다. 이에 대해서는 아래에서 자세히 설명하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;아래 예시에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;에 해당하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Value&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;applePieRecipe&quot;&lt;/code&gt;입니다. 헤딩 아이템을 선택하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;applePieRecipe&quot;&lt;/code&gt;의 세부 화면으로 이동하게 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Show detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;DetailView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Apple Pie&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;applePieRecipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;recipes-for-navigation&quot;&gt;Recipes for navigation&lt;/h2&gt;
+
+&lt;h3 id=&quot;navigationstack&quot;&gt;NavigationStack&lt;/h3&gt;
+
+&lt;p&gt;위에서 소개된 새로운 API들을 이용하여 실제 레시피 네비게이션을 하는 방법에 대해 살펴보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;가장 먼저 할 일은 iOS 앱이나 워치에서 많이 사용하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;을 통한 push 네비게이션을 살펴보는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;기존의 SwiftUI &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;를 기반으로 작성하면 아래와 같습니다. 타이틀과 &lt;code class=&quot;highlighter-rouge&quot;&gt;destination View&lt;/code&gt;의 링크를 설정합니다. 이 방법으로도 충분히 원하는 효과를 낼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;사용자의 터치 액션 뿐만 아니라 푸시, 타이머, 에러 등 다양한 이벤트에 대해 필요한 화면을 사용자에게 표시해야 합니다. 그러나 현재 이 방법으로는 프로그래밍적으로 해당 네비게이션을 제어하는 방법이 없습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;RecipeDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;프로그래밍적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;를 사용하기 위해서는 해당 액션을 두 가지로 분리해야 합니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;해당 액션을 상징하는 값 (Path Value)&lt;/li&gt;
+  &lt;li&gt;그 값에 해당하는 뷰 (Destination View)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 두 가지를 준비하고 나면, &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;를 생성하는 코드를 작성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 해당 네비게이션의 Destination을 설정합니다. 이 때 Value의 타입을 &lt;code class=&quot;highlighter-rouge&quot;&gt;Recipe.self&lt;/code&gt; 타입으로 설정하여 해당 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt; 이벤트가 발생할 때 데이터를 전달할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 타입이 각각 다른 복수의 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;를 사용하더라도, 그에 매칭되는 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationDestination&lt;/code&gt;을 다수 추가한다면, 다양한 네비게이션을 구현할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationDestination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;RecipeDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 새롭게 추가된 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;의 value를 사용하여 아래와 같은 방식으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt; 이벤트를 발생시키면 해당 타입의 &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination&lt;/code&gt;으로 이동합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Path&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination&lt;/code&gt;의 관계를 아래와 같이 살펴보면, &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;가 발생하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;에 value가 추가됩니다. 그러면 이 value에 해당하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination&lt;/code&gt;이 View를 만들어 &lt;code class=&quot;highlighter-rouge&quot;&gt;pushed views&lt;/code&gt;에 추가됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/SwiftUI/2023-03-15-WWDC22_Navigation_Cook_book_in_SwiftUI/Untitled%201.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;실제로 구현한다면, 레시피 배열을 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;의 경로로 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;View를 1:1로 매칭하는 path를 가지고 있기 때문에 프로그램적으로 path를 추가하거나 빼는 것이 가능합니다. 흥미로운 점은, 이렇게 프로그램적으로 path에 item을 추가해도 push나 pop 되는 애니메이션이 발생하기 때문에 자연스럽게 추가하거나 제거할 수 있다는 것입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;showRecipeOfTheDay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipeOfTheDay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;popToRoot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;removeAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이러한 push 형태의 NavigationStack은 아이패드, 맥, 아이폰, 워치 등 모든 애플 기기에서 잘 동작합니다. NavigationStack에 대해 자세히 알아보고 싶다면, WWDC22 Build a productivity app for Apple Watch 영상에서 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;navigationsplitview&quot;&gt;NavigationSplitView&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;는 이미지와 같이 최대 3단까지 계층형으로 View를 노출할 수 있는 컨테이너입니다. 이 컨테이너는 아이패드와 macOS 같은 환경에서 많이 사용됩니다. 아이폰과 애플워치에서는 자동으로 stack 형태로 노출되므로 매우 유용하게 사용할 수 있습니다. 아래 화면도 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/SwiftUI/2023-03-15-WWDC22_Navigation_Cook_book_in_SwiftUI/Untitled%202.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;먼저 왼쪽의 Categories를 구현하기 위해 다음과 같이 작성합니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;에 값을 적용하는 방법을 앞서 살펴보았습니다. 이번에도 value 값을 적용하는데, &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;에서는 value 값을 &lt;code class=&quot;highlighter-rouge&quot;&gt;path: [Recipe]&lt;/code&gt;에 저장했지만, 이번에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;selection&lt;/code&gt;을 사용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;@State 변수&lt;/code&gt;에 저장하도록 했습니다.&lt;/p&gt;
+
+&lt;p&gt;이번 업데이트에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;를 활용할 수 있는 다양한 방법들이 추가되었습니다. 자세한 내용은 WWDC22 SwiftUI on iPad: Organize your interface 영상에서 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음으로, 중간 content UI를 만들어야 합니다. 앞선 내용의 반복입니다. 이 부분에서도 앞서 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt; 값을 알기 때문에, 해당하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Recipe 배열&lt;/code&gt;을 &lt;code class=&quot;highlighter-rouge&quot;&gt;dataModel&lt;/code&gt;에서 가져와서 &lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;를 구성하도록 합니다. 이번에도 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;selection value&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedRecipe&lt;/code&gt;라는 지역 변수에 저장하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;@State property&lt;/code&gt;로 선언되어 있으며 해당 View의 컨텍스트 내부에 있습니다. 따라서 &lt;code class=&quot;highlighter-rouge&quot;&gt;@State property&lt;/code&gt;가 변경되면 &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;를 새로 만들게 되고 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;의 content 부분도 재 호출되어 &lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;가 다시 그려지게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;동일한 원리로 content 내부의 리스트에서 아이템을 선택하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedRecipe&lt;/code&gt;가 변경되면, &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;가 다시 그려집니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedRecipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;recipes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedRecipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+	  &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Recipes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마지막으로, &lt;code class=&quot;highlighter-rouge&quot;&gt;Recipe&lt;/code&gt;에 대한 &lt;code class=&quot;highlighter-rouge&quot;&gt;Detail&lt;/code&gt;을 업데이트하기 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;RecipeDetail&lt;/code&gt;을 업데이트합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;RecipeDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedRecipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;만약 이 부분을 프로그래밍적으로 수정하고 싶다면 어떻게 해야 할까요? &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;에서는 로컬 변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;를 조작하여 해당 네비게이션을 프로그래밍적으로 수정할 수 있었습니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;도 로컬 변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedRecipe&lt;/code&gt;를 사용하고 있으므로, 아래와 같이 직접 데이터를 적용하면 동일한 애니메이션과 함께 UI 업데이트를 수행할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;showRecipeOfTheDat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipeOfTheDay&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;selectedRecipe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;navigationsplitview--navigationstack&quot;&gt;NavigationSplitView + NavigationStack&lt;/h3&gt;
+
+&lt;p&gt;조금 더 복잡한 화면을 구현해 보겠습니다. 이번에는 두 개의 열로 구성되며, 아이템을 누르면 전체 세부 정보가 표시되는 View가 Push 되는 경우입니다. 이번 화면 구현에서는 이전에 소개된 모든 View를 사용하여 만들 수 있으며, 다음과 같은 View가 사용됩니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nvigationDestination(for:)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/SwiftUI/2023-03-15-WWDC22_Navigation_Cook_book_in_SwiftUI/Untitled%203.png&quot; alt=&quot;Untitled&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;좌측 Categories는 앞서 설명한 것과 동일하기 때문에 코드만 첨부하고 넘어갑니다. 이전 부분과 다른 점은 이번에는 content가 없기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;Sidebar&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;detail&lt;/code&gt;만 구현합니다.&lt;/p&gt;
+
+&lt;p&gt;이전에 살펴본 것과 마찬가지로, path를 만들어서 추가합니다. 이렇게 하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt; 전체에 프로그래밍 방식으로 네비게이션을 구현할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;이번에 detail 부분에서는 그리드 화면을 만들어야 하기 때문에 코드 양이 좀 많습니다. 따라서 별도의 &lt;code class=&quot;highlighter-rouge&quot;&gt;RecipeGrid&lt;/code&gt; 뷰를 만들어서 자세히 살펴보겠습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;NavigationStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;RecipeGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;아래 코드를 보면, &lt;code class=&quot;highlighter-rouge&quot;&gt;LazyVGrid&lt;/code&gt;를 사용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;RecipeTile&lt;/code&gt;을 표시하고 있습니다. UI를 만드는 데 특별한 것은 없는 일반적인 &lt;code class=&quot;highlighter-rouge&quot;&gt;LazyVGrid&lt;/code&gt; UI입니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;recipe&lt;/code&gt;를 value로 동일하게 설정했습니다. 그렇다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination&lt;/code&gt;은 어디에서 선언해주어야 할까요?&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;ScrollView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		    &lt;span class=&quot;kt&quot;&gt;LazyVGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		        &lt;span class=&quot;kt&quot;&gt;ForEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;recipes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+		            &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		                &lt;span class=&quot;kt&quot;&gt;RecipeTile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;buttonStyle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;만약, &lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination&lt;/code&gt;을 각각의 아이템에 붙여주게 되면 &lt;code class=&quot;highlighter-rouge&quot;&gt;ForEach&lt;/code&gt;가 반복될 때마다 해당 코드가 실행됩니다. 그러므로 스크롤 위치와 상관없이 가장 바깥에 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;에 붙여주시면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;ScrollView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationDestination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;RecipeDetail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;persistent-state&quot;&gt;Persistent state&lt;/h2&gt;
+
+&lt;p&gt;이제 네비게이션 상태를 유지하는 방법에 대해 살펴보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;앱에서 네비게이션 상태를 유지하려면 다음 두 가지 구성 요소가 필요합니다. 이 중 &lt;code class=&quot;highlighter-rouge&quot;&gt;SceneStorage&lt;/code&gt;은 iOS 14에서 추가된 새로운 개념입니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Codable&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SceneStorage&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;작업은 이번에 3단계로 진행됩니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Move navigation state into a model type
+    &lt;ol&gt;
+      &lt;li&gt;현재 네비게이션 상태를 모델로 만들어 저장하고, 꺼내올 수 있도록 하는 기능을 추가합니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Make the navigation model codable&lt;/li&gt;
+  &lt;li&gt;Use SceneStorage to save and restore&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;1-move-navigation-state-into-a-model-type&quot;&gt;1. Move navigation state into a model type&lt;/h3&gt;
+
+&lt;p&gt;앞서 만든 네비게이션 코드를 살펴보겠습니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt;는 좌측 사이드바에서 선택한 아이템을 저장하고 있습니다. 또한 &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;detail&lt;/code&gt; 영역이 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;에 어떤 아이템이 push되어 있는지 저장하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;위 2가지 정보만 알고 있다면 프로그래밍적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;navigation state&lt;/code&gt;를 복원할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;@State&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;NavigationStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;RecipeGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2개의 정보를 클래스로 만들어 보겠습니다. 그리고 해당 모델을 인스턴스화 하여 교체하겠습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;NavigationModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ObservableObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;@Published&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;@Published&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;@StateObject&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;navModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;NavigationModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;navModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;NavigationLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localizedName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;navigationTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;detail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;NavigationStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;navModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;RecipeGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;navModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-make-the-navigation-model-codable&quot;&gt;2. Make the navigation model codable&lt;/h3&gt;
+
+&lt;p&gt;이제 이전에 만든 NavigationModel을 Codable로 만들어 봅시다. 대부분의 경우 Codable만 추가하면 자동으로 encodable, decodable 하게 만들어집니다. 그러나 이번 경우에는 세 가지 이유로 커스텀하게 만들어야 합니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Don’t store entire model value
+    &lt;ol&gt;
+      &lt;li&gt;Recipe 모델의 모든 데이터를 저장할 필요가 없습니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Repeated information
+    &lt;ol&gt;
+      &lt;li&gt;로컬 DB에 이미 레시피 정보가 있으므로, 고유한 값인 identifier만 있으면 언제든지 해당 레시피를 다시 복원할 수 있습니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Can change independently
+    &lt;ol&gt;
+      &lt;li&gt;만약 로컬 DB에 저장된 Recipe 값이 업데이트 된 경우, 현재 저장된 정보는 구식 정보가 됩니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;먼저 아래와 같이 &lt;code class=&quot;highlighter-rouge&quot;&gt;CodingKeys&lt;/code&gt;를 추가합니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt;는 동일하지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;의 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;recipePathIds&lt;/code&gt;로 이름을 지었습니다. 이는 앞서 설명한 것과 마찬가지로 &lt;strong&gt;path의 ID 값만&lt;/strong&gt; 저장할 계획이기 때문입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;NavigationModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ObservableObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Codable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;@Published&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;@Published&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;CodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;CodingKey&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;
+	  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipePathIds&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;아래와 같이 인코딩 방법을 사용하여 저장합니다. 이 때, &lt;code class=&quot;highlighter-rouge&quot;&gt;encodeIfPresent&lt;/code&gt;는 &lt;code class=&quot;highlighter-rouge&quot;&gt;selectedCategory&lt;/code&gt; 값이 &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;이 아닐 경우에만 값을 저장합니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;의 &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt;들은 배열로 저장됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;encoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Encoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;container&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;keyedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;CodingKeys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encodeIfPresent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipePath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipePathIds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;저장하는 데이터는 다음과 같이 JSON으로 표현할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;s&quot;&gt;&quot;selectedCategory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;s&quot;&gt;&quot;recipePathIds&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+		&lt;span class=&quot;s&quot;&gt;&quot;DD742F51-....&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;s&quot;&gt;&quot;F1F67850-.....&quot;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마지막으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;init 함수&lt;/code&gt;를 작성합니다. &lt;code class=&quot;highlighter-rouge&quot;&gt;init 함수&lt;/code&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;decoder&lt;/code&gt;를 통해 저장된 정보가 있다면 복원해 초기 navigation state 값을 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;특이한 부분은 &lt;code class=&quot;highlighter-rouge&quot;&gt;recipe&lt;/code&gt;의 id 값들을 decoding 한 이후에 &lt;code class=&quot;highlighter-rouge&quot;&gt;DataModel&lt;/code&gt;에서 일치하는 아이템들을 꺼내주도록 하는 것입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;container&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;keyedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;CodingKeys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;decodeIfPresent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;Category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;recipePathIds&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;forKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipePathIds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recipePathIds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compactMap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;DataModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마지막으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonData&lt;/code&gt;를 외부에서 쉽게 읽고 쓸 수 있도록 인터페이스를 추가합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selectedCategory&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;recipePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipePath&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-use-scenestorage-to-save-and-restore&quot;&gt;3. Use SceneStorage to save and restore&lt;/h3&gt;
+
+&lt;p&gt;이제 해당 데이터를 JSON으로 만들어 읽고 쓸 수 있게 되었으니, 실제로 저장해야 합니다. 이 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;SceneStorage&lt;/code&gt;를 사용해 보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SceneStorage&lt;/code&gt;는 관련 값을 자동으로 저장하고 불러옵니다. 만약 해당 화면에 최초로 진입한 경우, data 값은 nil이 될 것입니다. 시스템이 Scene을 복원하면, &lt;code class=&quot;highlighter-rouge&quot;&gt;SceneStorage&lt;/code&gt; 값 역시 복구됩니다.&lt;/p&gt;
+
+&lt;p&gt;값을 저장하기 위해서는, View 단에 &lt;code class=&quot;highlighter-rouge&quot;&gt;.task modifier&lt;/code&gt;를 추가해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;task modifier&lt;/code&gt;는 비동기적으로 해당 View가 생성되면 등록되고, View가 사라지면 취소됩니다.&lt;/p&gt;
+
+&lt;p&gt;따라서 아래의 코드는 내 뷰가 나타나면 &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;를 꺼내서 &lt;code class=&quot;highlighter-rouge&quot;&gt;navModel&lt;/code&gt;에 비동기적으로 추가하고, &lt;code class=&quot;highlighter-rouge&quot;&gt;navModel&lt;/code&gt;의 값이 변경될 때마다 &lt;code class=&quot;highlighter-rouge&quot;&gt;objectWillChangeSequence&lt;/code&gt;가 호출되어 비동기적으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;를 업데이트합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;@StateObject&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;navModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;NavigationModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;@SceneStorage(&quot;navigation&quot;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;NavigationSplitView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	        &lt;span class=&quot;n&quot;&gt;navModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jsonData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsonData&lt;/span&gt;
+	    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;navModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objectWillChangeSequence&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;navigationModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jsonData&lt;/span&gt;
+	    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;navigation-tips&quot;&gt;Navigation Tips&lt;/h2&gt;
+
+&lt;p&gt;SwiftUI의 네비게이션 컨테이너에 대해 알아보았는데, 마지막으로 몇 가지 팁을 알려드리겠습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;가능하면 빨리 새로운 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;로 전환하세요.
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationView.stack&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationView&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink.isActive, tag, selection&lt;/code&gt; → &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationLink.value&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;자세한 마이그레이션 방법은 Migrating to new navigation types 문서를 확인하세요.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;List&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;와 함께 사용할 수 있다는 것을 기억하세요.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;navigationDestination modifier&lt;/code&gt;를 접근하기 쉬운 곳에 두세요.&lt;/li&gt;
+  &lt;li&gt;Navigation 구조를 이해했다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigationSplitView&lt;/code&gt;부터 시작하세요.
+    &lt;ol&gt;
+      &lt;li&gt;작은 화면에서는 자동으로 stack으로 변경되기 때문에 아이폰, 애플 워치 등에서 유용합니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jglee</name></author><category term="ios" /><category term="swiftui" /><summary type="html">WWDC22 - Navigation Cook book in SwiftUI</summary></entry><entry><title type="html">[WWDC22] Design protocol interface in Swift</title><link href="https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift" rel="alternate" type="text/html" title="[WWDC22] Design protocol interface in Swift" /><published>2023-03-05T09:00:01+09:00</published><updated>2023-03-05T09:00:01+09:00</updated><id>https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift</id><content type="html" xml:base="https://leejigun.github.io//WWDC22_Design_protocol_interface_in_Swift">&lt;h1 id=&quot;wwdc22---design-protocol-interface-in-swift&quot;&gt;WWDC22 - Design protocol interface in Swift&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;WWDC22 - Swift 제네릭의 활용 이후 연관된 세션입니다. 앞선 포스트를 보고 오시면 더 좋습니다.&lt;/p&gt;
@@ -1566,187 +2040,4 @@ itc_team_name &quot;JUVIS co., Ltd.&quot;
 &amp;lt;false/&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;여기까지 진행했으면 fastlane release 명령어를 터미널에 입력하면 한 번에 테스트 플라이트 배포까지 진행된다. 지금 프로젝트에서는 build config를 통해서 앱의 api base url 같은 설정 부분을 관리하고 있다. 간단하게 인증서와 앱 설정을 변경할 수 있다는 점에서 시간을 절약할 수 있다. 특히 빌드 번호를 올리는 부분은 예전에는 만약 테스트 플라이트에 동일한 빌드 번호가 올라가 있다면 다시 아카이빙해야 하는 치명적인 문제가 발생하기 때문에 항상 테스트 플라이트에 들어가서 확인해 주고 있었다. fastlane을 사용하면 페이지에 들어가서 일일이 확인해야 하는 시간 낭비를 해결할 수 있다.&lt;/p&gt;</content><author><name>jglee</name></author><category term="ios" /><summary type="html">fastlane_release_testflight</summary></entry><entry><title type="html">iOS fastlane - Fabric, Firebase</title><link href="https://leejigun.github.io//fastlaneFirebase" rel="alternate" type="text/html" title="iOS fastlane - Fabric, Firebase" /><published>2020-01-23T09:00:01+09:00</published><updated>2020-01-23T09:00:01+09:00</updated><id>https://leejigun.github.io//fastlaneFirebase</id><content type="html" xml:base="https://leejigun.github.io//fastlaneFirebase">&lt;h1 id=&quot;ios-fastlane---fabric-firebase&quot;&gt;iOS fastlane - Fabric, Firebase&lt;/h1&gt;
-
-&lt;p&gt;이번 프로젝트에서 CI/CD 툴로 fastlane을 적용하려 한다. 이미 상용에 출시된 지 오랜 시간이 지났고 몸집이 점점 커져 today extension (widget) 도 추가되고 리소스도 많아져 아카이빙에 오랜 시간이 걸리고 있다. 그리고 기존에 아무 생각 없이 인증서를 그저 오토 사이닝으로 개발을 진행해도 문제가 없었지만, 이제 app, noti extension, today extension 3개의 프로젝트를 개발, 배포 인증서로 관리해야 해 애플 개발자 페이지가 너무 번잡스러워졌다.&lt;/p&gt;
-
-&lt;p&gt;이번 포스트에서는 fastlane을 통한 베타 배포를 적용하는 과정을 기록하려 한다.&lt;/p&gt;
-
-&lt;p&gt;fastlane 홈페이지에 나와있는 핵심 기능은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Capture screenshots automatically&lt;/li&gt;
-  &lt;li&gt;Distribute beta builds&lt;/li&gt;
-  &lt;li&gt;Publish your app with the push of a button&lt;/li&gt;
-  &lt;li&gt;Automatic code signing for iOS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;첫번째 테스트와 스크린샷 기능을 제외하고 베타 빌드와 스토어 업로드 기능을 사용해 CI / CD 도입하려 한다. 기존에도 fabric을 통한 beta 배포는 진행하고 있었지만, xCode에서 아카이빙을 하고 fabric앱을 이용해 배포하고 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/ios/2020-02-03-iOS_fastlane_Fabric_Firebase/Untitled.png&quot; alt=&quot;iOS%20fastlane%20Fabric%20Firebase/Untitled.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Xcode에서 인증서를 설정하고 아카이빙 후 fabric앱을 통해 배포하는 일련의 과정을 통해서 beta 배포를 진행했는데, 앞서 말한 것처럼 이제 이런 행위를 하는데 너무 복잡해졌고 신경 써야 할 일이 많다. fastlane은 이제는 많이 알려져 콘퍼런스에도 자주 등장하고 블로그에도 많이 소개되어있다. 예전에도 도입을 건의했는데 받아들여지지 않았다. 기존에 사람이 할 수 있는 일이라 새로운 기술을 도입하는데 소극적인 태도를 보였었다. fastlane에 대해서 인터넷에 찾아보면 소개하는 블로그나 튜토리얼 정도를 진행하는 블로그는 많이 있지만 진짜로 현업에서 쓰는 내용에 대해서는 한국어 블로그에는 거의 없다. 나와 같은 이유일 거 같다.&lt;/p&gt;
-
-&lt;p&gt;beta로 아카이빙 후 fabric을 통해서 배포하는 것까지 진행해 보려 한다.&lt;/p&gt;
-
-&lt;p&gt;fastlane을 설치하는 부분 까지는 공식 홈페이지를 따라서 진행하면 된다. 공식 홈페이지에 잘 나와 있기 때문에 항상 fastlane을 수정할 때에는 옆에 같이 띄워 놓고 본다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;사용자-정보&quot;&gt;사용자 정보&lt;/h2&gt;
-
-&lt;p&gt;fastlane에 사용될 사용자 기본 정보를 저장하기 위해서 appfile을 작성해야 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.fastlane.tools/advanced/Appfile/&quot;&gt;Appfile&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;이번에 beta 배포를 위해서 입력한 정보는 다음과 같다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;app_identifier&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'kr.co.juvis.dietapp'&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;apple_id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jglee@openit.co.kr'&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;apple_dev_portal_id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jglee@openit.co.kr'&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;team_id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'5WFR4QS43Z'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이 정보를 기반으로 하단에 표시하는 인증서 인증서 관리 사이닝 등 작업을 진행하며 앱 스토어 배포나 테스트 플라이트의 경우 추가적인 정보가 필요하다.&lt;/p&gt;
-
-&lt;h2 id=&quot;인증서-관리&quot;&gt;인증서 관리&lt;/h2&gt;
-
-&lt;p&gt;먼저 인증서 (certificate)를 다운 받는 것 부터 시작한다. 인증서 관리는 auto로 사용해도 상관 없다. 필자로 평상시 xcode에서 아카이빙하거나 런할 때 auto로 맞춰놓고 사용했었다. 그런데 이 프로젝트에서는 노티 서비스랑 위젯이 붙어 있어서 auto로 하고 앱을 빌드하면 프로파일을 찾지 못하는 문제가 발생했다.&lt;/p&gt;
-
-&lt;p&gt;그래서 build_app에서 인증서를 지정 해줘야 한다. 아래 코드는 build_app 에 들어가는 옵션 부분이다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;ss&quot;&gt;provisioningProfiles: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;method: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;development&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dietapp_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.notificationServiceExt&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;notificationServiceExt_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.JuvisWidget&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;JuvisWidget_dev.mobileprovision&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;다시 인증서 부분으로 돌아와서 앞서 appfile에 저장한 내 정보를 사용해 cert를 꺼내 온다. 이때 만약 이중 인증이 되어있는 경우 핀 번호를 요구한다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;# 인증서 설정&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;get_certificates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;development: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;output_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/certificate/&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;내용을 보면 알겠지만 dev cert만 꺼내서 ./fastlane/certificate/ 경로에 저장하도록 한다. development를 true로 주면 개발용 인증서를 가져온다. 우리는 fabric beta 배포를 진행할 예정이니 dev 인증서를 꺼낸다.&lt;/p&gt;
-
-&lt;p&gt;그리고 이제 그 cert를 기반으로 profile을 찾아야 한다. 프로필을 꺼내는 action은 get_provisioning_profile이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.fastlane.tools/actions/get_provisioning_profile/&quot;&gt;get_provisioning_profile&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;근데 앞서 말한 것 처럼 3개의 프로파일이 필요하다. 프로파일을 꺼내서 해당 이름으로 저장한다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dietapp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dietapp_dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mobileprovision&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notificationService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notificationServiceExt_dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mobileprovision&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JuvisWidget_dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mobileprovision&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;get_provisioning_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;development: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;app_identifier: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;filename: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dietapp_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;output_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/profiles/&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# noti service profile&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;get_provisioning_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;development: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;app_identifier: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.notificationServiceExt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;filename: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;notificationServiceExt_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;output_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/profiles/&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# widget profile&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;get_provisioning_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;development: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;app_identifier: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.JuvisWidget&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;filename: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;JuvisWidget_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;output_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/profiles/&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;development 옵션으로 개발용 프로파일을 꺼낸다고 명시하고 해당 id에 맞는 프로파일을 찾는다. 파일 이름과 경로를 지정하는 이유는 앞서 언급한 것 처럼 3개의 프로파일을 다 지정해서 아키이빙해야 하기 때문이다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;빌드&quot;&gt;빌드&lt;/h2&gt;
-
-&lt;p&gt;예제나 샘플을 보면 이제 바로 빌드를 들어간다. 근데 우리는 여기서 다시 한번 sigh 액션을 사용해 무엇으로 인증하는지 다시 지정하겠다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;sigh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;development: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;만약, 여기서 sigh으로 dev 프로파일을 사용하는 것을 지정하지 않으면 가끔 오류가 발생한다. 해결법을 찾아보니 이렇게 개발용을 사용하는 것을 지정하라고 한다.&lt;/p&gt;
-
-&lt;p&gt;이제 build_app 액션을 뜯어보자.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;build_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;configuration: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Debug&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# use debug Scheme&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;scheme: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;JuvisApp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;workspace: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;JuvisApp.xcworkspace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;clean: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;silent: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;output_directory: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;fastlane/ipa/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;output_name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;JuvisApp.ipa&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;export_method: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;development&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;xcargs: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-UseModernBuildSystem=NO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# use legacy build system&lt;/span&gt;
-    	&lt;span class=&quot;ss&quot;&gt;export_options: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    	  &lt;span class=&quot;ss&quot;&gt;provisioningProfiles: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    	    &lt;span class=&quot;ss&quot;&gt;method: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;development&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	    &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dietapp_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	    &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.notificationServiceExt&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;notificationServiceExt_dev.mobileprovision&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    	    &lt;span class=&quot;s2&quot;&gt;&quot;kr.co.juvis.dietapp.JuvisWidget&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;JuvisWidget_dev.mobileprovision&quot;&lt;/span&gt;
-    	  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;먼저 앱의 configuration을 debug로 한다. 우리 앱에서는 config에 따라서 몇가지 설정을 변경하고 있다. 다른 설정은 거의 샘플에 나와있는 설정과 비슷한데 여기서 주목해야 할 부분이 export_options 이다. 이 부분을 위해서 앞에서부터 인증서를 찾고 프로파일을 저장하는 동작을 했다.&lt;/p&gt;
-
-&lt;p&gt;xcargs 옵션은 xcode build 시스템에 특정 파라미터를 전달하는 용도로 쓰인다. 여기서는 위젯을 포함해서 아카이빙하는데 문제가 발생해 워크 스페이스 세팅에 legacy build system을 사용해야 한다.&lt;/p&gt;
-
-&lt;p&gt;legacy build system을 사용하기 위한 옵션이 -UseModernBuildSystem=NO이다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;beta&quot;&gt;Beta&lt;/h2&gt;
-
-&lt;p&gt;여기까지 진행하면 ipa 파일이 생성된다. 이제 이 ipa 파일을 fabric 배포를 통해서 내보내면 된다. 만약, 앞선 설정에서 문제가 있었다면 ipa 파일은 생성되었지만 배포가 실패하는 경우가 굉장히 많다. 그리고 대부분의 경우 이 실패 메세지가 표시되지 않아서 정말 고생을 많이 했었다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;crashlytics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;emails: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jglee@openit.co.kr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;notifications: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;crashlytics_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./Pods/Crashlytics/submit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;api_token: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INPUT_API_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;build_secret: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INPUT_BUILD_SECRET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;ipa_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/ipa/JuvisApp.ipa&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;개인 설정은 문서를 보면 어디서 찾을 수 있는지 확인할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.fastlane.tools/actions/crashlytics/&quot;&gt;crashlytics&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;여기에 테스트 그룹을 지정할 수 있고 사용자의 email을 지정할 수 있다. 여기서는 테스트 용도로 내 이메일만 지정 해놨다.&lt;/p&gt;
-
-&lt;h2 id=&quot;firebase-beta&quot;&gt;Firebase Beta&lt;/h2&gt;
-
-&lt;p&gt;근데 fabric이 2020년 3월 31일 이후로 내려간다고 한다. 완전히 firebase에 통합되는 모양이다. 그래서 앞서 설명한 부분을 기반으로 배포만 firebase를 통한 beta deploy로 변경하려 한다.&lt;/p&gt;
-
-&lt;p&gt;아래 공식 링크에 잘 나와 있는데, 이를 기반으로 변경해보자.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;[Distribute iOS apps to testers using fastlane&lt;/td&gt;
-      &lt;td&gt;Firebase](https://firebase.google.com/docs/app-distribution/ios/distribute-fastlane)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;먼저 플러그인을 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fastlane add_plugin firebase_app_distribution
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;수정한 내용은 다음과 같다.&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;# firebase deploy&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# https://firebase.google.com/docs/app-distribution/ios/distribute-fastlane&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# fastlane add_plugin firebase_app_distribution -&amp;gt; 플러그인 설치&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;firebase_app_distribution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;app: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;FIREBASE_APP_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# firebase app id&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;testers: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jglee@openit.co.kr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;ipa_path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./fastlane/ipa/JuvisApp.ipa&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>jglee</name></author><category term="ios" /><summary type="html">iOS fastlane - Fabric, Firebase</summary></entry></feed>
+&lt;p&gt;여기까지 진행했으면 fastlane release 명령어를 터미널에 입력하면 한 번에 테스트 플라이트 배포까지 진행된다. 지금 프로젝트에서는 build config를 통해서 앱의 api base url 같은 설정 부분을 관리하고 있다. 간단하게 인증서와 앱 설정을 변경할 수 있다는 점에서 시간을 절약할 수 있다. 특히 빌드 번호를 올리는 부분은 예전에는 만약 테스트 플라이트에 동일한 빌드 번호가 올라가 있다면 다시 아카이빙해야 하는 치명적인 문제가 발생하기 때문에 항상 테스트 플라이트에 들어가서 확인해 주고 있었다. fastlane을 사용하면 페이지에 들어가서 일일이 확인해야 하는 시간 낭비를 해결할 수 있다.&lt;/p&gt;</content><author><name>jglee</name></author><category term="ios" /><summary type="html">fastlane_release_testflight</summary></entry></feed>

@@ -46,9 +46,15 @@ author: jglee
 3. bundle exec jekyll serve 로 로컬 실행
 
 # 수정해서 업로드 방법
-1. 내용 수정하고 bundle exec jekyll build 수행하면 output에 정적 파일 생성됨
-2. cd ouput해서 add . commit push로 업로드하기
-* output 부분을 submodule로 잡아놨음
+1. 내용 수정하고 `bundle exec jekyll build` 수행하면 `output`에 정적 파일 생성됨
+2. `cd output`으로 `output` 디렉토리로 이동
+3. `git add .` 로 변경사항 스테이징
+4. `git commit -m "커밋 메시지"` 로 커밋
+5. `git push origin HEAD:master` 로 원격 저장소에 푸시 (detached HEAD 상태일 경우)
+6. `cd ..` 로 상위 디렉토리로 이동
+7. `git add output` 로 서브모듈 변경사항 스테이징
+8. `git commit -m "서브모듈 업데이트"` 로 커밋
+9. `git push` 로 상위 저장소에 푸시
 
 # tag 추가
 1. _data/tags에 추가할 것

@@ -23,13 +23,13 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="이진 분류 Logistic Regression Classification" />
-    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io//Logistic_Regression_Classification" />
+    <link rel="shortcut icon" href="http://localhost:4001/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4001/Logistic_Regression_Classification" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -37,8 +37,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Logistic Regression Classification" />
     <meta property="og:description" content="Logistic Regression Classification 이진 분류 알고리즘 모델 중 하나인 로지스틱 회기 분류에 대해 알아본다. 강좌 Logistic 분류 알고리즘에서 정확도가 높다고 알려진 알고리즘 Regression 지난 학습에서 배운 내용을 다시 한번 돌이켜보면… 가설 손실 함수 경사 하강법 - Gradient decent 학습률 Classification Spam detection: Spam or not spam facebook feed: show or" />
-    <meta property="og:url" content="https://leejigun.github.io//Logistic_Regression_Classification" />
-    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/Logistic_Regression_Classification/background.png" />
+    <meta property="og:url" content="http://localhost:4001/Logistic_Regression_Classification" />
+    <meta property="og:image" content="http://localhost:4001/assets/images/ml/Logistic_Regression_Classification/background.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2019-11-27T09:00:03+09:00" />
@@ -47,8 +47,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Logistic Regression Classification" />
     <meta name="twitter:description" content="Logistic Regression Classification 이진 분류 알고리즘 모델 중 하나인 로지스틱 회기 분류에 대해 알아본다. 강좌 Logistic 분류 알고리즘에서 정확도가 높다고 알려진 알고리즘 Regression 지난 학습에서 배운 내용을 다시 한번 돌이켜보면… 가설 손실 함수 경사 하강법 - Gradient decent 학습률 Classification Spam detection: Spam or not spam facebook feed: show or" />
-    <meta name="twitter:url" content="https://leejigun.github.io//" />
-    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/Logistic_Regression_Classification/background.png" />
+    <meta name="twitter:url" content="http://localhost:4001/" />
+    <meta name="twitter:image" content="http://localhost:4001/assets/images/ml/Logistic_Regression_Classification/background.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="iOS 삽질 블로그" />
     <meta name="twitter:label2" content="Filed under" />
@@ -65,18 +65,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+        "logo": "http://localhost:4001/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io//Logistic_Regression_Classification",
+    "url": "http://localhost:4001/Logistic_Regression_Classification",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io//assets/images/ml/Logistic_Regression_Classification/background.png",
+        "url": "http://localhost:4001/assets/images/ml/Logistic_Regression_Classification/background.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io//Logistic_Regression_Classification"
+        "@id": "http://localhost:4001/Logistic_Regression_Classification"
     },
     "description": "Logistic Regression Classification 이진 분류 알고리즘 모델 중 하나인 로지스틱 회기 분류에 대해 알아본다. 강좌 Logistic 분류 알고리즘에서 정확도가 높다고 알려진 알고리즘 Regression 지난 학습에서 배운 내용을 다시 한번 돌이켜보면… 가설 손실 함수 경사 하강법 - Gradient decent 학습률 Classification Spam detection: Spam or not spam facebook feed: show or"
 }
@@ -114,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4001/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -298,7 +298,7 @@ into the {body} of the default.hbs template -->
 
 <h3 id="데이터-타입">데이터 타입</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_data = [
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_data = [
     [1.,2.],
     [2.,3.],
     [3.,1.],
@@ -318,7 +318,7 @@ y_data = [
 
 <h3 id="모델">모델</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># class
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># class
 class LogisticModel:
     def __init__(self):
         self.W = tf.Variable(tf.random.normal([2,1]), name = 'weight')
@@ -334,7 +334,7 @@ class LogisticModel:
 
 <h3 id="학습-함수">학습 함수</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def train(logistic_model, X, Y, steps,lr = 0.001):
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def train(logistic_model, X, Y, steps,lr = 0.001):
     # 확률적 경사 하강법 알고리즘 적용
     optimizer = tf.optimizers.SGD(lr)
 
@@ -358,7 +358,7 @@ class LogisticModel:
 
 <h3 id="실행-결과">실행 결과</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logistic_model = LogisticModel()
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logistic_model = LogisticModel()
 
 x_tf = tf.constant(x_data)
 y_tf = tf.constant(y_data)
@@ -370,7 +370,7 @@ train(logistic_model, x_tf, y_tf, 1000, lr = 0.01)
 
 <h3 id="정확도">정확도</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pred = tf.cast(logistic_model(x_data) &gt; 0.5, dtype=tf.float32)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pred = tf.cast(logistic_model(x_data) &gt; 0.5, dtype=tf.float32)
 accuracy = tf.reduce_mean(tf.cast(tf.equal(pred, y_data), dtype = tf.float32))
 print(accuracy.numpy())
 ===&gt; 0.8333333
@@ -392,14 +392,14 @@ print(accuracy.numpy())
 
 <h3 id="파일을-읽고-데이터-생성">파일을 읽고 데이터 생성</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xy = np.loadtxt('data-03-diabetes.csv',delimiter=',',dtype=np.float32)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xy = np.loadtxt('data-03-diabetes.csv',delimiter=',',dtype=np.float32)
 x_data = xy[:, 0:-1]
 y_data = xy[:, [-1]]
 </code></pre></div></div>
 
 <p>x의 데이터가 759 * 8 의 사이즈라 모델을 수정해야 한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># class
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># class
 class LogisticModel:
     def __init__(self):
         self.W = tf.Variable(tf.random.normal([8,1]), name = 'weight')
@@ -415,12 +415,12 @@ class LogisticModel:
 
 <p>W의 shape를 수정했다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>self.W = tf.Variable(tf.random.normal([8,1]), name = 'weight')
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>self.W = tf.Variable(tf.random.normal([8,1]), name = 'weight')
 </code></pre></div></div>
 
 <h3 id="학습-결과">학습 결과</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logistic_model = LogisticModel()
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logistic_model = LogisticModel()
 
 x_tf = tf.constant(x_data)
 y_tf = tf.constant(y_data)
@@ -435,7 +435,7 @@ print(accuracy)
 
 <h3 id="정확도-1">정확도</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pred = tf.cast(logistic_model(x_data) &gt; 0.5, dtype=tf.float32)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pred = tf.cast(logistic_model(x_data) &gt; 0.5, dtype=tf.float32)
 accuracy = tf.reduce_mean(tf.cast(tf.equal(pred, y_data), dtype = tf.float32))
 print(accuracy.numpy())
 
@@ -477,7 +477,7 @@ print(accuracy.numpy())
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.url = 'http://localhost:4001/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -520,6 +520,18 @@ print(accuracy.numpy())
                         <div class="read-next-card-content">
                             <ul>
                                 
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -857,7 +869,7 @@ print(accuracy.numpy())
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io//">
+        <a href="http://localhost:4001/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -901,7 +913,7 @@ print(accuracy.numpy())
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2023</section>
+                <section class="copyright"><a href="http://localhost:4001/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
@@ -934,7 +946,7 @@ print(accuracy.numpy())
         crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+    
 
 
     <!-- Paginator increased to "infinit" in _config.yml -->

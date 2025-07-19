@@ -1,0 +1,1120 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Thinking in SwiftUI - 2장 State and Binding</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4001/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Thinking in SwiftUI - 2장 State and Binding" />
+    <meta property="og:description" content="Thinking in SwiftUI - 2장 State and Binding Created: 2024년 5월 26일 오후 7:47 Tags: SwiftUI, iOS 이전 장에서 SwiftUI code가 View tree라는 청사진(블루프린트) 로 구성되는 방법과 영구 Render tree로 변환되는 방법에 대해서 알아보았습니다. 이번 장에서는 상태 기반으로 View tree를 구성하고 Render tree를 업데이트 하는 방법을 살펴봅니다. 일반적으로 뷰의 업데이트" />
+    <meta property="og:url" content="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" />
+    <meta property="og:image" content="http://localhost:4001/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:modified_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:tag" content="Swiftui" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thinking in SwiftUI - 2장 State and Binding" />
+    <meta name="twitter:description" content="Thinking in SwiftUI - 2장 State and Binding Created: 2024년 5월 26일 오후 7:47 Tags: SwiftUI, iOS 이전 장에서 SwiftUI code가 View tree라는 청사진(블루프린트) 로 구성되는 방법과 영구 Render tree로 변환되는 방법에 대해서 알아보았습니다. 이번 장에서는 상태 기반으로 View tree를 구성하고 Render tree를 업데이트 하는 방법을 살펴봅니다. 일반적으로 뷰의 업데이트" />
+    <meta name="twitter:url" content="http://localhost:4001/" />
+    <meta name="twitter:image" content="http://localhost:4001/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Swiftui" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "http://localhost:4001/assets/images/blog-icon.png"
+    },
+    "url": "http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4001/assets/images/blog-cover.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"
+    },
+    "description": "Thinking in SwiftUI - 2장 State and Binding Created: 2024년 5월 26일 오후 7:47 Tags: SwiftUI, iOS 이전 장에서 SwiftUI code가 View tree라는 청사진(블루프린트) 로 구성되는 방법과 영구 Render tree로 변환되는 방법에 대해서 알아보았습니다. 이번 장에서는 상태 기반으로 View tree를 구성하고 Render tree를 업데이트 하는 방법을 살펴봅니다. 일반적으로 뷰의 업데이트"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Thinking in SwiftUI - 2장 State and Binding" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4001/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios/">iOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/cs/">CS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flutter/">flutter</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://leejigun.notion.site/d96873c479d049cbb3f2476aa7990347?v=84936e8007664a6daaa211463819028d">notion</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="27 May 2024">27 May 2024</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/swiftui/'>SWIFTUI</a>,
+                            
+                        
+                            
+                               <a href='/tag/ios/'>IOS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Thinking in SwiftUI - 2장 State and Binding</h1>
+            </header>
+
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h1 id="thinking-in-swiftui---2장-state-and-binding">Thinking in SwiftUI - 2장 State and Binding</h1>
+
+<p>Created: 2024년 5월 26일 오후 7:47
+Tags: SwiftUI, iOS</p>
+
+<p>이전 장에서 SwiftUI code가 <strong>View tree</strong>라는 청사진(블루프린트) 로 구성되는 방법과 영구 <strong>Render tree</strong>로 변환되는 방법에 대해서 알아보았습니다. 이번 장에서는 상태 기반으로 View tree를 구성하고 Render tree를 업데이트 하는 방법을 살펴봅니다.</p>
+
+<p>일반적으로 뷰의 업데이트 주기는 다음과 같습니다.</p>
+
+<ol>
+  <li>상태를 기반으로 View Tree가 구성됩니다.</li>
+  <li>현재 View Tree를 기반으로 Render Tree가 노드를 생성, 제거, 업데이트 합니다.</li>
+  <li>이벤트가 발생해 상태가 변경됩니다.</li>
+  <li>1번부터 3번까지 반복합니다.</li>
+</ol>
+
+<p>SwiftUI가 상태를 지속적으로 관찰하고 있기 때문에 언제 View tree가 다시 생성되는지, Render tree가 업데이트 되는지, 뷰의 무엇을 업데이트 해야 하는지 걱정할 필요가 없습니다. 다만, 너무 지나치게 광범위한 View 업데이트는 성능 이슈가 발생할 수 있고, 이번 장의 뒷 부분에서 다시 알아보겠습니다.</p>
+
+<p>SwiftUI의 핵심이라고 할 수 있는 <strong>Property Wrapper</strong>에 대한 내용입니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로퍼티 래퍼는 속성에 적용되는 래퍼(Wrapper)로, 속성의 값에 추가적인 로직을 적용하거나, 값이 변경될 때 다른 동작을 수행할 수 있도록 해준다.
+</code></pre></div></div>
+
+<ul>
+  <li><strong>@State, @Binding, @StateObject, @ObservedObject, @EnvironmentObject</strong> 등</li>
+</ul>
+
+<h2 id="data-flow-through-swiftui"><strong>Data Flow Through SwiftUI</strong></h2>
+
+<hr />
+
+<ul>
+  <li><a href="https://wlaxhrl.tistory.com/91">https://wlaxhrl.tistory.com/91</a></li>
+</ul>
+
+<p>(Data Flow Through SwiftUI)</p>
+
+<p><strong>(여기서 중요한건 SSOT !!)</strong></p>
+
+<h3 id="state"><strong>@State</strong></h3>
+
+<hr />
+
+<p><strong>뷰의 상태를 관리하기 위한 프로퍼티 래퍼.</strong></p>
+
+<ul>
+  <li>Value Type</li>
+  <li>뷰의 로컬 데이터 (내부 프로퍼티)</li>
+  <li>뷰에서 소유되고 관리되어야 하는 데이터 (ex. 텍스트필드, 토글버튼 등)</li>
+</ul>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled.png" alt="Untitled" /></p>
+
+<p>Counter 예시를 살펴보면, 버튼을 누를 때마다 상태값이 변경되고 화면이 다시 그려집니다. 만약 버튼의 라벨에 상태값을 바인딩하지 않았다면, SwiftUI는 업데이트할 필요가 없다는 것을 인지하고 화면을 다시 그리지 않습니다.</p>
+
+<h2 id="view의-생성-4단계">View의 생성 4단계</h2>
+
+<hr />
+
+<ol>
+  <li>Counter 구조체가 처음 생성되면, View tree는 만들어지지만 아직 Render tree에 노드가 존재하지 않습니다. State라는 PropertyWrapper 역시 초기값을 할당하고 있지만, 아직 아무것도 바인딩하지 않았기 떄문에 View는 비어있습니다.</li>
+</ol>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 1.png" alt="Untitled" /></p>
+
+<ol>
+  <li>SwiftUI는 Render tree에 노드를 생성하면서 State를 할당합니다. 이제 PropertyWrapper 의 메모리는 랜더 노드를 가리키게 됩니다.</li>
+</ol>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 2.png" alt="Untitled" /></p>
+
+<ol>
+  <li>View의 body 부분이 실행되고, <code class="language-plaintext highlighter-rouge">Button</code>이 생성됩니다. 이제 state 값은 랜더 노드를 가리키고 있기 때문에 <code class="language-plaintext highlighter-rouge">Button</code> 의 label 값은 랜더 노드에 저장된 값을 사용합니다.</li>
+</ol>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 3.png" alt="Untitled" /></p>
+
+<ol>
+  <li>마지막으로 노드의 값을 읽어 값이 설정된 view body 부분을 랜더링해 실제 UI를 만듭니다.</li>
+</ol>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 4.png" alt="Untitled" /></p>
+
+<h2 id="이벤트-발생-3단계">이벤트 발생 3단계</h2>
+
+<hr />
+
+<ol>
+  <li>View에 이벤트가 발생하면 뷰와 연결된 랜더 트리에 전달되고, 랜더 트리를 지켜보고 있던 PropertyWrapper 쪽에 메모리가 증가합니다.</li>
+  <li>State가 변경되었기 때문에 body가 다시 실행되고, View tree 가 구성됩니다.</li>
+  <li>다시 구성된 View tree를 기반으로 랜더트리의 값이 변경되고, UI가 다시 랜더링됩니다.</li>
+</ol>
+
+<p>(ex) <strong>SwiftUI 프레임워크의 Button의 highlight 상태는 Button 내부에서 @State로 관리된다.</strong> 이는 터치 중일 때는 highlighted 상태로, 터치가 끝났을 때는 highlighted가 아닌 상태로 관리될 수 있기 때문에, <strong>외부에서 관리할 필요 없이 Button 내부에서만 관리</strong>하면 된다.</p>
+
+<blockquote>
+  <p>원래 @State property wrapper는 value type에만 사용했지만, iOS 17에서 Observable 매크로가 도입되면서 변경되었다. 하지만, 17 이전 OS에서는 value 타입에만 사용해야 합니다.</p>
+
+</blockquote>
+
+<h2 id="state-and-observable"><strong>State and Observable</strong></h2>
+
+<hr />
+
+<p>@State를 사용할 때 2가지 실수를 저지를 수 있습니다.</p>
+
+<ol>
+  <li>외부에서 전달받은 객체를 사용하는 경우</li>
+  <li>View 전용 객체인데, @State를 사용하지 않는 경우</li>
+</ol>
+
+<p>둘 다 객체의 수명과 관련이 있습니다. 외부에서 수명이 관리되는 객체의 경우 @State를 사용하지 않는다는 것 입니다.</p>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 5.png" alt="Untitled" /></p>
+
+<p>만약, 위와 같이 모델을 외부에서 전달받는 경우 초기값은 Button에 잘 셋팅되겠지만, 이미 View가 만들어진 상태에서 외부에서 Model의 값을 변경해도 상태 변화에 영향을 주지 못합니다.</p>
+
+<h2 id="observableobject-protocol"><strong>ObservableObject Protocol</strong></h2>
+
+<hr />
+
+<p>iOS 17 이후에는 @Obserable 매크로를 사용해 편하게 사용할 수 있지만, 17 이전에는 다양안 <strong>ObservableObject Protocol</strong> 의 속성 래퍼는 사용할 수 있습니다.</p>
+
+<ol>
+  <li>@StateObject
+    <ol>
+      <li>@State와 거의 동일한 방식으로 동작</li>
+      <li>랜더 트리에 노드가 생성될 때 초기값을 지정합니다.</li>
+      <li>@State와 동일하게 private하게 사용해야 합니다. (외부에서  전답하거나, 조작하지 말것)</li>
+    </ol>
+  </li>
+  <li>@ObservableObject
+    <ol>
+      <li>@StateObject 보다 간단한 구조로 초기값을 할당하지 않고 구독한 하는 관계</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="observableobject"><strong>@ObservableObject</strong></h2>
+
+<hr />
+
+<ul>
+  <li>Reference Type</li>
+  <li>이미 관리(소유)하고 있는 데이터에 적용하면 좋음</li>
+  <li>외부로부터의 데이터를 표현할 때</li>
+</ul>
+
+<p>case 1 : State 로 int 값을 표현할 때</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">rootCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">CountView</span><span class="p">(</span><span class="nv">rootCount</span><span class="p">:</span> <span class="n">rootCount</span><span class="p">)</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span><span class="n">rootCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">},</span> <span class="nv">label</span><span class="p">:</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Root Add"</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>case 2 : ObservedObject 로 모델을 표현할 때</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">CountView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@ObservedObject</span> <span class="k">var</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">CountViewModel</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">rootCount</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Root: </span><span class="se">\(</span><span class="n">rootCount</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Count: </span><span class="se">\(</span><span class="n">viewModel</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span><span class="n">viewModel</span><span class="o">.</span><span class="nf">addCount</span><span class="p">()},</span> <span class="nv">label</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Counter Add"</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:302/1*6QE-DMrqDVycvuFBx0sp4g.gif" alt="" /></p>
+
+<p>Root Add 버튼을 누를 때마다 ViewModel이 초기화되고 있었다. 그러니까 Count가 0부터 새롭게 시작하게 된다.</p>
+
+<blockquote>
+  <p>ViewModel이 View에 붙어있기 때문에 root add 버튼을 누르면 뷰가 새로 만들어지면서 ViewModel 도 교체된다.</p>
+
+</blockquote>
+
+<h3 id="stateobject"><strong>@StateObject</strong></h3>
+
+<blockquote>
+  <p>A state object behaves like an observed object, except that SwiftUI knows to create and manage a single object instance for a given view instance, regardless of how many times it recreates the view.</p>
+
+</blockquote>
+
+<p>StateObject는 ObservedObject와 거의 똑같으나, 이 StateObject는 하나의 객체로 만들어지고, View가 얼마나 초기화되든지 상관없이 별개의 객체로 관리된다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">CountView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@StateObject</span> <span class="k">var</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">CountViewModel</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">rootCount</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Root: </span><span class="se">\(</span><span class="n">rootCount</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Count: </span><span class="se">\(</span><span class="n">viewModel</span><span class="o">.</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span><span class="n">viewModel</span><span class="o">.</span><span class="nf">addCount</span><span class="p">()},</span> <span class="nv">label</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Counter Add"</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:302/1*8Kw64zPUp4mu4KmVMzo6fg.gif" alt="" /></p>
+
+<p>Root Add를 눌러도 Count가 초기화되지 않는다! 기존의 데이터가 보존되는 것을 확인할 수 있다.</p>
+
+<h3 id="stateobject-vs-observedobject">StateObject vs ObservedObject</h3>
+
+<p>애플이 추천하는 StateObject와 ObservedObject의 사용법은 Observable Object를 처음 초기화할 때는 StateObject를 사용하고, 이미 객체화된 것을 넘겨 받을 때 ObservedObject의 사용을 추천하고 있다. </p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 직접 View에서 만들 때</span>
+<span class="kd">struct</span> <span class="kt">UpperView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+  <span class="kd">@StateObject</span> <span class="k">var</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">ViewModel</span> <span class="o">=</span> <span class="kt">ViewModel</span><span class="p">()</span>
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">LowerView</span><span class="p">(</span><span class="nv">viewModel</span><span class="p">:</span> <span class="n">viewModel</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 외부에서 넘겨받을 때</span>
+<span class="kd">struct</span> <span class="kt">LowerView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+  <span class="kd">@ObservedObject</span> <span class="k">var</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">ViewModel</span>
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">Text</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>@StateObject</strong>와 <strong>@ObservedObject</strong>는 각각의 생명주기와 사용법을 살펴보자.</p>
+
+<ol>
+  <li><strong>@StateObject</strong>:
+    <ul>
+      <li><strong>생명주기</strong>: <strong>@StateObject</strong>는 뷰가 생성될 때 인스턴스를 만들고, 뷰가 소멸될 때 인스턴스를 해제합니다. 뷰의 생명주기와 일치하며, 뷰가 인스턴스를 소유하고 관리합니다.</li>
+      <li><strong>사용법</strong>: 주로 뷰 내에서 상태를 유지해야 하는 경우에 사용됩니다. 예를 들어, 뷰 내에서 데이터를 수정하고 해당 변경 사항을 추적해야 할 때 유용합니다.</li>
+    </ul>
+  </li>
+  <li><strong>@ObservedObject</strong>:
+    <ul>
+      <li><strong>생명주기</strong>: <strong>@ObservedObject</strong>는 뷰가 생성될 때마다 새로운 인스턴스를 만듭니다. 뷰의 생명주기와는 독립적으로 동작하며, 뷰가 인스턴스를 소유하지 않습니다. 따라서 뷰가 인스턴스를 생성하고 해제하지 않습니다.</li>
+      <li><strong>사용법</strong>: 다른 뷰에서 관찰하고 싶은 객체의 변경 사항을 감지할 때 사용됩니다. 주로 다른 뷰에서 생성한 인스턴스를 참조하고 싶을 때 유용합니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>간단히 말하면, <strong>@StateObject</strong>는 뷰가 인스턴스를 소유하고 관리하며, <strong>@ObservedObject</strong>는 뷰가 인스턴스를 생성하지 않고 변경 사항을 감지할 때 사용됩니다. 이를 이해하면 SwiftUI에서 상태 관리를 더 효율적으로 할 수 있습니다!</p>
+
+<h2 id="update-view-performance">Update, View Performance</h2>
+
+<hr />
+
+<p>앞서 본 것과 같이 State와 UI가 연결되어 자동으로 업데이트 된다. 상태가 변경된다고 전체 UI를 다시 그리는게 아니라, 특정 State와 View 사이에 종속성을 설정해 그 부분만 업데이트 되게 된다.</p>
+
+<p>SwiftUI는 일부 State가 변경 될 때 View Tree에서 꼭 필요한 부분만 다시 랜더링되도록 많은 노력을 기울인다. 그러니 이런 노력을 방해하지 않는 방식으로 코드를 작성하는 것도 중요하다.</p>
+
+<ol>
+  <li>예를 들어 모든 State를 하나의 큰 객체 안에 넣는다면, 특정 변경으로 모든 하위의 작은 뷰를 업데이트 할 수 있다. 따라서 State를 작은 단위로 나눠서 뷰를 업데이트 하는게 성능적으로 더 도움이됩니다.</li>
+  <li>실제로 필요한 값만 하위 View로 전달하는게 중요합니다. 많은 데이터를 가진 큰 객체가 있고, 이 객체를 통으로 넘겨주게 되면, 객체가 업데이트 될 때 마다 객체가 업데이트 될 수 있습니다.</li>
+</ol>
+
+<p>성능 이슈가 발생할 때 어떤 뷰의 body가 실행되는지 판단하는 몇가지 방법이 있습니다.</p>
+
+<h3 id="1-print-삽입">1. print 삽입</h3>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 6.png" alt="Untitled" /></p>
+
+<h3 id="2-selfprintcahnges">2. Self.printCahnges()</h3>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 7.png" alt="Untitled" /></p>
+
+<p>print문과 다르게 재실행된 이유를 같이 호출해줍니다.</p>
+
+<ul>
+  <li>상태 변경으로 다시 호출되는 경우 ⇒ 상태 이름, 속성 표시</li>
+  <li>뷰 값 자체가 변경된 경우 ⇒ 속성이 변경된 경우 @self가 기록됩니다.</li>
+  <li>View의 ID 값이 변경된 경우 ⇒ @identity가 기록됩니다. (일반적으로 새로 삽입된 경우)</li>
+</ul>
+
+<h3 id="3-instruments">3. instruments</h3>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 8.png" alt="Untitled" /></p>
+
+<h3 id="observable-매크로"><strong>Observable 매크로</strong></h3>
+
+<hr />
+
+<p><a href="https://developer.apple.com/documentation/Observation">Observation</a>을 통해 SwiftUI는 observable data model 에 의존성을 형성하고 data 가 변할때마다 UI 를 업데이트 합니다.</p>
+
+<h3 id="기존-observableobject-와-달라지는-것들"><strong>기존 ObservableObject 와 달라지는 것들</strong></h3>
+
+<p><strong>첫번째: 코드가 간결해짐</strong></p>
+
+<p>| <strong>AS-IS</strong> | <strong>TO-BE</strong> |
+| — | — |
+| final class Book: ObservableObject {
+    @Published var title = “Sample Book Title”
+    var isAvailable = true
+}</p>
+
+<p>struct BookView: View {
+    @ObservedObject var book: Book
+    
+    var body: some View {
+        Text(book.title)
+    }
+} | @Observable final class Book {
+    var title = “Sample Book Title”
+    var isAvailable = true
+}</p>
+
+<p>struct BookView: View {
+    var book: Book
+    
+    var body: some View {
+        Text(book.title)
+    }
+} |</p>
+
+<p><strong>두번째: 뷰 업데이트 매커니즘이 좀 더 효율적으로 바뀜</strong></p>
+
+<p>@Observable 매크로를 쓰면</p>
+
+<p>뷰의 body 에서 프로퍼티를 직접 읽어야지만 뷰 업데이트가 된다.</p>
+
+<p>ObservableObject에서는 published 프로퍼티가 변하면 뷰가 해당 프로퍼티를 읽고 있지 않아도 다시 그려진다.</p>
+
+<p><strong>세번째: data model object 를 optional로 들고 있을 수 있다.</strong></p>
+
+<p><strong>네번째: data model objects를 collection으로도 가능하다.</strong></p>
+
+<p><a href="https://eunjin3786.tistory.com/580"><strong>https://eunjin3786.tistory.com/580</strong></a></p>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 9.png" alt="Untitled" /></p>
+
+<ul>
+  <li>매크로 기능은 iOS 17 이상</li>
+</ul>
+
+<p>새로운 매크로 기반 객체 관찰 모델은 <strong>편리한 구문</strong>을 도입하고, 뷰와 관찰 가능한 객체 간의 종속성이 형성되는 방식을 변경합니다. 이전 속성 래퍼를 사용할 때, SwiftUI는 <code class="language-plaintext highlighter-rouge">@StateObject</code>의 <code class="language-plaintext highlighter-rouge">objectWillChange</code> 게시자를 맹목적으로 구독하거나, <code class="language-plaintext highlighter-rouge">@ObservedObject</code>를 뷰에서 선언했습니다.</p>
+
+<p>새로운 <code class="language-plaintext highlighter-rouge">Observable</code> 매크로를 사용하면, <code class="language-plaintext highlighter-rouge">Observable</code>의 모든 속성이 뷰 본문에서 접근하는 객체는 객체가 어디에서 왔는지에 관계없이 이 뷰에 대한 종속성을 형성합니다.</p>
+
+<p><strong>이 새로운 모델은 훨씬 더 간결하고 효율적입니다.</strong> 예를 들어, 뷰 본문에서 전역 <strong>싱글톤(관찰 가능)</strong>에 액세스할 경우, <code class="language-plaintext highlighter-rouge">@ObservedObject</code>를 사용하여 싱글톤을 뷰에 전달할 필요 없이, 액세스된 속성과 뷰 사이에 자동으로 종속성이 형성됩니다. 관찰 가능한 객체는 옵션, 배열 또는 다른 컬렉션에 중첩될 수 있으며, 속성 수준 추적으로 인해 관찰 및 뷰 업데이트가 예상대로 계속 작동합니다.</p>
+
+<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'http://localhost:4001/';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/swiftui/">Swiftui</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Thinking-in-SwiftUI-3%EC%9E%A5-Layout">Thinking in SwiftUI - 3장 Layout</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees">Thinking in SwiftUI - 1장 View Trees</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC22_Navigation_Cook_book_in_SwiftUI">[WWDC22] Navigation Cook book in SwiftUI</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/swiftui/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Thinking-in-SwiftUI-3%EC%9E%A5-Layout">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Swiftui</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Thinking in SwiftUI - 3장 Layout</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p># Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template no-image">
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Swiftui</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Thinking in SwiftUI - 1장 View Trees</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>Thinking in SwiftUI - 1장 View Trees Created: 2024년 5월 26일 오후 6:23 Tags: SwiftUI, iOS 뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4001/">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Thinking in SwiftUI - 2장 State and Binding</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Thinking+in+SwiftUI+-+2%EC%9E%A5+State+and+Binding&amp;url=https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4001/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

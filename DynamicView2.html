@@ -23,13 +23,13 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="masonry 라이브러리를 사용해 동적으로 뷰를 만들어 봅시다." />
-    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io//DynamicView2" />
+    <link rel="shortcut icon" href="http://localhost:4001/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4001/DynamicView2" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -37,8 +37,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="[Programmatically Views](2) - 코드를 이용한 뷰 만들기 활용" />
     <meta property="og:description" content="(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 저번 포스트에 코드를 사용해 뷰를 만들고 붙이는 작업을 살펴봤습니다. 이번 포스트에서는 제가 이번 혈압 다이어리 추가 개발 과정에서 xib 파일과 코드를 통해 뷰를 만드는 사례들을 확인해 보겠습니다. # 요구사항 분석 해당 기간동한 사용자가 수기 혹은 블루투스 측정" />
-    <meta property="og:url" content="https://leejigun.github.io//DynamicView2" />
-    <meta property="og:image" content="https://leejigun.github.io//assets/images/snapkit.jpeg" />
+    <meta property="og:url" content="http://localhost:4001/DynamicView2" />
+    <meta property="og:image" content="http://localhost:4001/assets/images/snapkit.jpeg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2018-06-14T09:00:00+09:00" />
@@ -47,8 +47,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="[Programmatically Views](2) - 코드를 이용한 뷰 만들기 활용" />
     <meta name="twitter:description" content="(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 저번 포스트에 코드를 사용해 뷰를 만들고 붙이는 작업을 살펴봤습니다. 이번 포스트에서는 제가 이번 혈압 다이어리 추가 개발 과정에서 xib 파일과 코드를 통해 뷰를 만드는 사례들을 확인해 보겠습니다. # 요구사항 분석 해당 기간동한 사용자가 수기 혹은 블루투스 측정" />
-    <meta name="twitter:url" content="https://leejigun.github.io//" />
-    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/snapkit.jpeg" />
+    <meta name="twitter:url" content="http://localhost:4001/" />
+    <meta name="twitter:image" content="http://localhost:4001/assets/images/snapkit.jpeg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="iOS 삽질 블로그" />
     <meta name="twitter:label2" content="Filed under" />
@@ -65,18 +65,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+        "logo": "http://localhost:4001/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io//DynamicView2",
+    "url": "http://localhost:4001/DynamicView2",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io//assets/images/snapkit.jpeg",
+        "url": "http://localhost:4001/assets/images/snapkit.jpeg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io//DynamicView2"
+        "@id": "http://localhost:4001/DynamicView2"
     },
     "description": "(상단의 사진은 Snapkit 라이브러리고 이번에 사용한 라이브러리는 같은 곳에서 만든 Objc 용 Masonry입니다.) 저번 포스트에 코드를 사용해 뷰를 만들고 붙이는 작업을 살펴봤습니다. 이번 포스트에서는 제가 이번 혈압 다이어리 추가 개발 과정에서 xib 파일과 코드를 통해 뷰를 만드는 사례들을 확인해 보겠습니다. # 요구사항 분석 해당 기간동한 사용자가 수기 혹은 블루투스 측정"
 }
@@ -114,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4001/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -206,7 +206,7 @@ into the {body} of the default.hbs template -->
 
 <p><img src="../assets/images/patternViewLabel.png" alt="라벨" /></p>
 
-<p>하나의 아이템은 2개의 <code class="highlighter-rouge">UILabe</code>l과 하나의 <code class="highlighter-rouge">UIImageVIew</code>로 구성됩니다. 그렇다면 다루기 쉽게 이 모든 View를 감싸는 컨테이너 뷰를 만들어 봅시다.</p>
+<p>하나의 아이템은 2개의 <code class="language-plaintext highlighter-rouge">UILabe</code>l과 하나의 <code class="language-plaintext highlighter-rouge">UIImageVIew</code>로 구성됩니다. 그렇다면 다루기 쉽게 이 모든 View를 감싸는 컨테이너 뷰를 만들어 봅시다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">UIView</span> <span class="o">*</span><span class="n">container</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">UIView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithFrame</span><span class="p">:</span><span class="kt">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">30</span><span class="p">)];</span>
 </code></pre></div></div>
@@ -221,11 +221,11 @@ into the {body} of the default.hbs template -->
 <span class="p">[[</span><span class="n">image</span> <span class="n">layer</span><span class="p">]</span> <span class="nv">addSublayer</span><span class="p">:</span><span class="n">circleLayer</span><span class="p">];</span>
 </code></pre></div></div>
 
-<p>UIView의 레이어를 건드려 원형 서클을 그리는 동작을 합니다. <a href="http://minsone.github.io/mac/ios/coreanimationlayer-and-view">UIView의 CALayer</a> 에 대한 내용은 잘 설명된 한글 블로그를 확인해 주세요. UIView는 랜더링, 레이아웃, 터치 이벤트, 에니메이션 등을 처리할 수 있습니다. 그 중에서 화면에 관한 부분을 담당하는 코어 에니메이션 클래스인 CALayer입니다. 그 안에 layer 프로퍼티가 있는데, 이 레이어도 아키텍처 트리를 가진 계층으로 관리됩니다.</p>
+<p>UIView의 레이어를 건드려 원형 서클을 그리는 동작을 합니다. <a href="https://minsone.github.io/mac/ios/coreanimationlayer-and-view">UIView의 CALayer</a> 에 대한 내용은 잘 설명된 한글 블로그를 확인해 주세요. UIView는 랜더링, 레이아웃, 터치 이벤트, 에니메이션 등을 처리할 수 있습니다. 그 중에서 화면에 관한 부분을 담당하는 코어 에니메이션 클래스인 CALayer입니다. 그 안에 layer 프로퍼티가 있는데, 이 레이어도 아키텍처 트리를 가진 계층으로 관리됩니다.</p>
 
-<p>이 때 원형을 그리는데 <code class="highlighter-rouge">UIBezierPath</code>  를 사용해 원을 그리고 있습니다. <code class="highlighter-rouge">UIBezierPath</code> 를 이용해 도형을 그리는 모습은 이 <a href="http://sapzildj.github.io/dev.client/2015/08/25/ios_make_custom_path_with_UIBezierPath">블로그</a>를 확인해 주세요.</p>
+<p>이 때 원형을 그리는데 <code class="language-plaintext highlighter-rouge">UIBezierPath</code>  를 사용해 원을 그리고 있습니다. <code class="language-plaintext highlighter-rouge">UIBezierPath</code> 를 이용해 도형을 그리는 모습은 이 <a href="https://sapzildj.github.io/dev.client/2015/08/25/ios_make_custom_path_with_UIBezierPath">블로그</a>를 확인해 주세요.</p>
 
-<p>다음으로 화면에 표시할 텍스트 라벨을 만드는데, 이 때 다국어 지원을 위해 텍스트는 <code class="highlighter-rouge">LanguageManager</code> 를 만들어 쓰고 있습니다.</p>
+<p>다음으로 화면에 표시할 텍스트 라벨을 만드는데, 이 때 다국어 지원을 위해 텍스트는 <code class="language-plaintext highlighter-rouge">LanguageManager</code> 를 만들어 쓰고 있습니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">UILabel</span> <span class="o">*</span><span class="n">titleView</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithFrame</span><span class="p">:</span><span class="kt">CGRectMake</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">)];</span>
 <span class="n">titleView</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="kt">LanguageManager</span> <span class="nv">get</span><span class="p">:</span><span class="n">title</span> <span class="nv">alter</span><span class="p">:</span><span class="s">@""</span><span class="p">];</span>
@@ -334,7 +334,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.url = 'http://localhost:4001/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -382,7 +382,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/WWDC22_Navigation_Cook_book_in_SwiftUI">[WWDC22] Navigation Cook book in SwiftUI</a></li>
+                                            <li><a href="/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0">[WWDC25] Swift 6.2 동시성 개선</a></li>
                                         
                                     
                                   
@@ -391,7 +391,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/WWDC22_Design_protocol_interface_in_Swift">[WWDC22] Design protocol interface in Swift</a></li>
+                                            <li><a href="/Thinking-in-SwiftUI-3%EC%9E%A5-Layout">Thinking in SwiftUI - 3장 Layout</a></li>
                                         
                                     
                                   
@@ -400,7 +400,39 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/WWDC22_Generic">[WWDC22] Embreace swift generics - some, any</a></li>
+                                            <li><a href="/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding">Thinking in SwiftUI - 2장 State and Binding</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
                                         
                                     
                                   
@@ -608,7 +640,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/ios/">
                                 
-                                    See all 19 posts  →
+                                    See all 23 posts  →
                                 
                             </a>
                         </footer>
@@ -719,7 +751,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io//">
+        <a href="http://localhost:4001/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -763,7 +795,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2023</section>
+                <section class="copyright"><a href="http://localhost:4001/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
@@ -796,7 +828,7 @@ into the {body} of the default.hbs template -->
         crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+    
 
 
     <!-- Paginator increased to "infinit" in _config.yml -->

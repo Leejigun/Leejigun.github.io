@@ -23,13 +23,13 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="머신러닝의 Linear Regression" />
-    <link rel="shortcut icon" href="https://leejigun.github.io//assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io//Linear_Regression" />
+    <link rel="shortcut icon" href="http://localhost:4001/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4001/Linear_Regression" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -37,8 +37,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Linear Regression" />
     <meta property="og:description" content="Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의" />
-    <meta property="og:url" content="https://leejigun.github.io//Linear_Regression" />
-    <meta property="og:image" content="https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png" />
+    <meta property="og:url" content="http://localhost:4001/Linear_Regression" />
+    <meta property="og:image" content="http://localhost:4001/assets/images/ml/Linear_Regression/background.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2019-11-26T09:00:01+09:00" />
@@ -47,8 +47,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Linear Regression" />
     <meta name="twitter:description" content="Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의" />
-    <meta name="twitter:url" content="https://leejigun.github.io//" />
-    <meta name="twitter:image" content="https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png" />
+    <meta name="twitter:url" content="http://localhost:4001/" />
+    <meta name="twitter:image" content="http://localhost:4001/assets/images/ml/Linear_Regression/background.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="iOS 삽질 블로그" />
     <meta name="twitter:label2" content="Filed under" />
@@ -65,18 +65,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io//assets/images/blog-icon.png"
+        "logo": "http://localhost:4001/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io//Linear_Regression",
+    "url": "http://localhost:4001/Linear_Regression",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io//assets/images/ml/Linear_Regression/background.png",
+        "url": "http://localhost:4001/assets/images/ml/Linear_Regression/background.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io//Linear_Regression"
+        "@id": "http://localhost:4001/Linear_Regression"
     },
     "description": "Linear Regression 강좌 선형 회귀 우리가 몇시간을 공부하면 어느 정도의 성적을 얻게 될것인가 예측한다고 가정하자. 0 ~ 100 점을 예상하는데, 이렇게 범위를 예측하는 경우를 Regression이라 한다. 위와 같은 모델을 학습시킬 데이터를 학습 데이터 ( Training Data ) 라고 한다. 세상에 있는 많은 데이터나 현상들이 이렇게 Linear 한 형태( 선형 )의"
 }
@@ -114,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io//"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4001/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -241,7 +241,7 @@ into the {body} of the default.hbs template -->
 
 <p>tf.Keras 같은 고수준의 라이브러리는 모델 파라미터를 저장하는데 Variable을 사용합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
 y_train = [1,2,3]
 
 w = tf.Variable(tf.random.normal([1]),name = 'weight')
@@ -252,17 +252,17 @@ b = tf.Variable(tf.random.normal([1]), name = 'bias')
 
 <p>가정 공식(hypothesis)는 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hypothesis = x_train * w + b
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hypothesis = x_train * w + b
 </code></pre></div></div>
 
 <p>그리고 손실 함수는 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const = tf.reduce_mean(tf.square(hypothesis - y_train))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const = tf.reduce_mean(tf.square(hypothesis - y_train))
 </code></pre></div></div>
 
 <p>여기서 reduce_mean은 평균을 내주는 함수입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t = [1,2,3,4]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t = [1,2,3,4]
 tf.reduce_mean(t) =&gt; 2.5
 </code></pre></div></div>
 
@@ -280,7 +280,7 @@ tf.reduce_mean(t) =&gt; 2.5
 
 <p>위 포스트에는 경사하강법을 구현하는 3가지 방법이 나와있고 그 중 첫번째 방법이 강의에서 보여준 minimizer 방법이기 때문에 이 방법으로 구현한 코드를 설명합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_train = [1,2,3]
 y_train = [1,2,3]
 
 def hypothesis(w,b):
@@ -325,7 +325,7 @@ for i in range(50): # steps
 
 <p>tensoflow 1.x</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.placeholder(tf.float32)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.placeholder(tf.float32)
 b = tf.placeholder(tf.float32)
 
 adder_node = a + b
@@ -338,7 +338,7 @@ print(sess.run(adder_node, feed_dict = (a = [1, 3], b = [2, 4])))
 
 <p>tensorflow 2</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tf.function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tf.function
 def add_node(a,b):
     return a + b
 
@@ -358,7 +358,7 @@ tf.print(add_node(a = [1, 3], b = [2, 4]))
 
 <p>다른 방법이 있는지는 모르겠다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.constant([1,3])
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = tf.constant([1,3])
 b = tf.constant([2,4])
 
 tf.print(add_node(a,b))
@@ -372,7 +372,7 @@ tf.print(add_node(a,b))
 
 <p>먼저, 데이터 형태는 다음과 같다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = [1, 2, 3, 4, 5]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = [1, 2, 3, 4, 5]
 y = [2.1 ,3.1 ,4.1, 5.1, 6.1]
 plt.scatter(x,y,label = 'input data set')
 </code></pre></div></div>
@@ -383,7 +383,7 @@ plt.scatter(x,y,label = 'input data set')
 
 <p>우리가 원하는 공식은 y = xw + b 라는 일차 방정식의 w,b를 찾도록 하려 한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Linear Model
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Linear Model
 class LinearModel:
     def __call__(self, x):
         return self.Weight * x + self.Bias
@@ -395,7 +395,7 @@ class LinearModel:
 
 <p>그리고 우리가 만든 모델을 평가할 수 있는 손실 함수를 만들어야 한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># loss function
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># loss function
 def loss(y, pred):
     return tf.reduce_mean(tf.square(y - pred))
 </code></pre></div></div>
@@ -404,7 +404,7 @@ def loss(y, pred):
 
 <p>이제 학습 함수를 만든다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def train(linear_model, x, y, lr = 0.01):
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def train(linear_model, x, y, lr = 0.01):
     with tf.GradientTape() as tape:
         current_loss = loss(y, linear_model(x))
 
@@ -417,7 +417,7 @@ def loss(y, pred):
 
 <p>그 손실과 지금 w, b 값을 가지고 경사 하강법의 가중치를 계산해 모델을 학습률과 가중치를 곱해 개선해 나간다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linear_model = LinearModel()
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>linear_model = LinearModel()
 epochs = 1000
 
 epochs_list, losses = [], []
@@ -438,7 +438,7 @@ plt.show()
 
 <p>결과를 보면</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch count 0: Loss value: 46.01390838623047
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch count 0: Loss value: 46.01390838623047
 Epoch count 100: Loss value: 4.259484767913818
 Epoch count 200: Loss value: 0.3961729109287262
 Epoch count 300: Loss value: 0.03865921497344971
@@ -452,7 +452,7 @@ Epoch count 900: Loss value: 0.0018093619728460908
 
 <p>학습 시킨 모델의 RMSE(평균 제곱근 오차) 를 찍어보면</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RMSE = loss(y, linear_model(x))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RMSE = loss(y, linear_model(x))
 RMSE.numpy()
 ==&gt;0.001749184
 </code></pre></div></div>
@@ -461,7 +461,7 @@ RMSE.numpy()
 
 <p>6을 넣으면 7.1 나와야 한다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>value = linear_model(6)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>value = linear_model(6)
 value.numpy()
 
 ===&gt; array([7.035034], dtype=float32)
@@ -502,7 +502,7 @@ value.numpy()
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io//';
+                            this.page.url = 'http://localhost:4001/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -545,6 +545,18 @@ value.numpy()
                         <div class="read-next-card-content">
                             <ul>
                                 
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -882,7 +894,7 @@ value.numpy()
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io//">
+        <a href="http://localhost:4001/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -926,7 +938,7 @@ value.numpy()
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io//">iOS 삽질 블로그</a> &copy; 2023</section>
+                <section class="copyright"><a href="http://localhost:4001/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
@@ -959,7 +971,7 @@ value.numpy()
         crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+    
 
 
     <!-- Paginator increased to "infinit" in _config.yml -->

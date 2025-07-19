@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://leejigun.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://leejigun.github.io/" rel="alternate" type="text/html" /><updated>2025-07-19T18:49:09+09:00</updated><id>https://leejigun.github.io/feed.xml</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</title><link href="https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화" /><published>2025-06-15T09:00:00+09:00</published><updated>2025-06-15T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94"><![CDATA[<h1 id="wwdc25-swift-62-inlinearray-ios-앱-성능-및-메모리-최적화">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</h1>
-
-<p>표지: %5BWWDC25%5D%20Swift%206%202%20InlineArray%20iOS%20%E1%84%8B%E1%85%A2%E1%86%B8%20%E1%84%89%E1%85%A5%E1%86%BC%E1%84%82%E1%85%B3%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%20212eb0887722806da08aedb08f0473de/2025-07-19_18-47-30.png
-URL: https://developer.apple.com/kr/videos/play/wwdc2025/245
-상태: 작성 중
-Tags: iOS
-작성일: 2025/06/15</p>
-
-<ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4001/" rel="alternate" type="text/html" /><updated>2025-07-19T18:53:39+09:00</updated><id>http://localhost:4001/feed.xml</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</title><link href="http://localhost:4001/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화" /><published>2025-06-15T09:00:00+09:00</published><updated>2025-06-15T09:00:00+09:00</updated><id>http://localhost:4001/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94</id><content type="html" xml:base="http://localhost:4001/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94"><![CDATA[<ul>
   <li><a href="https://developer.apple.com/kr/videos/play/wwdc2025/245">https://developer.apple.com/kr/videos/play/wwdc2025/245</a></li>
 </ul>
 
@@ -28,7 +20,7 @@ Tags: iOS
 
 </blockquote>
 
-<p><img src="/assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image.png" alt="image.png" /></p>
+<p><img src="assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image.png" alt="image.png" /></p>
 
 <h3 id="inlinearray-사용의-전략적-고려사항">InlineArray 사용의 전략적 고려사항</h3>
 
@@ -80,7 +72,7 @@ Tags: iOS
 
 <p>일반적인 Array</p>
 
-<p><img src="/assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image 1.png" alt="image.png" /></p>
+<p><img src="assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image 1.png" alt="image.png" /></p>
 
 <ul>
   <li>Stack에는 해당 변수의 메모리 좌표값만 자지고 Heap 메모리에 실제 저장</li>
@@ -88,11 +80,11 @@ Tags: iOS
 
 <p>InlineArray</p>
 
-<p><img src="/assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image 2.png" alt="image.png" /></p>
+<p><img src="assets/images/ios/2025-06-15-WWDC25-Swift-62-InlineArray-iOS-앱-성능-및-메모리-최적화/image 2.png" alt="image.png" /></p>
 
 <ul>
   <li>Stack 메모리에 직접 저장</li>
-</ul>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 동시성 개선</title><link href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 동시성 개선" /><published>2025-06-14T09:00:00+09:00</published><updated>2025-06-14T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"><![CDATA[<h3 id="왜-동시성이-어려웠을까요">왜 동시성이 어려웠을까요?</h3>
+</ul>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://developer.apple.com/kr/videos/play/wwdc2025/245]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 동시성 개선</title><link href="http://localhost:4001/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 동시성 개선" /><published>2025-06-14T09:00:00+09:00</published><updated>2025-06-14T09:00:00+09:00</updated><id>http://localhost:4001/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0</id><content type="html" xml:base="http://localhost:4001/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"><![CDATA[<h3 id="왜-동시성이-어려웠을까요">왜 동시성이 어려웠을까요?</h3>
 
 <p>이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 <strong>백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)</strong>하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 <strong>데이터 경쟁(data race)</strong>에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수 있어 본질적으로 어렵습니다.
 <em>**</em></p>
@@ -401,7 +393,7 @@ Tags: iOS
 
 <p><strong>참고:</strong> 이 글은 WWDC25 비디오 (“Improve memory usage and performance with Swift”, “What’s new in Swift”) 및 관련 Swift 6.2 발표 자료를 바탕으로 작성되었습니다.</p>
 
-<hr />]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[왜 동시성이 어려웠을까요?]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2025-06-05T03:16:50+09:00</published><updated>2025-06-05T03:16:50+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h3 id="text">Text</h3>
+<hr />]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[왜 동시성이 어려웠을까요?]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="http://localhost:4001/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2025-06-05T03:16:50+09:00</published><updated>2025-06-05T03:16:50+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h3 id="text">Text</h3>
 
 <p>기본적으로 Text 뷰는 제안된 크기에 맞게 조정됩니다. 텍스트는 이 작업을 수행하기 위해 다음 순서로 여러 전략을 사용합니다: 텍스트를 여러 줄로 나누기(단어 줄 바꿈), 단어를 나누기(줄 바꿈), 자르기, 마지막으로 텍스트를 조정하기.</p>
 
@@ -750,7 +742,7 @@ Tags: iOS
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="uncategorized" /><summary type="html"><![CDATA[Text]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2025-06-05T03:16:40+09:00</published><updated>2025-06-05T03:16:40+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<ul>
+<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="uncategorized" /><summary type="html"><![CDATA[Text]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2025-06-05T03:16:40+09:00</published><updated>2025-06-05T03:16:40+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<ul>
   <li><a href="https://wlaxhrl.tistory.com/91">https://wlaxhrl.tistory.com/91</a></li>
 </ul>
 
@@ -1070,7 +1062,7 @@ Tags: iOS
 
 <p><strong>이 새로운 모델은 훨씬 더 간결하고 효율적입니다.</strong> 예를 들어, 뷰 본문에서 전역 <strong>싱글톤(관찰 가능)</strong>에 액세스할 경우, <code class="language-plaintext highlighter-rouge">@ObservedObject</code>를 사용하여 싱글톤을 뷰에 전달할 필요 없이, 액세스된 속성과 뷰 사이에 자동으로 종속성이 형성됩니다. 관찰 가능한 객체는 옵션, 배열 또는 다른 컬렉션에 중첩될 수 있으며, 속성 수준 추적으로 인해 관찰 및 뷰 업데이트가 예상대로 계속 작동합니다.</p>
 
-<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[https://wlaxhrl.tistory.com/91]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2025-06-05T03:16:30+09:00</published><updated>2025-06-05T03:16:30+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled.png" alt="Untitled" /></p>
+<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[https://wlaxhrl.tistory.com/91]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="http://localhost:4001/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2025-06-05T03:16:30+09:00</published><updated>2025-06-05T03:16:30+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled.png" alt="Untitled" /></p>
 
 <p>위와 같은 코드를 작성하면, 중앙에 일시적인 청사진이 구축되며, 이를 ‘View Tree’라고 합니다. 그 결과, 왼쪽처럼 View가 렌더링되어 보여집니다.</p>
 
@@ -1271,7 +1263,7 @@ Tags: iOS
 
 <p><a href="https://www.vadimbulavin.com/swiftui-view-lifecycle/">https://www.vadimbulavin.com/swiftui-view-lifecycle/</a></p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<h1 id="thinking-in-swiftui---2장-state-and-binding">Thinking in SwiftUI - 2장 State and Binding</h1>
+<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<h1 id="thinking-in-swiftui---2장-state-and-binding">Thinking in SwiftUI - 2장 State and Binding</h1>
 
 <p>Created: 2024년 5월 26일 오후 7:47
 Tags: SwiftUI, iOS</p>
@@ -1622,7 +1614,7 @@ Tags: SwiftUI, iOS</p>
 
 <p><strong>이 새로운 모델은 훨씬 더 간결하고 효율적입니다.</strong> 예를 들어, 뷰 본문에서 전역 <strong>싱글톤(관찰 가능)</strong>에 액세스할 경우, <code class="language-plaintext highlighter-rouge">@ObservedObject</code>를 사용하여 싱글톤을 뷰에 전달할 필요 없이, 액세스된 속성과 뷰 사이에 자동으로 종속성이 형성됩니다. 관찰 가능한 객체는 옵션, 배열 또는 다른 컬렉션에 중첩될 수 있으며, 속성 수준 추적으로 인해 관찰 및 뷰 업데이트가 예상대로 계속 작동합니다.</p>
 
-<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 2장 State and Binding]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<h1 id="thinking-in-swiftui---1장-view-trees">Thinking in SwiftUI - 1장 View Trees</h1>
+<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 2장 State and Binding]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="http://localhost:4001/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<h1 id="thinking-in-swiftui---1장-view-trees">Thinking in SwiftUI - 1장 View Trees</h1>
 
 <p>Created: 2024년 5월 26일 오후 6:23
 Tags: SwiftUI, iOS</p>
@@ -1844,7 +1836,7 @@ Tags: SwiftUI, iOS</p>
 
 <p><a href="https://www.vadimbulavin.com/swiftui-view-lifecycle/">https://www.vadimbulavin.com/swiftui-view-lifecycle/</a></p>
 
-<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 1장 View Trees]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h1 id="thinking-in-swiftui---3장-layout">Thinking in SwiftUI - 3장 Layout</h1>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 1장 View Trees]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="http://localhost:4001/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4001/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="http://localhost:4001/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h1 id="thinking-in-swiftui---3장-layout">Thinking in SwiftUI - 3장 Layout</h1>
 
 <p>Created: 2024년 5월 26일 오후 10:51</p>
 
@@ -2246,7 +2238,7 @@ Tags: SwiftUI, iOS</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 3장 Layout]]></summary></entry><entry><title type="html">[클린 소프트웨어] 단일책임원칙(SRP)</title><link href="https://leejigun.github.io/CleanSoftware_SRP" rel="alternate" type="text/html" title="[클린 소프트웨어] 단일책임원칙(SRP)" /><published>2023-07-20T09:00:02+09:00</published><updated>2023-07-20T09:00:02+09:00</updated><id>https://leejigun.github.io/CleanSoftware_SRP</id><content type="html" xml:base="https://leejigun.github.io/CleanSoftware_SRP"><![CDATA[<h1 id="클린-소프트웨어-단일책임원칙srp">[클린 소프트웨어] 단일책임원칙(SRP)</h1>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 3장 Layout]]></summary></entry><entry><title type="html">[클린 소프트웨어] 단일책임원칙(SRP)</title><link href="http://localhost:4001/CleanSoftware_SRP" rel="alternate" type="text/html" title="[클린 소프트웨어] 단일책임원칙(SRP)" /><published>2023-07-20T09:00:02+09:00</published><updated>2023-07-20T09:00:02+09:00</updated><id>http://localhost:4001/CleanSoftware_SRP</id><content type="html" xml:base="http://localhost:4001/CleanSoftware_SRP"><![CDATA[<h1 id="클린-소프트웨어-단일책임원칙srp">[클린 소프트웨어] 단일책임원칙(SRP)</h1>
 
 <blockquote>
   <p>클린 소프트웨어 책의 단일책임원칙 파트를 읽고 정리한 내용입니다.</p>
@@ -2313,7 +2305,7 @@ Tags: SwiftUI, iOS</p>
 
 <p>퍼사드 패턴: <a href="https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%8D%BC%EC%82%AC%EB%93%9CFacade-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90">https://inpa.tistory.com/entry/GOF-💠-퍼사드Facade-패턴-제대로-배워보자</a></p>
 
-<p>프록시 패턴: <a href="https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%94%84%EB%A1%9D%EC%8B%9CProxy-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90">https://inpa.tistory.com/entry/GOF-💠-프록시Proxy-패턴-제대로-배워보자</a></p>]]></content><author><name>jglee</name></author><category term="cs" /><summary type="html"><![CDATA[[클린 소프트웨어] 단일책임원칙(SRP)]]></summary></entry><entry><title type="html">[클린 소프트웨어] 애자일 설계</title><link href="https://leejigun.github.io/CleanSoftware_agile" rel="alternate" type="text/html" title="[클린 소프트웨어] 애자일 설계" /><published>2023-07-20T09:00:01+09:00</published><updated>2023-07-20T09:00:01+09:00</updated><id>https://leejigun.github.io/CleanSoftware_agile</id><content type="html" xml:base="https://leejigun.github.io/CleanSoftware_agile"><![CDATA[<h1 id="애자일-설계">애자일 설계</h1>
+<p>프록시 패턴: <a href="https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%94%84%EB%A1%9D%EC%8B%9CProxy-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90">https://inpa.tistory.com/entry/GOF-💠-프록시Proxy-패턴-제대로-배워보자</a></p>]]></content><author><name>jglee</name></author><category term="cs" /><summary type="html"><![CDATA[[클린 소프트웨어] 단일책임원칙(SRP)]]></summary></entry><entry><title type="html">[클린 소프트웨어] 애자일 설계</title><link href="http://localhost:4001/CleanSoftware_agile" rel="alternate" type="text/html" title="[클린 소프트웨어] 애자일 설계" /><published>2023-07-20T09:00:01+09:00</published><updated>2023-07-20T09:00:01+09:00</updated><id>http://localhost:4001/CleanSoftware_agile</id><content type="html" xml:base="http://localhost:4001/CleanSoftware_agile"><![CDATA[<h1 id="애자일-설계">애자일 설계</h1>
 
 <blockquote>
   <p>해당 포스트는 클린 소프트웨어를 읽고 정리한 내용입니다.</p>

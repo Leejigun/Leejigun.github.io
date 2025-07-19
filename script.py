@@ -81,7 +81,7 @@ def process_post(post_path):
         
         original_fs_path = os.path.join(post_path, unquote(img_path))
         img_name = os.path.basename(unquote(img_path))
-        new_web_path = f"/{image_base_path}/{img_name}"
+        new_web_path = f"{image_base_path}/{img_name}"
         new_fs_path = os.path.join(image_base_path, img_name)
 
         if os.path.exists(original_fs_path):
@@ -97,7 +97,7 @@ def process_post(post_path):
     if cover_image_str:
         original_cover_path = os.path.join(post_path, unquote(cover_image_str))
         cover_name = os.path.basename(unquote(cover_image_str))
-        cover_path = f"/{image_base_path}/{cover_name}"
+        cover_path = f"{image_base_path}/{cover_name}"
         new_cover_fs_path = os.path.join(image_base_path, cover_name)
         if os.path.exists(original_cover_path):
             shutil.copy(original_cover_path, new_cover_fs_path)

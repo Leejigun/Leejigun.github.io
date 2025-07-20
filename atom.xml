@@ -8,6 +8,23 @@
     
       
       <item>
+        <title>[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기</title>
+        
+          <description>&lt;ul&gt;
+  &lt;li&gt;https://www.youtube.com/watch?v=LzBZjwEY9as&amp;amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Mon, 21 Jul 2025 09:00:00 +0900</pubDate>
+        <link>
+        http://localhost:4001/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0</link>
+        <guid isPermaLink="true">http://localhost:4001/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기</title>
         
           <description>&lt;ul&gt;

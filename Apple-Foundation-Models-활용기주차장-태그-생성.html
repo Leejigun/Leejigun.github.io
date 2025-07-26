@@ -1,0 +1,1221 @@
+<!-- footer도 여기에 있음 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- iOS-tip 이라고 태그를 만들었으면 post에서는 iOS tip 이라고 태그를 줘야한다. -->
+<!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Apple Foundation Models 활용기(주차장 태그 생성)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Apple Foundation Models 활용기(주차장 태그 생성)" />
+    <meta property="og:description" content="온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기 WWDC25에서 공개된 Apple Foundation Models는 클라이언트 개발자들에게 혁신적인 온디바이스(On-device) AI의 시대를 예고했습니다. 클라우드 기반 AI 서비스가 범람하는 가운데, 기기 자체에서 AI 모델 추론이 이뤄진다는 것은 강력한 개인 정보 보호, 지연 없는 실시간 응답, 그리고 안정적인 오프라인 기능이라는 새로운 가능성을 제시합니다. 저 또한" />
+    <meta property="og:url" content="http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1" />
+    <meta property="og:image" content="http://localhost:4000//assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/2025-07-26_20-48-50.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2025-07-26T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2025-07-26T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Apple Foundation Models 활용기(주차장 태그 생성)" />
+    <meta name="twitter:description" content="온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기 WWDC25에서 공개된 Apple Foundation Models는 클라이언트 개발자들에게 혁신적인 온디바이스(On-device) AI의 시대를 예고했습니다. 클라우드 기반 AI 서비스가 범람하는 가운데, 기기 자체에서 AI 모델 추론이 이뤄진다는 것은 강력한 개인 정보 보호, 지연 없는 실시간 응답, 그리고 안정적인 오프라인 기능이라는 새로운 가능성을 제시합니다. 저 또한" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000//assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/2025-07-26_20-48-50.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "iOS 삽질 블로그",
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
+    },
+    "url": "http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:4000//assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/2025-07-26_20-48-50.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1"
+    },
+    "description": "온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기 WWDC25에서 공개된 Apple Foundation Models는 클라이언트 개발자들에게 혁신적인 온디바이스(On-device) AI의 시대를 예고했습니다. 클라우드 기반 AI 서비스가 범람하는 가운데, 기기 자체에서 AI 모델 추론이 이뤄진다는 것은 강력한 개인 정보 보호, 지연 없는 실시간 응답, 그리고 안정적인 오프라인 기능이라는 새로운 가능성을 제시합니다. 저 또한"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Apple Foundation Models 활용기(주차장 태그 생성)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+
+        <!-- HTML elements for search -->
+
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <!-- 네비게이션 바 -->
+<nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+            
+        
+        
+            <!-- 여기서 navigation 에 표시할 이이템 추가 -->
+<ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ios/">iOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/watchos/">watchOS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/rxswift/">RxSwift</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/swiftui/">swiftui</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/project/">project</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/ml/">ML</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/cs/">CS</a></li>
+    <li class="nav-getting-started" role="menuitem"><a href="/tag/flutter/">flutter</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://github.com/Leejigun">github</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="https://leejigun.notion.site/d96873c479d049cbb3f2476aa7990347?v=84936e8007664a6daaa211463819028d">notion</a></li>
+    <li class="nav-try-ghost" role="menuitem"><a href="/search.html">Search</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-getting-started ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="26 July 2025">26 July 2025</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                               <a href='/tag/ios/'>IOS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Apple Foundation Models 활용기(주차장 태그 생성)</h1>
+            </header>
+
+            
+            <figure class="post-full-image" style="background-image: url(//assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/2025-07-26_20-48-50.png)">
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h2 id="온디바이스-ai-새로운-가능성의-문을-열다-apple-foundation-models-활용기">온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기</h2>
+
+<p>WWDC25에서 공개된 <strong>Apple Foundation Models</strong>는 클라이언트 개발자들에게 혁신적인 온디바이스(On-device) AI의 시대를 예고했습니다. 클라우드 기반 AI 서비스가 범람하는 가운데, 기기 자체에서 AI 모델 추론이 이뤄진다는 것은 <strong>강력한 개인 정보 보호, 지연 없는 실시간 응답, 그리고 안정적인 오프라인 기능</strong>이라는 새로운 가능성을 제시합니다.</p>
+
+<p>저 또한 이러한 새로운 패러다임에 대한 기대를 안고, Foundation Models를 직접 테스트해보기 위해 간단한 토이 프로젝트를 만들었습니다.</p>
+
+<p><img src="/assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/Jul-26-2025_20-01-18.gif" alt="Jul-26-2025 20-01-18.gif" /></p>
+
+<h3 id="-테스트-환경-및-프로젝트-개요">🧪 테스트 환경 및 프로젝트 개요</h3>
+
+<ul>
+  <li><strong>하드웨어:</strong> Apple M1 16GB</li>
+  <li><strong>운영체제:</strong> macOS 16.0 베타 (25A5316i)</li>
+</ul>
+
+<blockquote>
+  <p>이 프로젝트는 <strong>MapKit</strong>을 활용하여 사용자 주변의 주차장 정보를 조회하고, 지도에 핀을 표시하는 기본적인 앱으로 시작했습니다. 기능 구현의 많은 부분은 <strong>Gemini</strong>의 도움을 받아 빠르게 진행할 수 있었습니다. 여기에 핵심적으로 <strong>Foundation Models</strong>를 적용하여 각 주차장의 특징을 나타내는 <strong>태그를 자동으로 생성</strong>하는 기능을 추가했습니다.</p>
+
+</blockquote>
+
+<h2 id="-foundation-models-적용-주차장-태그-자동-생성">💡 Foundation Models 적용: 주차장 태그 자동 생성</h2>
+
+<p>태그 생성은 <code class="language-plaintext highlighter-rouge">LanguageModelSession</code>을 통해 이뤄집니다. 특정 주차장의 이름, 카테고리, 주소 등의 정보를 프롬프트로 구성하여 모델에 전달하고, 핵심 특징을 담은 태그를 요청하는 방식입니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">LanguageModelSession</span><span class="p">(</span><span class="nx">instructions</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MKMapItem 정보로 주차장 태그를 생성</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">name</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+<span class="kd">let</span> <span class="nx">category</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">pointOfInterestCategory</span><span class="p">?.</span><span class="nx">rawValue</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+<span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">address</span><span class="p">?.</span><span class="nx">fullAddress</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+
+<span class="kd">let</span> <span class="nx">prompt</span> <span class="o">=</span> <span class="dl">"""</span><span class="s2">
+    다음 주차장 정보에서 가장 핵심적인 특징을 나타내는 태그를 5개 이내로 생성해줘.
+    예시 태그: #24시간, #공영, #무료, #넓은, #지하주차장, #야외주차장, #마트주차장, #병원주차장, #쇼핑몰주차장, #식당주차장, #공항주차장, #역주차장, #환승주차장, #전기차충전
+
+    ---
+    [주차장 정보]
+    이름: </span><span class="se">\</span><span class="s2">(name)
+    카테고리: </span><span class="se">\</span><span class="s2">(category)
+    주소: </span><span class="se">\</span><span class="s2">(address)
+    </span><span class="dl">"""</span>
+    
+<span class="k">do</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="nx">session</span><span class="p">.</span><span class="nx">respond</span><span class="p">(</span><span class="na">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">,</span> <span class="na">generating</span><span class="p">:</span> <span class="nx">Tags</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
+    <span class="c1">// ... 시간 로깅 및 결과 반환 ...</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="c1">// ... 에러 처리 ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="겪었던-도전과-해결-과정">겪었던 도전과 해결 과정</h3>
+
+<p>새로운 기술을 도입하는 과정은 언제나 예측하지 못한 난관과 마주하게 됩니다. Foundation Models도 예외는 아니었습니다.</p>
+
+<h3 id="1languagemodelsession의-동시성-제약respondto중복-호출-문제">1. <code class="language-plaintext highlighter-rouge">LanguageModelSession</code>의 동시성 제약: <code class="language-plaintext highlighter-rouge">respond(to:)</code> 중복 호출 문제</h3>
+
+<p>가장 먼저 맞닥뜨린 문제는 모델 파싱과 함께 태그를 생성하려고 했을 때 발생한 에러였습니다. 여러 주차장에 대해 동시에 태그 생성을 요청하자 다음과 같은 메시지가 콘솔을 가득 채웠습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Attempted</span> <span class="nx">to</span> <span class="nx">call</span> <span class="nx">respond</span><span class="p">(</span><span class="nx">to</span><span class="p">:)</span> <span class="nx">a</span> <span class="nx">second</span> <span class="nx">time</span> <span class="nx">before</span> <span class="nx">the</span> <span class="nx">model</span> <span class="nx">finished</span> <span class="nx">responding</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">previous</span> <span class="nx">prompt</span><span class="p">.</span> 
+<span class="nx">You</span> <span class="nx">should</span> <span class="nx">observe</span> <span class="nx">the</span> <span class="nx">isResponding</span> <span class="nx">property</span> <span class="nx">on</span> <span class="nx">LanguageModelSession</span> <span class="nx">and</span> <span class="nx">wait</span> <span class="nx">until</span> <span class="nx">it</span> <span class="nx">becomes</span> <span class="kc">false</span> <span class="nx">before</span> <span class="nx">submitting</span> <span class="nx">another</span> <span class="nx">prompt</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p>이는 <code class="language-plaintext highlighter-rouge">LanguageModelSession</code>이 한 번에 하나의 프롬프트 요청만 처리할 수 있다는 명확한 경고였습니다. 모델이 이전 응답을 완료하기 전에 다음 요청을 보내려 했기 때문에 발생한 문제였습니다.</p>
+
+<p><strong>해결:</strong> 이 문제를 해결하기 위해, 태그 생성 로직을 담당하는 UseCase인 <code class="language-plaintext highlighter-rouge">DefaultGenerateParkingTagsUseCase</code>를 <code class="language-plaintext highlighter-rouge">actor</code>로 변경했습니다. <code class="language-plaintext highlighter-rouge">actor</code>는 Swift Concurrency에서 동시성 문제를 안전하게 다룰 수 있도록 돕는 구조입니다. 또한, <code class="language-plaintext highlighter-rouge">session.isResponding</code> 속성을 주기적으로 확인하여 모델이 이전 응답을 완료할 때까지 기다리는 방어적인 로직을 추가했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">actor</span> <span class="nx">DefaultGenerateParkingTagsUseCase</span><span class="p">:</span> <span class="nx">GenerateParkingTagsUseCase</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nx">func</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">mapItem</span><span class="p">:</span> <span class="nx">MKMapItem</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="nx">session</span><span class="p">.</span><span class="nx">isResponding</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="k">await</span> <span class="nx">Task</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="nx">nanoseconds</span><span class="p">:</span> <span class="mi">100</span><span class="nx">_000_000</span><span class="p">)</span>  <span class="c1">// 100ms 대기 (안정성 강화)</span>
+        <span class="p">}</span>
+        <span class="c1">// ... 프롬프트 전송 ...</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">actor</code>의 직렬화된 실행과 <code class="language-plaintext highlighter-rouge">isResponding</code>을 통한 명시적인 대기 덕분에, <code class="language-plaintext highlighter-rouge">LanguageModelSession</code>은 안전하게 한 번에 하나의 요청만 처리하게 되었습니다.</p>
+
+<h2 id="2-컨텍스트-윈도우-초과-에러exceededcontextwindowsize">2. 컨텍스트 윈도우 초과 에러: <code class="language-plaintext highlighter-rouge">exceededContextWindowSize</code></h2>
+
+<p>동시성 문제를 해결한 후에도 <code class="language-plaintext highlighter-rouge">Fatal error</code>와 함께 <strong><code class="language-plaintext highlighter-rouge">exceededContextWindowSize</code></strong> 에러가 간헐적으로 발생했습니다. 이는 모델에게 전달하는 프롬프트의 길이가 모델이 한 번에 처리할 수 있는 최대 <strong>컨텍스트 윈도우</strong>를 초과했음을 의미합니다. 특히 한국어 텍스트는 영어에 비해 동일한 문자열 길이라도 더 많은 토큰을 차지하는 경향이 있어, 컨텍스트 윈도우 한계에 더 빨리 도달할 수 있습니다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">LanguageModelSession.GenerationError.exceededContextWindowSize</code></strong></li>
+</ul>
+
+<p><strong>해결:</strong> 다행히 이 에러는 WWDC 영상에서도 언급되었던 부분이었습니다. 이 에러가 발생했을 때 <strong><code class="language-plaintext highlighter-rouge">LanguageModelSession</code>을 새롭게 초기화</strong>하고 프롬프트 요청을 재시도하는 로직을 추가했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="k">catch</span> <span class="nx">LanguageModelSession</span><span class="p">.</span><span class="nx">GenerationError</span><span class="p">.</span><span class="nx">exceededContextWindowSize</span> <span class="p">{</span>
+    <span class="c1">// ... 로깅 ...</span>
+    <span class="nx">session</span> <span class="o">=</span> <span class="nx">newSession</span><span class="p">(</span><span class="nx">previousSession</span><span class="p">:</span> <span class="nx">session</span><span class="p">)</span> <span class="c1">// 새 세션 생성</span>
+    <span class="k">return</span> <span class="p">(</span><span class="k">try</span><span class="p">?</span> <span class="k">await</span> <span class="nx">response</span><span class="p">(</span><span class="nx">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">))</span> <span class="o">??</span> <span class="p">[]</span> <span class="c1">// 재시도</span>
+<span class="p">}</span>
+<span class="c1">// ...</span>
+
+<span class="kr">private</span> <span class="nx">func</span> <span class="nx">newSession</span><span class="p">(</span><span class="nx">previousSession</span><span class="p">:</span> <span class="nx">LanguageModelSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">LanguageModelSession</span> <span class="p">{</span>
+    <span class="c1">// 트랜스크립트의 첫/마지막만 보존하여 컨텍스트 압축 (예시)</span>
+    <span class="kd">let</span> <span class="nx">entries</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nx">previousSession</span><span class="p">.</span><span class="nx">transcript</span><span class="p">.</span><span class="nx">first</span><span class="p">,</span> <span class="nx">previousSession</span><span class="p">.</span><span class="nx">transcript</span><span class="p">.</span><span class="nx">last</span><span class="p">,</span>
+    <span class="p">].</span><span class="nx">compactMap</span> <span class="p">{</span> <span class="nx">$0</span> <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">condensedTranscript</span> <span class="o">=</span> <span class="nx">Transcript</span><span class="p">(</span><span class="nx">entries</span><span class="p">:</span> <span class="nx">entries</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">LanguageModelSession</span><span class="p">(</span><span class="nx">transcript</span><span class="p">:</span> <span class="nx">condensedTranscript</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>WWDC 영상에서도 첫번째(프롬프트)와 마지막(가장 최근 답변) 을 압축</li>
+</ul>
+
+<p>프롬프트 내용을 최대한 간결하게 줄이는 노력과 함께 이 재시도 로직을 적용하자, 해당 에러는 더 이상 발생하지 않았습니다. 이는 <strong>프롬프트 최적화</strong>와 <strong>적절한 에러 핸들링</strong>이 Foundation Models 사용에 있어 필수적임을 보여줍니다.</p>
+
+<h3 id="3-성능-최적화-병렬-태그-생성의-필요성">3. 성능 최적화: 병렬 태그 생성의 필요성</h3>
+
+<p>앞선 과정을 통해 기능은 안정화되었지만, 성능 문제가 대두되었습니다. 14개의 주차장 항목에 대한 태그 생성을 직렬로 처리했을 때, <strong>평균 5.56초</strong> (로그 기준)라는 시간이 소요되었습니다. 이는 모바일 앱의 사용자 경험 관점에서 매우 긴 시간입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">LanguageModelSession</code>이 마치 거대한 DB 모델처럼 느껴져 단일 인스턴스로 직렬 처리해야 한다고 생각했으나, 그보다는 <strong>OS의 AI 엔진에 대한 질의 세션</strong>에 가깝다는 결론에 도달했습니다. 즉, <code class="language-plaintext highlighter-rouge">LanguageModelSession</code> 인스턴스 자체가 무거운 리소스가 아니며, 여러 인스턴스를 생성하여 병렬로 사용하는 것이 가능하다는 의미였습니다.</p>
+
+<p><strong>해결:</strong> 각 태그 생성을 <strong>독립적인 <code class="language-plaintext highlighter-rouge">Task</code>로 분리하고, 각 <code class="language-plaintext highlighter-rouge">Task</code>에서 고유한 <code class="language-plaintext highlighter-rouge">DefaultGenerateParkingTagsUseCase</code> 인스턴스를 생성하여 사용</strong>하도록 구조를 변경했습니다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MARK: Tag 조회</span>
+<span class="nx">func</span> <span class="nx">getTagByParkingInfo</span><span class="p">(</span><span class="nx">_</span> <span class="nx">parkingInfo</span><span class="p">:</span> <span class="nx">ParkingInfo</span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">useCase</span> <span class="o">=</span> <span class="nx">DefaultGenerateParkingTagsUseCase</span><span class="p">()</span>
+  <span class="k">return</span> <span class="p">(</span><span class="k">try</span><span class="p">?</span> <span class="k">await</span> <span class="nx">useCase</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">parkingInfo</span><span class="p">:</span> <span class="nx">parkingInfo</span><span class="p">))</span> <span class="o">??</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>놀랍게도, 이 접근 방식을 적용하자 <strong>명시적인 에러 메시지 없이</strong> 태그 생성이 훨씬 빠르게 진행되기 시작했습니다. 이는 여러 <code class="language-plaintext highlighter-rouge">LanguageModelSession</code> 인스턴스가 각자의 스레드 또는 Concurrency 환경에서 병렬적으로 모델 추론을 요청할 수 있음을 시사합니다.</p>
+
+<h3 id="맺음말-온디바이스-ai의-현재와-미래">맺음말: 온디바이스 AI의 현재와 미래</h3>
+
+<p>Apple Foundation Models는 온디바이스 AI의 강력한 가능성을 제시하지만, 현재 베타 단계에서는 몇 가지 주의사항을 요구합니다.</p>
+
+<ul>
+  <li><strong>동시성 관리:</strong> <code class="language-plaintext highlighter-rouge">LanguageModelSession</code>의 직렬 처리 제약을 이해하고 <code class="language-plaintext highlighter-rouge">actor</code>와 <code class="language-plaintext highlighter-rouge">isResponding</code> 폴링으로 안전하게 다루는 것이 중요합니다.</li>
+  <li><strong>프롬프트 최적화:</strong> 컨텍스트 윈도우 한계를 고려하여 프롬프트를 간결하게 유지해야 합니다.</li>
+  <li><strong>성능 최적화:</strong> 필요하다면 여러 <code class="language-plaintext highlighter-rouge">LanguageModelSession</code> 인스턴스를 병렬로 사용하여 사용자 경험을 개선할 수 있습니다.</li>
+  <li><strong>디버깅 및 피드백:</strong> 상세한 로깅과 Apple Feedback Assistant를 통한 피드백은 개발 과정에서 큰 도움이 됩니다.</li>
+</ul>
+
+<p>제가 경험한 것처럼, 온디바이스 AI는 여전히 발전 중인 분야이며, 그 활용에는 섬세한 접근이 필요합니다. 하지만 기기 자체에서 강력한 AI 기능을 구현할 수 있다는 점은 분명 모바일 앱 개발에 새로운 혁신을 가져올 것입니다. 앞으로 Foundation Models가 더욱 성숙해져, 개발자들이 더 쉽고 강력하게 온디바이스 AI를 활용할 수 있기를 기대합니다.</p>
+
+<p><img src="/assets/images/ios/2025-07-26-Apple-Foundation-Models-활용기주차장-태그-생성/image.png" alt="image.png" /></p>
+
+<p>Git: https://github.com/Leejigun/FoundationModels_ParkingLot</p>
+
+<h2 id="관련-코드">관련 코드</h2>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">protocol</span> <span class="nx">GenerateParkingTagsUseCase</span> <span class="p">{</span>
+    <span class="nx">func</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">mapItem</span><span class="p">:</span> <span class="nx">MKMapItem</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+    <span class="nx">func</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">parkingInfo</span><span class="p">:</span> <span class="nx">ParkingInfo</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="nd">Generable</span><span class="p">(</span><span class="nx">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">주차장 특성 태그</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">struct</span> <span class="nx">Tags</span> <span class="p">{</span>
+    <span class="p">@</span><span class="nd">Guide</span><span class="p">(</span><span class="nx">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MKMapItem 기반으로 주차장의 특징을 태그로 생성</span><span class="dl">"</span><span class="p">)</span>
+    <span class="kr">public</span> <span class="kd">let</span> <span class="nx">tags</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">actor</span> <span class="nx">DefaultGenerateParkingTagsUseCase</span><span class="p">:</span> <span class="nx">GenerateParkingTagsUseCase</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">LanguageModelSession</span><span class="p">(</span><span class="nx">instructions</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MKMapItem 정보로 주차장 태그를 생성</span><span class="dl">"</span><span class="p">)</span>
+
+    <span class="nx">func</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">mapItem</span><span class="p">:</span> <span class="nx">MKMapItem</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="nx">session</span><span class="p">.</span><span class="nx">isResponding</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="k">await</span> <span class="nx">Task</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="nx">nanoseconds</span><span class="p">:</span> <span class="mi">100</span><span class="nx">_000_000</span><span class="p">)</span>  <span class="c1">// 대기 시간 100ms로 늘려 안정성 강화</span>
+        <span class="p">}</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">name</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+        <span class="kd">let</span> <span class="nx">category</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">pointOfInterestCategory</span><span class="p">?.</span><span class="nx">rawValue</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+        <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">mapItem</span><span class="p">.</span><span class="nx">address</span><span class="p">?.</span><span class="nx">fullAddress</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보 없음</span><span class="dl">"</span>
+
+        <span class="kd">let</span> <span class="nx">prompt</span> <span class="o">=</span> <span class="dl">"""</span><span class="s2">
+            다음 주차장 정보에서 가장 핵심적인 특징을 나타내는 태그를 5개 이내로 생성해줘.
+            예시 태그: #24시간, #공영, #무료, #넓은, #지하주차장, #야외주차장, #마트주차장, #병원주차장, #쇼핑몰주차장, #식당주차장, #공항주차장, #역주차장, #환승주차장, #전기차충전
+
+            ---
+            [주차장 정보]
+            이름: </span><span class="se">\</span><span class="s2">(name)
+            카테고리: </span><span class="se">\</span><span class="s2">(category)
+            주소: </span><span class="se">\</span><span class="s2">(address)
+            </span><span class="dl">"""</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="k">await</span> <span class="nx">response</span><span class="p">(</span><span class="nx">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">func</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">parkingInfo</span><span class="p">:</span> <span class="nx">ParkingInfo</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="nx">session</span><span class="p">.</span><span class="nx">isResponding</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="k">await</span> <span class="nx">Task</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="nx">nanoseconds</span><span class="p">:</span> <span class="mi">100</span><span class="nx">_000_000</span><span class="p">)</span>  <span class="c1">// 대기 시간 100ms로 늘려 안정성 강화</span>
+        <span class="p">}</span>
+
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">parkingInfo</span><span class="p">.</span><span class="nx">name</span>
+        <span class="kd">let</span> <span class="nx">distance</span> <span class="o">=</span> <span class="nx">parkingInfo</span><span class="p">.</span><span class="nx">distance</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보없음</span><span class="dl">"</span>
+        <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">parkingInfo</span><span class="p">.</span><span class="nx">address</span> <span class="o">??</span> <span class="dl">"</span><span class="s2">정보없음</span><span class="dl">"</span>
+
+        <span class="kd">let</span> <span class="nx">prompt</span> <span class="o">=</span> <span class="dl">"""</span><span class="s2">
+            다음 주차장 정보에서 가장 핵심적인 특징을 나타내는 태그를 5개 이내로 생성해줘.
+            예시 태그: #24시간, #공영, #무료, #넓은, #지하주차장, #야외주차장, #마트주차장, #병원주차장, #쇼핑몰주차장, #식당주차장, #공항주차장, #역주차장, #환승주차장, #전기차충전, #가까운, #먼
+
+            ---
+            [주차장 정보]
+            이름: </span><span class="se">\</span><span class="s2">(name)
+            거리: </span><span class="se">\</span><span class="s2">(distance)
+            주소: </span><span class="se">\</span><span class="s2">(address)
+            </span><span class="dl">"""</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="k">await</span> <span class="nx">response</span><span class="p">(</span><span class="nx">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kr">private</span> <span class="nx">func</span> <span class="nx">response</span><span class="p">(</span><span class="nx">to</span> <span class="nx">prompt</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="k">async</span> <span class="nx">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">()</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="nx">session</span><span class="p">.</span><span class="nx">respond</span><span class="p">(</span>
+                <span class="na">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">,</span>
+                <span class="na">generating</span><span class="p">:</span> <span class="nx">Tags</span><span class="p">.</span><span class="nb">self</span>
+            <span class="p">)</span>
+            
+            <span class="kd">let</span> <span class="nx">timeElapsed</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">timeIntervalSince</span><span class="p">(</span><span class="nx">startTime</span><span class="p">)</span>
+            <span class="nx">print</span><span class="p">(</span>
+                <span class="dl">"</span><span class="s2">DEBUG: Model responded in </span><span class="se">\</span><span class="s2">(String(format: </span><span class="dl">"</span><span class="o">%</span><span class="p">.</span><span class="mi">2</span><span class="nx">f</span><span class="dl">"</span><span class="s2">, timeElapsed)) seconds for prompt:</span><span class="se">\n\</span><span class="s2">(prompt)</span><span class="se">\n</span><span class="s2">- </span><span class="se">\</span><span class="s2">(response.content.tags)</span><span class="se">\n</span><span class="dl">"</span>
+            <span class="p">)</span>
+            
+            <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">tags</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="nx">LanguageModelSession</span><span class="p">.</span><span class="nx">GenerationError</span><span class="p">.</span><span class="nx">exceededContextWindowSize</span> <span class="p">{</span>
+            
+            <span class="kd">let</span> <span class="nx">timeElapsed</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">timeIntervalSince</span><span class="p">(</span><span class="nx">startTime</span><span class="p">)</span>
+            <span class="nx">print</span><span class="p">(</span>
+                <span class="dl">"</span><span class="s2">DEBUG: Model exceeded context window in </span><span class="se">\</span><span class="s2">(String(format: </span><span class="dl">"</span><span class="o">%</span><span class="p">.</span><span class="mi">2</span><span class="nx">f</span><span class="dl">"</span><span class="s2">, timeElapsed)) seconds for prompt:</span><span class="se">\n\</span><span class="s2">(prompt)</span><span class="se">\n</span><span class="s2">- exceededContextWindowSize</span><span class="se">\n</span><span class="dl">"</span>
+            <span class="p">)</span>
+            
+            <span class="nx">session</span> <span class="o">=</span> <span class="nx">newSession</span><span class="p">(</span><span class="nx">previousSession</span><span class="p">:</span> <span class="nx">session</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="k">try</span><span class="p">?</span> <span class="k">await</span> <span class="nx">response</span><span class="p">(</span><span class="nx">to</span><span class="p">:</span> <span class="nx">prompt</span><span class="p">))</span> <span class="o">??</span> <span class="p">[]</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+            
+            <span class="kd">let</span> <span class="nx">timeElapsed</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">timeIntervalSince</span><span class="p">(</span><span class="nx">startTime</span><span class="p">)</span>
+            <span class="nx">print</span><span class="p">(</span>
+                <span class="dl">"</span><span class="s2">DEBUG: Model exceeded context window in </span><span class="se">\</span><span class="s2">(String(format: </span><span class="dl">"</span><span class="o">%</span><span class="p">.</span><span class="mi">2</span><span class="nx">f</span><span class="dl">"</span><span class="s2">, timeElapsed)) seconds for prompt:</span><span class="se">\n\</span><span class="s2">(prompt)</span><span class="se">\n</span><span class="s2">- </span><span class="se">\</span><span class="s2">(error.localizedDescription)</span><span class="se">\n</span><span class="dl">"</span>
+            <span class="p">)</span>
+            
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kr">private</span> <span class="nx">func</span> <span class="nx">newSession</span><span class="p">(</span><span class="nx">previousSession</span><span class="p">:</span> <span class="nx">LanguageModelSession</span><span class="p">)</span>
+        <span class="o">-&gt;</span> <span class="nx">LanguageModelSession</span>
+    <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">entries</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nx">previousSession</span><span class="p">.</span><span class="nx">transcript</span><span class="p">.</span><span class="nx">first</span><span class="p">,</span> <span class="nx">previousSession</span><span class="p">.</span><span class="nx">transcript</span><span class="p">.</span><span class="nx">last</span><span class="p">,</span>
+        <span class="p">].</span><span class="nx">compactMap</span> <span class="p">{</span> <span class="nx">$0</span> <span class="p">}</span>
+        <span class="kd">let</span> <span class="nx">condensedTranscript</span> <span class="o">=</span> <span class="nx">Transcript</span><span class="p">(</span><span class="nx">entries</span><span class="p">:</span> <span class="nx">entries</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">LanguageModelSession</span><span class="p">(</span><span class="nx">transcript</span><span class="p">:</span> <span class="nx">condensedTranscript</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="디버그-로그">디버그 로그</h2>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">3.68</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">수양유료주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">755.565</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">13</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">03360</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#유료주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#넓은주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시주차장</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">4.63</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연신내유료주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">501.125</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">81</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">03338</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#유료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#연신내</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#주차장</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">5.75</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연광초등학교지하공동주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">877.267</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">연서로35길</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">03342</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">연광초등학교</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">은평구</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">7.26</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">불광2동거주자우선주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">725.101</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">131</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">03347</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#공영주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#주거지역주차장</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">8.03</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연신중학교</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">754.294</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">연서로33길</span> <span class="mi">16</span><span class="o">-</span><span class="mi">32</span><span class="p">,</span> <span class="mi">03342</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#학교주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#연신중학교</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">1.60</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">새장골공영주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">883.138</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">480</span><span class="o">-</span><span class="mi">352</span><span class="p">,</span> <span class="mi">03340</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#무료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#넓은</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">3.48</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">불광2동거주자우선주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">725.101</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">131</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">03347</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#주거지우선주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">4.63</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">수양유료주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">755.565</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">13</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">03360</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">유료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">넓은</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">주차</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">5.68</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연신중학교</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">754.294</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">연서로33길</span> <span class="mi">16</span><span class="o">-</span><span class="mi">32</span><span class="p">,</span> <span class="mi">03342</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#근처</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#연신중학교</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">6.71</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연신내유료주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">501.125</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">81</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">03338</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#유료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#넓은</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">8.22</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연광초등학교지하공동주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">877.267</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">연서로35길</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">03342</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">학교주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">근처주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">공영주차장</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">7.21</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">새장골공영주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">883.138</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">480</span><span class="o">-</span><span class="mi">352</span><span class="p">,</span> <span class="mi">03340</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#무료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">7.19</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">연신내유료주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">501.125</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">81</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">03338</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#유료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#넓은</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">DEBUG</span><span class="p">:</span> <span class="nx">Model</span> <span class="nx">responded</span> <span class="k">in</span> <span class="mf">3.75</span> <span class="nx">seconds</span> <span class="k">for</span> <span class="nx">prompt</span><span class="p">:</span>
+<span class="nx">다음</span> <span class="nx">주차장</span> <span class="nx">정보에서</span> <span class="nx">가장</span> <span class="nx">핵심적인</span> <span class="nx">특징을</span> <span class="nx">나타내는</span> <span class="nx">태그를</span> <span class="mi">5</span><span class="nx">개</span> <span class="nx">이내로</span> <span class="nx">생성해줘</span><span class="p">.</span>
+<span class="nx">예시</span> <span class="nx">태그</span><span class="p">:</span> <span class="err">#</span><span class="mi">24</span><span class="nx">시간</span><span class="p">,</span> <span class="err">#</span><span class="nx">공영</span><span class="p">,</span> <span class="err">#</span><span class="nx">무료</span><span class="p">,</span> <span class="err">#</span><span class="nx">넓은</span><span class="p">,</span> <span class="err">#</span><span class="nx">지하주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">야외주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">마트주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">병원주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">쇼핑몰주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">식당주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">공항주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">역주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">환승주차장</span><span class="p">,</span> <span class="err">#</span><span class="nx">전기차충전</span><span class="p">,</span> <span class="err">#</span><span class="nx">가까운</span><span class="p">,</span> <span class="err">#</span><span class="nx">먼</span>
+
+<span class="o">---</span>
+<span class="p">[</span><span class="nx">주차장</span> <span class="nx">정보</span><span class="p">]</span>
+<span class="nx">이름</span><span class="p">:</span> <span class="nx">새장골공영주차장</span>
+<span class="nx">거리</span><span class="p">:</span> <span class="mf">883.138</span><span class="nx">m</span>
+<span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">480</span><span class="o">-</span><span class="mi">352</span><span class="p">,</span> <span class="mi">03340</span>
+<span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#무료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구</span><span class="dl">"</span><span class="p">]</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = 'http://localhost:4000/';
+                            this.page.identifier = 'iOS 삽질 블로그';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jglee.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/ios/">Ios</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0">[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0">[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/ios/">
+                                
+                                    See all 29 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0">
+                <div class="post-card-image" style="background-image: url(/assets/images/ios/2025-07-21-WWDC25Swift-성능-최적화-불필요한-할당-줄이기/2025-07-21_00-51-34.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ 이전 편에서 Time Profiler를 통해 불필요한 데이터 복사를 최적화했다. 이번에는 과도한 메모리 할당이라는 또 다른 주요 성능 저하 요인을 해결하여 추가적인 성능 개선을 달성하는 방법을 다룬다. 1. 문제 진단: Allocations 도구 활용 성능</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://localhost:4000/">
+            
+                <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
+            
+            <span>iOS 삽질 블로그</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Apple Foundation Models 활용기(주차장 태그 생성)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Apple+Foundation+Models+%ED%99%9C%EC%9A%A9%EA%B8%B0%28%EC%A3%BC%EC%B0%A8%EC%9E%A5+%ED%83%9C%EA%B7%B8+%EC%83%9D%EC%84%B1%29&amp;url=https://leejigun.github.io/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://leejigun.github.io/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <!-- <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a> -->
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-154736789-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

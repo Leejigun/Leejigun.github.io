@@ -1,6 +1,14 @@
 [
 
 {
+"title"    : "Apple Foundation Models 활용기 - 주차장 태그 생성",
+"category" : "",
+"tags"     : "ios",
+"url"      : "/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1",
+"date"     : "2025-07-26 09:00:00 +0900"
+} ,
+
+{
 "title"    : "[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기",
 "category" : "",
 "tags"     : "ios",

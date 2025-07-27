@@ -56,6 +56,10 @@ author: jglee
 8. `git commit -m "서브모듈 업데이트"` 로 커밋
 9. `git push` 로 상위 저장소에 푸시
 
+## 빌드 실패 및 포스트가 표시되지 않을 때 확인 사항
+- **날짜 문제:** 포스트의 `date`가 현재 시간보다 미래로 되어 있으면 빌드에서 제외됩니다. 로컬에서 확인하려면 `bundle exec jekyll build --future` 및 `bundle exec jekyll serve --future`와 같이 `--future` 옵션을 사용하세요.
+- **머리말(Front Matter) 오류:** `title`과 같은 머리말 항목에 `**` 같은 마크다운 문법이 포함되면 빌드 오류가 발생할 수 있습니다. 머리말에는 순수한 텍스트만 사용하세요.
+
 # tag 추가
 1. _data/tags에 추가할 것
 2. navigation바에 그 테그를 추가할 것

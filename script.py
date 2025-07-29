@@ -76,7 +76,7 @@ def process_post(post_path):
     
     image_dir_fs_path = os.path.join(ASSETS_DIR, tags[0], new_post_filename_base)
     os.makedirs(image_dir_fs_path, exist_ok=True)
-    image_dir_web_path = "/" + image_dir_fs_path.replace("\\", "/")
+    image_dir_web_path = image_dir_fs_path.replace("\", "/")
     
     image_location_map = {}
     for root, _, files in os.walk(post_path):

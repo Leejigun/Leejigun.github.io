@@ -27,36 +27,27 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <meta name="description" content="iOS developer." />
     <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
     <link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-
-     <!--title below is coming from _includes/dynamic_title-->
-    <meta property="og:site_name" content="iOS 삽질 블로그" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="[WWDC25] Swift 6.2 동시성 개선" />
-    <meta property="og:description" content="왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수" />
-    <meta property="og:url" content="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
-    <meta property="og:image" content="https://leejigun.github.io/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png" />
-    <meta property="article:publisher" content="https://www.facebook.com/" />
-    <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2025-06-14T09:00:00+09:00" />
-    <meta property="article:modified_time" content="2025-06-14T09:00:00+09:00" />
-    <meta property="article:tag" content="Ios" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="[WWDC25] Swift 6.2 동시성 개선" />
-    <meta name="twitter:description" content="왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수" />
-    <meta name="twitter:url" content="https://leejigun.github.io/" />
-    <meta name="twitter:image" content="https://leejigun.github.io/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="iOS 삽질 블로그" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Ios" />
-    <meta name="twitter:site" content="@" />
-    <meta name="twitter:creator" content="@" />
-    <meta property="og:image:width" content="1400" />
-    <meta property="og:image:height" content="933" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[WWDC25] Swift 6.2 동시성 개선 | iOS 삽질 블로그</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="[WWDC25] Swift 6.2 동시성 개선" />
+<meta name="author" content="jglee" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="왜 동시성이 어려웠을까요?" />
+<meta property="og:description" content="왜 동시성이 어려웠을까요?" />
+<link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
+<meta property="og:url" content="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
+<meta property="og:site_name" content="iOS 삽질 블로그" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-06-14T09:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[WWDC25] Swift 6.2 동시성 개선" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2025-06-14T09:00:00+09:00","datePublished":"2025-06-14T09:00:00+09:00","description":"왜 동시성이 어려웠을까요?","headline":"[WWDC25] Swift 6.2 동시성 개선","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"}</script>
+<!-- End Jekyll SEO tag -->
 
     <script type="application/ld+json">
 {
@@ -78,7 +69,7 @@
         "@type": "WebPage",
         "@id": "https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"
     },
-    "description": "왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수"
+    "description": "iOS developer."
 }
     </script>
 

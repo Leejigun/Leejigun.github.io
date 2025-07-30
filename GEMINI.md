@@ -57,6 +57,9 @@ author: jglee
 9. `git push` 로 상위 저장소에 푸시
 
 ## 빌드 실패 및 포스트가 표시되지 않을 때 확인 사항
+- **사이트맵(sitemap.xml) URL 문제:** `sitemap.xml` 파일에 `localhost` 주소가 포함되는 것을 방지하고, 실제 배포 URL(`https://leejigun.github.io`)이 올바르게 반영되도록 하려면 `bundle exec jekyll build` 명령 실행 시 `JEKYLL_ENV=production` 환경 변수를 함께 사용해야 합니다. 예: `JEKYLL_ENV=production bundle exec jekyll build`
+
+
 - **날짜 문제:** 포스트의 `date`가 현재 시간보다 미래로 되어 있으면 빌드에서 제외됩니다. 로컬에서 확인하려면 `bundle exec jekyll build --future` 및 `bundle exec jekyll serve --future`와 같이 `--future` 옵션을 사용하세요.
 - **머리말(Front Matter) 오류:** `title`과 같은 머리말 항목에 `**` 같은 마크다운 문법이 포함되면 빌드 오류가 발생할 수 있습니다. 머리말에는 순수한 텍스트만 사용하세요.
 

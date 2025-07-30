@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" />
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Thinking in SwiftUI - 1장 View Trees | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Thinking in SwiftUI - 1장 View Trees" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="iOS developer." />
-<meta property="og:description" content="iOS developer." />
-<link rel="canonical" href="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" />
-<meta property="og:url" content="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-06-05T03:16:30+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Thinking in SwiftUI - 1장 View Trees" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2025-06-05T03:16:30+09:00","datePublished":"2025-06-05T03:16:30+09:00","description":"iOS developer.","headline":"Thinking in SwiftUI - 1장 View Trees","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Thinking in SwiftUI - 1장 View Trees" />
+    <meta property="og:description" content="Thinking in SwiftUI - 1장 View Trees Created: 2024년 5월 26일 오후 6:23 Tags: SwiftUI, iOS 뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는 뷰 트리의 구성 방식을 이해해야 합니다. 상태가 어떻게 작동하는지 이해하려면, SwiftUI에서 뷰의 수명과 그것이 만들고 있는 뷰" />
+    <meta property="og:url" content="http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:modified_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:tag" content="Swiftui" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thinking in SwiftUI - 1장 View Trees" />
+    <meta name="twitter:description" content="Thinking in SwiftUI - 1장 View Trees Created: 2024년 5월 26일 오후 6:23 Tags: SwiftUI, iOS 뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는 뷰 트리의 구성 방식을 이해해야 합니다. 상태가 어떻게 작동하는지 이해하려면, SwiftUI에서 뷰의 수명과 그것이 만들고 있는 뷰" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Swiftui" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees",
+    "url": "http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/blog-cover.jpg",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"
+        "@id": "http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"
     },
-    "description": "iOS developer."
+    "description": "Thinking in SwiftUI - 1장 View Trees Created: 2024년 5월 26일 오후 6:23 Tags: SwiftUI, iOS 뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는 뷰 트리의 구성 방식을 이해해야 합니다. 상태가 어떻게 작동하는지 이해하려면, SwiftUI에서 뷰의 수명과 그것이 만들고 있는 뷰"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -150,7 +159,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 5 June 2025"> 5 June 2025</time>
+                    <time class="post-full-meta-date" datetime="27 May 2024">27 May 2024</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -171,7 +180,28 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled.png" alt="Untitled" /></p>
+                    <h1 id="thinking-in-swiftui---1장-view-trees">Thinking in SwiftUI - 1장 View Trees</h1>
+
+<p>Created: 2024년 5월 26일 오후 6:23
+Tags: SwiftUI, iOS</p>
+
+<p>뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는 뷰 트리의 구성 방식을 이해해야 합니다.</p>
+
+<p>상태가 어떻게 작동하는지 이해하려면, SwiftUI에서 뷰의 수명과 그것이 만들고 있는 뷰 트리와의 관계를 이해하는 것이 중요합니다. 이를 이해하면, 데이터를 효율적으로 로드하고 필요할 때 뷰를 업데이트하는 SwiftUI 코드를 작성하는 데 도움이 됩니다.</p>
+
+<p>마지막으로, 애니메이션과 전환이 어떻게 작동하는지 이해하려면 뷰 트리에 대한 이해가 필요합니다.</p>
+
+<ul>
+  <li>뷰 트리</li>
+  <li>뷰 수명</li>
+  <li>애니메이션 전환</li>
+</ul>
+
+<h2 id="view-tree와-render-tree"><strong>View Tree와 Render Tree</strong></h2>
+
+<hr />
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled.png" alt="Untitled" /></p>
 
 <p>위와 같은 코드를 작성하면, 중앙에 일시적인 청사진이 구축되며, 이를 ‘View Tree’라고 합니다. 그 결과, 왼쪽처럼 View가 렌더링되어 보여집니다.</p>
 
@@ -183,7 +213,7 @@ into the {body} of the default.hbs template -->
 
 <p>만약, 아래와 같이 순서를 변경하게 된다면</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 1.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 1.png" alt="Untitled" /></p>
 
 <p><code class="language-plaintext highlighter-rouge">background</code>는 <code class="language-plaintext highlighter-rouge">padding</code>의 자식이 되며, <code class="language-plaintext highlighter-rouge">Text</code>에 <code class="language-plaintext highlighter-rouge">background</code>이 붙게 됩니다. 그러면 <code class="language-plaintext highlighter-rouge">background</code>에 <code class="language-plaintext highlighter-rouge">padding</code>이 붙어서 다음과 같은 모습이 됩니다.</p>
 
@@ -200,7 +230,7 @@ into the {body} of the default.hbs template -->
   <li><a href="https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md">https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md</a></li>
 </ul>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 2.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 2.png" alt="Untitled" /></p>
 
 <p><strong><code class="language-plaintext highlighter-rouge">HStack</code></strong>은 클로저를 매개변수로 사용하며, 이 클로저는 <strong><code class="language-plaintext highlighter-rouge">@ViewBuilder</code></strong>로 표시됩니다. 이를 통해 내부에 여러 표현식을 작성할 수 있으며, 각 표현식은 뷰를 나타냅니다. 본질적으로 스택에 전달된 클로저는 이 예제에서 스택의 하위 뷰가 되는 뷰 목록을 생성합니다.</p>
 
@@ -219,7 +249,7 @@ into the {body} of the default.hbs template -->
   <li><code class="language-plaintext highlighter-rouge">background</code>, <code class="language-plaintext highlighter-rouge">overlay</code>..</li>
 </ul>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 3.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 3.png" alt="Untitled" /></p>
 
 <ul>
   <li><a href="https://zeddios.tistory.com/m/1366">https://zeddios.tistory.com/m/1366</a></li>
@@ -231,7 +261,7 @@ into the {body} of the default.hbs template -->
 
 <p>SwiftUI 코드를 작성하고 ViewBuilder를 통해서 View 목록을 작성하는데, 이 때 View 목록도 동적일 수 있습니다. if - else 구문을 통해서 뷰를 동적으로 구성하는 방법은 아래와 같습니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 4.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 4.png" alt="Untitled" /></p>
 
 <p>if 문 대신, if let, switch 문도 사용 가능합니다.</p>
 
@@ -243,17 +273,17 @@ into the {body} of the default.hbs template -->
 
 <p>랜더 트리는 SwiftUI 내부에 존재하기 때문에, 직접 다룰일은 없습니다. 하지만, SwiftUI의 동작을 이해하는데 유용한 모델입니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 5.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 5.png" alt="Untitled" /></p>
 
 <p>만약 옵셔널한 View 구조가 있다면, View Tree에서는 다음과 같이 생성됩니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 6.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 6.png" alt="Untitled" /></p>
 
 <p>하지만, Render Tree의 경우에는 다릅니다. Text가 nil일 경우 View Tree가 Render Tree를 만들 땐 실제로 View에 대응되도록 HStack 안에 Image 하나만 존재합니다.</p>
 
 <p>만약에 State가 업데이트되서 View 업데이트가 동작하게 된다면, Render Tree에 Text가 삽입되거나, 제거됩니다. (하지만, Text의 문구가 변경어도 Text View가 새로 만들어지는 건 아닙니다.)</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 7.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 7.png" alt="Untitled" /></p>
 
 <h2 id="lifetime">LifeTime</h2>
 
@@ -302,7 +332,7 @@ into the {body} of the default.hbs template -->
 
 <p>만약 작성한 코드에서 View의 ID값을 할당하지 않는다면, View Tree에서 생성될 View마다 고유 ID 값을 할당합니다. 이렇게 자동으로 할당되는 ID를 암시적 ID라 합니다. 이 ID 값을 통해서 뷰를 식별할 수 있고 ID가 동일할 경우 View를 새로 만드는게 아닌, 상태값을 업데이트 합니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 8.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 8.png" alt="Untitled" /></p>
 
 <p>특이한 부분은 if else  브랜치에서 1이라는 동일한 ID 값 아래에 다른 ID값을 가진다는 것 입니다. 따라서 동일한 양쪽 다 동일한 Text를 사용하고 있지만, 다른 ID값을 가지고 있어 condition이 변경되면 새로 View를 만들어 추가하게 됩니다.</p>
 
@@ -312,7 +342,7 @@ into the {body} of the default.hbs template -->
 
 <p>아래의 경우 true, false 값을 ID로 사용해 2개의 Text를 번갈아 추가 삭제 할 수 있습니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 9.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 9.png" alt="Untitled" /></p>
 
 <ul>
   <li>Explicit id는 <strong><code class="language-plaintext highlighter-rouge">.id(_:)</code></strong> 메서드를 사용하여 명시적으로 지정할 수 있습니다.</li>
@@ -320,21 +350,21 @@ into the {body} of the default.hbs template -->
 
 <p>그렇다면, 다음과 같이 하나의 Text를 만들어서 2번 사용하는 경우 ID값이 어떻게 될까?</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 10.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 10.png" alt="Untitled" /></p>
 
 <p>View Tree에 표시된 것 처럼 다른 위치에 있기 때문에 View Tree에서 서로 다른 암시적인 ID값을 할당하고 별도의 뷰로 간주됩니다. 이 부분 때문에 View Tree를 청사진이라 생각할 수 있는 것 입니다.</p>
 
 <p>다음으로 만약에 이런 condition에 따라 분기하는 applayIf 를 만들고 적용하면 어떻게 될까?</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 11.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 11.png" alt="Untitled" /></p>
 
 <p>적용한 코드 샘플을 보면 if else 형태로 하이라이트가 들어가면 background 모디파이어를 추가하는 형태로 구현하고 View Tree 역시 if else 형태와 유사한 모습을 보이고 있다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 12.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 12.png" alt="Untitled" /></p>
 
 <p>이 경우 동일하게 Text는 변함이 없지만, 불필요하게 2개의 Text가 condition에 따라서 생성, 제거되는 모습을 볼 수 있다. 이런 패턴이 아닌 아래와 같은 패턴을 사용하는게 좋다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 13.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 13.png" alt="Untitled" /></p>
 
 <p>이 경우 if else 의 값에 따라서 상태값을 변경해 랜더 노드를 추가, 삭제하지 않는다.</p>
 
@@ -372,7 +402,7 @@ into the {body} of the default.hbs template -->
 
 <p><a href="https://www.vadimbulavin.com/swiftui-view-lifecycle/">https://www.vadimbulavin.com/swiftui-view-lifecycle/</a></p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 14.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 14.png" alt="Untitled" /></p>
 
                 </div>
             </section>
@@ -409,7 +439,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -466,21 +496,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding">Thinking in SwiftUI - 2장 State and Binding</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
                                     
                                         
                                         
@@ -509,6 +524,8 @@ into the {body} of the default.hbs template -->
                                   
                                     
                                         
+                                        
+                                            <li><a href="/WWDC22_Navigation_Cook_book_in_SwiftUI">[WWDC22] Navigation Cook book in SwiftUI</a></li>
                                         
                                     
                                   
@@ -693,7 +710,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/swiftui/">
                                 
-                                    See all 16 posts  →
+                                    See all 14 posts  →
                                 
                             </a>
                         </footer>
@@ -724,7 +741,7 @@ into the {body} of the default.hbs template -->
                     <h2 class="post-card-title">Thinking in SwiftUI - 2장 State and Binding</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>- [https://wlaxhrl.tistory.com/91](https://wlaxhrl.tistory.com/91) (Data Flow Through SwiftUI) **(여기서 중요한건 SSOT !!)** ### **@State** --- **뷰의 상태를 관리하기 위한 프로퍼티 래퍼.** - Value Type - 뷰의 로컬 데이터 (내부 프로퍼티) - 뷰에서 소유되고 관리되어야 하는</p>
+                    <p># Thinking in SwiftUI - 2장 State and Binding Created: 2024년 5월 26일 오후 7:47 Tags: SwiftUI, iOS 이전 장에서 SwiftUI code가 **View tree**라는 청사진(블루프린트) 로 구성되는 방법과 영구 **Render tree**로 변환되는 방법에</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -752,27 +769,27 @@ into the {body} of the default.hbs template -->
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
-    <article class="post-card post-template no-image">
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/CleanSoftware_SRP">
+                <div class="post-card-image" style="background-image: url(/assets/images/CS/clean_software/2023-07-20-CleanSoftware_SRP/images.png)"></div>
+            </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/Thinking-in-SwiftUI-3%EC%9E%A5-Layout">
+            <a class="post-card-content-link" href="/CleanSoftware_SRP">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Swiftui</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Ios</span>
+                                <span class="post-card-tags">Cs</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Thinking in SwiftUI - 3장 Layout</h2>
+                    <h2 class="post-card-title">[클린 소프트웨어] 단일책임원칙(SRP)</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를</p>
+                    <p>[클린 소프트웨어] 단일책임원칙(SRP) 클린 소프트웨어 책의 단일책임원칙 파트를 읽고 정리한 내용입니다. 이번 장에서는 모듈이나 클래스의 변경을 야기하는 응집력에 대해서 언급하려 한다. 단일 책임 원칙 한 클래스는 단 한 가지의 변경 이유만을 가져야 한다.</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -804,7 +821,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -848,7 +865,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

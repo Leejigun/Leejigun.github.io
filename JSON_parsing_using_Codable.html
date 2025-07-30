@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/JSON_parsing_using_Codable" />
+    <meta name="description" content="인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/JSON_parsing_using_Codable" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Codable을 사용한 JSON 데이터 파싱 | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Codable을 사용한 JSON 데이터 파싱" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다." />
-<meta property="og:description" content="인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다." />
-<link rel="canonical" href="https://leejigun.github.io/JSON_parsing_using_Codable" />
-<meta property="og:url" content="https://leejigun.github.io/JSON_parsing_using_Codable" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-06-11T09:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Codable을 사용한 JSON 데이터 파싱" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2018-06-11T09:00:00+09:00","datePublished":"2018-06-11T09:00:00+09:00","description":"인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다.","headline":"Codable을 사용한 JSON 데이터 파싱","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/JSON_parsing_using_Codable"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/JSON_parsing_using_Codable"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Codable을 사용한 JSON 데이터 파싱" />
+    <meta property="og:description" content="이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의" />
+    <meta property="og:url" content="http://localhost:4000/JSON_parsing_using_Codable" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/Swift-JSON-Encoding.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2018-06-11T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2018-06-11T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Codable을 사용한 JSON 데이터 파싱" />
+    <meta name="twitter:description" content="이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/Swift-JSON-Encoding.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/JSON_parsing_using_Codable",
+    "url": "http://localhost:4000/JSON_parsing_using_Codable",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/Swift-JSON-Encoding.jpg",
+        "url": "http://localhost:4000/assets/images/Swift-JSON-Encoding.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/JSON_parsing_using_Codable"
+        "@id": "http://localhost:4000/JSON_parsing_using_Codable"
     },
-    "description": "인스타그램에서 공개한 라이브러리인 IGListKit을 소개하고 개념을 설명하고자 합니다."
+    "description": "이번 포스트에서는 Swift4에서 추가된 Codable 프로토콜을 사용해 JSON 데이터를 처리하는 방법을 알아보겠습니다. 과거 제가 처음으로 iOS를 공부할 때에는 JSONSerialization 을 사용한 방법이 책에 나와있었고 저도 한동안 그 방법으로 JSON 데이터를 처리했었습니다. (깊이 있는 책이었지만, 너무 오래된 책이었습니다.) JSON을 다루는데 이미 많은 라이브러리들이 있고, 처음으로 실무 프로젝트를 진행하게 되었을 때, 대부분의"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -444,7 +453,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -520,22 +529,6 @@ into the {body} of the default.hbs template -->
                                         
                                         
                                     
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
                                   
                                 
                                   
@@ -801,7 +794,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/ios/">
                                 
-                                    See all 30 posts  →
+                                    See all 28 posts  →
                                 
                             </a>
                         </footer>
@@ -912,7 +905,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -956,7 +949,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

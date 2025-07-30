@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://leejigun.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://leejigun.github.io/" rel="alternate" type="text/html" /><updated>2025-07-30T10:16:11+09:00</updated><id>https://leejigun.github.io/feed.xml</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례</title><link href="https://leejigun.github.io/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80" rel="alternate" type="text/html" title="WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례" /><published>2025-07-29T09:00:00+09:00</published><updated>2025-07-29T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80"><![CDATA[<h2 id="wwdc25-온디바이스-ai-새로운-가능성을-열다---mapkit-주차장-정보-활용-사례">WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-30T10:31:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">iOS 삽질 블로그</title><subtitle>iOS developer.</subtitle><entry><title type="html">WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례</title><link href="http://localhost:4000/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80" rel="alternate" type="text/html" title="WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례" /><published>2025-07-29T09:00:00+09:00</published><updated>2025-07-29T09:00:00+09:00</updated><id>http://localhost:4000/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80</id><content type="html" xml:base="http://localhost:4000/WWDC25-%EC%98%A8%EB%94%94%EB%B0%94%EC%9D%B4%EC%8A%A4-AI,-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EC%97%B4%EB%8B%A4-MapKit-%EC%A3%BC%EC%B0%A8%EC%9E%A5-%EC%A0%95%EB%B3%B4-%ED%99%9C%EC%9A%A9-%EC%82%AC%EB%A1%80"><![CDATA[<h2 id="wwdc25-온디바이스-ai-새로운-가능성을-열다---mapkit-주차장-정보-활용-사례">WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례</h2>
 
 <p>WWDC25에서 발표된 Apple Foundation Models, iOS 개발자들에게 새로운 지평을 열어주었습니다. 특히, <strong>온디바이스(on-device) AI</strong>의 등장은 <strong>기존 클라우드 기반의 거대 LLM(Large Language Model)과는 다른 접근 방식과 활용 전략이 필요함을 시사합니다.</strong> 네트워크 연결 없이 기기 자체에서 구동되는 온디바이스 AI는 제한된 정보와 특정 작업에 최적화되어야 한다는 점에서 더욱 흥미롭습니다.</p>
 
@@ -306,7 +306,7 @@
   <span class="nx">Corrected</span> <span class="nx">Phone</span><span class="p">:</span> <span class="o">+</span><span class="mi">82</span> <span class="mi">2</span><span class="o">-</span><span class="mi">385</span><span class="o">-</span><span class="mi">2193</span>
 <span class="p">)</span>
 
-</code></pre></div></div>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례]]></summary></entry><entry><title type="html">Apple Foundation Models 활용기(주차장 태그 생성)</title><link href="https://leejigun.github.io/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1" rel="alternate" type="text/html" title="Apple Foundation Models 활용기(주차장 태그 생성)" /><published>2025-07-26T09:00:00+09:00</published><updated>2025-07-26T09:00:00+09:00</updated><id>https://leejigun.github.io/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1</id><content type="html" xml:base="https://leejigun.github.io/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1"><![CDATA[<h2 id="온디바이스-ai-새로운-가능성의-문을-열다-apple-foundation-models-활용기">온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기</h2>
+</code></pre></div></div>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[WWDC25: 온디바이스 AI, 새로운 가능성을 열다 - MapKit 주차장 정보 활용 사례]]></summary></entry><entry><title type="html">Apple Foundation Models 활용기(주차장 태그 생성)</title><link href="http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1" rel="alternate" type="text/html" title="Apple Foundation Models 활용기(주차장 태그 생성)" /><published>2025-07-26T09:00:00+09:00</published><updated>2025-07-26T09:00:00+09:00</updated><id>http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1</id><content type="html" xml:base="http://localhost:4000/Apple-Foundation-Models-%ED%99%9C%EC%9A%A9%EA%B8%B0%EC%A3%BC%EC%B0%A8%EC%9E%A5-%ED%83%9C%EA%B7%B8-%EC%83%9D%EC%84%B1"><![CDATA[<h2 id="온디바이스-ai-새로운-가능성의-문을-열다-apple-foundation-models-활용기">온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기</h2>
 
 <p>WWDC25에서 공개된 <strong>Apple Foundation Models</strong>는 클라이언트 개발자들에게 혁신적인 온디바이스(On-device) AI의 시대를 예고했습니다. 클라우드 기반 AI 서비스가 범람하는 가운데, 기기 자체에서 AI 모델 추론이 이뤄진다는 것은 <strong>강력한 개인 정보 보호, 지연 없는 실시간 응답, 그리고 안정적인 오프라인 기능</strong>이라는 새로운 가능성을 제시합니다.</p>
 
@@ -715,7 +715,7 @@
 <span class="nx">거리</span><span class="p">:</span> <span class="mf">883.138</span><span class="nx">m</span>
 <span class="nx">주소</span><span class="p">:</span> <span class="nx">대한민국</span> <span class="nx">서울특별시</span> <span class="nx">은평구</span> <span class="nx">불광동</span> <span class="mi">480</span><span class="o">-</span><span class="mi">352</span><span class="p">,</span> <span class="mi">03340</span>
 <span class="o">-</span> <span class="p">[</span><span class="dl">"</span><span class="s2">#공영</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#무료</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#지하주차장</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#서울특별시</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">#은평구</span><span class="dl">"</span><span class="p">]</span>
-</code></pre></div></div>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기]]></summary></entry><entry><title type="html">[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기</title><link href="https://leejigun.github.io/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0" rel="alternate" type="text/html" title="[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기" /><published>2025-07-21T09:00:00+09:00</published><updated>2025-07-21T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0</id><content type="html" xml:base="https://leejigun.github.io/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0"><![CDATA[<ul>
+</code></pre></div></div>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[온디바이스 AI, 새로운 가능성의 문을 열다: Apple Foundation Models 활용기]]></summary></entry><entry><title type="html">[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기</title><link href="http://localhost:4000/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0" rel="alternate" type="text/html" title="[WWDC25]Swift 성능 최적화: 불필요한 할당 줄이기" /><published>2025-07-21T09:00:00+09:00</published><updated>2025-07-21T09:00:00+09:00</updated><id>http://localhost:4000/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/WWDC25Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%ED%95%A0%EB%8B%B9-%EC%A4%84%EC%9D%B4%EA%B8%B0"><![CDATA[<ul>
   <li>https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ</li>
 </ul>
 
@@ -852,7 +852,7 @@
 
 <p>본 편에서는 Instruments의 Allocations 도구를 활용하여 <code class="language-plaintext highlighter-rouge">flatMap</code> 체인에서 발생하는 과도한 메모리 할당 패턴을 식별하고, 최종 데이터 크기를 사전 계산하여 한 번에 메모리를 할당한 후 데이터를 직접 작성하는 방식으로 최적화했다. 이를 통해 실행 시간을 절반 이상 단축시키는 중요한 성능 개선을 달성했다.</p>
 
-<p>다음 편에서는 Swift 런타임 독점성 검사(<code class="language-plaintext highlighter-rouge">_sanityCheckExclusiveAccess</code> 제거)와 <code class="language-plaintext highlighter-rouge">InlineArray</code>를 통한 고급 메모리 최적화 기법을 탐구할 예정이다.</p>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ]]></summary></entry><entry><title type="html">[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기</title><link href="https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" rel="alternate" type="text/html" title="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" /><published>2025-07-20T09:00:00+09:00</published><updated>2025-07-20T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"><![CDATA[<ul>
+<p>다음 편에서는 Swift 런타임 독점성 검사(<code class="language-plaintext highlighter-rouge">_sanityCheckExclusiveAccess</code> 제거)와 <code class="language-plaintext highlighter-rouge">InlineArray</code>를 통한 고급 메모리 최적화 기법을 탐구할 예정이다.</p>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ]]></summary></entry><entry><title type="html">[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기</title><link href="http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" rel="alternate" type="text/html" title="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" /><published>2025-07-20T09:00:00+09:00</published><updated>2025-07-20T09:00:00+09:00</updated><id>http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"><![CDATA[<ul>
   <li><a href="https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ">https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ</a></li>
   <li>https://github.com/apple/swift-binary-parsing</li>
 </ul>
@@ -982,7 +982,7 @@
 
 <p>본 편에서는 Instruments의 <strong>Time Profiler</strong>를 사용하여 코드의 숨겨진 병목 현상, 특히 불필요한 데이터 복사 문제를 식별하고, <strong><code class="language-plaintext highlighter-rouge">Data</code></strong> 타입의 <strong><code class="language-plaintext highlighter-rouge">popFirst()</code></strong> 메서드를 활용하여 알고리즘적 문제를 해결하는 방법을 살펴보았다. 이로써 파싱 성능을 2차 시간 복잡도에서 선형 시간 복잡도로 개선하는 극적인 결과를 얻었다.</p>
 
-<p>다음 편에서는 “불필요한 메모리 할당 줄이기”에 초점을 맞춰, Instruments의 <strong>Allocations</strong> 도구를 사용하여 발생하는 과도한 할당을 진단하고 제거하여 추가적인 성능 개선을 이루는 방법을 탐구할 예정이다.</p>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</title><link href="https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화" /><published>2025-06-15T09:00:00+09:00</published><updated>2025-06-15T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94"><![CDATA[<ul>
+<p>다음 편에서는 “불필요한 메모리 할당 줄이기”에 초점을 맞춰, Instruments의 <strong>Allocations</strong> 도구를 사용하여 발생하는 과도한 할당을 진단하고 제거하여 추가적인 성능 개선을 이루는 방법을 탐구할 예정이다.</p>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화</title><link href="http://localhost:4000/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 InlineArray: iOS 앱 성능 및 메모리 최적화" /><published>2025-06-15T09:00:00+09:00</published><updated>2025-06-15T09:00:00+09:00</updated><id>http://localhost:4000/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94</id><content type="html" xml:base="http://localhost:4000/WWDC25-Swift-62-InlineArray-iOS-%EC%95%B1-%EC%84%B1%EB%8A%A5-%EB%B0%8F-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94"><![CDATA[<ul>
   <li><a href="https://developer.apple.com/kr/videos/play/wwdc2025/245">https://developer.apple.com/kr/videos/play/wwdc2025/245</a></li>
 </ul>
 
@@ -1068,7 +1068,7 @@
 
 <ul>
   <li>Stack 메모리에 직접 저장</li>
-</ul>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://developer.apple.com/kr/videos/play/wwdc2025/245]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 동시성 개선</title><link href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 동시성 개선" /><published>2025-06-14T09:00:00+09:00</published><updated>2025-06-14T09:00:00+09:00</updated><id>https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0</id><content type="html" xml:base="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"><![CDATA[<h3 id="왜-동시성이-어려웠을까요">왜 동시성이 어려웠을까요?</h3>
+</ul>]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[https://developer.apple.com/kr/videos/play/wwdc2025/245]]></summary></entry><entry><title type="html">[WWDC25] Swift 6.2 동시성 개선</title><link href="http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" rel="alternate" type="text/html" title="[WWDC25] Swift 6.2 동시성 개선" /><published>2025-06-14T09:00:00+09:00</published><updated>2025-06-14T09:00:00+09:00</updated><id>http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0</id><content type="html" xml:base="http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"><![CDATA[<h3 id="왜-동시성이-어려웠을까요">왜 동시성이 어려웠을까요?</h3>
 
 <p>이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 <strong>백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)</strong>하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 <strong>데이터 경쟁(data race)</strong>에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수 있어 본질적으로 어렵습니다.
 <em>**</em></p>
@@ -1377,356 +1377,38 @@
 
 <p><strong>참고:</strong> 이 글은 WWDC25 비디오 (“Improve memory usage and performance with Swift”, “What’s new in Swift”) 및 관련 Swift 6.2 발표 자료를 바탕으로 작성되었습니다.</p>
 
-<hr />]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[왜 동시성이 어려웠을까요?]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2025-06-05T03:16:50+09:00</published><updated>2025-06-05T03:16:50+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h3 id="text">Text</h3>
+<hr />]]></content><author><name>jglee</name></author><category term="ios" /><summary type="html"><![CDATA[왜 동시성이 어려웠을까요?]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="http://localhost:4000/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4000/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="http://localhost:4000/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<h1 id="thinking-in-swiftui---2장-state-and-binding">Thinking in SwiftUI - 2장 State and Binding</h1>
 
-<p>기본적으로 Text 뷰는 제안된 크기에 맞게 조정됩니다. 텍스트는 이 작업을 수행하기 위해 다음 순서로 여러 전략을 사용합니다: 텍스트를 여러 줄로 나누기(단어 줄 바꿈), 단어를 나누기(줄 바꿈), 자르기, 마지막으로 텍스트를 조정하기.</p>
+<p>Created: 2024년 5월 26일 오후 7:47
+Tags: SwiftUI, iOS</p>
 
-<p>텍스트는 항상 콘텐츠를 렌더링하는데 필요한 정확한 크기를 반환합니다. 이 크기는 제안된 너비보다 작거나 같고 최소한 한 줄의 높이입니다(0 제안 제외). 즉, 텍스트는 0부터 콘텐츠 전체를 렌더링하는데 필요한 크기까지 임의의 너비를 가질 수 있습니다.</p>
+<p>이전 장에서 SwiftUI code가 <strong>View tree</strong>라는 청사진(블루프린트) 로 구성되는 방법과 영구 <strong>Render tree</strong>로 변환되는 방법에 대해서 알아보았습니다. 이번 장에서는 상태 기반으로 View tree를 구성하고 Render tree를 업데이트 하는 방법을 살펴봅니다.</p>
 
-<p>다음은 Text(“Hello, World!”)가 제안된 크기에 따라 어떻게 렌더링되는지에 대한 몇 가지 예입니다. 점선 사각형은 제안된 크기를 나타내고, 실선 사각형은 반환된 크기를 나타냅니다.</p>
+<p>일반적으로 뷰의 업데이트 주기는 다음과 같습니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 2.png" alt="Untitled" /></p>
+<ol>
+  <li>상태를 기반으로 View Tree가 구성됩니다.</li>
+  <li>현재 View Tree를 기반으로 Render Tree가 노드를 생성, 제거, 업데이트 합니다.</li>
+  <li>이벤트가 발생해 상태가 변경됩니다.</li>
+  <li>1번부터 3번까지 반복합니다.</li>
+</ol>
 
-<p>→ <code class="language-plaintext highlighter-rouge">.lineLimit(_ number:)</code>를 사용하면 제안된 수직 공간에 관계없이 렌더링할 최대 라인 수를 지정할 수 있습니다. nil을 지정하면 줄 제한이 없음을 의미합니다.</p>
+<p>SwiftUI가 상태를 지속적으로 관찰하고 있기 때문에 언제 View tree가 다시 생성되는지, Render tree가 업데이트 되는지, 뷰의 무엇을 업데이트 해야 하는지 걱정할 필요가 없습니다. 다만, 너무 지나치게 광범위한 View 업데이트는 성능 이슈가 발생할 수 있고, 이번 장의 뒷 부분에서 다시 알아보겠습니다.</p>
 
-<p>→ <code class="language-plaintext highlighter-rouge">.lineLimit(_limit:reservesSpace:)</code>를 사용하면 렌더링할 최대 줄 수를 지정하고, 비어 있는지 여부에 관계없이 보고된 크기에 이러한 줄의 공간을 항상 포함하는 옵션을 제공합니다.</p>
+<p>SwiftUI의 핵심이라고 할 수 있는 <strong>Property Wrapper</strong>에 대한 내용입니다.</p>
 
-<p>→ <code class="language-plaintext highlighter-rouge">.truncationMode(_ mode:)</code>를 사용하면 잘림을 적용할 위치를 지정할 수 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>프로퍼티 래퍼는 속성에 적용되는 래퍼(Wrapper)로, 속성의 값에 추가적인 로직을 적용하거나, 값이 변경될 때 다른 동작을 수행할 수 있도록 해준다.
+</code></pre></div></div>
 
-<p>→ <code class="language-plaintext highlighter-rouge">.minimumScaleFactor(_ Factor:)</code>를 사용하면 제안된 크기에 맞도록 글꼴 크기를 축소할 수 있는 텍스트의 양을 지정할 수 있습니다.</p>
+<ul>
+  <li><strong>@State, @Binding, @StateObject, @ObservedObject, @EnvironmentObject</strong> 등</li>
+</ul>
 
-<p>만약, fixedSize()를 Text에 적용시키면, 제안과 다른 결과를 보여준다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 3.png" alt="Untitled" /></p>
-
-<h3 id="shapes"><strong>Shapes</strong></h3>
-
-<p>대부분의 기본 제공 모양(<strong>Rectangle</strong>, <strong>RoundedRectangle</strong>, <strong>Capsule</strong> 및 <strong>Ellipse</strong>)은 0부터 무한대까지 제안된 크기를 수용하고 사용 가능한 공간을 채웁 니다. <strong>원은 예외입니다.</strong> 제안된 크기에 맞춰지고 원의 실제 크기를 다시 보고합니다. 모양에 nil을 제안하는 경우(즉, .fixedSize로 래핑하는 경우) 기본 크기는 10 10입니다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 4.png" alt="Untitled" /></p>
-
-<h2 id="colors"><strong>Colors</strong></h2>
-
-<p><code class="language-plaintext highlighter-rouge">Color.red</code>와 같이 색상을 뷰로 직접 사용하는 경우, 레이아웃 관점에서는 <code class="language-plaintext highlighter-rouge">Rectangle().fill(⋯)</code>처럼 동작합니다.</p>
-
-<p>그러나 특별한 경우가 있습니다. ignoresSafeAreaEdges에 색상을 넣으면, 해당 색상이 마법처럼 ignoresSafeAreaEdges으로 확장됩니다. 이 동작은 레이아웃에 영향을 주지 않지만, 우리 모두가 어느 시점에서 이 문제를 겪게 될 것이므로, 이를 언급하고자 했습니다. 이를 방지하기 위해서는, .background에서 ignoresSafeAreaEdges 매개변수를 사용하거나, Color 대신 Rectangle().fill(⋯)을 사용할 수 있습니다.</p>
-
-<h3 id="image"><strong>Image</strong></h3>
-
-<p>기본적으로 이미지 보기는 정적 값, 즉 기본 이미지의 크기를 보고합니다. 이미지에 대해 <code class="language-plaintext highlighter-rouge">.resizeable()</code>을 호출하면 보기가 완전히 유연해집니다. 그런 다음 이미지는 제안된 크기를 수락하고 이를 다시 보고하며 이미지를 해당 크기로 압축합니다. 실제로 크기 조 정이 가능한 거의 모든 이미지는 다음과 결합됩니다.</p>
-
-<p>이미지가 왜곡되는 것을 방지하기 위한 <code class="language-plaintext highlighter-rouge">.aspectRatio(contentMode:)</code> 또는 <code class="language-plaintext highlighter-rouge">.scaleToFit()</code> modifier를 사용합니다.</p>
-
-<h3 id="divider"><strong>Divider</strong></h3>
-
-<p>구분선이 수평 스택 외부에서 사용되는 경우 제안된 너비를 수락하고 구분선의 높이를 보고합니다. 수평 스택 내에서 구분 선은 제안된 높이를 승인하고 구분선의 너비를 보고합니다. <strong>nil을 제안하면 상황에 따라 가변 축의 기본 크기가 10이 됩 니다.</strong></p>
-
-<h3 id="spacer"><strong>Spacer</strong></h3>
-
-<p>수평 또는 수직 스택 외부에서 Spacer는 <strong>최소 길이부터 무한대까지 제안된 크기를 허용</strong>합니다.</p>
-
-<p>수직 스택 내에서 Spacer는 최소 길이에서 무한대까지의 높이를 허용하지만 <strong>너비 는 0으로 보고됩니다.</strong></p>
-
-<p>스페이서의 최소 길이는 minLength를 사용하여 길이를 지정하지 않는 한 기본 패딩의 길이입니다.</p>
-
-<h2 id="modifier-view">Modifier View</h2>
+<h2 id="data-flow-through-swiftui"><strong>Data Flow Through SwiftUI</strong></h2>
 
 <hr />
 
-<p>ViewModifier는 항상 다른 레이어 내부에 기존 뷰를 래핑합니다. <strong>수정자는 적용된 뷰의 상위가 됩니다.</strong> SwiftUI에는 ViewModifier 프로토콜을 준수하는 값을 적용하기 위한 .modifier API가 있지만 SwiftUI의 내장 수정자는 모두 View의 확장으로 노출됩니다(이는 자체 뷰 수정자에도 좋은 방법입니다). 이 섹션에서는 레이아웃에 영향을 미치는 뷰 수정자를 설명합니다.</p>
-
-<h3 id="frame">Frame</h3>
-
 <ul>
-  <li>고정값 지정</li>
-  <li>유연하게 지정
-    <ul>
-      <li>유연하게 frame 값을 설정한 경우 2번 범위를 정하게 됩니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 5.png" alt="Untitled" /></p>
-
-<p>만약 다음과 같이 설정한 경우 320 480 화면에서 렌더링될 때</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 6.png" alt="Untitled" /></p>
-
-<ol>
-  <li>
-    <p>시스템은 패딩을 320, 480으로 제안합니다.</p>
-  </li>
-  <li>
-    <p>패딩은 배경에 300 460을 제안합니다.</p>
-  </li>
-  <li>
-    <p>배경은 기본 하위 뷰에 동일한 300 460을 제안합니다. (frame).</p>
-  </li>
-</ol>
-
-<ul>
-  <li>일단 가능한 최대값을 제안</li>
-</ul>
-
-<ol>
-  <li>
-    <p>프레임은 하위 뷰(텍스트)에 동일한 300 460을 제안합니다.</p>
-  </li>
-  <li>
-    <p>텍스트에서는 크기가 76 17이라고 보고합니다.</p>
-  </li>
-  <li>
-    <p>프레임의 너비는 max(0, min( .infinity, 300)) = 300이 됩니다.</p>
-  </li>
-</ol>
-
-<ul>
-  <li>0 및 .infinity 값은 유연한 프레임에 대해 지정된 인수입니다.</li>
-</ul>
-
-<ol>
-  <li>
-    <p>배경은 유연한 프레임의 크기(300 17)를 제안합니다.</p>
-  </li>
-  <li>
-    <p>색상은 제안된 크기를 수락하고 보고합니다. (300 17)</p>
-  </li>
-  <li>
-    <p>배경은 기본 하위 뷰의 크기(300 17)를 보고합니다.</p>
-  </li>
-  <li>
-    <p>패딩은 각 측면에 10포인트를 추가하고 크기를 320 37로 보고합니다.</p>
-  </li>
-</ol>
-
-<h2 id="aspectratio">AspectRatio</h2>
-
-<p>AspectRatio 유연한 frame 사이즈로 작업할 때 유용하게 사용할 수 있습니다. 예를 들어 아래 코드는 4:3 인 직사각형을 그릴 수 있습니다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Color</span><span class="o">.</span><span class="n">secondary</span>
-	<span class="o">.</span><span class="nf">aspectRatio</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="nv">contentMode</span><span class="p">:</span> <span class="o">.</span><span class="n">fit</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 7.png" alt="Untitled" /></p>
-
-<p>aspectRatio의 일반적으로 이미지에 사용합니다. 이미지에 .resizable() 을 붙이면 사이즈에 맞게 이미지가 늘어나거나 줄어드는데, 이미지가 깨지지 않도록 aspectRatio 를 사용해 화면 사이즈에 맞춰 이미지 사이즈를 조절할 수 있습니다.</p>
-
-<p><strong>만약, 비율을 적용하지 않은 경우 어떻게 될까?</strong></p>
-
-<p>aspectRatio modifier는 하위 뷰의 이상적인 크기를 제안을 통해 조사하고, 비율을 적용합니다.</p>
-
-<p>만약, 이미지를 사용했을 때 이미지의 사이즈가 100:30 이라고 가정하고, 전체 사이즈가 200:200 이면, 아래와 같은 절차를 따라 사이즈를 설정합니다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 8.png" alt="Untitled" /></p>
-
-<ol>
-  <li>
-    <p>AspectRatio의 크기는 200x200으로 제안을 내려보냅니다.</p>
-  </li>
-  <li>
-    <p>AspectRatio는 이미지에 nil x nil로 제안합니다.(사이즈 제한 없이)</p>
-  </li>
-  <li>
-    <p>이미지의 이상적인 크기는 100x30으로 제안을 올려보냅니다.</p>
-  </li>
-  <li>
-    <p>가로 세로 비율이 100/30인 직사각형을 200 200에 맞춥니다.</p>
-  </li>
-</ol>
-
-<ul>
-  <li>200 60이며 이 크기를 이미지에 제안합니다.</li>
-</ul>
-
-<ol>
-  <li>이미지의 크기는 200 60으로 보고됩니다.</li>
-  <li>AspectRatio는 하위 뷰의 크기인 200 60을 자체 크기로 보고합니다.</li>
-</ol>
-
-<blockquote>
-  <p>AspectRatio를 적용한다고 반드시 비율에 맞게 조정되는건 아닙니다. 하위뷰가 유연하지 않을 경우 적용되지 않을 수 있습니다.</p>
-
-</blockquote>
-
-<h3 id="overlay-and-background"><strong>Overlay and Background</strong></h3>
-
-<p>Overlay와 Background는 SwiftUI에서 가장 유용한 수정자 중 하나입니다. 레이아웃 측면에서는 정확히 동일한 방식으로 작동합니다. 유일한 차이점은 Overlay는 기본 View 위에 보조 View를 그리는 반면, Background는 기본 View 뒤에 보조 View를 그리는 것입니다. 예를 들어, 일부 텍스트 뒤에 배경을 그리려면 다음과 같이 할 수 있습니다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 9.png" alt="Untitled" /></p>
-
-<p>Background와 overlay는 기본 하위 View의 레이아웃에 영향을 미치지 않습니다. 보고된 overlay 또는 background의 크기는 항상 기본 하위 View의 보고된 크기입니다.</p>
-
-<h2 id="container-view">Container View</h2>
-
-<hr />
-
-<p>HStack과 VStack은 단순해보이지만, 결과를 파악하는데 복잡할 수 있다.</p>
-
-<p>만약 아래와 같이 사이즈를 지정하지 않은 경우 제안된 크기에 따라서 다른 결과가 나온다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">HStack</span><span class="p">(</span><span class="nv">spacing</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> 
-	<span class="kt">Color</span><span class="o">.</span><span class="n">cyan</span> 
-	<span class="kt">Text</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span> 
-	<span class="kt">Color</span><span class="o">.</span><span class="n">teal</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 10.png" alt="Untitled" /></p>
-
-<ol>
-  <li>큰 크기를 제공한 케이스 (150x50)
-    <ol>
-      <li>모두 충분한 크기를 제공받았지만, Text의 경우에는 텍스트가 들어간 경우의 사이즈가 이상적인 상한선 크기로 잡을 수 있다.</li>
-      <li>그에 비해서 Color는 유연하기 때문에 채울 수 있는 만큼 Text를 채우고 남은 공간을 Color가 나눠 가지게 된다.</li>
-    </ol>
-  </li>
-  <li>작은 크기를 제공한 케이스 (100x50)
-    <ol>
-      <li>3개 모두 표현하기에 충분하지 않은 사이즈가 나온 경우 3등분하게 된다. 필요에 따라서 텍스트가 줄바꿈되거나 잘리게 된다.</li>
-    </ol>
-  </li>
-  <li>만약 극단적으로 작은 사이즈를 준다면 (40x40)
-    <ol>
-      <li>이 경우 사이즈를 설정할 수 없기 때문에, Text가 Container의 제안을 무시하고 이상적인 사이즈로 표시해버립니다.</li>
-      <li>
-        <p>대안은 .layoutPriority modifier를 적용해 내부 View 사이에 우선순위를 제공하는 것 입니다.</p>
-
-        <p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 11.png" alt="Untitled" /></p>
-      </li>
-    </ol>
-  </li>
-</ol>
-
-<h3 id="zstack">ZStack</h3>
-
-<p>ZStack은 얼핏보면 overlay나 background와 동일한 역할을 할 것 같지만, overlay와 background는 ViewModifier기 때문에 하위뷰의 사이즈에 영향을 받는다. 그에 비해서 ZStack은 컨테이너기 때문에 내부의 View의 크기와 상관없이 Size를 잡게된다.</p>
-
-<p>만약, 아래 코드를 root 에서 실행하게되면, 화면 전체를 다 가리게 된다.</p>
-
-<h3 id="scrollview">ScrollView</h3>
-
-<p>제안된 화면을 가득 채우게 되고, 내부 View는 contents의 사이즈에 맞춰진다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">ScrollView</span> <span class="p">{</span> 
-	<span class="kt">Image</span><span class="p">(</span><span class="s">"logo"</span><span class="p">)</span>
-		<span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
-		<span class="o">.</span><span class="nf">aspectRatio</span><span class="p">(</span><span class="o">.</span><span class="n">fit</span><span class="p">)</span> 
-	<span class="kt">Text</span><span class="p">(</span><span class="s">"This is a longer text"</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>scrollView에 Shape 의 서브 뷰를 넣으면 10x10으로 표시되는 것을 볼 수 있다. 이는 Shape의 ProposedView의 기본값이 10, 10 이기 때문이다.</p>
-
-</blockquote>
-
-<h3 id="geometryreader"><strong>GeometryReader</strong></h3>
-
-<p>제안받은 크기에 접근하는데 사용합니다. GeometryProxy 를 통해 제안받은 크기에 접근 할 수 있습니다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">GeometryReader</span> <span class="p">{</span> <span class="n">proxy</span> <span class="k">in</span> 
-	<span class="kt">Text</span><span class="p">(</span><span class="nv">verbatim</span><span class="p">:</span> <span class="s">"</span><span class="se">\(</span><span class="n">proxy</span><span class="o">.</span><span class="n">size</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>그러나 스택 오버플로우나 다른 사이트를 볼 때 GeometryReader에서 이슈가 생겨 고통받는 경우가 많습니다. 예를 들어서 GeometryReader 를 주위에 배치하고, Text의 사이즈를 측정하려고 하는 경우 Text 주변의 레이아웃이 잘못 나오는 경우가 많이 보고됩니다.</p>
-
-<p>GeometryReader는 꼭 필요한 경우에만 써야 하고, 다음과 같은 경우에 유용하게 사용할 수 있습니다.</p>
-
-<ul>
-  <li>GeometryReader 내부에 유연한 View를 넣는 경우 레이아웃 사이즈를 체크할 수 있습니다.
-    <ul>
-      <li>예를 들어서 ScrollView 안에 GeometryReader를 넣는 경우 ScrollView의 내부 View 사이즈를 알 수 있습니다.</li>
-    </ul>
-  </li>
-  <li>background나 overlay 안에 GeometryReader를 넣으면 기본 View 크기에는 영향을 미치지 않지만 관련된 다양한 값을 읽을 수 있습니다. (고급 레이아웃 장에서 더 자세한 예를 살펴보겠습니다.)</li>
-</ul>
-
-<h3 id="list">List</h3>
-
-<hr />
-
-<p>List는 UIkit에서 UITableView와 동일합니다. List 자체는 제안받은 크기를 가지며, ScrollView와 유사하게 View 자체는 너비와 높이를 제안하지 않습니다.</p>
-
-<p>행의 높이가 고정되지 않은 UITableView와 비슷하고 내부에 배치된 항목을 기준으로 내부 View의 높이를 추정합니다.</p>
-
-<h3 id="lazyhstack-lazyvstack">LazyHStack, LazyVStack</h3>
-
-<p>List와 동일하게 View가 보여질 때 업데이트 한다.</p>
-
-<h3 id="lazyvgrid-lazyhgrid">LazyVGrid, LazyHGrid</h3>
-
-<p>LazyVGrid와 LazyHGrid는 모두 동일한 기본 알고리즘을 사용하여 열이나 행의 크기를 계산하므로 이 섹션 에서는 LazyVGrid에 중점을 둘 것입니다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 12.png" alt="Untitled" /></p>
-
-<p>그리드는 iOS 16에서 추가되었고, 17 이상에서도 아직 버그가 많기 때문에 짧게 다루고 넘어간다.</p>
-
-<p>(가급적 쓰지 말것)</p>
-
-<h3 id="viewthatfits"><strong>ViewThatFits</strong></h3>
-
-<p>제안된 크기에 따라 다른 보기를 표시하려면 ViewThatFits를 사용하면 됩니다. 여러 개의 하위 뷰가 필요한 경우, 제안된 크기에 맞는 첫 번째 하위 뷰를 표시합니다. 이는 각 하위 뷰의 이상적인 크기를 파악하기 위해 nil을 제안하고, 이상적인 크기가 제안된 크기 내에 맞는 첫 번째 하위 뷰(코드에 하위 뷰가 나타나는 순서대로)를 표시합니다. 적합한 하위 뷰가 없으면 마지막 하위 뷰를 선택합니다.</p>
-
-<h3 id="rendering-modiers"><strong>Rendering Modi!ers</strong></h3>
-
-<p>SwiftUI에는 offset, RotationEffect, scaleEffect 등과 같이 뷰의 렌더링 방식에는 영향을 주지만 레이아웃 자체에는 영향을 미치지 않는 여러 뷰 수정자가 있습니다. 이러한 수정자는 CGContext.translate와 같은 작업을 수행한다고 생각할 수 있습니다. 이는 뷰가 그려지는 위치를 변경하지만, 레이아웃 시스템에서 보면 뷰는 여전히 원래 위치에 있습니다.</p>
-
-<h2 id="alignment"><strong>Alignment</strong></h2>
-
-<p>기본적으로 거의 모든 뷰는 하위 뷰의 중앙에 배치됩니다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Text</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
-	<span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">// 기본값이 .center</span>
-</code></pre></div></div>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 13.png" alt="Untitled" /></p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Text</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
-	<span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">bottomTrailing</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 14.png" alt="Untitled" /></p>
-
-<p>정렬 가이드</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 15.png" alt="Untitled" /></p>
-
-<p>ZStack 역시 기본값은 .center라 아래의 경우 가운데에 쌓이게 된다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 16.png" alt="Untitled" /></p>
-
-<h3 id="정렬-가이드-수정">정렬 가이드 수정</h3>
-
-<p>center, bottom같은 기본 정렬 가이드라인을 수정할 수 있다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">image</span> <span class="o">=</span> <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"pencil.circle.!ll"</span><span class="p">)</span> 
-	<span class="o">.</span><span class="nf">alignmentGuide</span><span class="p">(</span><span class="o">.</span><span class="n">firstTextBaseline</span><span class="p">,</span> <span class="nv">computeValue</span><span class="p">:</span> <span class="p">{</span> <span class="n">dimension</span> <span class="k">in</span>
-		<span class="n">dimension</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span> 
-	<span class="p">}</span>
-<span class="p">)</span>
-</code></pre></div></div>
-
-<p>image의 .firstTextBaseline을 줄여서 Image 가 firstTextBaseline으로 정렬했더니 아래로 밀리게 된다.</p>
-
-<p>이렇게 수정한 이미지를 적용하면 다음과 같이 가이드라인이 변경된다.</p>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 17.png" alt="Untitled" /></p>
-
-<p>하지만 firstTextBaseline 을 수정했기 때문에 center로 설정하면 바뀌는게 없다.</p>
-
-<p>이를 사용해 다음과 같이 범용적으로 적용 가능한 뱃지 아이콘을 만들수도 있다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">View</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="n">badge</span><span class="o">&lt;</span><span class="kt">B</span><span class="p">:</span> <span class="kt">View</span><span class="o">&gt;</span><span class="p">(</span><span class="kd">@ViewBuilder</span> <span class="n">_</span> <span class="nv">badge</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
-        <span class="nf">overlay</span><span class="p">(</span><span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">topTrailing</span><span class="p">)</span> <span class="p">{</span> <span class="nf">badge</span><span class="p">()</span>
-                <span class="o">.</span><span class="nf">alignmentGuide</span><span class="p">(</span><span class="o">.</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span> <span class="p">}</span>
-		            <span class="o">.</span><span class="nf">alignmentGuide</span><span class="p">(</span><span class="o">.</span><span class="n">trailing</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span> <span class="p">}</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="uncategorized" /><summary type="html"><![CDATA[Text]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 2장 State and Binding</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding" rel="alternate" type="text/html" title="Thinking in SwiftUI - 2장 State and Binding" /><published>2025-06-05T03:16:40+09:00</published><updated>2025-06-05T03:16:40+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---2%EC%9E%A5-State-and-Binding</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding"><![CDATA[<ul>
   <li><a href="https://wlaxhrl.tistory.com/91">https://wlaxhrl.tistory.com/91</a></li>
 </ul>
 
@@ -1746,7 +1428,7 @@
   <li>뷰에서 소유되고 관리되어야 하는 데이터 (ex. 텍스트필드, 토글버튼 등)</li>
 </ul>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled.png" alt="Untitled" /></p>
 
 <p>Counter 예시를 살펴보면, 버튼을 누를 때마다 상태값이 변경되고 화면이 다시 그려집니다. 만약 버튼의 라벨에 상태값을 바인딩하지 않았다면, SwiftUI는 업데이트할 필요가 없다는 것을 인지하고 화면을 다시 그리지 않습니다.</p>
 
@@ -1758,25 +1440,25 @@
   <li>Counter 구조체가 처음 생성되면, View tree는 만들어지지만 아직 Render tree에 노드가 존재하지 않습니다. State라는 PropertyWrapper 역시 초기값을 할당하고 있지만, 아직 아무것도 바인딩하지 않았기 떄문에 View는 비어있습니다.</li>
 </ol>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 1.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 1.png" alt="Untitled" /></p>
 
 <ol>
   <li>SwiftUI는 Render tree에 노드를 생성하면서 State를 할당합니다. 이제 PropertyWrapper 의 메모리는 랜더 노드를 가리키게 됩니다.</li>
 </ol>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 2.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 2.png" alt="Untitled" /></p>
 
 <ol>
   <li>View의 body 부분이 실행되고, <code class="language-plaintext highlighter-rouge">Button</code>이 생성됩니다. 이제 state 값은 랜더 노드를 가리키고 있기 때문에 <code class="language-plaintext highlighter-rouge">Button</code> 의 label 값은 랜더 노드에 저장된 값을 사용합니다.</li>
 </ol>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 3.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 3.png" alt="Untitled" /></p>
 
 <ol>
   <li>마지막으로 노드의 값을 읽어 값이 설정된 view body 부분을 랜더링해 실제 UI를 만듭니다.</li>
 </ol>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 4.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 4.png" alt="Untitled" /></p>
 
 <h2 id="이벤트-발생-3단계">이벤트 발생 3단계</h2>
 
@@ -1808,7 +1490,7 @@
 
 <p>둘 다 객체의 수명과 관련이 있습니다. 외부에서 수명이 관리되는 객체의 경우 @State를 사용하지 않는다는 것 입니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 5.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 5.png" alt="Untitled" /></p>
 
 <p>만약, 위와 같이 모델을 외부에서 전달받는 경우 초기값은 Button에 잘 셋팅되겠지만, 이미 View가 만들어진 상태에서 외부에서 Model의 값을 변경해도 상태 변화에 영향을 주지 못합니다.</p>
 
@@ -1966,11 +1648,11 @@
 
 <h3 id="1-print-삽입">1. print 삽입</h3>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 6.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 6.png" alt="Untitled" /></p>
 
 <h3 id="2-selfprintcahnges">2. Self.printCahnges()</h3>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 7.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 7.png" alt="Untitled" /></p>
 
 <p>print문과 다르게 재실행된 이유를 같이 호출해줍니다.</p>
 
@@ -1982,7 +1664,7 @@
 
 <h3 id="3-instruments">3. instruments</h3>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 8.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 8.png" alt="Untitled" /></p>
 
 <h3 id="observable-매크로"><strong>Observable 매크로</strong></h3>
 
@@ -2034,7 +1716,7 @@
 
 <p><a href="https://eunjin3786.tistory.com/580"><strong>https://eunjin3786.tistory.com/580</strong></a></p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---2장-State-and-Binding/Untitled 9.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/2/Untitled 9.png" alt="Untitled" /></p>
 
 <ul>
   <li>매크로 기능은 iOS 17 이상</li>
@@ -2046,7 +1728,28 @@
 
 <p><strong>이 새로운 모델은 훨씬 더 간결하고 효율적입니다.</strong> 예를 들어, 뷰 본문에서 전역 <strong>싱글톤(관찰 가능)</strong>에 액세스할 경우, <code class="language-plaintext highlighter-rouge">@ObservedObject</code>를 사용하여 싱글톤을 뷰에 전달할 필요 없이, 액세스된 속성과 뷰 사이에 자동으로 종속성이 형성됩니다. 관찰 가능한 객체는 옵션, 배열 또는 다른 컬렉션에 중첩될 수 있으며, 속성 수준 추적으로 인해 관찰 및 뷰 업데이트가 예상대로 계속 작동합니다.</p>
 
-<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[https://wlaxhrl.tistory.com/91]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2025-06-05T03:16:30+09:00</published><updated>2025-06-05T03:16:30+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled.png" alt="Untitled" /></p>
+<p>또한, 뷰 본문에서 객체의 속성 하나만 사용하는 경우, 다른 속성이 변경되어도 이 뷰는 다시 그려지지 않습니다. 모델 객체를 사용하지 않는 경우(예: 코드의 한 분기에만 존재하는 경우), 모델은 전혀 관찰되지 않습니다. 이를 통해 불필요한 뷰 업데이트를 줄여 성능을 향상시킬 수 있습니다. 이전에는 모델 객체를 수동으로 분할하여 더 세분화된 뷰 업데이트를 얻었습니다.</p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 2장 State and Binding]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 1장 View Trees</title><link href="http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees" rel="alternate" type="text/html" title="Thinking in SwiftUI - 1장 View Trees" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4000/Thinking-in-SwiftUI---1%EC%9E%A5-View-Trees</id><content type="html" xml:base="http://localhost:4000/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees"><![CDATA[<h1 id="thinking-in-swiftui---1장-view-trees">Thinking in SwiftUI - 1장 View Trees</h1>
+
+<p>Created: 2024년 5월 26일 오후 6:23
+Tags: SwiftUI, iOS</p>
+
+<p>뷰 트리와 렌더 트리는 SwiftUI 작업을 이해하는 데 있어 가장 기본적이고 중요한 개념입니다. 원하는 레이아웃을 얻기 위해서는 뷰 트리의 구성 방식을 이해해야 합니다.</p>
+
+<p>상태가 어떻게 작동하는지 이해하려면, SwiftUI에서 뷰의 수명과 그것이 만들고 있는 뷰 트리와의 관계를 이해하는 것이 중요합니다. 이를 이해하면, 데이터를 효율적으로 로드하고 필요할 때 뷰를 업데이트하는 SwiftUI 코드를 작성하는 데 도움이 됩니다.</p>
+
+<p>마지막으로, 애니메이션과 전환이 어떻게 작동하는지 이해하려면 뷰 트리에 대한 이해가 필요합니다.</p>
+
+<ul>
+  <li>뷰 트리</li>
+  <li>뷰 수명</li>
+  <li>애니메이션 전환</li>
+</ul>
+
+<h2 id="view-tree와-render-tree"><strong>View Tree와 Render Tree</strong></h2>
+
+<hr />
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled.png" alt="Untitled" /></p>
 
 <p>위와 같은 코드를 작성하면, 중앙에 일시적인 청사진이 구축되며, 이를 ‘View Tree’라고 합니다. 그 결과, 왼쪽처럼 View가 렌더링되어 보여집니다.</p>
 
@@ -2058,7 +1761,7 @@
 
 <p>만약, 아래와 같이 순서를 변경하게 된다면</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 1.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 1.png" alt="Untitled" /></p>
 
 <p><code class="language-plaintext highlighter-rouge">background</code>는 <code class="language-plaintext highlighter-rouge">padding</code>의 자식이 되며, <code class="language-plaintext highlighter-rouge">Text</code>에 <code class="language-plaintext highlighter-rouge">background</code>이 붙게 됩니다. 그러면 <code class="language-plaintext highlighter-rouge">background</code>에 <code class="language-plaintext highlighter-rouge">padding</code>이 붙어서 다음과 같은 모습이 됩니다.</p>
 
@@ -2075,7 +1778,7 @@
   <li><a href="https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md">https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md</a></li>
 </ul>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 2.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 2.png" alt="Untitled" /></p>
 
 <p><strong><code class="language-plaintext highlighter-rouge">HStack</code></strong>은 클로저를 매개변수로 사용하며, 이 클로저는 <strong><code class="language-plaintext highlighter-rouge">@ViewBuilder</code></strong>로 표시됩니다. 이를 통해 내부에 여러 표현식을 작성할 수 있으며, 각 표현식은 뷰를 나타냅니다. 본질적으로 스택에 전달된 클로저는 이 예제에서 스택의 하위 뷰가 되는 뷰 목록을 생성합니다.</p>
 
@@ -2094,7 +1797,7 @@
   <li><code class="language-plaintext highlighter-rouge">background</code>, <code class="language-plaintext highlighter-rouge">overlay</code>..</li>
 </ul>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 3.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 3.png" alt="Untitled" /></p>
 
 <ul>
   <li><a href="https://zeddios.tistory.com/m/1366">https://zeddios.tistory.com/m/1366</a></li>
@@ -2106,7 +1809,7 @@
 
 <p>SwiftUI 코드를 작성하고 ViewBuilder를 통해서 View 목록을 작성하는데, 이 때 View 목록도 동적일 수 있습니다. if - else 구문을 통해서 뷰를 동적으로 구성하는 방법은 아래와 같습니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 4.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 4.png" alt="Untitled" /></p>
 
 <p>if 문 대신, if let, switch 문도 사용 가능합니다.</p>
 
@@ -2118,17 +1821,17 @@
 
 <p>랜더 트리는 SwiftUI 내부에 존재하기 때문에, 직접 다룰일은 없습니다. 하지만, SwiftUI의 동작을 이해하는데 유용한 모델입니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 5.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 5.png" alt="Untitled" /></p>
 
 <p>만약 옵셔널한 View 구조가 있다면, View Tree에서는 다음과 같이 생성됩니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 6.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 6.png" alt="Untitled" /></p>
 
 <p>하지만, Render Tree의 경우에는 다릅니다. Text가 nil일 경우 View Tree가 Render Tree를 만들 땐 실제로 View에 대응되도록 HStack 안에 Image 하나만 존재합니다.</p>
 
 <p>만약에 State가 업데이트되서 View 업데이트가 동작하게 된다면, Render Tree에 Text가 삽입되거나, 제거됩니다. (하지만, Text의 문구가 변경어도 Text View가 새로 만들어지는 건 아닙니다.)</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 7.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 7.png" alt="Untitled" /></p>
 
 <h2 id="lifetime">LifeTime</h2>
 
@@ -2177,7 +1880,7 @@
 
 <p>만약 작성한 코드에서 View의 ID값을 할당하지 않는다면, View Tree에서 생성될 View마다 고유 ID 값을 할당합니다. 이렇게 자동으로 할당되는 ID를 암시적 ID라 합니다. 이 ID 값을 통해서 뷰를 식별할 수 있고 ID가 동일할 경우 View를 새로 만드는게 아닌, 상태값을 업데이트 합니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 8.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 8.png" alt="Untitled" /></p>
 
 <p>특이한 부분은 if else  브랜치에서 1이라는 동일한 ID 값 아래에 다른 ID값을 가진다는 것 입니다. 따라서 동일한 양쪽 다 동일한 Text를 사용하고 있지만, 다른 ID값을 가지고 있어 condition이 변경되면 새로 View를 만들어 추가하게 됩니다.</p>
 
@@ -2187,7 +1890,7 @@
 
 <p>아래의 경우 true, false 값을 ID로 사용해 2개의 Text를 번갈아 추가 삭제 할 수 있습니다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 9.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 9.png" alt="Untitled" /></p>
 
 <ul>
   <li>Explicit id는 <strong><code class="language-plaintext highlighter-rouge">.id(_:)</code></strong> 메서드를 사용하여 명시적으로 지정할 수 있습니다.</li>
@@ -2195,21 +1898,21 @@
 
 <p>그렇다면, 다음과 같이 하나의 Text를 만들어서 2번 사용하는 경우 ID값이 어떻게 될까?</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 10.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 10.png" alt="Untitled" /></p>
 
 <p>View Tree에 표시된 것 처럼 다른 위치에 있기 때문에 View Tree에서 서로 다른 암시적인 ID값을 할당하고 별도의 뷰로 간주됩니다. 이 부분 때문에 View Tree를 청사진이라 생각할 수 있는 것 입니다.</p>
 
 <p>다음으로 만약에 이런 condition에 따라 분기하는 applayIf 를 만들고 적용하면 어떻게 될까?</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 11.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 11.png" alt="Untitled" /></p>
 
 <p>적용한 코드 샘플을 보면 if else 형태로 하이라이트가 들어가면 background 모디파이어를 추가하는 형태로 구현하고 View Tree 역시 if else 형태와 유사한 모습을 보이고 있다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 12.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 12.png" alt="Untitled" /></p>
 
 <p>이 경우 동일하게 Text는 변함이 없지만, 불필요하게 2개의 Text가 condition에 따라서 생성, 제거되는 모습을 볼 수 있다. 이런 패턴이 아닌 아래와 같은 패턴을 사용하는게 좋다.</p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 13.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 13.png" alt="Untitled" /></p>
 
 <p>이 경우 if else 의 값에 따라서 상태값을 변경해 랜더 노드를 추가, 삭제하지 않는다.</p>
 
@@ -2247,7 +1950,7 @@
 
 <p><a href="https://www.vadimbulavin.com/swiftui-view-lifecycle/">https://www.vadimbulavin.com/swiftui-view-lifecycle/</a></p>
 
-<p><img src="/assets/images/swiftui/2025-07-19-Thinking-in-SwiftUI---1장-View-Trees/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>https://leejigun.github.io/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h1 id="thinking-in-swiftui---3장-layout">Thinking in SwiftUI - 3장 Layout</h1>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/1/Untitled 14.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 1장 View Trees]]></summary></entry><entry><title type="html">Thinking in SwiftUI - 3장 Layout</title><link href="http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" rel="alternate" type="text/html" title="Thinking in SwiftUI - 3장 Layout" /><published>2024-05-27T04:47:00+09:00</published><updated>2024-05-27T04:47:00+09:00</updated><id>http://localhost:4000/Thinking-in-SwiftUI---3%EC%9E%A5-Layout</id><content type="html" xml:base="http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"><![CDATA[<h1 id="thinking-in-swiftui---3장-layout">Thinking in SwiftUI - 3장 Layout</h1>
 
 <p>Created: 2024년 5월 26일 오후 10:51</p>
 
@@ -2649,4 +2352,71 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 3장 Layout]]></summary></entry></feed>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 18.png" alt="Untitled" /></p>]]></content><author><name>jglee</name></author><category term="swiftui" /><category term="ios" /><summary type="html"><![CDATA[Thinking in SwiftUI - 3장 Layout]]></summary></entry><entry><title type="html">[클린 소프트웨어] 단일책임원칙(SRP)</title><link href="http://localhost:4000/CleanSoftware_SRP" rel="alternate" type="text/html" title="[클린 소프트웨어] 단일책임원칙(SRP)" /><published>2023-07-20T09:00:02+09:00</published><updated>2023-07-20T09:00:02+09:00</updated><id>http://localhost:4000/CleanSoftware_SRP</id><content type="html" xml:base="http://localhost:4000/CleanSoftware_SRP"><![CDATA[<h1 id="클린-소프트웨어-단일책임원칙srp">[클린 소프트웨어] 단일책임원칙(SRP)</h1>
+
+<blockquote>
+  <p>클린 소프트웨어 책의 단일책임원칙 파트를 읽고 정리한 내용입니다.</p>
+
+</blockquote>
+
+<p>이번 장에서는 모듈이나 클래스의 변경을 야기하는 응집력에 대해서 언급하려 한다.</p>
+
+<h2 id="단일-책임-원칙">단일 책임 원칙</h2>
+
+<blockquote>
+  <p>한 클래스는 단 한 가지의 변경 이유만을 가져야 한다.</p>
+
+</blockquote>
+
+<p>보통 단일 책임 원칙에 대해서 검색해보면 하나의 클래스는 하나의 책임만을 가져야 한다고 설명하고 있습니다. 하지만, 이 책에서는 다르게 설명하고 있습니다. 한 클래스는 단 한 가지의 변경 이유만을 가져야 한다는 것입니다.</p>
+
+<p>이는 SOLID 원칙이 소프트웨어 설계 단에서 발생하는 문제를 해결하는 데 있습니다. SOLID 원칙을 지키는 것에만 집중하면서 생기는 변화를 잊지 말아야 합니다. 앞서 배운 대로 애자일 설계는 문제를 해결하는 과정을 의미합니다. 단일 책임 원칙 역시 소프트웨어 변경에 있어서 발생하는 문제를 해결하는 데 사용하는 원칙입니다. 클래스는 하나의 책임을 가져야 한다는 원칙보다는 한 가지의 변경 이유만을 가져야 한다는 목적을 명확하게 이해해야 합니다.</p>
+
+<p>예를 들어, 게임을 만들 때 현재 프레임을 기억하는 것과 스코어를 계산하는 두 가지 책임이 있을 때, 소프트웨어를 설계할 때 2개의 클래스로 분리할 것입니다. 이는 하나의 클래스가 하나의 책임만 가져야 하기 때문이 아니라 변경점이 생겼을 때 하나의 클래스를 변경할 때 그 클래스가 가진 하나의 책임에 의해서만 변경되어야 하기 때문에 미리 유지보수를 고려하여 2개의 클래스로 분리한 것입니다.</p>
+
+<h2 id="책임이란-무엇인가">책임이란 무엇인가?</h2>
+
+<p>그렇다면 책임이란 무엇일까요? 만약 한 클래스를 변경하기 위해 한 가지 이상의 이유가 있다면, 그 클래스는 한 가지 이상의 책임을 맡고 있다는 것입니다. 그런데 사람들은 여러 책임을 묶어서 하나의 기능으로 생각하기 때문에 클래스를 분리하기 어렵습니다.</p>
+
+<p>만약 클래스를 과도하게 쪼개면 불필요한 복잡성을 가지게 되고, 단순히 기능 단위로 묶어두면 변경이 힘들어지는 경직성의 악취를 풍기게 됩니다.</p>
+
+<p>대부분의 경우 테스트 주도 개발 방식으로 개발하면 설계 단계에서 악취가 나기 한참 전에 테스트 코드를 작성하는 과정에서 책임이 분리되도록 만들 수 있습니다. 그러나 테스트 코드가 분리를 강제하지 않았고, 경직성과 취약성의 악취가 강해진 경우에는 퍼사드나 프록시 패턴을 사용해 두 책임이 분리되도록 리팩토링해야 합니다.</p>
+
+<p>단일 책임 원칙은 가장 간단한 원칙 중 하나이면서도 제대로 적용하기 가장 어려운 원칙 중 하나입니다. 책임들을 구분해 분리하기는 익숙하지 않고, 우리가 실제로 소프트웨어를 설계할 때 이런 책임들을 하나 하나 찾고 분리하는 것이 대부분의 일입니다.</p>
+
+<p>추가로 단일책임원칙과는 상관 없지만, 클린 소프트웨어에서 결합된 책임을 분리하기 위해서 퍼사드 패턴과 프록시 패턴을 사용 할 수 있다고 언급하고 있어 해당 패턴에 대해서 간단하게 정리하려 합니다.</p>
+
+<h3 id="퍼사드-패턴">퍼사드 패턴</h3>
+
+<p>퍼사드 패턴은 복잡하고 일반적인 인터페이스를 가진 객체 그룹에 간단하고 구체적인 인터페이스를 제공하고자 할 때 사용합니다. 예를 들어, 어떤 함수나 클래스가 어떤 동작인지 이해하기 어려운 매우 복잡한 동작이나 다양하고 많은 인터페이스를 가지고 있을 때, 새로운 인터페이스를 만들어 이해하기 쉽게 만들 수 있습니다.</p>
+
+<p>소프트웨어가 점차 고도화되면서 인터페이스가 다양해지고 복잡해질 수 있습니다. 만약 하나의 클래스가 다수의 책임을 가지게 된다면, 해당 클래스를 한 가지 책임만을 가진 다수의 클래스로 리팩토링하고 해당 클래스를 모아서 사용하는 퍼사드를 만들어 인터페이스를 제공할 수 있습니다.</p>
+
+<p>덕분에 복잡한 기능이라도 다수의 부담 없이 다수의 클래스로 분리하고 사용하는 입장에서 퍼사드를 통해 간단하게 다수의 클래스가 결합된 하나의 인터페이스를 사용할 수 있습니다.</p>
+
+<h3 id="프록시-패턴">프록시 패턴</h3>
+
+<p>프록시는 사전적인 의미로 대리인을 뜻한다. 클라이언트가 원본 객체에 접근하기 전 프록시를 통해 로직을 수행 한 후 원본 객체에 접근하는 형태를 취하고 있다.</p>
+
+<p>다음과 같은 이유가 있을 때 일반적으로 프록시 패턴을 사용한다.</p>
+
+<ul>
+  <li>보안: 클라이언트가 원본 객체에 접근할 권한이 있는 지 체크 후 권한이 있는 경우에만 전달한다.</li>
+  <li>캐싱: 프록시가 내부 데이터를 캐싱하고 캐싱 데이터가 없는 경우에만 원본 데이터에 접근한다.</li>
+  <li>데이터 유효성 검사: 원본 객체에 전달하는 데이터가 원본 객체가 다룰 수 있는 범위의 데이터인지 사전에 검증한다.</li>
+  <li>지연 초기화: 만약, 리소스가 부족하다면, 여유가 있을 때 까지 대기할 수 있다.</li>
+  <li>로깅: 원본 객체와의 인터렉션을 인터셉트해 기록한다.</li>
+  <li>원격 객체: 원격에 있는 객체를 로컬에 있는 객체처럼 보이도록 할 수 있다.</li>
+</ul>
+
+<p>클린 소프트웨어에서는 프록시는 사용하기 까다롭다고 언급하고 있다. 하지만 그 모든 까다로운 특성에도 불구하고 매우 강력한 이점이 한 가지 있는데, 바로 관심사의 분리이다. 프록시의 기능과 원본 객체의 기능을 분리해 생각 할 수 있다.</p>
+
+<p>원본 객체는 자신의 책임만 집중하고 다른 책임을 프록시에 위임할 수 있다.</p>
+
+<p>하지만, 클린 소프트웨어에서는 시간을 아끼기 위해 일단 파사드 패턴으로 시작하고 필요하면 리팩토링 할 것을 권하고 있다.</p>
+
+<p>참고</p>
+
+<p>퍼사드 패턴: <a href="https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%8D%BC%EC%82%AC%EB%93%9CFacade-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90">https://inpa.tistory.com/entry/GOF-💠-퍼사드Facade-패턴-제대로-배워보자</a></p>
+
+<p>프록시 패턴: <a href="https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%94%84%EB%A1%9D%EC%8B%9CProxy-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90">https://inpa.tistory.com/entry/GOF-💠-프록시Proxy-패턴-제대로-배워보자</a></p>]]></content><author><name>jglee</name></author><category term="cs" /><summary type="html"><![CDATA[[클린 소프트웨어] 단일책임원칙(SRP)]]></summary></entry></feed>

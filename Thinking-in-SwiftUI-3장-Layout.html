@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" />
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Thinking in SwiftUI - 3장 Layout | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Thinking in SwiftUI - 3장 Layout" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Text" />
-<meta property="og:description" content="Text" />
-<link rel="canonical" href="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" />
-<meta property="og:url" content="https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-06-05T03:16:50+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Thinking in SwiftUI - 3장 Layout" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2025-06-05T03:16:50+09:00","datePublished":"2025-06-05T03:16:50+09:00","description":"Text","headline":"Thinking in SwiftUI - 3장 Layout","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Thinking in SwiftUI - 3장 Layout" />
+    <meta property="og:description" content="Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를 상위 뷰에 보고합니다. 그 다음 상위 뷰는 이를 자신의 좌표계 내에 배치합니다. 본질적으로, 레이아웃 프로세스의 목표는 각" />
+    <meta property="og:url" content="http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:modified_time" content="2024-05-27T04:47:00+09:00" />
+    <meta property="article:tag" content="Swiftui" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thinking in SwiftUI - 3장 Layout" />
+    <meta name="twitter:description" content="Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를 상위 뷰에 보고합니다. 그 다음 상위 뷰는 이를 자신의 좌표계 내에 배치합니다. 본질적으로, 레이아웃 프로세스의 목표는 각" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Swiftui" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout",
+    "url": "http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/blog-cover.jpg",
+        "url": "http://localhost:4000/assets/images/blog-cover.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"
+        "@id": "http://localhost:4000/Thinking-in-SwiftUI-3%EC%9E%A5-Layout"
     },
-    "description": "iOS developer."
+    "description": "Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를 상위 뷰에 보고합니다. 그 다음 상위 뷰는 이를 자신의 좌표계 내에 배치합니다. 본질적으로, 레이아웃 프로세스의 목표는 각"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -150,12 +159,16 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 5 June 2025"> 5 June 2025</time>
+                    <time class="post-full-meta-date" datetime="27 May 2024">27 May 2024</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/uncategorized/'>UNCATEGORIZED</a>
+                               <a href='/tag/swiftui/'>SWIFTUI</a>,
+                            
+                        
+                            
+                               <a href='/tag/ios/'>IOS</a>
                             
                         
                     
@@ -167,7 +180,60 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h3 id="text">Text</h3>
+                    <h1 id="thinking-in-swiftui---3장-layout">Thinking in SwiftUI - 3장 Layout</h1>
+
+<p>Created: 2024년 5월 26일 오후 10:51</p>
+
+<p>SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를 상위 뷰에 보고합니다. 그 다음 상위 뷰는 이를 자신의 좌표계 내에 배치합니다. 본질적으로, 레이아웃 프로세스의 목표는 각 뷰에 위치와 크기를 제공하는 것입니다.</p>
+
+<p>가장 먼저 염두에 두어야 할 점은 SwiftUI의 레이아웃 알고리즘이 뷰 트리를 따라 <strong>하향식으로 진행</strong>된다는 것입니다. 그러므로 뷰 빌더 코드에 의해 생성된 뷰 트리를 이해하는 것이 중요합니다</p>
+
+<p>( 이에 대한 자세한 내용은 뷰 트리 장을 참조하세요 ).</p>
+
+<p>실제 뷰 트리에 레이아웃 알고리즘을 적용하는 방법을 더 잘 이해하기 위해 예제를 살펴보겠습니다.</p>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled.png" alt="Untitled" /></p>
+
+<p>이 예에서 VStack은 루트 뷰이므로 안전 화면 영역을 제안된 크기로 받게 됩니다. 자체 크기를 결정하기 위해 스택은 먼저 하위 뷰에 크기를 재귀적으로 제안합니다.</p>
+
+<p>이미지는 지구본 기호의 크기를 기준으로 크기를 보고하고, 텍스트는 제안된 크기와 렌더링해야 하는 문자열을 기준으로 크기를 보고합니다. 이미지와 텍스트가 크기를 정확히 결정하는 방법에 대해 자세히 설명하겠습니다(크기는 나중에).</p>
+
+<p>이제 스택은 두 개의 하위 뷰를 서로 아래에 배치하여 둘 사이에 기본 간격을 삽입합니다. 스택은 하위 뷰 프레임의 합집합 크기로 자체 크기를 계산하고 이를 다시 창에 보고합니다.</p>
+
+<ol>
+  <li>상위 뷰는 하위 뷰에 크기를 제안합니다.</li>
+  <li>하위 뷰는 이 제안을 기반으로 자신의 크기를 결정하며, 자신의 하위 뷰가 있는 경우 1단계부터 다시 시작합니다.</li>
+  <li>하위 뷰는 결정한 크기를 상위 뷰에 보고합니다.</li>
+  <li>상위 뷰는 보고받은 크기에 따라 하위 뷰를 배치합니다.</li>
+</ol>
+
+<blockquote>
+  <p>3단계에서 하위 뷰에 의해 보고된 크기는 하위 뷰의 최종 크기입니다. 상위 뷰는 이 크기를 일방적으로 변경할 수 없습니다. 상위 뷰는 2단계로 돌아가 또 다른 크기 제안을 할 수 있지만, 결국 하위 뷰는 자신에게 적합한 크기를 선택하여 결정합니다.</p>
+
+</blockquote>
+
+<p>자세한 순서를 다시 보면 아래와 같습니다.</p>
+
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 1.png" alt="Untitled" /></p>
+
+<p>이 예시에서는 safe area 가 320 480인 창이 있다고 가정합니다.</p>
+
+<ol>
+  <li>시스템은 배경에 320 480 사이즈를 제안합니다.</li>
+  <li>배경은 기본 하위 뷰에 동일한 320 480 사이즈를 제안합니다.</li>
+  <li>패딩은 각 가장자리에서 10포인트를 뺀 300 460 사이즈를 텍스트에 제안합니다.</li>
+  <li>텍스트는 그 크기를 51 17로 보고합니다.</li>
+  <li>패딩은 각 가장자리에 10포인트를 추가하여, 크기를 71 37로 보고합니다.</li>
+  <li>배경은 보조 하위 뷰(색상)에 패딩된 텍스트의 크기인 71 37을 제안합니다.</li>
+  <li>색상은 제안된 71 37 사이즈를 수용하고 그대로 보고합니다.</li>
+  <li>배경은 기본 하위 뷰의 크기인 71 37을 보고합니다.</li>
+</ol>
+
+<h2 id="leaf-views"><strong>Leaf Views</strong></h2>
+
+<hr />
+
+<h3 id="text">Text</h3>
 
 <p>기본적으로 Text 뷰는 제안된 크기에 맞게 조정됩니다. 텍스트는 이 작업을 수행하기 위해 다음 순서로 여러 전략을 사용합니다: 텍스트를 여러 줄로 나누기(단어 줄 바꿈), 단어를 나누기(줄 바꿈), 자르기, 마지막으로 텍스트를 조정하기.</p>
 
@@ -175,7 +241,7 @@ into the {body} of the default.hbs template -->
 
 <p>다음은 Text(“Hello, World!”)가 제안된 크기에 따라 어떻게 렌더링되는지에 대한 몇 가지 예입니다. 점선 사각형은 제안된 크기를 나타내고, 실선 사각형은 반환된 크기를 나타냅니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 2.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 2.png" alt="Untitled" /></p>
 
 <p>→ <code class="language-plaintext highlighter-rouge">.lineLimit(_ number:)</code>를 사용하면 제안된 수직 공간에 관계없이 렌더링할 최대 라인 수를 지정할 수 있습니다. nil을 지정하면 줄 제한이 없음을 의미합니다.</p>
 
@@ -187,13 +253,13 @@ into the {body} of the default.hbs template -->
 
 <p>만약, fixedSize()를 Text에 적용시키면, 제안과 다른 결과를 보여준다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 3.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 3.png" alt="Untitled" /></p>
 
 <h3 id="shapes"><strong>Shapes</strong></h3>
 
 <p>대부분의 기본 제공 모양(<strong>Rectangle</strong>, <strong>RoundedRectangle</strong>, <strong>Capsule</strong> 및 <strong>Ellipse</strong>)은 0부터 무한대까지 제안된 크기를 수용하고 사용 가능한 공간을 채웁 니다. <strong>원은 예외입니다.</strong> 제안된 크기에 맞춰지고 원의 실제 크기를 다시 보고합니다. 모양에 nil을 제안하는 경우(즉, .fixedSize로 래핑하는 경우) 기본 크기는 10 10입니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 4.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 4.png" alt="Untitled" /></p>
 
 <h2 id="colors"><strong>Colors</strong></h2>
 
@@ -236,11 +302,11 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 5.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 5.png" alt="Untitled" /></p>
 
 <p>만약 다음과 같이 설정한 경우 320 480 화면에서 렌더링될 때</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 6.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 6.png" alt="Untitled" /></p>
 
 <ol>
   <li>
@@ -297,7 +363,7 @@ into the {body} of the default.hbs template -->
 	<span class="o">.</span><span class="nf">aspectRatio</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="nv">contentMode</span><span class="p">:</span> <span class="o">.</span><span class="n">fit</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 7.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 7.png" alt="Untitled" /></p>
 
 <p>aspectRatio의 일반적으로 이미지에 사용합니다. 이미지에 .resizable() 을 붙이면 사이즈에 맞게 이미지가 늘어나거나 줄어드는데, 이미지가 깨지지 않도록 aspectRatio 를 사용해 화면 사이즈에 맞춰 이미지 사이즈를 조절할 수 있습니다.</p>
 
@@ -307,7 +373,7 @@ into the {body} of the default.hbs template -->
 
 <p>만약, 이미지를 사용했을 때 이미지의 사이즈가 100:30 이라고 가정하고, 전체 사이즈가 200:200 이면, 아래와 같은 절차를 따라 사이즈를 설정합니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 8.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 8.png" alt="Untitled" /></p>
 
 <ol>
   <li>
@@ -342,7 +408,7 @@ into the {body} of the default.hbs template -->
 
 <p>Overlay와 Background는 SwiftUI에서 가장 유용한 수정자 중 하나입니다. 레이아웃 측면에서는 정확히 동일한 방식으로 작동합니다. 유일한 차이점은 Overlay는 기본 View 위에 보조 View를 그리는 반면, Background는 기본 View 뒤에 보조 View를 그리는 것입니다. 예를 들어, 일부 텍스트 뒤에 배경을 그리려면 다음과 같이 할 수 있습니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 9.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 9.png" alt="Untitled" /></p>
 
 <p>Background와 overlay는 기본 하위 View의 레이아웃에 영향을 미치지 않습니다. 보고된 overlay 또는 background의 크기는 항상 기본 하위 View의 보고된 크기입니다.</p>
 
@@ -361,7 +427,7 @@ into the {body} of the default.hbs template -->
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 10.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 10.png" alt="Untitled" /></p>
 
 <ol>
   <li>큰 크기를 제공한 케이스 (150x50)
@@ -381,7 +447,7 @@ into the {body} of the default.hbs template -->
       <li>
         <p>대안은 .layoutPriority modifier를 적용해 내부 View 사이에 우선순위를 제공하는 것 입니다.</p>
 
-        <p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 11.png" alt="Untitled" /></p>
+        <p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 11.png" alt="Untitled" /></p>
       </li>
     </ol>
   </li>
@@ -448,7 +514,7 @@ into the {body} of the default.hbs template -->
 
 <p>LazyVGrid와 LazyHGrid는 모두 동일한 기본 알고리즘을 사용하여 열이나 행의 크기를 계산하므로 이 섹션 에서는 LazyVGrid에 중점을 둘 것입니다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 12.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 12.png" alt="Untitled" /></p>
 
 <p>그리드는 iOS 16에서 추가되었고, 17 이상에서도 아직 버그가 많기 때문에 짧게 다루고 넘어간다.</p>
 
@@ -470,21 +536,21 @@ into the {body} of the default.hbs template -->
 	<span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">// 기본값이 .center</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 13.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 13.png" alt="Untitled" /></p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Text</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
 	<span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">alignment</span><span class="p">:</span> <span class="o">.</span><span class="n">bottomTrailing</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 14.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 14.png" alt="Untitled" /></p>
 
 <p>정렬 가이드</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 15.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 15.png" alt="Untitled" /></p>
 
 <p>ZStack 역시 기본값은 .center라 아래의 경우 가운데에 쌓이게 된다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 16.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 16.png" alt="Untitled" /></p>
 
 <h3 id="정렬-가이드-수정">정렬 가이드 수정</h3>
 
@@ -501,7 +567,7 @@ into the {body} of the default.hbs template -->
 
 <p>이렇게 수정한 이미지를 적용하면 다음과 같이 가이드라인이 변경된다.</p>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 17.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 17.png" alt="Untitled" /></p>
 
 <p>하지만 firstTextBaseline 을 수정했기 때문에 center로 설정하면 바뀌는게 없다.</p>
 
@@ -516,7 +582,7 @@ into the {body} of the default.hbs template -->
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/images/uncategorized/2025-07-19-Thinking-in-SwiftUI---3장-Layout/Untitled 18.png" alt="Untitled" /></p>
+<p><img src="/assets/images/swiftui/thinking-in-swiftui/3/Untitled 18.png" alt="Untitled" /></p>
 
                 </div>
             </section>
@@ -553,7 +619,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -579,6 +645,256 @@ into the {body} of the default.hbs template -->
                 
                 
                 
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; iOS 삽질 블로그 &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/swiftui/">Swiftui</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Thinking-in-SwiftUI-2%EC%9E%A5-State-and-Binding">Thinking in SwiftUI - 2장 State and Binding</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/Thinking-in-SwiftUI-1%EC%9E%A5-View-Trees">Thinking in SwiftUI - 1장 View Trees</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/WWDC22_Navigation_Cook_book_in_SwiftUI">[WWDC22] Navigation Cook book in SwiftUI</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/swiftui/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
                 
             
 
@@ -653,7 +969,7 @@ into the {body} of the default.hbs template -->
                     <h2 class="post-card-title">Thinking in SwiftUI - 2장 State and Binding</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>https://wlaxhrl.tistory.com/91 (Data Flow Through SwiftUI) (여기서 중요한건 SSOT !!) @State 뷰의 상태를 관리하기 위한 프로퍼티 래퍼. Value Type 뷰의 로컬 데이터 (내부 프로퍼티) 뷰에서 소유되고 관리되어야 하는 데이터 (ex. 텍스트필드, 토글버튼 등) Counter</p>
+                    <p>Thinking in SwiftUI - 2장 State and Binding Created: 2024년 5월 26일 오후 7:47 Tags: SwiftUI, iOS 이전 장에서 SwiftUI code가 View tree라는 청사진(블루프린트) 로 구성되는 방법과 영구 Render tree로 변환되는 방법에 대해서</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -685,7 +1001,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -729,7 +1045,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

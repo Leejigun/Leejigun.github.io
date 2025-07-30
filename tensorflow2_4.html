@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/tensorflow2_4" />
+    <meta name="description" content="분류(Classification) 프로젝트" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/tensorflow2_4" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[tensoflow 2.0] 4. 분류(Classification) 프로젝트 | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="[tensoflow 2.0] 4. 분류(Classification) 프로젝트" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="분류(Classification) 프로젝트" />
-<meta property="og:description" content="분류(Classification) 프로젝트" />
-<link rel="canonical" href="https://leejigun.github.io/tensorflow2_4" />
-<meta property="og:url" content="https://leejigun.github.io/tensorflow2_4" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-12-06T09:00:03+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[tensoflow 2.0] 4. 분류(Classification) 프로젝트" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2019-12-06T09:00:03+09:00","datePublished":"2019-12-06T09:00:03+09:00","description":"분류(Classification) 프로젝트","headline":"[tensoflow 2.0] 4. 분류(Classification) 프로젝트","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/tensorflow2_4"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/tensorflow2_4"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[tensoflow 2.0] 4. 분류(Classification) 프로젝트" />
+    <meta property="og:description" content="분류(Classification) 프로젝트 지도학습 (supervisor learning)의 문제 해결 방법은 2가지가 있다. 회귀 분류 앞서 선형 회귀를 통해서 다수의 입력으로 다수의 예측 결과를 가져오는 방법까지 학습했다. 여기서 더 나아가야 할 부분은 선형으로 표현할 수 있는 특성을 찾고 최적화 하기 위해서 가공하는 부분이 추가적으로 필요한데 그 부분은 머신러닝 단기 집중 과정에서 더 상세하게" />
+    <meta property="og:url" content="http://localhost:4000/tensorflow2_4" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/ml/tensorflow2_4/background.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-12-06T09:00:03+09:00" />
+    <meta property="article:modified_time" content="2019-12-06T09:00:03+09:00" />
+    <meta property="article:tag" content="Ml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[tensoflow 2.0] 4. 분류(Classification) 프로젝트" />
+    <meta name="twitter:description" content="분류(Classification) 프로젝트 지도학습 (supervisor learning)의 문제 해결 방법은 2가지가 있다. 회귀 분류 앞서 선형 회귀를 통해서 다수의 입력으로 다수의 예측 결과를 가져오는 방법까지 학습했다. 여기서 더 나아가야 할 부분은 선형으로 표현할 수 있는 특성을 찾고 최적화 하기 위해서 가공하는 부분이 추가적으로 필요한데 그 부분은 머신러닝 단기 집중 과정에서 더 상세하게" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/ml/tensorflow2_4/background.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ml" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/tensorflow2_4",
+    "url": "http://localhost:4000/tensorflow2_4",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/ml/tensorflow2_4/background.png",
+        "url": "http://localhost:4000/assets/images/ml/tensorflow2_4/background.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/tensorflow2_4"
+        "@id": "http://localhost:4000/tensorflow2_4"
     },
-    "description": "분류(Classification) 프로젝트"
+    "description": "분류(Classification) 프로젝트 지도학습 (supervisor learning)의 문제 해결 방법은 2가지가 있다. 회귀 분류 앞서 선형 회귀를 통해서 다수의 입력으로 다수의 예측 결과를 가져오는 방법까지 학습했다. 여기서 더 나아가야 할 부분은 선형으로 표현할 수 있는 특성을 찾고 최적화 하기 위해서 가공하는 부분이 추가적으로 필요한데 그 부분은 머신러닝 단기 집중 과정에서 더 상세하게"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -495,7 +504,7 @@ y_one_hot = tf.keras.utils.to_categorical(y_train)
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -538,12 +547,6 @@ y_one_hot = tf.keras.utils.to_categorical(y_train)
                         <div class="read-next-card-content">
                             <ul>
                                 
-                                
-                                  
-                                
-                                  
-                                
-                                  
                                 
                                   
                                 
@@ -903,7 +906,7 @@ y_one_hot = tf.keras.utils.to_categorical(y_train)
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -947,7 +950,7 @@ y_one_hot = tf.keras.utils.to_categorical(y_train)
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

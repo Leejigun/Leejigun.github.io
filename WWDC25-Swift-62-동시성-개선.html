@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[WWDC25] Swift 6.2 동시성 개선 | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="[WWDC25] Swift 6.2 동시성 개선" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="왜 동시성이 어려웠을까요?" />
-<meta property="og:description" content="왜 동시성이 어려웠을까요?" />
-<link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
-<meta property="og:url" content="https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-06-14T09:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[WWDC25] Swift 6.2 동시성 개선" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2025-06-14T09:00:00+09:00","datePublished":"2025-06-14T09:00:00+09:00","description":"왜 동시성이 어려웠을까요?","headline":"[WWDC25] Swift 6.2 동시성 개선","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[WWDC25] Swift 6.2 동시성 개선" />
+    <meta property="og:description" content="왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수" />
+    <meta property="og:url" content="http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2025-06-14T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2025-06-14T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[WWDC25] Swift 6.2 동시성 개선" />
+    <meta name="twitter:description" content="왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0",
+    "url": "http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png",
+        "url": "http://localhost:4000/assets/images/ios/2025-06-14-WWDC25-Swift-62-동시성-개선/image.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"
+        "@id": "http://localhost:4000/WWDC25-Swift-62-%EB%8F%99%EC%8B%9C%EC%84%B1-%EA%B0%9C%EC%84%A0"
     },
-    "description": "iOS developer."
+    "description": "왜 동시성이 어려웠을까요? 이전 Swift 6에서는 언어가 특정 작업을 개발자의 명시적 지시 없이 백그라운드 스레드나 다른 액터로 암시적으로 전환(오프로드)하는 경향이 있었습니다. 이 때문에 개발자가 의도하지 않더라도 데이터 경쟁(data race)에 취약한 코드가 컴파일러 오류를 유발할 수 있었죠. 동시성 프로그래밍은 여러 작업이 메모리를 공유하기 때문에 실수에 취약하며, 예상치 못한 결과로 이어질 수"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -516,7 +525,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -602,22 +611,6 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
                                     
                                   
                                 
@@ -873,7 +866,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/ios/">
                                 
-                                    See all 30 posts  →
+                                    See all 28 posts  →
                                 
                             </a>
                         </footer>
@@ -940,7 +933,11 @@ into the {body} of the default.hbs template -->
                     
                         
                             
-                                <span class="post-card-tags">Uncategorized</span>
+                               <span class="post-card-tags">Swiftui</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
                             
                         
                     
@@ -948,7 +945,7 @@ into the {body} of the default.hbs template -->
                     <h2 class="post-card-title">Thinking in SwiftUI - 3장 Layout</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>Text 기본적으로 Text 뷰는 제안된 크기에 맞게 조정됩니다. 텍스트는 이 작업을 수행하기 위해 다음 순서로 여러 전략을 사용합니다: 텍스트를 여러 줄로 나누기(단어 줄 바꿈), 단어를 나누기(줄 바꿈), 자르기, 마지막으로 텍스트를 조정하기. 텍스트는 항상</p>
+                    <p>Thinking in SwiftUI - 3장 Layout Created: 2024년 5월 26일 오후 10:51 SwiftUI의 레이아웃 알고리즘은 간단합니다. 상위 뷰는 하위 뷰에 크기를 제안하고, 하위 뷰는 그 제안에 따라 자신의 크기를 결정 후, 이 크기를</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -980,7 +977,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -1024,7 +1021,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>

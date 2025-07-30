@@ -27,27 +27,36 @@
     <style>.hljs { background: none; }</style>
 
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <link rel="shortcut icon" href="https://leejigun.github.io/assets/images/blog-icon.png" type="image/png" />
-    <link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" />
+    <meta name="description" content="iOS developer." />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/blog-icon.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기 | iOS 삽질 블로그</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" />
-<meta name="author" content="jglee" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing" />
-<meta property="og:description" content="https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing" />
-<link rel="canonical" href="https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" />
-<meta property="og:url" content="https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" />
-<meta property="og:site_name" content="iOS 삽질 블로그" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-07-20T09:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jglee"},"dateModified":"2025-07-20T09:00:00+09:00","datePublished":"2025-07-20T09:00:00+09:00","description":"https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing","headline":"[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기","mainEntityOfPage":{"@type":"WebPage","@id":"https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://leejigun.github.io/assets/images/blog-icon.png"},"name":"jglee"},"url":"https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"}</script>
-<!-- End Jekyll SEO tag -->
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="iOS 삽질 블로그" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" />
+    <meta property="og:description" content="https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing iOS 애플리케이션의 성능은 사용자 경험에 직접적인 영향을 미치며, 특히 이미지 처리와 같은 데이터 집약적인 작업에서는 최적화가 필수적이다. 본 블로그 시리즈의 첫 번째 편에서는 Apple의 강력한 성능 분석 도구인 Instruments를 활용하여 Swift 코드의 초기 병목 현상을 식별하고 성능 개선을 달성하는 과정을 상세히 다룬다. 1. 문제 제기: 느린 이미지 로딩과 사용자" />
+    <meta property="og:url" content="http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0" />
+    <meta property="og:image" content="http://localhost:4000/assets/images/ios/2025-07-20-WWDC25-Swift-성능-최적화의-시작-1-Instruments로-코드-병목-찾기/2025-07-20_23-19-49.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2025-07-20T09:00:00+09:00" />
+    <meta property="article:modified_time" content="2025-07-20T09:00:00+09:00" />
+    <meta property="article:tag" content="Ios" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[WWDC25] Swift 성능 최적화의 시작-1) Instruments로 코드 병목 찾기" />
+    <meta name="twitter:description" content="https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing iOS 애플리케이션의 성능은 사용자 경험에 직접적인 영향을 미치며, 특히 이미지 처리와 같은 데이터 집약적인 작업에서는 최적화가 필수적이다. 본 블로그 시리즈의 첫 번째 편에서는 Apple의 강력한 성능 분석 도구인 Instruments를 활용하여 Swift 코드의 초기 병목 현상을 식별하고 성능 개선을 달성하는 과정을 상세히 다룬다. 1. 문제 제기: 느린 이미지 로딩과 사용자" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/ios/2025-07-20-WWDC25-Swift-성능-최적화의-시작-1-Instruments로-코드-병목-찾기/2025-07-20_23-19-49.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="iOS 삽질 블로그" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Ios" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
 
     <script type="application/ld+json">
 {
@@ -56,20 +65,20 @@
     "publisher": {
         "@type": "Organization",
         "name": "iOS 삽질 블로그",
-        "logo": "https://leejigun.github.io/assets/images/blog-icon.png"
+        "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0",
+    "url": "http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0",
     "image": {
         "@type": "ImageObject",
-        "url": "https://leejigun.github.io/assets/images/ios/2025-07-20-WWDC25-Swift-성능-최적화의-시작-1-Instruments로-코드-병목-찾기/2025-07-20_23-19-49.png",
+        "url": "http://localhost:4000/assets/images/ios/2025-07-20-WWDC25-Swift-성능-최적화의-시작-1-Instruments로-코드-병목-찾기/2025-07-20_23-19-49.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://leejigun.github.io/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"
+        "@id": "http://localhost:4000/WWDC25-Swift-%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94%EC%9D%98-%EC%8B%9C%EC%9E%91-1-Instruments%EB%A1%9C-%EC%BD%94%EB%93%9C-%EB%B3%91%EB%AA%A9-%EC%B0%BE%EA%B8%B0"
     },
-    "description": "iOS developer."
+    "description": "https://www.youtube.com/watch?v=LzBZjwEY9as&amp;list=TLGGzZB-ElPYOYAyMDA3MjAyNQ https://github.com/apple/swift-binary-parsing iOS 애플리케이션의 성능은 사용자 경험에 직접적인 영향을 미치며, 특히 이미지 처리와 같은 데이터 집약적인 작업에서는 최적화가 필수적이다. 본 블로그 시리즈의 첫 번째 편에서는 Apple의 강력한 성능 분석 도구인 Instruments를 활용하여 Swift 코드의 초기 병목 현상을 식별하고 성능 개선을 달성하는 과정을 상세히 다룬다. 1. 문제 제기: 느린 이미지 로딩과 사용자"
 }
     </script>
 
@@ -105,7 +114,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://leejigun.github.io/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
+                <a class="site-nav-logo" href="http://localhost:4000/"><img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그" /></a>
             
         
         
@@ -337,7 +346,7 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = 'https://leejigun.github.io/';
+                            this.page.url = 'http://localhost:4000/';
                             this.page.identifier = 'iOS 삽질 블로그';
                         };
                         (function() {
@@ -410,22 +419,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
                                   
                                 
                                   
@@ -694,7 +687,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/ios/">
                                 
-                                    See all 30 posts  →
+                                    See all 28 posts  →
                                 
                             </a>
                         </footer>
@@ -805,7 +798,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="https://leejigun.github.io/">
+        <a href="http://localhost:4000/">
             
                 <img src="/assets/images/blog-icon.png" alt="iOS 삽질 블로그 icon" />
             
@@ -849,7 +842,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://leejigun.github.io/">iOS 삽질 블로그</a> &copy; 2025</section>
+                <section class="copyright"><a href="http://localhost:4000/">iOS 삽질 블로그</a> &copy; 2025</section>
                 <section class="poweredby">Github page blog of <a href="https://github.com/Leejigun">Leejigun</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
